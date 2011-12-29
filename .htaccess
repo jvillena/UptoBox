@@ -1,0 +1,29 @@
+RewriteEngine on
+#RewriteBase /uptobox/
+
+RewriteRule ^$ ./php/publico/index.php
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^usuario$ ./php/privado/usuario/inicio/index.php
+RewriteRule ^administrador$ ./php/privado/administracion/inicio/inicio.php
+
+RewriteRule ^login$ ./php/publico/login/login.php
+RewriteRule ^activar_cuenta/(.+)$ ./php/publico/login.php?codigo_activacion=$1
+
+RewriteRule ^publico/perfil/(.+)$ ./php/publico/perfil_publico.php?id_objeto=$1
+
+RewriteRule ^login/verificacion$ ./php/publico/login/login_ajax.php
+
+RewriteRule ^clave/reset$ ./php/publico/nueva_clave.php
+
+RewriteRule ^inicio$ ./php/privado/usuario/index.php
+
+
+
+RewriteRule ^logout$ ./php/privado/logout.php
+
+RewriteRule ^webservices$ ./php/webservices/index.php [QSA,L]
+
+RewriteRule ^webservices/(.*)$ ./php/webservices/index.php [QSA,L]
