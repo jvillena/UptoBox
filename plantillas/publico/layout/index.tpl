@@ -9,6 +9,7 @@
 		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}css/bootstrap.css' />
 		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}css/base.css' />
 		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}librerias/javascript/jquery/jquery_ui/css/ui-lightness/jquery-ui-1.8.12.custom.css' />
+		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}librerias/javascript/jquery/contextmenu/jquery.contextMenu.css' />
 		<title>{$metatitle}</title>
 
         <!-- Javascripts necesarios para la validación de formularios. -->
@@ -23,6 +24,9 @@
 		<!-- Javascripts necesarios para usar efectos de bootstrap en css. -->
 		<script src="{$RUTA_WEB_ABSOLUTA}librerias/javascript/bootstrap/bootstrap-dropdown.js" type="text/javascript"></script>
 		<script src="{$RUTA_WEB_ABSOLUTA}librerias/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
+		
+		<!-- Javascripts necesarios para usar el context Menu. -->
+		<script src="{$RUTA_WEB_ABSOLUTA}librerias/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
 		
 		<!-- Añade esta etiqueta en la cabecera o delante de la etiqueta body. -->
 		<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
