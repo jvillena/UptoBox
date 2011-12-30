@@ -24,6 +24,7 @@
 		<!-- Javascripts necesarios para usar efectos de bootstrap en css. -->
 		<script src="{$RUTA_WEB_ABSOLUTA}librerias/javascript/bootstrap/bootstrap-dropdown.js" type="text/javascript"></script>
 		<script src="{$RUTA_WEB_ABSOLUTA}librerias/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
+		<script src="{$RUTA_WEB_ABSOLUTA}librerias/javascript/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
 		
 		<!-- Javascripts necesarios para usar el context Menu. -->
 		<script src="{$RUTA_WEB_ABSOLUTA}librerias/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
