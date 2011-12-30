@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<translations>
+	<translation id="tx_metatitle">##metatitle##</translation>
+    <!-- PÁGINA DE LOGIN -->
+    <translation id="tx_usuario"><![CDATA[Username]]></translation>
+    <translation id="tx_clave"><![CDATA[Password]]></translation>
+    <translation id="tx_copyright"><![CDATA[Copyright 2011 - uptobox.net - All right reserved.]]></translation>
+    <translation id="tx_requerido_usuario"><![CDATA[Username must be inserted.]]></translation>
+    <translation id="tx_requerido_password"><![CDATA[Password must be inserted.]]></translation>
+    <!-- PÁGINA PRINCIPAL  - MENÚ -->
+    <translation id="tx_menu_inicio"><![CDATA[Home]]></translation>
+    <translation id="tx_menu_buscador"><![CDATA[Search]]></translation>
+    <translation id="tx_menu_planes_pago"><![CDATA[How it works]]></translation>
+    <translation id="tx_menu_personal"><![CDATA[Personal]]></translation>
+    <translation id="tx_menu_fichero"><![CDATA[Documents]]></translation>
+    <translation id="tx_menu_colaboradores"><![CDATA[Contacts]]></translation>
+    <translation id="tx_menu_mi_cuenta"><![CDATA[My Account]]></translation>
+    <translation id="tx_menu_empresa"><![CDATA[Company]]></translation>
+    <translation id="tx_menu_precios"><![CDATA[Plans & Prices]]></translation>
+    <translation id="tx_menu_faqs"><![CDATA[Faq]]></translation>
+    
+    <!-- PÁGINA PRINCIPAL  - CABECERA -->
+    <translation id="tx_menu_mi_cuenta"><![CDATA[Log in]]></translation>
+    <translation id="tx_menu_conf_cuenta"><![CDATA[Access to my account]]></translation>
+    <translation id="tx_menu_desconectarse"><![CDATA[Logout]]></translation>
+    <translation id="tx_menu_contacto"><![CDATA[Contact]]></translation>    
+    <translation id="tx_buscar"><![CDATA[Search]]></translation>
+    <translation id="tx_buscar"><![CDATA[tx_menu_conf_perfil]]></translation>
+    
+    <!-- PÁGINA PRINCIPAL  - PIE -->
+    <translation id="tx_footer_ayuda"><![CDATA[www.uptobox.net]]></translation>
+    <!-- PÁGINA PRINCIPAL  - LATERAL IZQUIERDO -->
+    <translation id="tx_lat_izq_acceder_perfil"><![CDATA[Ver/Editar Perfil]]></translation>
+    <!-- PÁGINA PRINCIPAL  - SUBMENÚ -->
+    <translation id="tx_menu_sub_actividad"><![CDATA[Actividades]]></translation>
+    <translation id="tx_menu_sub_usuarios"><![CDATA[Usuarios]]></translation>
+    <translation id="tx_menu_sub_estadisticas"><![CDATA[Estadísticas]]></translation>
+    <translation id="tx_menu_sub_informes"><![CDATA[Informes]]></translation>
+    <translation id="tx_menu_sub_configuracion"><![CDATA[Configuración]]></translation>
+    <!-- PAGE LOGIN  - CONTENIDO CENTRAL -->
+    <translation id="tx_login"><![CDATA[Log in]]></translation>
+    
+    <!-- PÁGINA ACTIVIDAD  - CONTENIDO CENTRAL -->
+    <translation id="tx_fecha"><![CDATA[Fecha]]></translation>
+     <translation id="tx_requerido_nombre_carpeta"><![CDATA[Folder name is required]]></translation>
+     <!-- PÁGINA PERFIL USUARIO  - CONTENIDO IZQUIERDO -->
+    <translation id="menu_usuario_perfil"><![CDATA[Profile]]></translation>
+     <!-- PAGE FOOTER  - CONTENIDO IZQUIERDO -->    
+    <translation id="tx_footer_faq"><![CDATA[Faq]]></translation>
+    <translation id="tx_footer_how"><![CDATA[How it works]]></translation>
+    <translation id="tx_footer_contact"><![CDATA[Contact]]></translation>
+    <translation id="tx_footer_privacy"><![CDATA[Privacy Police]]></translation>
+    <translation id="tx_footer_term"><![CDATA[Terms]]></translation>
+    <translation id="tx_footer_right"><![CDATA[All right reserved]]></translation>
+    <translation id="tx_footer_developer"><![CDATA[Developer by]]></translation>
+    <translation id="tx_footer_company"><![CDATA[Alea Technology]]></translation>
+    
+     <!-- PÁGINA FORMULARIO -->
+    <translation id="tx_tipo_objeto"><![CDATA[Section]]></translation>
+    <translation id="tx_titulo"><![CDATA[Tittle]]></translation>
+    <translation id="tx_descripcion"><![CDATA[Description]]></translation>
+    <translation id="tx_pais"><![CDATA[country]]></translation>
+    <translation id="tx_foto"><![CDATA[Picture]]></translation>
+    <translation id="tx_precio"><![CDATA[Price]]></translation>
+    <translation id="tx_fecha"><![CDATA[Date]]></translation>
+    <translation id="tx_hora"><![CDATA[Time]]></translation>
+    <translation id="tx_foto_principal"><![CDATA[Main Picture]]></translation>
+    <translation id="tx_seleccionar"><![CDATA[Select]]></translation>
+    <translation id="tx_esta_en"><![CDATA[You're in]]></translation>
+    <translation id="tx_insertado_exito"><![CDATA[Correct.]]></translation>
+    <translation id="tx_insertado_error5"><![CDATA[Select a country.]]></translation>
+    <!-- ADMINISTRACION -->
+</translations>

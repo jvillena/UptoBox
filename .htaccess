@@ -1,28 +1,29 @@
 RewriteEngine on
 #RewriteBase /uptobox/
 
-RewriteRule ^$ ./php/publico/index.php
+RewriteRule ^$ ./php/public/index.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^usuario$ ./php/privado/usuario/inicio/index.php
-RewriteRule ^administrador$ ./php/privado/administracion/inicio/inicio.php
+RewriteRule ^user/files$ ./php/private/user/init/index.php
+RewriteRule ^user/files/create$ ./php/private/user/files/create_fold.php
+RewriteRule ^admin$ ./php/private/admin/init/init.php
 
-RewriteRule ^login$ ./php/publico/login/login.php
-RewriteRule ^activar_cuenta/(.+)$ ./php/publico/login.php?codigo_activacion=$1
+RewriteRule ^login$ ./php/public/login/login.php
+RewriteRule ^activate/(.+)$ ./php/public/login.php?activate_code=$1
 
-RewriteRule ^publico/perfil/(.+)$ ./php/publico/perfil_publico.php?id_objeto=$1
+RewriteRule ^public/profile/(.+)$ ./php/public/public_profile.php?id_objeto=$1
 
-RewriteRule ^login/verificacion$ ./php/publico/login/login_ajax.php
+RewriteRule ^login/verificate$ ./php/public/login/login_ajax.php
 
-RewriteRule ^clave/reset$ ./php/publico/nueva_clave.php
+RewriteRule ^clave/reset$ ./php/public/new_password.php
 
-RewriteRule ^inicio$ ./php/privado/usuario/index.php
+RewriteRule ^init$ ./php/private/user/index.php
 
 
 
-RewriteRule ^logout$ ./php/privado/logout.php
+RewriteRule ^logout$ ./php/private/logout.php
 
 RewriteRule ^webservices$ ./php/webservices/index.php [QSA,L]
 
