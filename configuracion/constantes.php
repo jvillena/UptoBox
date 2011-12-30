@@ -44,6 +44,12 @@
 	// Tabla de mensajes.
 	define('TB_MENSAJE', 'mensaje');
 	
+	// Tabla de archivos.
+	define('TB_ARCHIVO', 'archivo');
+	
+	// Tabla intermedia entre usuarios y archivos.
+	define('TB_USUARIO_ARCHIVO', 'usuario_archivo');
+	
 	//Tabla paises
 	define('TB_PAIS', 'pais');
 	

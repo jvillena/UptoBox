@@ -39,78 +39,17 @@
     <translation id="tx_menu_sub_informes"><![CDATA[Informes]]></translation>
     <translation id="tx_menu_sub_configuracion"><![CDATA[Configuración]]></translation>
     <!-- PÁGINA ACTIVIDAD  - CONTENIDO CENTRAL -->
-    <translation id="tx_cometario_actividad"><![CDATA[realizó una búsqueda de la bolsa]]></translation>
     <translation id="tx_fecha"><![CDATA[Fecha]]></translation>
+     <translation id="tx_requerido_nombre_carpeta"><![CDATA[Debes insertar un nombre para la carpeta]]></translation>
     <!-- PÁGINA ACTIVIDAD  - CONTENIDO DERECHO -->
     <translation id="tx_monitorizacion"><![CDATA[Monitorización]]></translation>
      <!-- PÁGINA PERFIL USUARIO  - CONTENIDO IZQUIERDO -->
-    <translation id="menu_usuario_etiquetar_objetos"><![CDATA[Etiquetar Objetos]]></translation>
-    <translation id="menu_usuario_objetos"><![CDATA[Objetos]]></translation>
-    <translation id="menu_usuario_mensajes"><![CDATA[Mensajes]]></translation>
-    <translation id="menu_usuario_suscripcion"><![CDATA[Suscripción]]></translation>
     <translation id="menu_usuario_perfil"><![CDATA[Perfil]]></translation>
     <translation id="menu_usuario_devolver"><![CDATA[Devolver Objeto]]></translation>
-     <!-- LISTADO DE CATEGORÍAS -->
-     <translation id="cat_vehiculos"><![CDATA[VEHÍCULOS]]></translation>
-     <translation id="cat_coches_sin_carnet"><![CDATA[Coches sin carnet]]></translation>
-     <translation id="cat_motos"><![CDATA[Motos]]></translation>
-     <translation id="cat_accesorios_motos"><![CDATA[Accesorios de motos]]></translation>
-     <translation id="cat_quads_buggies"><![CDATA[Quads y buggies]]></translation>
-     <translation id="cat_autocaravanas_remolques"><![CDATA[Autocaravanas y Remolques]]></translation>
-     <translation id="cat_barcos_nautical"><![CDATA[Barcos y nautical]]></translation>
-     <translation id="cat_vehiculos_industriales_agricolas"><![CDATA[Vehículos industriales y agrícolas]]></translation>
-     <translation id="cat_inmobiliaria"><![CDATA[INMOBILIARIA]]></translation>
-     <translation id="cat_pisos"><![CDATA[Pisos]]></translation>
-     <translation id="cat_casas_chales"><![CDATA[Casas y chalés]]></translation>
-     <translation id="cat_terrenos_fincas_rusticas"><![CDATA[Terrenos y fincas rústicas]]></translation>
-     <translation id="cat_garajes_trasteros"><![CDATA[Garajes y trasteros]]></translation>
-     <translation id="cat_locales_oficinas_naves"><![CDATA[Locales, oficinas y naves]]></translation>
-     <translation id="cat_alquiler_vacaciones_apartamentos"><![CDATA[Alquiler de vacaciones y apartamentos]]></translation>
-     <translation id="cat_pisos_compartidos_habitaciones"><![CDATA[Pisos Compartidos y habitaciones]]></translation>
-	 <translation id="cat_casas_rurales"><![CDATA[Casas Rurales]]></translation>
-     <translation id="cat_electronica"><![CDATA[ELECTRÓNICA]]></translation>
-     <translation id="cat_informatica_juegos"><![CDATA[Informática y juegos]]></translation>
-     <translation id="cat_audio_video_fotografia"><![CDATA[Audio, video y fotografía]]></translation>
-     <translation id="cat_telefono_electronica"><![CDATA[Teléfonos y otros electrónica]]></translation>
-     <translation id="cat_inmobiliaria"><![CDATA[INMOBILIARIA]]></translation>
-     <translation id="cat_pisos"><![CDATA[Pisos]]></translation>
-     <translation id="cat_casas_chales"><![CDATA[Casas y chalés]]></translation>
-     <translation id="cat_terrenos_fincas_rusticas"><![CDATA[Terrenos y fincas rústicas]]></translation>
-     <translation id="cat_garajes_trasteros"><![CDATA[Garajes y trasteros]]></translation>
-     <translation id="cat_locales_oficinas_naves"><![CDATA[Locales, oficinas y naves]]></translation>
-     <translation id="cat_alquiler_vacaciones_apartamentos"><![CDATA[Alquiler de vacaciones y apartamentos]]></translation>
-     <translation id="cat_pisos_compartidos_habitaciones"><![CDATA[Pisos Compartidos y habitaciones]]></translation>
-	 <translation id="cat_casas_rurales"><![CDATA[Casas Rurales]]></translation>
-     <translation id="cat_ocio_deporte"><![CDATA[OCIO Y DEPORTE]]></translation>
-     <translation id="cat_deportes"><![CDATA[Deportes]]></translation>
-     <translation id="cat_animales_accesorios"><![CDATA[Animales y accesorios]]></translation>
-     <translation id="cat_musica_peliculas_libros"><![CDATA[Música, películas y libros]]></translation>
-     <translation id="cat_tiempo_libre_aficiones"><![CDATA[Tiempo libre y aficiones]]></translation>
-     <translation id="cat_coleccionismo"><![CDATA[Coleccionismo]]></translation>
-     <translation id="cat_vacaciones_viajes"><![CDATA[Vacaciones y viajes]]></translation>
-     <translation id="cat_casa_jardin"><![CDATA[CASA Y JARDÍN]]></translation>
-     <translation id="cat_para_casa"><![CDATA[Para la casa]]></translation>
-     <translation id="cat_para_jardin_agricultura"><![CDATA[Para jardín y agricultura]]></translation>
-     <translation id="cat_para_ninos"><![CDATA[Para los niños]]></translation>
-     <translation id="cat_moda_joyas_complementos"><![CDATA[Moda, joyas y complementos]]></translation>
-     <translation id="cat_belleza_salud_estetica"><![CDATA[Belleza, salud y estética]]></translation>
-     <translation id="cat_trabajo_formacion"><![CDATA[TRABAJO Y FORMACION]]></translation>
-     <translation id="cat_trabajo"><![CDATA[Trabajo]]></translation>
-     <translation id="cat_cursos_formacion"><![CDATA[Cursos y formación]]></translation>
-     <translation id="cat_negocios"><![CDATA[NEGOCIOS]]></translation>
-     <translation id="cat_negocios_traspasos"><![CDATA[Negocios y traspasos]]></translation>
-     <translation id="cat_servicios_profesionales"><![CDATA[Servicios Profesionales]]></translation>
-     <translation id="cat_otros"><![CDATA[OTROS]]></translation>
      <!-- PÁGINA FORMULARIO SUBIDA DE OBJETOS -->
-     <translation id="tx_que"><![CDATA[que]]></translation>
-     <translation id="tx_ofrezco"><![CDATA[Ofrezco]]></translation>
-     <translation id="tx_necesito"><![CDATA[Necesito]]></translation>
-      <translation id="tx_etiquetados"><![CDATA[Etiquetados]]></translation>
-    <translation id="tx_subida_objetos"><![CDATA[Subida de Objetos]]></translation>
     <translation id="tx_tipo_objeto"><![CDATA[Sección]]></translation>
     <translation id="tx_titulo"><![CDATA[Título]]></translation>
     <translation id="tx_descripcion"><![CDATA[Descripción]]></translation>
-    <translation id="tx_categoria"><![CDATA[Categoría]]></translation>
     <translation id="tx_pais"><![CDATA[pais]]></translation>
     <translation id="tx_foto"><![CDATA[Foto]]></translation>
     <translation id="tx_precio"><![CDATA[Precio]]></translation>
@@ -126,24 +65,5 @@
     <translation id="tx_insertado_error3"><![CDATA[Debe escribir una descripción.]]></translation>
     <translation id="tx_insertado_error4"><![CDATA[Seleccione una categoría.]]></translation>
     <translation id="tx_insertado_error5"><![CDATA[Seleccione un país.]]></translation>
-    <translation id="tx_edicion_objeto"><![CDATA[Edición de Objeto]]></translation>
-    <translation id="tx_edicion_objeto_etiquetado"><![CDATA[Edición de Objeto Etiquetado]]></translation>
-     <!-- TIPOS DE OBJETOS -->
-     <translation id="tx_tipo_objeto_encontrados"><![CDATA[Encontrados]]></translation>
-     <translation id="tx_tipo_objeto_perdidos"><![CDATA[Perdidos]]></translation>
-     <translation id="tx_tipo_objeto_regalados"><![CDATA[Regalados]]></translation>
-     <translation id="tx_tipo_objeto_alquilados"><![CDATA[Alquilados]]></translation>
-     <translation id="tx_tipo_objeto_vendidos"><![CDATA[Vendidos]]></translation>
-     <translation id="tx_tipo_objeto_intercambiados"><![CDATA[Intercambiados]]></translation>
-     <translation id="tx_tipo_objeto_prestados"><![CDATA[Prestados]]></translation>
-     <translation id="tx_tipo_objeto_etiquetados"><![CDATA[Etiquetados]]></translation>
-     <translation id="tx_tipo_objeto_encontrados"><![CDATA[Encontrados]]></translation>
-     <translation id="tx_tipo_objeto_perdidoencontr"><![CDATA[Perdidos/Encontr.]]></translation>
     <!-- ADMINISTRACION -->
-    <translation id="tx_menu_admin_usuarios"><![CDATA[Usuarios]]></translation>
-    <translation id="tx_menu_admin_objetos"><![CDATA[Objetos]]></translation>
-    <translation id="tx_menu_admin_paises"><![CDATA[Gestionar Países]]></translation>
-    <translation id="tx_menu_admin_perfil"><![CDATA[Datos de Perfil]]></translation>
-    <translation id="tx_menu_admin_suscripcion"><![CDATA[Suscripciones]]></translation>
-    <translation id="tx_menu_admin_avisos"><![CDATA[Avisos]]></translation>
 </translations>

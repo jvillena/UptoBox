@@ -1,4 +1,4 @@
-
+{literal}
 <script type="text/javascript">
 			
 			function createFolder(titulo){
@@ -9,6 +9,14 @@
 				   keyboard : true,
 				   backdrop : true
 				});
+			}
+			
+			function cambiarBotonCrear(){
+				$("#baceptar").removeClass("azul");
+				$("#baceptar").addClass("gris");
+				$("#baceptar").attr('disabled', 'disabled');
+				$("#id_cargando").toggle();
+				$("#mensaje").css("display","none");
 			}
 			
 			$(document).ready( function() {
@@ -53,8 +61,83 @@
 				
 			});
 			
+			
+			
+			
+$(document).ready(function() {
+    // Validación del formulario.
+    var_requerido_nombre = {/literal}"{translate}tx_requerido_nombre_carpeta{/translate}"{literal};
+    var validator = $("#form_crear_carpeta").validate({
+        rules: {
+    		nombre: {
+				required: true,
+				minlength: 4
+			}
+        },
+        messages: {
+        	nombre: {
+				required: var_requerido_nombre ,
+				minlength: ""
+			}
+        },
+//        // Función aplicada cuando se produce un error de validación en el elemento pasado como parámetro.
+//		// Se pasa también como como parámetro un array con un objeto html error, error[0].
+//        errorPlacement: function(error, element) {
+//			// Concatenamos el siguiente hijo del padre del elemnto el array de errores.
+//			// En nuestro caso abajo en el formulario serían los <div> vacíos.
+//			error.appendTo(element.parent().next());
+//        },
+        // Especifimos que hará el submir cuando el formulario sea válido, está función anulará el action definido en el formulario.
+        submitHandler: function() {
+			// Codificamos la clave.
+			cambiarBotonCrear();
+			// Inicamos la petición.
+	        $.ajax({
+	            type: 'POST',
+	            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}file/crear',
+	            data: $('#form_crear_carpeta').serialize(),
+	            // before: mostrarVentanaCargando(),
+	            // complete: ocultarVentanaCargando(), 
+	            success: function(data) {
+		        	var result = jQuery.parseJSON(data);
+		      	  	if (result[1]==1){
+			      	  	$('#retorno_usuario').html(result[0]);
+						$('#mensaje').css('display','block');
+						$('#error').addClass('error');
+						$('#error').removeClass('success');
+						$('#mensaje').delay(4000).fadeOut(400);
+						$("#nombre").val("");
+						$("#baceptar").removeClass("gris");
+						$("#baceptar").addClass("azul");
+						$("#baceptar").removeAttr("disabled");
+						$("#id_cargando").hide("slow");
+						
+		      	  }else if (result[1]==2){
+			      		$('#retorno_usuario').html(result[0]);
+						$('#mensaje').css('display','block');
+						$('#error').addClass('success');
+						$('#error').removeClass('error');
+						$('#mensaje').delay(4000).fadeOut(400);
+						$("#nombre").val("");
+						$("#baceptar").removeClass("gris");
+						$("#baceptar").addClass("azul");
+						$("#baceptar").removeAttr("disabled");
+						$("#id_cargando").hide("slow");
+						$('#modal-from-dom').modal('hide');
+			      	  }
+
+					
+	            }
+	        });
+        }
+    });
+});	
+
 </script>
+{/literal}
 <div id="div_inicio" style="margin-top:120px;width:98%">
+	
+	{if isset($aFile) && $aFile==""}
 	<div class="alert-message block-message warning">
         <p><strong>A qué esperas para comenzar!</strong> Puedes crear carpetas o subir archivos. Además, puedes compartirlas con tus colaboradores o amigos.</p>
         <div class="alert-actions">
@@ -67,24 +150,8 @@
           </a>
         </div>
       </div>
-      <!-- The Modal Dialog  Para mostrar mensaje-->
-	  <div id="modal-from-dom" class="modal hide fade" style="width:500px;">
-	    <div class="modal-header">
-	    	<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}imagenes/iconos/icon_folder.png"/>
-		    <span style="font-size:22px;color:#525252;font-weight: bold;" id="titulo_archivo"></span>
-		    <a href="#" class="close">&times;</a><br/>
-	    </div>
-	    <div class="modal-body">
-	    	<h4 style="color: #666666">Nombre:</h4>
-			<input type="text" class="span8 required" id="nombre" name="nombre" placeholder="Escribe el nombre de la Carpeta">
-	      <p id="textoobj"></p>
-	    </div>
-	    <div class="modal-footer" style="text-align:right;">
-	    	 <input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="Cancelar" />
-			<input type="submit" id="aceptar" name="aceptar" value="Aceptar" class="btn small bold azul"/>
-			
-  		</div>
-	  </div>
+      {else}
+     
       <div id="myDiv">
 			Right click to view the context menu
 		</div>
@@ -111,6 +178,31 @@
 			<li class="file"><a href="#file">Nuevo Archivo</a></li>
 		</ul>
 	-->
-		
-		
+		{/if}
+		 <!-- The Modal Dialog  Para mostrar mensaje-->
+	  <div id="modal-from-dom" class="modal hide fade" style="width:500px;">
+	  	<form action="#" method="post" id="form_crear_carpeta" name="form_crear_carpeta" class="form_mensaje">
+		    <div class="modal-header">
+		    	<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}imagenes/iconos/icon_folder.png"/>
+			    <span style="font-size:22px;color:#525252;font-weight: bold;" id="titulo_archivo"></span>
+			    <a href="#" class="close">&times;</a><br/>
+		    </div>
+		    <div class="modal-body">
+		    	<div id="mensaje" style="display:none">
+					<div id="error" class="alert-message">
+					    <p id="retorno_usuario"></p>
+				    </div>
+			 	</div>
+		    	<h4 style="color: #666666">Nombre:</h4>
+				<input type="text" class="span8 required" id="nombre" name="nombre" placeholder="Escribe el nombre de la Carpeta">
+		      <p id="textoobj"></p>
+		    </div>
+		    <div class="modal-footer" style="text-align:right;">
+		    	<input type="hidden" name="id_padre" id="id_padre" value="{$id_padre}"/> 
+		    	<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="Cancelar" />
+				<input type="submit" id="baceptar" name="baceptar" value="Aceptar" class="btn small bold azul"/>
+				
+	  		</div>
+  		</form>
+	  </div>
 </div>

@@ -6,7 +6,8 @@
 	// Una vez realizado el siguiente require, podemos incluir sin tener que poner rutas relativas cualquier script que exista en el directorio 'configuracion' o en
 	// el directorio 'php/funciones'.
 	require('../../../../configuracion/configuracion.php');
-	require(BASE_PATH.'/clases/usuario.class.php');	
+	require(BASE_PATH.'/clases/usuario.class.php');
+	require(BASE_PATH.'/clases/archivo.class.php');	
 	require(BASE_PATH.'/php/privado/usuario/seguridad.php');	
 	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
@@ -23,6 +24,11 @@
 	// Marcamos documentos como opción principal
 	$oSmarty->assign('menu_principal','documentos');
 	$oSmarty->assign('contenido_central','inicio');
+	
+	//Nos traemos los ficheros y carpetas del directorio root
+	$aFile = $oArchivo->getDocumentosPadreArbol($datos_usuario['id_usuario']);
+	$oSmarty->assign('aFile',$aFile);	
+	$oSmarty->assign('id_padre',-1);
 	
 	// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.
 	$oSmarty->template_dir = DIRECTORIO_PLANTILLAS."privado/usuario";
