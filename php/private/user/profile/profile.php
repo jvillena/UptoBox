@@ -7,6 +7,8 @@
 	// el directorio 'php/funciones'.
 	require('../../../../config/config.php');
 	require(BASE_PATH.'/class/usuario.class.php');
+	require(BASE_PATH.'/class/perfil.class.php');
+	require(BASE_PATH.'/class/combos.class.php');
 	require(BASE_PATH.'/class/archivo.class.php');	
 	require(BASE_PATH.'/php/private/user/security.php');	
 	
@@ -16,18 +18,18 @@
 	$oSmarty->assign('id_usuario',$datos['id_usuario']);
 	$oSmarty->assign('foto',$datos['ruta_foto']);
 	
+	$datos_perfil = $oPerfil->get($datos_usuario['id_usuario']);
+	$oSmarty->assign('datos_perfil',$datos_perfil);
+	
 	$metatitle = "uptobox.net";
 	$metadescription = "uptobox.net";
 	$oSmarty->assign('metatitle',$metatitle);
 	$oSmarty->assign('metadescription',$metadescription);
-	// Marcamos documentos como opción principal
-	$oSmarty->assign('menu_principal','files');
-	$oSmarty->assign('contenido_central','inicio');
 	
-	//Nos traemos los ficheros y carpetas del directorio root
-	$aFile = $oArchivo->getDocumentosPadreArbol($datos_usuario['id_usuario']);
-	$oSmarty->assign('aFile',$aFile);	
-	$oSmarty->assign('id_padre',-1);
+	// Marcamos documentos como opción principal
+	$oSmarty->assign('menu_principal','myaccount');
+	$oSmarty->assign('contenido_central','profile');
+	
 	
 	// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.
 	$oSmarty->template_dir = DIRECTORIO_PLANTILLAS."private/user";

@@ -18,7 +18,6 @@
 	$oSmarty->template_dir = DIRECTORIO_PLANTILLAS."public/index";	
 	$oSmarty->assign('LATERAL_IZQUIERDO','');
 
-	
 	//Para el título y la descripción de la página
 	$metatitle = "uptobox.net";
 	$metadescription = "uptobox.net";

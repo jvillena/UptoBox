@@ -23,11 +23,17 @@
     <!-- PAGE   - SUBHEADER -->
     <translation id="tx_sub_file"><![CDATA[Ficheros y Carpetas]]></translation>
     <translation id="tx_sub_message"><![CDATA[Bienvenidos a Uptobox.net]]></translation>
+    <translation id="tx_sub_myaccount"><![CDATA[Mi Cuenta]]></translation>
     <!-- PAGE LOGIN  - CONTENIDO CENTRAL -->
     <translation id="tx_login"><![CDATA[Log in]]></translation>
      <!-- PAGE  - FILES AND FOLDERS -->
     <translation id="tx_init_message"><![CDATA[A qué esperas para comenzar!]]></translation>
     <translation id="tx_init_message2"><![CDATA[Puedes crear carpetas o subir archivos. Además, puedes compartirlas con tus colaboradores o amigos.]]></translation>
+   <!-- PAGE  - TABS TAGS -->
+    <translation id="tx_tabs_profile"><![CDATA[Perfil]]></translation>
+    <translation id="tx_profile_tittle"><![CDATA[Perfil de Usuario]]></translation>
+    <translation id="tx_profile_sub_tittle"><![CDATA[Rellena tus datos personales y así podrán los usuarios ponerse en contacto contigo!.]]></translation>
+    
     <!-- PÁGINA PRINCIPAL  - CABECERA -->
     <translation id="tx_menu_mi_cuenta"><![CDATA[Mi Cuenta]]></translation>
     <translation id="tx_menu_conf_cuenta"><![CDATA[Acceder a mi cuenta]]></translation>
@@ -79,6 +85,15 @@
      <!-- PÁGINA FORMULARIO -->
      <translation id="tx_form_name"><![CDATA[Nombre]]></translation>
      <translation id="tx_form_name_placeholder"><![CDATA[Escribe el nombre de la carpeta]]></translation>
+     <translation id="tx_form_name_picture"><![CDATA[Foto]]></translation>
+     <translation id="tx_form_name_password"><![CDATA[Contraseña]]></translation>
+     <translation id="tx_form_name_repassword"><![CDATA[Repite contraseña]]></translation>
+     <translation id="tx_form_name_email"><![CDATA[Email]]></translation>
+     <translation id="tx_form_name_phone"><![CDATA[Teléfono]]></translation>
+     <translation id="tx_form_name_username"><![CDATA[Nombre]]></translation>
+     <translation id="tx_form_name_surname"><![CDATA[Apellidos]]></translation>
+    <translation id="tx_button_edit"><![CDATA[Modificar]]></translation>
+    <translation id="tx_button_upload_picture"><![CDATA[Subir Foto]]></translation>
     <translation id="tx_tipo_objeto"><![CDATA[Sección]]></translation>
     <translation id="tx_titulo"><![CDATA[Título]]></translation>
     <translation id="tx_descripcion"><![CDATA[Descripción]]></translation>

@@ -22,8 +22,7 @@ $(document).ready(function() {
 				minlength: 4
 			},
 			password: {
-				required: true,
-				minlength: 5
+				required: true
 			}
         },
         messages: {
@@ -141,15 +140,15 @@ $(document).ready(function() {
 							        	  </div>
 							        	  <div class="modal-body">
 										   	  		<h4>Username</h4>
-										   	  		<input type="text" class="span3 required" id="username" name="username" placeholder="Username">
+										   	  		<input type="text" class="xlarge required" id="username" name="username" placeholder="Username">
 										   	  		<br/><br/>
 										   	  		<h4>Password</h4>
-											  		<input type="password" class="span3 required" id="password" name="password" placeholder="Password">
+											  		<input type="password" class="xlarge required" id="password" name="password" placeholder="Password">
 													<input type="hidden" value="1" name="action"/>	
 										 			<br/><br/>
 										 </div>
 							        	  <div class="modal-footer">
-							        	  	<img id="id_cargando" style="display:none" src="{$IMAGES_URL}/recursos/loading.gif" />
+							        	  	<img id="id_cargando" style="display:none" src="{$IMAGES_URL}/resources/loading.gif" />
 							        	    <input type="submit" class="btn primary" style="float: right;" value="Login" name="logueo" id="blogin"/>	
 							        	  </div>
 							        	</div>

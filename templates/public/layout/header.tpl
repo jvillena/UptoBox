@@ -8,16 +8,18 @@ $(document).ready(function() {
 <div class="topbar" data-dropdown="dropdown">
 	<div class="topbar-inner">
   		<div class="container" style="width:980px">
-			<a id="brand" class="brand margin-top-1" href="{$RUTA_WEB_ABSOLUTA}"><img src="{$IMAGES_URL}/logos/logo.png" /></a>
+			<a id="brand" class="brand margin-top-1" href="{if $LOGUEADO}{$RUTA_WEB_ABSOLUTA}user/files{else}{$RUTA_WEB_ABSOLUTA}{/if}"><img src="{$IMAGES_URL}/logos/logo.png" /></a>
 			{if $LOGUEADO}
 			<ul class="nav">
-				<li {if isset($menu_principal) && $menu_principal=='documentos'}class="active"{/if}>
-					<a href="{$RUTA_WEB_ABSOLUTA}" >{translate}tx_menu_fichero{/translate}</a>
+				<li {if isset($menu_principal) && $menu_principal=='files'}class="active"{/if}>
+					<a href="{$RUTA_WEB_ABSOLUTA}user/files" >{translate}tx_menu_fichero{/translate}</a>
 				</li>
-				<li {if isset($menu_principal) && $menu_principal=='colaboradores'}class="active"{/if}><a href="{$RUTA_WEB_ABSOLUTA}personal" {if isset($menu_principal) && $menu_principal=='colaboradores'}class="seleccionado"{/if}>{translate}tx_menu_colaboradores{/translate}</a></li>
+				<li {if isset($menu_principal) && $menu_principal=='contact'}class="active"{/if}>
+						<a href="{$RUTA_WEB_ABSOLUTA}personal" {if isset($menu_principal) && $menu_principal=='contact'}class="seleccionado"{/if}>{translate}tx_menu_colaboradores{/translate}</a>
+				</li>
 			
-					<li class="dropdown" {if isset($menu_principal) && $menu_principal=='mi_cuenta'}class="active"{/if}>
-						<a href="{$RUTA_WEB_ABSOLUTA}login" class="dropdown-toggle">{translate}tx_menu_mi_cuenta{/translate}</a>
+				<li class="dropdown {if isset($menu_principal) && $menu_principal=='myaccount'} active {/if}">
+						<a href="#" class="dropdown-toggle">{translate}tx_menu_mi_cuenta{/translate}</a>
 						<ul class="dropdown-menu">
 							<li>
 								<a class="azul" href="{$RUTA_WEB_ABSOLUTA}user/profile">
@@ -88,11 +90,11 @@ $(document).ready(function() {
 		          	<table class="page_table">
         					<tr>
         						<td>
-        							<h1>{translate}tx_sub_file{/translate} <small>{translate}tx_sub_message{/translate}</small></h1>			
+        							<h1>{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_sub_myaccount{/translate}{/if} <small>{if $menu_principal == 'files'}{translate}tx_sub_message{/translate}{/if}</small></h1>			
         							  <div id="tabs_menu" style="float:left;margin-bottom:-3px;">
         							    <ul class="tabs">
 									    	<li class="active" style="background-color:#fff">
-									    		<a href="#" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;">{translate}tx_sub_file{/translate}</a>
+									    		<a href="#" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;">{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_tabs_profile{/translate}{/if}</a>
 									    	</li>
 									    </ul>
 									   </div>
@@ -102,9 +104,13 @@ $(document).ready(function() {
         						</td>
         						<td style="width:22%; ">
         							{if $foto==""}
-        							<img style="float:left;border: 1px solid #CCC;padding:4px;" src="{$RUTA_WEB_ABSOLUTA}libs/php/rescalado_imagen/image.php/{$RUTA_WEB_ABSOLUTA}images/iconos/icon_avatar_grande.png?width=40&amp;image={$RUTA_WEB_ABSOLUTA}images/iconos/icon_avatar_grande.png"  alt="avatar-grande" />
+        							<a href="{$RUTA_WEB_ABSOLUTA}user/profile">
+        								<img style="float:left;border: 1px solid #CCC;padding:4px;" src="{$RUTA_WEB_ABSOLUTA}libs/php/rescalado_imagen/image.php/{$RUTA_WEB_ABSOLUTA}images/iconos/icon_avatar_grande.png?width=40&amp;image={$RUTA_WEB_ABSOLUTA}images/iconos/icon_avatar_grande.png"  alt="avatar-grande" />
+	        						</a>
 	        						{else}
+	        						<a href="{$RUTA_WEB_ABSOLUTA}user/profile">
 	        							<img style="float:left;border: 1px solid #CCC;padding:4px;" src="{$RUTA_WEB_ABSOLUTA}libs/php/rescalado_imagen/image.php/{$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/profile/{$foto}?width=40&amp;image={$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/profile/{$foto}"  alt="avatar-grande" />
+	        						</a>
 	        						{/if}	
 	        						<div style="float:left;margin-top:30px;margin-left:4px;">
      				     				<a class="enlace-color" href="{$RUTA_WEB_ABSOLUTA}logout"><span class="azul" style="background-color:#F5F5F5;padding:2px;">{translate}tx_menu_desconectarse{/translate}</span></a>

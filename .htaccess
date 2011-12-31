@@ -8,12 +8,14 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^user/files$ ./php/private/user/init/index.php
 RewriteRule ^user/files/create$ ./php/private/user/files/create_fold.php
+RewriteRule ^user/profile$ ./php/private/user/profile/profile.php
+RewriteRule ^user/profile/edit$ ./php/private/user/profile/profile_ajax.php
+RewriteRule ^user/profile/upload_picture$ ./php/private/user/profile/upload_picture_user.php
+
 RewriteRule ^admin$ ./php/private/admin/init/init.php
 
 RewriteRule ^login$ ./php/public/login/login.php
 RewriteRule ^activate/(.+)$ ./php/public/login.php?activate_code=$1
-
-RewriteRule ^public/profile/(.+)$ ./php/public/public_profile.php?id_objeto=$1
 
 RewriteRule ^login/verificate$ ./php/public/login/login_ajax.php
 

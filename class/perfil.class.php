@@ -25,48 +25,47 @@ class Perfil{
 			if($datos['password2']!=""){
 				$contrasena=md5($datos['password2']);
 			}
-			$sql="UPDATE ".TB_USUARIO." SET nombre='".$datos['nombre']."',apellidos='".$datos['apellidos']."',telefono='".$datos['telefono']."',privado='".$datos['privado']."',id_pais='".$datos['select_pais']."',id_provincia='".$datos['select_provincia']."',id_localidad='".$datos['select_localidad']."'";
+			$sql="UPDATE ".TB_USUARIO." SET nombre='".$datos['nombre']."',apellidos='".$datos['apellidos']."',telefono='".$datos['telefono']."'";
 											 
 			
 			if($contrasena!=""){
-				$sql.=",password='$contrasena' ";
+				$sql.=",clave='$contrasena' ";
 			}
 			
-			$sql.=" WHERE id=$id_usuario";
-			//die($sql);
+			$sql.=" WHERE id_usuario=$id_usuario";
 			$oBD->Execute($sql);
 			
 			$error='ok';
-			if($datos['email']!=""){
+			//if($datos['email']!=""){
 				
-				$sql="SELECT email FROM ".TB_USUARIO." WHERE id=$id_usuario";
+			//	$sql="SELECT email FROM ".TB_USUARIO." WHERE id=$id_usuario";
 				
-				$rs=$oBD->Execute($sql);
-				$datos_perfil_actual=$rs->GetRows();
+			//	$rs=$oBD->Execute($sql);
+			//	$datos_perfil_actual=$rs->GetRows();
 				
-				$email_anterior=$datos_perfil_actual[0]['email'];
+			//	$email_anterior=$datos_perfil_actual[0]['email'];
 				
-				if($email_anterior!=$datos['email']){
+				//if($email_anterior!=$datos['email']){
 						
-					$sql="DELETE FROM ".TB_CAMBIO_EMAIL." WHERE id_usuario=$id_usuario";
+				//	$sql="DELETE FROM ".TB_CAMBIO_EMAIL." WHERE id_usuario=$id_usuario";
 					
-					$oBD->Execute($sql);
-					$codigo="";
-					for ($i=0; $i<40; $i++) {
-					    $d=rand(1,30)%2;
-					    $codigo.=$d ? chr(rand(65,90)) : chr(rand(48,57));
-					} 
+				//	$oBD->Execute($sql);
+				//	$codigo="";
+				//	for ($i=0; $i<40; $i++) {
+				//	    $d=rand(1,30)%2;
+				//	    $codigo.=$d ? chr(rand(65,90)) : chr(rand(48,57));
+				//	} 
 					
-					$sql="INSERT INTO ".TB_CAMBIO_EMAIL." (id_usuario,email,codigo,fecha) 
-								VALUES ($id_usuario,'".$datos['email']."','$codigo','".date('Y-m-d')."')";
+				//	$sql="INSERT INTO ".TB_CAMBIO_EMAIL." (id_usuario,email,codigo,fecha) 
+				//				VALUES ($id_usuario,'".$datos['email']."','$codigo','".date('Y-m-d')."')";
 					
-					$oBD->Execute($sql);
+				//	$oBD->Execute($sql);
 					
 					//$this->enviar_confirmacion_cambio_email($id_usuario);
 					
-					$error='email';
-				}
-			}
+				//	$error='email';
+				//}
+			//}
 		}
 		
 		return $error;
@@ -78,12 +77,13 @@ class Perfil{
 			if(isset($fotos['foto_usuario'])){
 				$ext = explode('.',$foto['foto_usuario']['name']);
 				$nombre = "img".rand(0,999999999999999).".".$ext[count($ext)-1];
-				$destino = BASE_PATH.'datos/usuarios/'.$id_usuario.'/'.$nombre ;
-				if(!file_exists(BASE_PATH.'datos/usuarios/'.$id_usuario)){
+				$destino = BASE_PATH.'datas/users/'.$id_usuario.'/profile/'.$nombre ;
+				if(!file_exists(BASE_PATH.'datas/users/'.$id_usuario)){
 					mkdir(BASE_PATH.'datos/usuarios/'.$id_usuario, 0777);
+					mkdir(BASE_PATH.'datos/usuarios/'.$id_usuario.'/profile', 0777);
 				}
 				if(move_uploaded_file ( $fotos['foto_usuario']['tmp_name'], $destino)){
-					$sql = "UPDATE ".TB_USUARIO." SET foto='".$nombre."' WHERE id=$id_usuario";
+					$sql = "UPDATE ".TB_USUARIO." SET ruta_foto='".$nombre."' WHERE id_usuario=$id_usuario";
 					$oBD->Execute($sql);
 				}
 			}
@@ -93,7 +93,7 @@ class Perfil{
 		
 		global $oBD;
 		
-		$sql="SELECT * FROM ".TB_USUARIO." WHERE id=$id_usuario";
+		$sql="SELECT * FROM ".TB_USUARIO." WHERE id_usuario=$id_usuario";
 		
 		$rs=$oBD->Execute($sql);
 		

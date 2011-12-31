@@ -32,10 +32,16 @@
     <!-- PAGE   - SUBHEADER -->
     <translation id="tx_sub_file"><![CDATA[Files and Folders]]></translation>
     <translation id="tx_sub_message"><![CDATA[Welcome to Uptobox.net]]></translation>
+    <translation id="tx_sub_myaccount"><![CDATA[My Account]]></translation>
     <!-- PAGE  - FILES AND FOLDERS -->
     <translation id="tx_init_message"><![CDATA[What are you waiting to start!]]></translation>
     <translation id="tx_init_message2"><![CDATA[You can create folders or upload files. And you can share with your colleagues or friends.]]></translation>
     
+    <!-- PAGE  - TABS TAGS -->
+    <translation id="tx_tabs_profile"><![CDATA[Profile]]></translation>
+    <translation id="tx_profile_tittle"><![CDATA[User Profile]]></translation>
+    <translation id="tx_profile_sub_tittle"><![CDATA[Enter your personal details so that users can contact you!.]]></translation>
+   
     <!-- PÁGINA PRINCIPAL  - PIE -->
     <translation id="tx_footer_ayuda"><![CDATA[www.uptobox.net]]></translation>
     <!-- PÁGINA PRINCIPAL  - LATERAL IZQUIERDO -->
@@ -48,6 +54,7 @@
     <translation id="tx_menu_sub_configuracion"><![CDATA[Configuración]]></translation>
     <!-- PAGE LOGIN  - CONTENIDO CENTRAL -->
     <translation id="tx_login"><![CDATA[Log in]]></translation>
+     <translation id="tx_menssage_success"><![CDATA[tx_menu_conf_perfil]]></translation>
     
     <!-- PÁGINA ACTIVIDAD  - CONTENIDO CENTRAL -->
     <translation id="tx_fecha"><![CDATA[Fecha]]></translation>
@@ -79,7 +86,15 @@
      <!-- PÁGINA FORMULARIO -->
      <translation id="tx_form_name"><![CDATA[Name]]></translation>
      <translation id="tx_form_name_placeholder"><![CDATA[Name of the folder]]></translation>
-     
+     <translation id="tx_form_name_picture"><![CDATA[Picture]]></translation>
+     <translation id="tx_form_name_password"><![CDATA[Password]]></translation>
+     <translation id="tx_form_name_repassword"><![CDATA[Re-Password]]></translation>
+     <translation id="tx_form_name_email"><![CDATA[Email]]></translation>
+     <translation id="tx_form_name_phone"><![CDATA[Phone Number]]></translation>
+     <translation id="tx_form_name_username"><![CDATA[Name]]></translation>
+     <translation id="tx_form_name_surname"><![CDATA[Surname]]></translation>
+     <translation id="tx_button_edit"><![CDATA[Edit]]></translation>
+     <translation id="tx_button_upload_picture"><![CDATA[Upload Picture]]></translation> 
     <translation id="tx_tipo_objeto"><![CDATA[Section]]></translation>
     <translation id="tx_titulo"><![CDATA[Tittle]]></translation>
     <translation id="tx_descripcion"><![CDATA[Description]]></translation>

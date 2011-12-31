@@ -749,6 +749,12 @@ form .clearfix.error .input-prepend .add-on, form .clearfix.error .input-append 
   background-color: #fce6e6;
   border-color: #b94a48;
 }
+
+input.xlarge.error{
+	  color: #b94a48;
+  background-color: #fce6e6;
+  border-color: #b94a48;
+}
 form .clearfix.warning > label, form .clearfix.warning .help-block, form .clearfix.warning .help-inline {
   color: #c09853;
 }

@@ -41,7 +41,7 @@
 					    $d=rand(1,30)%2;
 					    $codigo_activacion.= $d ? chr(rand(65,90)) : chr(rand(48,57));
 					}
-					$sql="SELECT * FROM ".TB_USUARIO." WHERE codigo_activacion='$codigo_activacion'";
+					$sql="SELECT * FROM ".$this->sTablaUsuario." WHERE codigo_activacion='$codigo_activacion'";
 					$rs=$this->oBD->Execute($sql);
 					$codigos_similares=$rs->GetRows();
 					if(count($codigos_similares)==0){
@@ -110,17 +110,30 @@
 		}
 		
 		function asociar_foto_usuario($id_usuario,$fotos){
-			global $oBD;
+
 			if(isset($fotos['foto_usuario'])){
 				$ext = explode('.',$fotos['foto_usuario']['name']);
 				$nombre = "img".rand(0,999999999999999).".".$ext[count($ext)-1];
-				$destino = BASE_PATH.'datos/usuarios/'.$id_usuario.'/'.$nombre ;
-				if(!file_exists(BASE_PATH.'datos/usuarios/'.$id_usuario)){
-					mkdir(BASE_PATH.'datos/usuarios/'.$id_usuario, 0777);
+				$destino = BASE_PATH.'datas/users/'.$id_usuario.'/profile/'.$nombre ;
+				if(!file_exists(BASE_PATH.'datas/users/'.$id_usuario)){
+					mkdir(BASE_PATH.'datas/users/'.$id_usuario, 0777);
+					mkdir(BASE_PATH.'datas/users/'.$id_usuario.'/profile', 0777);
 				}
 				if(move_uploaded_file ( $fotos [ 'foto_usuario'][ 'tmp_name' ], $destino)){
-					$sql = "UPDATE ".TB_USUARIO." SET imagen='".$nombre."' WHERE id=$id_usuario";
-					$oBD->Execute($sql);
+					
+					//Miramos si existía ya una foto y la borramos del disco
+					$consulta_sql = "SELECT ruta_foto FROM ".$this->sTablaUsuario." WHERE id_usuario=".$id_usuario;
+					$rs = $this->oBD->Execute($consulta_sql);
+					$fila = $rs->GetRows();
+					$rs->Close();
+					if ($rs->RecordCount()>0){
+						$file_old = BASE_PATH.'datas/users/'.$id_usuario.'/profile/'.$fila[0]['ruta_foto'];
+						unlink($file_old);
+					}
+					
+					
+					$sql = "UPDATE ".$this->sTablaUsuario." SET ruta_foto='".$nombre."' WHERE id_usuario=$id_usuario";
+					$this->oBD->Execute($sql);
 				}
 			}
 		}
@@ -152,13 +165,13 @@
 				// Actualizamos la información en la base de datos.
 				$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET nombre = '".$aDatos['usuario_nombre']."', apellidos = '".$aDatos['usuario_apellidos'];
 				$consulta_sql .= "', email= '".$aDatos['usuario_email']."', telefono= '".$aDatos['usuario_telefono']."', usuario='".$aDatos['usuario_usuario']."', password='".$clave_encriptada."', clave_cambiada=1";
-				$consulta_sql .= ", salt='".$salt."' WHERE id=".$aDatos['usuario_id'].";";
+				$consulta_sql .= ", salt='".$salt."' WHERE id_usuario=".$aDatos['usuario_id'].";";
 			}
 			else {
 				// Actualizamos la información en la base de datos.
 				$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET nombre = '".$aDatos['usuario_nombre']."', apellidos = '".$aDatos['usuario_apellidos'];
 				$consulta_sql .= "', email= '".$aDatos['usuario_email']."', telefono= '".$aDatos['usuario_telefono']."',privado=".$aDatos['privado'].", usuario='".$aDatos['usuario_usuario'];
-				$consulta_sql .= "' WHERE id=".$aDatos['usuario_id'].";";		
+				$consulta_sql .= "' WHERE id_usuario=".$aDatos['usuario_id'].";";		
 			}
 			// Si el resultado es 1 seguimos ejecutando la consulta SQL.
 			if ($resultado == 1) {
@@ -197,13 +210,13 @@
 				// Actualizamos la información en la base de datos.
 				$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET id_usuario_rol='".$aDatos['usuario_tipo']."', nombre = '".$aDatos['usuario_nombre']."', apellidos = '".$aDatos['usuario_apellidos'];
 				$consulta_sql .= "', email= '".$aDatos['usuario_email']."', telefono= '".$aDatos['usuario_telefono']."', usuario='".$aDatos['usuario_usuario']."', password= '".$clave_encriptada."', clave_cambiada=1";
-				$consulta_sql .= ", salt='".$salt."' WHERE id=".$aDatos['usuario_id'].";";
+				$consulta_sql .= ", salt='".$salt."' WHERE id_usuario=".$aDatos['usuario_id'].";";
 			}
 			else {
 				// Actualizamos la información en la base de datos.
 				$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET id_usuario_rol='".$aDatos['usuario_tipo']."', nombre = '".$aDatos['usuario_nombre']."', apellidos = '".$aDatos['usuario_apellidos'];
 				$consulta_sql .= "', email= '".$aDatos['usuario_email']."', telefono= '".$aDatos['usuario_telefono']."', usuario='".$aDatos['usuario_usuario'];
-				$consulta_sql .= "' WHERE id=".$aDatos['usuario_id'].";";	
+				$consulta_sql .= "' WHERE id_usuario=".$aDatos['usuario_id'].";";	
 			}		
 			// Si el resultado es 1 seguimos ejecutando la consulta SQL.
 			if ($resultado == 1) {
@@ -226,7 +239,7 @@
 				
 				// Actualizamos la información en la base de datos.
 				$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET password='".$clave_encriptada."'";
-				$consulta_sql .= " WHERE id=".$id_usuario.";";
+				$consulta_sql .= " WHERE id_usuario=".$id_usuario.";";
 				
 				if (!$this->oBD->Execute($consulta_sql)){
 					$resultado = -2;
@@ -246,7 +259,7 @@
 			$consulta_sql = "UPDATE ".$this->sTablaSesion." SET eliminada=1 WHERE id_usuario=".$id_user;
 			$rs = $this->oBD->Execute($consulta_sql);
 			
-			$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET eliminado=1, fecha_baja='$fecha' WHERE id=".$id_user;
+			$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET eliminado=1, fecha_baja='$fecha' WHERE id_usuario=".$id_user;
 			$rs = $this->oBD->Execute($consulta_sql);			
 		}
 		
@@ -257,7 +270,7 @@
 			$consulta_sql = "UPDATE ".$this->sTablaSesion." SET desactivada=1 WHERE id_usuario=".$id_user;
 			$rs = $this->oBD->Execute($consulta_sql);
 			
-			$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET desactivado=1, fecha_ultima_desactivacion='$fecha' WHERE id=".$id_user;
+			$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET desactivado=1, fecha_ultima_desactivacion='$fecha' WHERE id_usuario=".$id_user;
 			$rs = $this->oBD->Execute($consulta_sql);			
 		}	
 
@@ -265,21 +278,21 @@
 			$consulta_sql = "UPDATE ".$this->sTablaSesion." SET desactivada=0 WHERE id_usuario=".$id_user;
 			$rs = $this->oBD->Execute($consulta_sql);
 			
-			$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET desactivado=0 WHERE id=".$id_user;
+			$consulta_sql = "UPDATE ".$this->sTablaUsuario." SET desactivado=0 WHERE id_usuario=".$id_user;
 			$rs = $this->oBD->Execute($consulta_sql);			
 		}		
 		
 		
 		public function activarUsuarioCodigo($codigo_activacion){
 			
-			$sql="SELECT * FROM ".TB_USUARIO." WHERE permiso_acceso=0 AND codigo_activacion='$codigo_activacion' AND eliminado=0";
+			$sql="SELECT * FROM ".$this->sTablaUsuario." WHERE permiso_acceso=0 AND codigo_activacion='$codigo_activacion' AND eliminado=0";
 			$rs=$this->oBD->Execute($sql);
 			$usuario=$rs->GetROws();
 			
 			$resultado=0;
 			if(count($usuario)==1){
 				
-				$sql="UPDATE ".TB_USUARIO." SET permiso_acceso=1,codigo_activacion='' WHERE id=".$usuario[0]['id'];
+				$sql="UPDATE ".$this->sTablaUsuario." SET permiso_acceso=1,codigo_activacion='' WHERE id=".$usuario[0]['id'];
 				$rs=$this->oBD->Execute($sql);
 				$resultado=$usuario[0]['id'];
 			}
@@ -289,7 +302,7 @@
 		}
 
 		public function getNombreUsuario($id_usuario) {
-			$consulta_sql = "SELECT nombre, apellidos FROM ".$this->sTablaUsuario." WHERE id=".$id_usuario;
+			$consulta_sql = "SELECT nombre, apellidos FROM ".$this->sTablaUsuario." WHERE id_usuario=".$id_usuario;
 			$rs = $this->oBD->Execute($consulta_sql);
 			$fila = $rs->GetRows();
 			$rs->Close();
@@ -302,7 +315,7 @@
 			$aResultado = NULL;
 			
 			if (isset($_SESSION['id_usuario'])) {
-				$consulta_sql = "SELECT * FROM ".$this->sTablaUsuario." WHERE id=".$_SESSION['id_usuario'].";";
+				$consulta_sql = "SELECT * FROM ".$this->sTablaUsuario." WHERE id_usuario=".$_SESSION['id_usuario'].";";
 				$rs = $this->oBD->Execute($consulta_sql);
 				$aResultado = $rs->GetRows();
 				$rs->Close();
@@ -465,7 +478,7 @@
 		global $oBD;
 		global $oSuscripcion;
 		//if($tipo=="buscar"){
-			$sql="SELECT * FROM ".TB_USUARIO;
+			$sql="SELECT * FROM ".$this->sTablaUsuario;
 		//}
 		//else{
 		//	$sql="SELECT count(*) numero_usuarios FROM ".TB_USUARIO;
