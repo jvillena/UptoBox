@@ -15,22 +15,31 @@
     <translation id="tx_menu_fichero"><![CDATA[Documents]]></translation>
     <translation id="tx_menu_colaboradores"><![CDATA[Contacts]]></translation>
     <translation id="tx_menu_mi_cuenta"><![CDATA[My Account]]></translation>
+    <translation id="tx_menu_activity"><![CDATA[Recent Activity]]></translation>
+    
     <translation id="tx_menu_empresa"><![CDATA[Company]]></translation>
     <translation id="tx_menu_precios"><![CDATA[Plans & Prices]]></translation>
     <translation id="tx_menu_faqs"><![CDATA[Faq]]></translation>
     
     <!-- PÁGINA PRINCIPAL  - CABECERA -->
-    <translation id="tx_menu_mi_cuenta"><![CDATA[Log in]]></translation>
     <translation id="tx_menu_conf_cuenta"><![CDATA[Access to my account]]></translation>
-    <translation id="tx_menu_desconectarse"><![CDATA[Logout]]></translation>
+    <translation id="tx_menu_desconectarse"><![CDATA[Log out]]></translation>
     <translation id="tx_menu_contacto"><![CDATA[Contact]]></translation>    
     <translation id="tx_buscar"><![CDATA[Search]]></translation>
+    <translation id="tx_search_file"><![CDATA[Search Files]]></translation>
     <translation id="tx_buscar"><![CDATA[tx_menu_conf_perfil]]></translation>
+    
+    <!-- PAGE   - SUBHEADER -->
+    <translation id="tx_sub_file"><![CDATA[Files and Folders]]></translation>
+    <translation id="tx_sub_message"><![CDATA[Welcome to Uptobox.net]]></translation>
+    <!-- PAGE  - FILES AND FOLDERS -->
+    <translation id="tx_init_message"><![CDATA[What are you waiting to start!]]></translation>
+    <translation id="tx_init_message2"><![CDATA[You can create folders or upload files. And you can share with your colleagues or friends.]]></translation>
     
     <!-- PÁGINA PRINCIPAL  - PIE -->
     <translation id="tx_footer_ayuda"><![CDATA[www.uptobox.net]]></translation>
     <!-- PÁGINA PRINCIPAL  - LATERAL IZQUIERDO -->
-    <translation id="tx_lat_izq_acceder_perfil"><![CDATA[Ver/Editar Perfil]]></translation>
+    <translation id="tx_lat_izq_acceder_perfil"><![CDATA[View/Edit Profile]]></translation>
     <!-- PÁGINA PRINCIPAL  - SUBMENÚ -->
     <translation id="tx_menu_sub_actividad"><![CDATA[Actividades]]></translation>
     <translation id="tx_menu_sub_usuarios"><![CDATA[Usuarios]]></translation>
@@ -55,7 +64,22 @@
     <translation id="tx_footer_developer"><![CDATA[Developer by]]></translation>
     <translation id="tx_footer_company"><![CDATA[Alea Technology]]></translation>
     
+    <!-- OPTIONS LABELS-->
+    <translation id="tx_options_new_folder"><![CDATA[New Folder]]></translation>
+    <translation id="tx_options_create_new_folder"><![CDATA[Create New Folder]]></translation>
+    <translation id="tx_options_upload_file"><![CDATA[Upload file]]></translation>
+    <translation id="tx_options_title"><![CDATA[What can I do?]]></translation>
+    <translation id="tx_options_personal_account"><![CDATA[Personal Account]]></translation>
+    <translation id="tx_options_storages"><![CDATA[Storages]]></translation>
+    <translation id="tx_from"><![CDATA[of]]></translation>
+    <translation id="tx_button_accept"><![CDATA[Accept]]></translation>
+    <translation id="tx_button_cancel"><![CDATA[Cancel]]></translation>
+    
+    
      <!-- PÁGINA FORMULARIO -->
+     <translation id="tx_form_name"><![CDATA[Name]]></translation>
+     <translation id="tx_form_name_placeholder"><![CDATA[Name of the folder]]></translation>
+     
     <translation id="tx_tipo_objeto"><![CDATA[Section]]></translation>
     <translation id="tx_titulo"><![CDATA[Tittle]]></translation>
     <translation id="tx_descripcion"><![CDATA[Description]]></translation>

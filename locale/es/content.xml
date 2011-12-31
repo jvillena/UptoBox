@@ -18,10 +18,16 @@
     <translation id="tx_menu_empresa"><![CDATA[Empresas]]></translation>
     <translation id="tx_menu_precios"><![CDATA[Planes y Precios]]></translation>
     <translation id="tx_menu_faqs"><![CDATA[Preguntas Frecuentes]]></translation>
+    <translation id="tx_menu_activity"><![CDATA[Actividad Reciente]]></translation>
     
+    <!-- PAGE   - SUBHEADER -->
+    <translation id="tx_sub_file"><![CDATA[Ficheros y Carpetas]]></translation>
+    <translation id="tx_sub_message"><![CDATA[Bienvenidos a Uptobox.net]]></translation>
     <!-- PAGE LOGIN  - CONTENIDO CENTRAL -->
     <translation id="tx_login"><![CDATA[Log in]]></translation>
-    
+     <!-- PAGE  - FILES AND FOLDERS -->
+    <translation id="tx_init_message"><![CDATA[A qué esperas para comenzar!]]></translation>
+    <translation id="tx_init_message2"><![CDATA[Puedes crear carpetas o subir archivos. Además, puedes compartirlas con tus colaboradores o amigos.]]></translation>
     <!-- PÁGINA PRINCIPAL  - CABECERA -->
     <translation id="tx_menu_mi_cuenta"><![CDATA[Mi Cuenta]]></translation>
     <translation id="tx_menu_conf_cuenta"><![CDATA[Acceder a mi cuenta]]></translation>
@@ -58,7 +64,21 @@
      <!-- PÁGINA PERFIL USUARIO  - CONTENIDO IZQUIERDO -->
     <translation id="menu_usuario_perfil"><![CDATA[Perfil]]></translation>
     <translation id="menu_usuario_devolver"><![CDATA[Devolver Objeto]]></translation>
+    
+     <!-- OPTIONS LABELS-->
+    <translation id="tx_options_new_folder"><![CDATA[Nueva Carpeta]]></translation>
+    <translation id="tx_options_create_new_folder"><![CDATA[Crear Nueva Carpeta]]></translation>
+    <translation id="tx_options_upload_file"><![CDATA[Subir Documentos]]></translation>
+    <translation id="tx_options_title"><![CDATA[¿Qué puedes hacer?]]></translation>
+    <translation id="tx_options_personal_account"><![CDATA[Cuenta Personal]]></translation>
+    <translation id="tx_options_storages"><![CDATA[Almacenamiento]]></translation>
+    <translation id="tx_from"><![CDATA[de]]></translation>
+    <translation id="tx_button_accept"><![CDATA[Aceptar]]></translation>
+    <translation id="tx_button_cancel"><![CDATA[Cancelar]]></translation>
+    
      <!-- PÁGINA FORMULARIO -->
+     <translation id="tx_form_name"><![CDATA[Nombre]]></translation>
+     <translation id="tx_form_name_placeholder"><![CDATA[Escribe el nombre de la carpeta]]></translation>
     <translation id="tx_tipo_objeto"><![CDATA[Sección]]></translation>
     <translation id="tx_titulo"><![CDATA[Título]]></translation>
     <translation id="tx_descripcion"><![CDATA[Descripción]]></translation>

@@ -52,7 +52,7 @@ $(document).ready(function() {
            		<li class="menu" data-dropdown="menu">
            			{if $LOGUEADO}
 						<form action="" class="pull-left">
-			            <input type="text" placeholder="Buscar Archivo">
+			            <input type="text" placeholder="{translate}tx_search_file{/translate}">
 			          </form>
 					{/if}
 				</li>
@@ -70,7 +70,7 @@ $(document).ready(function() {
 			</ul>
 			<ul class="nav secondary-nav" style="margin-right: 10px;">
            		<li class="menu" data-dropdown="menu">
-           			<button class="btn small primary margin-top-5" onclick="location.href='{$RUTA_WEB_ABSOLUTA}login'">{translate}tx_menu_mi_cuenta{/translate}</button>
+           			<button class="btn small primary margin-top-5" onclick="location.href='{$RUTA_WEB_ABSOLUTA}login'">{translate}tx_login{/translate}</button>
            			<ul class="dropdown-menu">
 							<li><a href="{$RUTA_WEB_ABSOLUTA}user/profile">{translate}tx_menu_conf_perfil{/translate}</a></li>
 							<li class="divider"></li>
@@ -88,11 +88,11 @@ $(document).ready(function() {
 		          	<table class="page_table">
         					<tr>
         						<td>
-        							<h1>Ficheros y Carpetas <small>Bienvenidos a UptoBox.net</small></h1>			
+        							<h1>{translate}tx_sub_file{/translate} <small>{translate}tx_sub_message{/translate}</small></h1>			
         							  <div id="tabs_menu" style="float:left;margin-bottom:-3px;">
         							    <ul class="tabs">
 									    	<li class="active" style="background-color:#fff">
-									    		<a href="#" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;">Ficheros y Carpetas</a>
+									    		<a href="#" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;">{translate}tx_sub_file{/translate}</a>
 									    	</li>
 									    </ul>
 									   </div>

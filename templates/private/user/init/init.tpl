@@ -139,14 +139,14 @@ $(document).ready(function() {
 	
 	{if isset($aFile) && $aFile==""}
 	<div class="alert-message block-message warning">
-        <p><strong>A qué esperas para comenzar!</strong> Puedes crear carpetas o subir archivos. Además, puedes compartirlas con tus colaboradores o amigos.</p>
+        <p><strong>{translate}tx_init_message{/translate}</strong> {translate}tx_init_message2{/translate}</p>
         <div class="alert-actions">
-          <a id="bnew" onclick="createFolder('Crear Nueva Carpeta');" href="#" class="btn small">
-          	<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}imagenes/iconos/icon_button_folder.png"/>Nueva Carpeta
+          <a id="bnew" onclick="createFolder('{translate}tx_options_create_new_folder{/translate}');" href="#" class="btn small">
+          	<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}imagenes/iconos/icon_button_folder.png"/>{translate}tx_options_new_folder{/translate}
           </a> 
           
           <a href="#" class="btn small">
-          	<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}imagenes/iconos/icon_button_upload.png"/>Subir Documentos
+          	<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}imagenes/iconos/icon_button_upload.png"/>{translate}tx_options_upload_file{/translate}
           </a>
         </div>
       </div>
@@ -193,14 +193,14 @@ $(document).ready(function() {
 					    <p id="retorno_usuario"></p>
 				    </div>
 			 	</div>
-		    	<h4 style="color: #666666">Nombre:</h4>
-				<input type="text" class="span8 required" id="nombre" name="nombre" placeholder="Escribe el nombre de la Carpeta">
+		    	<h4 style="color: #666666">{translate}tx_form_name{/translate}:</h4>
+				<input type="text" class="span8 required" id="nombre" name="nombre" placeholder="{translate}tx_form_name_placeholder{/translate}">
 		      <p id="textoobj"></p>
 		    </div>
 		    <div class="modal-footer" style="text-align:right;">
 		    	<input type="hidden" name="id_padre" id="id_padre" value="{$id_padre}"/> 
-		    	<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="Cancelar" />
-				<input type="submit" id="baceptar" name="baceptar" value="Aceptar" class="btn small bold azul"/>
+		    	<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="{translate}tx_button_cancel{/translate}" />
+				<input type="submit" id="baceptar" name="baceptar" value="{translate}tx_button_accept{/translate}" class="btn small bold azul"/>
 				
 	  		</div>
   		</form>
