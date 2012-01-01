@@ -81,7 +81,7 @@
 	$oSmarty->assign('metatitle',$metatitle);
 	$oSmarty->assign('metadescription',$metadescription);
 		
-	$oSmarty->assign('menu_principal','');
+	$oSmarty->assign('menu_principal','login');
 	
 	$paises = $oCombos->getPaises(7);
 	$oSmarty->assign('paises',$paises);

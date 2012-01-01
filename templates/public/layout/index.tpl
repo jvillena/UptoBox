@@ -39,7 +39,7 @@
     	<div id="header">
 			{$HEADER}
 		</div>
-		<div id="wrapper">
+		<div id="wrapper" {if $menu_principal=='login'}style="background: url('{$IMAGES_URL}/bg/bg_foto.png') no-repeat 0 30px{/if}">
 			<div class="wrapper-all">
 				{$CONTENIDO_CENTRAL}
 				{$LATERAL_DERECHO}

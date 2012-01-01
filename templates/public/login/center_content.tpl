@@ -117,24 +117,25 @@ $(document).ready(function() {
 					<h1>{translate}tx_login{/translate}</h1>
 					<p>Join today and start to upload and share your online file storage.<strong>UptoBox</strong> is the best open sources online file storage
 					</p>
+					<div id="mensaje" style="display:none">
+										<div id="error" class="alert-message">
+										    <p id="retorno_usuario"></p>
+									    </div>
+									</div>	
 				</div>
 				
 		        <!-- Main hero unit for a primary marketing message or call to action -->
 		 
 						<div class="row" style="margin-top:30px;">
 								<div class="span8">
-									<img src="{$IMAGES_URL}/login/cloud.jpg" width="550px" />         
+									<img style="opacity:0.8;margin-top:-10px" src="{$IMAGES_URL}/login/cloud.jpg" width="985px" />         
 			      				</div>
-				      			<div class="span12 well" style="width:400px;border: none; padding: 40px;" >
+				      			<div class="span12" style="width:400px;border: none; padding: 40px;opacity:0.8" >
 				      			 <!-- Modal -->
-				      			 	<div id="mensaje" style="display:none">
-										<div id="error" class="alert-message">
-										    <p id="retorno_usuario"></p>
-									    </div>
-									</div>	
+				      			 	
 							        <form name="form_login" id="form_login" method="post">
 							        
-							        	<div style="width:90%;position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1" class="modal">
+							        	<div style="width:90%;position: relative; top: auto; left: auto; margin:0 auto;margin-top:-41px;margin-left:100px; z-index: 1" class="modal">
 							        	  <div class="modal-header">
 							        	    <h3>{translate}tx_login{/translate}</h3>
 							        	  </div>
