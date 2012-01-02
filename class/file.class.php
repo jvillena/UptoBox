@@ -1,5 +1,12 @@
 <?php
-	class FileClass {
+/**
+ * Clase File
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */
+class FileClass {
 		private $oBD;
 		private $sTablaUsuario;
 		private $sTablaUsuarioRol;

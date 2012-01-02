@@ -1,148 +1,64 @@
 <?php
-class ErrorClass{
+/**
+ * Clase Error
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */
+class Error{
 	
 	
-	private $sUrl404;
-	
-	private $sUrlIndex;
-	
-	private $sUrlAccesoRestringido;
-	
-	private $sUrlUsuarioNoRegistrado;
-	
-	private $sUrlUsuarioYaRegistrado;
-	
-	private $indexUsuario;
-	
-	private $indexEmpresa;
-	
-	private $eventosEmpresa;
-	
-	private $indexAdministrador;
-	private $eventosUsuario;
-	private $evento;
-	private $permisosInsuficientes;
-	private $ofertasUsuario;
-	private $ofertasUsuarioEmpresa;
-	private $perfilUsuario;
-	
-	private $perfilAdmin;
-	
-	private $gente;
-	private $mensajeriaUsuario;
-	
-	private $errorFuncionalidad;
+	private static $sUrl404;
+
+	private static $sUrlIndex;
+
+	private static $sUrlAccesoRestringido;
+
+	private static $sUrlUsuarioNoRegistrado;
 	
 	public function __construct(){
 		
-		$this->sUrl404 = "";
-		
-		$this->sUrlIndex = BASE_URL;
-		
-		$this->sUrlAccesoRestringido = BASE_URL;	
-		
-		$this->sUrlUsuarioNoRegistrado = BASE_URL.'login';
-		
-		$this->sUrlUsuarioYaRegistrado = BASE_URL;
-		
-		$this->indexUsuario=BASE_URL.'usuario/misitio';
-		
-		$this->permisosInsuficientes=BASE_URL.'login';
+		$sUrl404 = ERROR_ACCESS;
 
-		$this->errorFuncionalidad=BASE_URL.'errorFuncionalidad';
+		$sUrlIndex = BASE_URL;
+
+		$sUrlAccesoRestringido = ERROR_ACCESS;
+
+		$sUrlUsuarioNoRegistrado = ERROR_ACCESS;
 		
-		$this->indexEmpresa=BASE_URL.'empresa/misitio';
-		$this->eventosEmpresa=BASE_URL.'empresa/eventos';
-		
-		$this->perfilUsuario = BASE_URL.'usuario/files';
-		
-		$this->mensajeriaUsuario = BASE_URL.'usuario/mensajeria';
-		
-		$this->gente=BASE_URL.'usuario/gente';
-		
-		$this->perfilAdmin = BASE_URL.'administrador';
 		
 		
 	}
 	
-	public function redirect404(){
-		
-		header("Location: $this->sUrl404");
+	public static function redirect404(){
+		global $sUrl404;
+		Tools::redirectPage('404');
 	}
-	
-	public function redirectIndex(){
-		header("Location: $this->sUrlIndex");
-		
+
+	public static function redirectIndex(){
+		global $sUrlIndex;
+		Tools::redirectPage($sUrlIndex);
 	}
-	
-	public function redirectAccesoRestringido(){
-		
-		header("Location: $this->sUrlAccesoRestringido");
+
+	public static function redirectAccesoRestringido(){
+		global $sUrlAccesoRestringido;
+		header("Location:". $sUrlAccesoRestringido);
 	}
-	
-	public function redirectUsuarioNoRegistrado(){
-		
-		header("Location: $this->sUrlUsuarioNoRegistrado");
+
+	public static function redirectUsuarioNoRegistrado(){
+
+		Tools::redirectPage('login');
+
 	}
-	public function redirectUsuarioYaRegistrado(){
-		
-		header("Location: $this->sUrlUsuarioYaRegistrado");
-	}
-	
-	public function redirectEventos(){
-		header("Location: $this->eventosUsuario");
-	}
-	
-	public function redirectEvento($id){
-		header("Location: $this->evento".$id);
-	}
-	
-	public function permisosInsuficientes(){
-		header("Location: $this->permisosInsuficientes");
-	}
-	
-	public function errorFuncionalidad(){
-		header("Location: $this->errorFuncionalidad");
-	}
-	
-	public function redirectOfertas(){
-		header("Location: $this->ofertasUsuario");
-	}
-	
-	public function redirectOfertasPublico($id){
-		header("Location: $this->ofertasUsuario/$id");
-	}
-	
-	public function redirectOfertasEmpresa(){
-		header("Location: $this->ofertasUsuarioEmpresa");
-	}
-	
-	public function redirectPerfilPublico($id){
-		header("Location: $this->perfilUsuario".$id);
-	}
-	
-	public function redirectVerEvento($id){
-		header("Location: $this->eventosUsuario/".$id);
-	}
-	
-	public function redirectVerOferta($id){
-		header("Location: $this->ofertasUsuario"."/$id");
-	}
-	
-	public function redirectMensajeria(){
-		header("Location: $this->mensajeriaUsuario");
-	}
-	
-	public function redirectUsuario(){
-		header("Location: $this->perfilUsuario");
-	}
-	
-	public function redirectAdministrador(){
-		header("Location: $this->perfilAdmin");
+
+	public static function redirectMessageError(){
+
+		echo 'Error. Página no existe';
+
 	}
 	
 }
 
-$oError = new ErrorClass();
 
 ?>

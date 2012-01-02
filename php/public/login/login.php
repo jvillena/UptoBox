@@ -6,9 +6,9 @@
 	// Una vez realizado el siguiente require, podemos incluir sin tener que poner rutas relativas cualquier script que exista en el directorio 'configuracion' o en
 	// el directorio 'php/funciones'.
 	require('../../../config/config.php');
-	require(BASE_PATH.'class/user.class.php');
-	require(BASE_PATH.'class/notificacion.class.php');
-	require(BASE_PATH.'class/combos.class.php');
+	require($config_urls['BASE_PATH'].'class/user.class.php');
+	require($config_urls['BASE_PATH'].'class/notificacion.class.php');
+	require($config_urls['BASE_PATH'].'class/combos.class.php');
 	
 	
 	//Comprobamos el login
@@ -90,12 +90,12 @@
 				
 	
 	// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.
-	$oSmarty->template_dir = DIRECTORIO_PLANTILLAS."public/login";	
+	$oSmarty->template_dir = $config_urls['APP_TEMPLATES_DIR']."public/login";	
 	$oSmarty->assign('LATERAL_DERECHO', "");
 	
 	$oSmarty->assign('CONTENIDO_CENTRAL',$oSmarty->fetch('center_content.tpl'));
 
-	require(BASE_PATH.'/php/public/load_layout.php')
+	require($config_urls['BASE_PATH'].'/php/public/load_layout.php')
 	
 	
 	

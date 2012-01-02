@@ -1,6 +1,13 @@
 <?php 
+/**
+ * Clase Notification
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */
 require(BASE_PATH.'libs/php/phpmailer/class.phpmailer.php');
-class Notificacion{
+class NotificationClass{
 	
 	private $mail=null;
 	
@@ -257,6 +264,6 @@ class Notificacion{
 	
 }
 
-$oNotificaciones=new Notificacion();
+$oNotification=new NotificationClass();
 
 ?>

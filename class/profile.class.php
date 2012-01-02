@@ -1,5 +1,11 @@
 <?php 
-
+/**
+ * Clase Profile
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */
 class ProfileClass{
 	
 	function editProfile($id_usuario,$datos){

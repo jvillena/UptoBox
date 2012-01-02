@@ -1,7 +1,7 @@
 <?php
 	require('../../../config/config.php');	
-	require(BASE_PATH.'class/user.class.php');
-	require(BASE_PATH.'class/notificacion.class.php');
+	require($config_urls['BASE_PATH'].'class/user.class.php');
+	require($config_urls['BASE_PATH'].'class/notificacion.class.php');
 	
 	switch($_POST['action']) { 
 	  case '1': 

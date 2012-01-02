@@ -14,6 +14,6 @@
 	$oSesion->cierreSesion();
 
 	// Redireccionamos a la página de inicio.
-	header('Location: '.BASE_URL);
+	header('Location: '.$config_urls['BASE_URL']);
 	exit;
 ?>

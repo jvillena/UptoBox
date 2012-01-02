@@ -1,5 +1,12 @@
 <?php
-class Combos{
+/**
+ * Clase Combos
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */
+class CombosClass{
 
 	
 	function getPaises($idioma=7,$id_pais=0){
@@ -102,5 +109,5 @@ class Combos{
 	
 	
 }
-$oCombos=new Combos();
+$oCombos=new CombosClass();
 ?>

@@ -1,8 +1,9 @@
 <?php
+include_once('../../../../class/error.class.php');
 
 if(!$oSesion->ComprobarSesion()){
 	
-	$oError->redirectUsuarioNoRegistrado();
+	Error::redirectUsuarioNoRegistrado();
 }
 else{
 	
@@ -15,11 +16,11 @@ else{
 		else{
 			
 			//No tiene permisos para ver este script
-			$oError->redirectIndex();
+			Error::redirectIndex();
 		}
 	}
 	else{
-		$oError->redirectIndex();
+		Error::redirectIndex();
 	}
 }
 

@@ -1,5 +1,12 @@
 <?php 
-class LocalizerClass {
+/**
+ * Clase Localizer
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */
+class Localizer {
 
     private static $translations = array();
 

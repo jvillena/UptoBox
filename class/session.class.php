@@ -1,8 +1,15 @@
 <?php
+/**
+ * Clase Session
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */
 	/**
 	 * Clase que implementa todo lo relacionado con la creación de sesiones seguras.
 	 */
-	class SesionClass {
+	class SessionClass {
 		// Variable que determina si se ha de incluir el nombre del explorador en la huella de seguridad de la sesión.
 		var $incluir_nombre_explorador = true;
 		// Bloques de la dirección IP incluídos en la huella de seguridad de la sesión.
@@ -94,5 +101,5 @@
        }
 	}
 	
-	$oSesion = new SesionClass();
+	$oSesion = new SessionClass();
 ?>

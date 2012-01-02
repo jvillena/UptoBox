@@ -1,5 +1,12 @@
 <?php
-	class UsuarioRolClass {
+/**
+ * Clase UserRol
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */	
+class UserRolClass {
 		private $oBD;
 		private $sTablaUsuarioRol;
 		
@@ -24,6 +31,6 @@
 
 	}
 		
-	$oUsuario_rol = new UsuarioRolClass();
-	$oUsuario_rol->setBD($oBD);
+	$oUser_rol = new UserRolClass();
+	$oUser_rol->setBD($oBD);
 ?>

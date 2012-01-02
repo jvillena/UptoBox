@@ -1,55 +1,42 @@
 <?php	 
-	/*******************************************************************/
-	/* VARIABLES A MODIFICAR PARA LA CORRECTA CONFIGURACIÓN DEL SITIO. */
-	/*******************************************************************/
-	// Estilo del sitio web
-	define("ESTILO_CSS", "gris");	
+/**
+ * UptoBox
+ *
+ * @version 0.1
+ * @author José E. Villena
+ */
 
-	// Si estamos trabajando en local.
-	if($_SERVER['HTTP_HOST'] == "localhost") {
-		// Si es el directorio raíz se definirá como "" nunca como "/".
-		// Si es el directorio raíz se definirá como "" nunca como "/".
-		define("DIRECTORIO_SITIO", "/uptobox");
-		// Variables de base de datos.
-		$BD_USUARIO = 'root';
-		$BD_PASSWORD = '';
-		$BD_BASE_DATOS = 'bd_uptobox';
-		$BD_SERVIDOR = 'localhost';	
-
-		$DEBUG = true;
-		// Modo debuger de smarty.
+ 	/* Include constants in configs file. */
+	require_once(dirname( __FILE__ ).'/settings.php');
+	require_once(dirname( __FILE__ ).'/constants.php');
+	require_once(dirname( __FILE__ ).'/db_tables.php');
+	if ($config_mode['DEBUG']){
+		error_reporting(E_ALL ^ E_STRICT);
+		define('START_TIME', microtime(1));
+		// Mode smarty debuger
 		define("DEBUG_SMARTY", true);
-		// Modo debuger de base de datos.	
+		// Mode Data Base SQL debuger
+		define("DEBUG_SQL", true);
+	}else if ($config_mode['DEVELOP']){
+		// Mode Smarty debuger
+		define("DEBUG_SMARTY", true);
+		// Mode Data Base SQL debuger
 		define("DEBUG_SQL", false);
-	}
-	else{
-		// Si es el directorio raíz se definirá como "" nunca como "/".
-		define("DIRECTORIO_SITIO", "");
-		// Variables de base de datos.
-		$BD_USUARIO = 'uptobox';
-		$BD_PASSWORD = 'uptobox';
-		$BD_BASE_DATOS = 'bd_uptobox';
-		$BD_SERVIDOR = 'localhost';	
-
-		$DEBUG = false;
-		// Modo debuger de smarty.
+	}else{
+		// Mode Smarty debuger
 		define("DEBUG_SMARTY", false);
-		// Modo debuger de base de datos.	
+		// Mode Data Base SQL debuger
 		define("DEBUG_SQL", false);
 	}
 	
-	/* Inclusión de las constantes. */
-	require_once('constants.php');	
-	
-	// Modo debuger de php.
-	if($DEBUG) {
-		ini_set('display_errors', 1); 
-		ini_set('log_errors', 1); 
+	// Modo PHP debuger
+	if($config_mode['DEBUG']) {
+		ini_set('display_errors', 1);
+		ini_set('log_errors', 1);
 		error_reporting(E_ALL);
 	}
-	else{
-		error_reporting(0);
-	}
+	
+		
 
 	/* Variables para la creación de sesión. */
 	$SESION_SEGURIDAD_INCLUIR_NOMBRE_EXPLORADOR = true;
@@ -57,9 +44,6 @@
 	$SESION_SEGURIDAD_PALABRA_SEGURA = "alea_woja";
 	$SESION_SEGURIDAD_REGENERAR_ID = true;
 	
-	/* Variables de la base de datos. */
-	$BASE_DATOS_GESTOR = 'mysql';
-	$BASE_DATOS_CHARSET = 'utf8';
 	
 	/******************************************************************************/
 	/* FIN DE LAS VARIABLES A MODIFICAR PARA LA CORRECTA CONFIGURACIÓN DEL SITIO. */
@@ -99,48 +83,62 @@
 	} 
 	
 	
-
+	// Include Settings Class
+	include($config_urls['CLASS_URL'].'settings.class.php');
+	
+	// Include Language Class
+	include(Settings::getSettingsVars('CLASS_URL').'localizer.class.php');
+	Localizer::init(Settings::getSettingsVars('DEFAULT_LANG'));
+	
+	// Include Error Class
+	include(Settings::getSettingsVars('CLASS_URL').'error.class.php');
+	
+	// Include Tools Class
+	include(Settings::getSettingsVars('CLASS_URL').'tools.class.php');
 	
 	
 	// Incluímos en el include path del sistema la ruta del directorio de configuracion. Es decir, la ruta del archivo actual.
 	//insertar_include_path(CONFIG_URL);	
 		
-	// Incluímos en el include path del sistema la ruta del directorio de clases.
-	//insertar_include_path(CLASS_URL);
-	require_once(CLASS_URL.'/error.class.php');	
-	/* Inclusión de la clase encargada de manejar las sesiones. */
-	require_once(CLASS_URL.'/session.class.php');
+	/* Include Session Class */
+	include(Settings::getSettingsVars('CLASS_URL').'session.class.php');
 	/* Creación del objeto de sesión. */
-	$oSesion = new SesionClass();
+	$oSesion = new SessionClass();
 	$oSesion->incluir_nombre_explorador = $SESION_SEGURIDAD_INCLUIR_NOMBRE_EXPLORADOR;
 	$oSesion->bloques_ip = $SESION_SEGURIDAD_BLOQUES_IP;
 	$oSesion->palabra_segura = $SESION_SEGURIDAD_PALABRA_SEGURA;
 	$oSesion->regenerar_id = $SESION_SEGURIDAD_REGENERAR_ID;	
 	
-	/* Inclusión de la clase de la base de datos. */
-	require_once(CLASS_URL.'/adodb5/adodb.inc.php');
+	/* Include Data Base Class. */
+	include(Settings::getSettingsVars('CLASS_URL').'adodb5/adodb.inc.php');
 	/* Creación del objeto de base de datos. */	
-	$oBD = ADONewConnection($BASE_DATOS_GESTOR);
+	$oBD = ADONewConnection(DATABASE_GESTOR);
 	$oBD->debug = DEBUG_SQL;	
-	$oBD->Connect($BD_SERVIDOR, $BD_USUARIO,  $BD_PASSWORD, $BD_BASE_DATOS);
-	$oBD->Execute("SET NAMES '".$BASE_DATOS_CHARSET."'");
+	$oBD->Connect(BD_SERVER, BD_USER,  BD_PASSWORD, BD_DATABASE);
+	$oBD->Execute("SET NAMES '".DATABASE_CHARSET."'");
 
-	
-	/* Inclusión de funciones básicas. */
-	require_once (LIB_URL.'/php/functions.php');
-	
-	/* Inclusión de la clase de idiomas*/
-	include(CLASS_URL.'/localizer.class.php');
-	LocalizerClass::init(DEFAULT_LANG);
-	
-	require_once(CLASS_URL.'/smarty.class.php');
-	
-	/* Inclusión de libreria para reescalado inteligente de imagenes. */
-	//include(LIB_URL.'/php/rescalado_imagen/image.php');
-	
-	//Asignamos la variable global del idioma
+	// Include Basic Functions
+	include(Settings::getSettingsVars('LIB_URL').'php/functions.php');
+
+	// Include Smarty Class smarty.php.
+	include(Settings::getSettingsVars('CLASS_URL').'smarty.class.php');
+	// Assign Global language variable
 	$oSmarty->assign("DEFAULT_LANG",DEFAULT_LANG);
 	$oSmarty->assign("BASE_URL",BASE_URL);
+	$oSmarty->assign("config_urls",$config_urls);	
+	
+	// Asignamos la constante definida en el fichero de configuracion con el directorio del sitio.
+	$oSmarty->assign('DIRECTORIO_SITIO', APP_NAME);
+	// Asignamos la constante definida en el fichero de configuracion con la ruta relativa hacia el directorio raíz del sitio.
+	$oSmarty->assign('BASE_PATH', BASE_PATH);	
+	// Asignamos la constante definida en el fichero de configuracion con la ruta absoluta del sitio web.
+	$oSmarty->assign('RUTA_WEB_ABSOLUTA', BASE_URL);
+	
+	// Asignamos la ruta de las imágenes
+	$oSmarty->assign('IMAGES_URL', IMAGES_URL);
+	
+//	require_once(CLASS_URL.'/smarty.class.php');
+	
 	
 	
 ?>

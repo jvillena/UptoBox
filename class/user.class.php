@@ -1,5 +1,12 @@
 <?php
-	class UserClass {
+/**
+ * Clase User
+ * @package uptobox
+ * @author José E. Villena
+ * @copyright Alea Technology
+ * @version 1.0
+ */
+class UserClass {
 		private $oBD;
 		private $sTablaUsuario;
 		private $sTablaUsuarioRol;
