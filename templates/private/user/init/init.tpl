@@ -14,6 +14,7 @@
 			function cambiarBotonCrear(){
 				$("#baceptar").removeClass("azul");
 				$("#baceptar").addClass("gris");
+				$("#baceptar").attr("value","loading...");
 				$("#baceptar").attr('disabled', 'disabled');
 				$("#id_cargando").toggle();
 				$("#mensaje").css("display","none");
@@ -94,7 +95,7 @@ $(document).ready(function() {
 			// Inicamos la petición.
 	        $.ajax({
 	            type: 'POST',
-	            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}files/create',
+	            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/files/create',
 	            data: $('#form_crear_carpeta').serialize(),
 	            // before: mostrarVentanaCargando(),
 	            // complete: ocultarVentanaCargando(), 
@@ -110,7 +111,9 @@ $(document).ready(function() {
 						$("#baceptar").removeClass("gris");
 						$("#baceptar").addClass("azul");
 						$("#baceptar").removeAttr("disabled");
+						$('#modal-from-dom').modal('hide');
 						$("#id_cargando").hide("slow");
+						$("#baceptar").attr("value","Aceptar");
 						
 		      	  }else if (result[1]==2){
 			      		$('#retorno_usuario').html(result[0]);
@@ -124,6 +127,7 @@ $(document).ready(function() {
 						$("#baceptar").removeAttr("disabled");
 						$("#id_cargando").hide("slow");
 						$('#modal-from-dom').modal('hide');
+						$("#baceptar").attr("value","Aceptar");
 			      	  }
 
 					

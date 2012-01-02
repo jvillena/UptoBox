@@ -11,33 +11,15 @@
 	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
 	
-	$errores=$oFile->modificar($datos_usuario['id_usuario'], $_POST);
+	$errores=$oFile->setFolderTree($datos_usuario['id_usuario'], $_POST);
 	$resultado=array();
-	$aErrores=array();
-	if(is_array($errores)){
-		if(count($errores)){
-			$aErrores="<ul class='error'>";
-			foreach($errores as $key=>$value){
-				$aErrores.='<li>'.$value.'</li>';
-				
-			}
-			$aErrores.="</ul>";
-		}
-		
-	}
-	else{
-		
-		if($errores=='ok'){
+	if($errores){
 			$resultado[0]="Yuhuu! Se ha modificado correctamente el perfil";
 		 	$resultado[1]=2;
 			
-		}
-		else{
-			$resultado[0]="Ups! No se ha podido modificar los datos. Inténtelo mas tarde.";
-			$resultado[0].=$aErrores;
+	}else{
+			$resultado[0]="Ups! No se puede crear esa carpeta con ese nombre. Ya existe una igual!!";
 		 	$resultado[1]=1;
-		}
-	
 	}
 	
 	echo json_encode($resultado);

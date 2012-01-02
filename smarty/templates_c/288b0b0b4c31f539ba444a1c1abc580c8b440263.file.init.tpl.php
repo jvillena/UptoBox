@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-02 22:54:18
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-03 00:12:55
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6476765074f02278a365340-83933753%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3370668214f0239f75507c9-03872447%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1325502280,
+      1 => 1325545721,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6476765074f02278a365340-83933753',
+  'nocache_hash' => '3370668214f0239f75507c9-03872447',
   'function' => 
   array (
   ),
@@ -33,6 +33,7 @@ $_smarty_tpl->decodeProperties(array (
 			function cambiarBotonCrear(){
 				$("#baceptar").removeClass("azul");
 				$("#baceptar").addClass("gris");
+				$("#baceptar").attr("value","loading...");
 				$("#baceptar").attr('disabled', 'disabled');
 				$("#id_cargando").toggle();
 				$("#mensaje").css("display","none");
@@ -116,7 +117,7 @@ tx_requerido_nombre_carpeta<?php $_block_content = ob_get_clean(); $_block_repea
 	        $.ajax({
 	            type: 'POST',
 	            url: '<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-files/create',
+user/files/create',
 	            data: $('#form_crear_carpeta').serialize(),
 	            // before: mostrarVentanaCargando(),
 	            // complete: ocultarVentanaCargando(), 
@@ -132,7 +133,9 @@ files/create',
 						$("#baceptar").removeClass("gris");
 						$("#baceptar").addClass("azul");
 						$("#baceptar").removeAttr("disabled");
+						$('#modal-from-dom').modal('hide');
 						$("#id_cargando").hide("slow");
+						$("#baceptar").attr("value","Aceptar");
 						
 		      	  }else if (result[1]==2){
 			      		$('#retorno_usuario').html(result[0]);
@@ -146,6 +149,7 @@ files/create',
 						$("#baceptar").removeAttr("disabled");
 						$("#id_cargando").hide("slow");
 						$('#modal-from-dom').modal('hide');
+						$("#baceptar").attr("value","Aceptar");
 			      	  }
 
 					
