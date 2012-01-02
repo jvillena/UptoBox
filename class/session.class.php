@@ -2,7 +2,7 @@
 	/**
 	 * Clase que implementa todo lo relacionado con la creación de sesiones seguras.
 	 */
-	class Sesion {
+	class SesionClass {
 		// Variable que determina si se ha de incluir el nombre del explorador en la huella de seguridad de la sesión.
 		var $incluir_nombre_explorador = true;
 		// Bloques de la dirección IP incluídos en la huella de seguridad de la sesión.
@@ -94,5 +94,5 @@
        }
 	}
 	
-	$oSesion = new Sesion();
+	$oSesion = new SesionClass();
 ?>

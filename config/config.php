@@ -109,9 +109,9 @@
 	//insertar_include_path(CLASS_URL);
 	require_once(CLASS_URL.'/error.class.php');	
 	/* Inclusión de la clase encargada de manejar las sesiones. */
-	require_once(CLASS_URL.'/sesion.class.php');
+	require_once(CLASS_URL.'/session.class.php');
 	/* Creación del objeto de sesión. */
-	$oSesion = new Sesion();
+	$oSesion = new SesionClass();
 	$oSesion->incluir_nombre_explorador = $SESION_SEGURIDAD_INCLUIR_NOMBRE_EXPLORADOR;
 	$oSesion->bloques_ip = $SESION_SEGURIDAD_BLOQUES_IP;
 	$oSesion->palabra_segura = $SESION_SEGURIDAD_PALABRA_SEGURA;
@@ -131,7 +131,7 @@
 	
 	/* Inclusión de la clase de idiomas*/
 	include(CLASS_URL.'/localizer.class.php');
-	Localizer::init(DEFAULT_LANG);
+	LocalizerClass::init(DEFAULT_LANG);
 	
 	require_once(CLASS_URL.'/smarty.class.php');
 	

@@ -6,12 +6,12 @@
 	// Una vez realizado el siguiente require, podemos incluir sin tener que poner rutas relativas cualquier script que exista en el directorio 'configuracion' o en
 	// el directorio 'php/funciones'.
 	require('../../../../config/config.php');
-	require(BASE_PATH.'/class/profile.class.php');	
+	require(BASE_PATH.'/class/file.class.php');	
 	require(BASE_PATH.'/php/private/user/security.php');	
 	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
 	
-	$errores=$oProfile->editProfile($datos_usuario['id_usuario'], $_POST);
+	$errores=$oFile->modificar($datos_usuario['id_usuario'], $_POST);
 	$resultado=array();
 	$aErrores=array();
 	if(is_array($errores)){

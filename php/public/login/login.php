@@ -6,7 +6,7 @@
 	// Una vez realizado el siguiente require, podemos incluir sin tener que poner rutas relativas cualquier script que exista en el directorio 'configuracion' o en
 	// el directorio 'php/funciones'.
 	require('../../../config/config.php');
-	require(BASE_PATH.'class/usuario.class.php');
+	require(BASE_PATH.'class/user.class.php');
 	require(BASE_PATH.'class/notificacion.class.php');
 	require(BASE_PATH.'class/combos.class.php');
 	
@@ -22,10 +22,10 @@
 	//Activacion de cuenta
 	if(isset($_GET['codigo_activacion'])){
 		
-		$id_usuario=$oUsuario->activarUsuarioCodigo($_GET['codigo_activacion']);
+		$id_usuario=$oUser->activarUsuarioCodigo($_GET['codigo_activacion']);
 		if($id_usuario>0){
 			
-			$oUsuario->loguearUsuarioId($id_usuario);
+			$oUser->loguearUsuarioId($id_usuario);
 			
 			$oError->redirectUsuario();
 			exit();
@@ -41,8 +41,8 @@
 	//Login
 	if(isset($_POST['logueo'])){
 		
-		if($oUsuario->loguearUsuario($_POST['login'], $_POST['password'])== 1){
-			if($oUsuario->administradorLogueado()){
+		if($oUser->loguearUsuario($_POST['login'], $_POST['password'])== 1){
+			if($oUser->administradorLogueado()){
 				$oError->redirectAdministrador();
 			}else{
 				$oError->redirectUsuario();
@@ -54,7 +54,7 @@
 	//Registro
 	if(isset($_POST['registro'])){
 		
-		$resultado_registro=$oUsuario->registrarUsuario($_POST);
+		$resultado_registro=$oUser->registrarUsuario($_POST);
 		
 		if(!is_array($resultado_registro) ){
 			if($resultado_registro>0){
@@ -72,7 +72,7 @@
 		
 		}else{
 			
-			$oSmarty->assign('error_registro',$oUsuario->registrarUsuario($_POST));
+			$oSmarty->assign('error_registro',$oUser->registrarUsuario($_POST));
 		}
 	}
 	

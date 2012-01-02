@@ -1,5 +1,5 @@
 <?php
-	class BD_usuario {
+	class UserClass {
 		private $oBD;
 		private $sTablaUsuario;
 		private $sTablaUsuarioRol;
@@ -593,6 +593,6 @@
 	
 	
 	
-	$oUsuario = new BD_usuario();
-	$oUsuario->setBD($oBD);
+	$oUser = new UserClass();
+	$oUser->setBD($oBD);
 ?>

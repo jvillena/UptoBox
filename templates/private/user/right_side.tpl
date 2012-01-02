@@ -16,7 +16,7 @@
         				<ul> 
         				 <li>
         					 <img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_folder.png"/>
-        					 <a class="azul" style=" margin-bottom:10px;width:140px;clear:right;" href="{$RUTA_WEB_ABSOLUTA}nueva_carpeta">{translate}tx_options_new_folder{/translate}</a>
+        					 <a class="azul" style=" margin-bottom:10px;width:140px;clear:right;" onclick="createFolder('{translate}tx_options_create_new_folder{/translate}');" href="#">{translate}tx_options_new_folder{/translate}</a>
         				 </li>
         				 <li>
         				     <img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_upload_file.png"/>
@@ -35,7 +35,7 @@
         				<ul> 
         				 	<li>
         				 	 	<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_perfil.png"/>
-        				 		<a class="azul" style=" margin-bottom:10px;width:140px;clear:right;" href="{$RUTA_WEB_ABSOLUTA}perfil">{translate}tx_options_personal_account{/translate}</a>
+        				 		<a class="azul" style=" margin-bottom:10px;width:140px;clear:right;" href="{$RUTA_WEB_ABSOLUTA}user/profile">{translate}tx_options_personal_account{/translate}</a>
         				 	</li>
         				 	<li>
         				 		<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_almacenamiento.png"/>

@@ -135,7 +135,13 @@ $(document).ready(function() {
 
 </script>
 {/literal}
+
 <div id="div_inicio" style="margin-top:120px;width:98%">
+	<div id="mensaje" style="display:none">
+		<div id="error" class="alert-message">
+		    <p id="retorno_usuario"></p>
+    	</div>
+	</div>
 	
 	{if isset($aFile) && $aFile==""}
 	<div class="alert-message block-message warning">
@@ -152,7 +158,7 @@ $(document).ready(function() {
       </div>
       {else}
      
-      <div id="myDiv">
+      	<div id="myDiv">
 			Right click to view the context menu
 		</div>
 		
@@ -199,6 +205,7 @@ $(document).ready(function() {
 		    </div>
 		    <div class="modal-footer" style="text-align:right;">
 		    	<input type="hidden" name="id_padre" id="id_padre" value="{$id_padre}"/> 
+		    	<input type="hidden" name="id_usuario" id="id_usuario" value="{$id_usuario}"/> 
 		    	<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="{translate}tx_button_cancel{/translate}" />
 				<input type="submit" id="baceptar" name="baceptar" value="{translate}tx_button_accept{/translate}" class="btn small bold azul"/>
 				

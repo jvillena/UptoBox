@@ -1,5 +1,5 @@
 <?php
-	class BD_archivo {
+	class FileClass {
 		private $oBD;
 		private $sTablaUsuario;
 		private $sTablaUsuarioRol;
@@ -44,6 +44,6 @@
 	
 	
 	
-	$oArchivo = new BD_archivo();
-	$oArchivo->setBD($oBD);
+	$oFile = new FileClass();
+	$oFile->setBD($oBD);
 ?>

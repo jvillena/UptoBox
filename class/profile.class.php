@@ -1,8 +1,8 @@
 <?php 
 
-class Perfil{
+class ProfileClass{
 	
-	function modificar($id_usuario,$datos){
+	function editProfile($id_usuario,$datos){
 		
 		global $oBD;
 		
@@ -103,5 +103,5 @@ class Perfil{
 	
 }
 
-$oPerfil=new Perfil();
+$oProfile=new ProfileClass();
 ?>

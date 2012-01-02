@@ -34,7 +34,7 @@
 	
 	
 	//Registramos el plugin de idiomas en smarty
-	$oSmarty->registerPlugin('block', 'translate', array('Localizer', 'translate'), true);
+	$oSmarty->registerPlugin('block', 'translate', array('LocalizerClass', 'translate'), true);
 	
 	$oSmarty->assign('ID_ROL_ADMINISTRADOR', ID_ROL_ADMINISTRADOR);
 	$oSmarty->assign('ID_ROL_USUARIO', ID_ROL_USUARIO);	

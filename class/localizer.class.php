@@ -1,5 +1,5 @@
 <?php 
-class Localizer {
+class LocalizerClass {
 
     private static $translations = array();
 

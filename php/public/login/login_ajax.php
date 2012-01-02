@@ -1,6 +1,6 @@
 <?php
 	require('../../../config/config.php');	
-	require(BASE_PATH.'class/usuario.class.php');
+	require(BASE_PATH.'class/user.class.php');
 	require(BASE_PATH.'class/notificacion.class.php');
 	
 	switch($_POST['action']) { 
@@ -13,7 +13,7 @@
 	} 
 	
 	function logear_usuario() {
-		global $oSesion, $oUsuario, $oError;
+		global $oSesion, $oUser, $oError;
 
 		// Abrimos la sesión.
 			//Comprobamos el login
@@ -23,8 +23,8 @@
 	 	$resultado=array();
 		
 		// Comprobamos que el usuario se encuentra registrado en el sistema.
-		 if($oUsuario->loguearUsuario($_POST['username'], $_POST['password'])== 1){
-		 	if($oUsuario->administradorLogueado()){
+		 if($oUser->loguearUsuario($_POST['username'], $_POST['password'])== 1){
+		 	if($oUser->administradorLogueado()){
 				//echo $oError->redirectAdministrador();
 				$resultado[0]="Yuhuuu! Bienvenido a UptoBox.net";
 		 		$resultado[1]=2;

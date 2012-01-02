@@ -6,12 +6,12 @@
 	// Una vez realizado el siguiente require, podemos incluir sin tener que poner rutas relativas cualquier script que exista en el directorio 'configuracion' o en
 	// el directorio 'php/funciones'.
 	require('../../../../config/config.php');
-	require(BASE_PATH.'/class/usuario.class.php');
-	require(BASE_PATH.'/class/archivo.class.php');	
+	require(BASE_PATH.'/class/user.class.php');
+	require(BASE_PATH.'/class/file.class.php');	
 	require(BASE_PATH.'/php/private/user/security.php');	
 	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
-	$datos = $oUsuario->getDatosUsuario($datos_usuario['id_usuario']);
+	$datos = $oUser->getDatosUsuario($datos_usuario['id_usuario']);
 	$oSmarty->assign('nombre_usuario',$datos['nombre']." ".$datos['apellidos']);
 	$oSmarty->assign('id_usuario',$datos['id_usuario']);
 	$oSmarty->assign('foto',$datos['ruta_foto']);
@@ -25,7 +25,7 @@
 	$oSmarty->assign('contenido_central','inicio');
 	
 	//Nos traemos los ficheros y carpetas del directorio root
-	$aFile = $oArchivo->getDocumentosPadreArbol($datos_usuario['id_usuario']);
+	$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario']);
 	$oSmarty->assign('aFile',$aFile);	
 	$oSmarty->assign('id_padre',-1);
 	

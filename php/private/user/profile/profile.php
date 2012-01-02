@@ -6,19 +6,19 @@
 	// Una vez realizado el siguiente require, podemos incluir sin tener que poner rutas relativas cualquier script que exista en el directorio 'configuracion' o en
 	// el directorio 'php/funciones'.
 	require('../../../../config/config.php');
-	require(BASE_PATH.'/class/usuario.class.php');
-	require(BASE_PATH.'/class/perfil.class.php');
-	require(BASE_PATH.'/class/combos.class.php');
-	require(BASE_PATH.'/class/archivo.class.php');	
-	require(BASE_PATH.'/php/private/user/security.php');	
+	require(BASE_PATH.'class/user.class.php');
+	require(BASE_PATH.'class/profile.class.php');
+	require(BASE_PATH.'class/combos.class.php');
+	require(BASE_PATH.'class/file.class.php');	
+	require(BASE_PATH.'php/private/user/security.php');	
 	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
-	$datos = $oUsuario->getDatosUsuario($datos_usuario['id_usuario']);
+	$datos = $oUser->getDatosUsuario($datos_usuario['id_usuario']);
 	$oSmarty->assign('nombre_usuario',$datos['nombre']." ".$datos['apellidos']);
 	$oSmarty->assign('id_usuario',$datos['id_usuario']);
 	$oSmarty->assign('foto',$datos['ruta_foto']);
 	
-	$datos_perfil = $oPerfil->get($datos_usuario['id_usuario']);
+	$datos_perfil = $oProfile->get($datos_usuario['id_usuario']);
 	$oSmarty->assign('datos_perfil',$datos_perfil);
 	
 	$metatitle = "uptobox.net";
@@ -41,6 +41,6 @@
 	$oSmarty->assign('CONTENIDO_CENTRAL',$oSmarty->fetch('center_content.tpl'));
 	
 	
-	require(BASE_PATH.'/php/public/load_layout.php')
+	require(BASE_PATH.'php/public/load_layout.php')
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-	class BD_usuario_rol {
+	class UsuarioRolClass {
 		private $oBD;
 		private $sTablaUsuarioRol;
 		
@@ -24,6 +24,6 @@
 
 	}
 		
-	$oBD_usuario_rol = new BD_usuario_rol();
-	$oBD_usuario_rol->setBD($oBD);
+	$oUsuario_rol = new UsuarioRolClass();
+	$oUsuario_rol->setBD($oBD);
 ?>

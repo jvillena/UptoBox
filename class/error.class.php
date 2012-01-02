@@ -1,5 +1,5 @@
 <?php
-class Error{
+class ErrorClass{
 	
 	
 	private $sUrl404;
@@ -143,6 +143,6 @@ class Error{
 	
 }
 
-$oError = new Error();
+$oError = new ErrorClass();
 
 ?>
