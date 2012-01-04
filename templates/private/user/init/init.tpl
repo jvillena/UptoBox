@@ -53,8 +53,7 @@
 				
 				
 				$("#header").contextMenu({
-					menu: 'myMenuOption',
-					leftButton: true
+					menu: 'myMenuOption'
 				},
 					function(action, el, pos) {
 					alert(

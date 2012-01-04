@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-04 23:05:48
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-04 23:08:39
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:19168118974f04cd3cdf8001-98011759%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:15310558364f04cde7bff217-85028018%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1325714607,
+      1 => 1325714916,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19168118974f04cd3cdf8001-98011759',
+  'nocache_hash' => '15310558364f04cde7bff217-85028018',
   'function' => 
   array (
   ),
@@ -72,8 +72,7 @@ $_smarty_tpl->decodeProperties(array (
 				
 				
 				$("#header").contextMenu({
-					menu: 'myMenuOption',
-					leftButton: true
+					menu: 'myMenuOption'
 				},
 					function(action, el, pos) {
 					alert(
