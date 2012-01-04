@@ -7,6 +7,7 @@ $(document).ready(function() {
 {/literal}
 <div class="topbar" data-dropdown="dropdown">
 	<div class="topbar-inner">
+		<span id="loading" class="label important right" style="display:none;margin-top: 7px;margin-right: 5px;">Loading...</span>
   		<div class="container" style="width:980px">
 			<a id="brand" class="brand margin-top-1" href="{if $LOGUEADO}{$RUTA_WEB_ABSOLUTA}user/files{else}{$RUTA_WEB_ABSOLUTA}{/if}"><img src="{$IMAGES_URL}/logos/logo.png" /></a>
 			{if $LOGUEADO}
@@ -54,8 +55,9 @@ $(document).ready(function() {
            		<li class="menu" data-dropdown="menu">
            			{if $LOGUEADO}
 						<form action="" class="pull-left">
-			            <input type="text" placeholder="{translate}tx_search_file{/translate}">
-			          </form>
+			          	  <input type="text" placeholder="{translate}tx_search_file{/translate}">
+			          	</form>
+			          	
 					{/if}
 				</li>
 			</ul>

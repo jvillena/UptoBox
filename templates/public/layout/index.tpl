@@ -25,7 +25,7 @@
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-dropdown.js" type="text/javascript"></script>
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
-		
+		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-twipsy.js" type="text/javascript"></script>
 		<!-- Javascripts necesarios para usar el context Menu. -->
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
 		
@@ -39,8 +39,8 @@
     	<div id="header">
 			{$HEADER}
 		</div>
-		<div id="wrapper" {if $menu_principal=='login'}style="background: url('{$IMAGES_URL}/bg/bg_foto.png') no-repeat 0 30px{/if}">
-			<div class="wrapper-all">
+		<div id="wrapper" {if $menu_principal=='login'} style="background: url('{$IMAGES_URL}/bg/bg_foto.png') no-repeat 0 30px;"{/if}>
+			<div  class="wrapper-all">
 				{$CONTENIDO_CENTRAL}
 				{$LATERAL_DERECHO}
 			</div>

@@ -1,6 +1,8 @@
 {literal}
 <script type="text/javascript">
 			
+			
+			
 			function createFolder(titulo){
 				$('#titulo_archivo').html(titulo);
 
@@ -17,6 +19,7 @@
 				$("#baceptar").attr("value","loading...");
 				$("#baceptar").attr('disabled', 'disabled');
 				$("#id_cargando").toggle();
+				$("#loading").toggle();
 				$("#mensaje").css("display","none");
 			}
 			
@@ -36,7 +39,7 @@
 				});
 				
 				// Show menu when a list item is clicked
-				$("#myList UL LI").contextMenu({
+				$("#myList TR TD").contextMenu({
 					menu: 'myMenu'
 				}, function(action, el, pos) {
 					alert(
@@ -47,7 +50,9 @@
 						);
 				});
 				
-				/*$("#bnew").contextMenu({
+				
+				
+				$("#header").contextMenu({
 					menu: 'myMenuOption',
 					leftButton: true
 				},
@@ -58,7 +63,7 @@
 						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
 						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
 						);
-				});*/		
+				});		
 				
 			});
 			
@@ -66,6 +71,11 @@
 			
 			
 $(document).ready(function() {
+	$(function () {
+		$("a[rel=twipsy]").twipsy({
+			live: true
+		})
+	}); 
     // Validación del formulario.
     var_requerido_nombre = {/literal}"{translate}tx_requerido_nombre_carpeta{/translate}"{literal};
     var validator = $("#form_crear_carpeta").validate({
@@ -114,6 +124,8 @@ $(document).ready(function() {
 						$('#modal-from-dom').modal('hide');
 						$("#id_cargando").hide("slow");
 						$("#baceptar").attr("value","Aceptar");
+						$("#loading").toggle();
+						$('#loading').delay(2000).fadeOut(400);
 						
 		      	  }else if (result[1]==2){
 			      		$('#retorno_usuario').html(result[0]);
@@ -128,6 +140,8 @@ $(document).ready(function() {
 						$("#id_cargando").hide("slow");
 						$('#modal-from-dom').modal('hide');
 						$("#baceptar").attr("value","Aceptar");
+						$("#loading").toggle();
+						$('#loading').delay(2000).fadeOut(400);
 			      	  }
 
 					
@@ -162,19 +176,15 @@ $(document).ready(function() {
       </div>
       {else}
      
-      	<div id="myDiv">
-			Right click to view the context menu
-		</div>
 		
 		<div id="myList">
-			<ul>
-				<li>Item 1</li>
-				<li>Item 2</li>
-				<li>Item 3</li>
-				<li>Item 4</li>
-				<li>Item 5</li>
-				<li>Item 6</li>
-			</ul>
+			<table class="zebra-striped">
+			<tbody>
+				{foreach name="files_tree" from=$aFile item=item key=key}
+					{include file='files/row_file.tpl'}
+				{/foreach}
+			</tbody>
+			</table>
 		</div>
 		
 		<ul id="myMenu" class="contextMenu">
@@ -183,11 +193,11 @@ $(document).ready(function() {
 			<li class="upload"><a href="#copy">Subir fichero a la carpeta</a></li>
 		</ul>
 		
-	<!--	<ul id="myMenuOption" class="contextMenu">
+		<ul id="myMenuOption" class="contextMenu">
 			<li class="folder"><a href="#folder">Nueva Carpeta</a></li>
 			<li class="file"><a href="#file">Nuevo Archivo</a></li>
 		</ul>
-	-->
+	
 		{/if}
 		 <!-- The Modal Dialog  Para mostrar mensaje-->
 	  <div id="modal-from-dom" class="modal hide fade" style="width:500px;">

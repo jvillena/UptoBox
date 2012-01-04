@@ -11,10 +11,9 @@
 	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
 	
-	$errores=$oFile->setFolderTree($datos_usuario['id_usuario'], $_POST);
 	$resultado=array();
-	if($errores){
-			$resultado[0]="Yuhuu! Se ha modificado correctamente el perfil";
+	if($oFile->setFolderTree($datos_usuario['id_usuario'], $_POST)){
+			$resultado[0]="Yuhuu! Se ha creado correctamente";
 		 	$resultado[1]=2;
 			
 	}else{

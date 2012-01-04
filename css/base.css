@@ -39,13 +39,26 @@ li {
 }
 
 #caja_derecha {
-	background-image: url("../imagenes/fondos/fondo_caja_derecha.png");
+	background-image: url("../images/fondos/fondo_caja_derecha.png");
 	background-repeat: no-repeat;
 	height: 138px;
 	width: 454px;	
 	position: relative;
 	float: left;
 	margin-left: 20px;
+}
+
+
+.options_list .op_more a{
+	background: url("../images/icons/icon_options.png") no-repeat scroll 0px 0px transparent;
+    
+    padding: 5px 5px 5px 10px;
+	text-decoration: none;
+}
+
+.options_list .op_more a:hover{
+	background: url("../images/icons/icon_options_i.png") no-repeat scroll 0px 0px transparent;
+	text-decoration: none;
 }
 
 #boton_registro {

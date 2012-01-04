@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-03 00:12:55
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-04 23:05:48
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3370668214f0239f75507c9-03872447%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:19168118974f04cd3cdf8001-98011759%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1325545721,
+      1 => 1325714607,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3370668214f0239f75507c9-03872447',
+  'nocache_hash' => '19168118974f04cd3cdf8001-98011759',
   'function' => 
   array (
   ),
@@ -19,6 +19,8 @@ $_smarty_tpl->decodeProperties(array (
 )); /*/%%SmartyHeaderCode%%*/?>
 
 <script type="text/javascript">
+			
+			
 			
 			function createFolder(titulo){
 				$('#titulo_archivo').html(titulo);
@@ -36,6 +38,7 @@ $_smarty_tpl->decodeProperties(array (
 				$("#baceptar").attr("value","loading...");
 				$("#baceptar").attr('disabled', 'disabled');
 				$("#id_cargando").toggle();
+				$("#loading").toggle();
 				$("#mensaje").css("display","none");
 			}
 			
@@ -55,7 +58,7 @@ $_smarty_tpl->decodeProperties(array (
 				});
 				
 				// Show menu when a list item is clicked
-				$("#myList UL LI").contextMenu({
+				$("#myList TR TD").contextMenu({
 					menu: 'myMenu'
 				}, function(action, el, pos) {
 					alert(
@@ -66,7 +69,9 @@ $_smarty_tpl->decodeProperties(array (
 						);
 				});
 				
-				/*$("#bnew").contextMenu({
+				
+				
+				$("#header").contextMenu({
 					menu: 'myMenuOption',
 					leftButton: true
 				},
@@ -77,7 +82,7 @@ $_smarty_tpl->decodeProperties(array (
 						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
 						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
 						);
-				});*/		
+				});		
 				
 			});
 			
@@ -85,6 +90,11 @@ $_smarty_tpl->decodeProperties(array (
 			
 			
 $(document).ready(function() {
+	$(function () {
+		$("a[rel=twipsy]").twipsy({
+			live: true
+		})
+	}); 
     // Validación del formulario.
     var_requerido_nombre = "<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_requerido_nombre_carpeta<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
@@ -136,6 +146,8 @@ user/files/create',
 						$('#modal-from-dom').modal('hide');
 						$("#id_cargando").hide("slow");
 						$("#baceptar").attr("value","Aceptar");
+						$("#loading").toggle();
+						$('#loading').delay(2000).fadeOut(400);
 						
 		      	  }else if (result[1]==2){
 			      		$('#retorno_usuario').html(result[0]);
@@ -150,6 +162,8 @@ user/files/create',
 						$("#id_cargando").hide("slow");
 						$('#modal-from-dom').modal('hide');
 						$("#baceptar").attr("value","Aceptar");
+						$("#loading").toggle();
+						$('#loading').delay(2000).fadeOut(400);
 			      	  }
 
 					
@@ -196,19 +210,22 @@ tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=fal
       </div>
       <?php }else{ ?>
      
-      	<div id="myDiv">
-			Right click to view the context menu
-		</div>
 		
 		<div id="myList">
-			<ul>
-				<li>Item 1</li>
-				<li>Item 2</li>
-				<li>Item 3</li>
-				<li>Item 4</li>
-				<li>Item 5</li>
-				<li>Item 6</li>
-			</ul>
+			<table class="zebra-striped">
+			<tbody>
+				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('aFile')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if ($_smarty_tpl->_count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+					<?php $_template = new Smarty_Internal_Template('files/row_file.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?>
+				<?php }} ?>
+			</tbody>
+			</table>
 		</div>
 		
 		<ul id="myMenu" class="contextMenu">
@@ -217,11 +234,11 @@ tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=fal
 			<li class="upload"><a href="#copy">Subir fichero a la carpeta</a></li>
 		</ul>
 		
-	<!--	<ul id="myMenuOption" class="contextMenu">
+		<ul id="myMenuOption" class="contextMenu">
 			<li class="folder"><a href="#folder">Nueva Carpeta</a></li>
 			<li class="file"><a href="#file">Nuevo Archivo</a></li>
 		</ul>
-	-->
+	
 		<?php }?>
 		 <!-- The Modal Dialog  Para mostrar mensaje-->
 	  <div id="modal-from-dom" class="modal hide fade" style="width:500px;">

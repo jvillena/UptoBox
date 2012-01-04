@@ -25,9 +25,9 @@
 	$oSmarty->assign('contenido_central','inicio');
 	
 	//Nos traemos los ficheros y carpetas del directorio root
-	$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario']);
+	$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario'], 0);
 	$oSmarty->assign('aFile',$aFile);	
-	$oSmarty->assign('id_padre',-1);
+	$oSmarty->assign('id_padre',0);
 	
 	// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.
 	$oSmarty->template_dir = $config_urls['APP_TEMPLATES_DIR']."private/user";

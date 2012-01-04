@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-03 00:12:55
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-04 23:05:49
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2010967944f0239f7f37637-47873394%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3016114244f04cd3d9121e0-08390681%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9d054d45e7b1452ea1f8479bd52af947393f5541' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl',
-      1 => 1325435037,
+      1 => 1325712389,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2010967944f0239f7f37637-47873394',
+  'nocache_hash' => '3016114244f04cd3d9121e0-08390681',
   'function' => 
   array (
   ),
@@ -59,7 +59,8 @@ libs/javascript/bootstrap/bootstrap-dropdown.js" type="text/javascript"></script
 libs/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
 		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 libs/javascript/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
-		
+		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/javascript/bootstrap/bootstrap-twipsy.js" type="text/javascript"></script>
 		<!-- Javascripts necesarios para usar el context Menu. -->
 		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 libs/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
@@ -75,9 +76,9 @@ libs/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"
 			<?php echo $_smarty_tpl->getVariable('HEADER')->value;?>
 
 		</div>
-		<div id="wrapper" <?php if ($_smarty_tpl->getVariable('menu_principal')->value=='login'){?>style="background: url('<?php echo $_smarty_tpl->getVariable('IMAGES_URL')->value;?>
-/bg/bg_foto.png') no-repeat 0 30px<?php }?>">
-			<div class="wrapper-all">
+		<div id="wrapper" <?php if ($_smarty_tpl->getVariable('menu_principal')->value=='login'){?> style="background: url('<?php echo $_smarty_tpl->getVariable('IMAGES_URL')->value;?>
+/bg/bg_foto.png') no-repeat 0 30px;"<?php }?>>
+			<div  class="wrapper-all">
 				<?php echo $_smarty_tpl->getVariable('CONTENIDO_CENTRAL')->value;?>
 
 				<?php echo $_smarty_tpl->getVariable('LATERAL_DERECHO')->value;?>
