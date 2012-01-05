@@ -10,11 +10,17 @@
 	// Tabla de usuarios.
 	define('TB_USUARIO', 'usuario');
 
+	// Tabla de configuración de parametros del usuario.
+	define('TB_CONFIGURACION_PARAMETROS', 'configuracion');
+	
 	// Tabla de mensajes.
 	define('TB_MENSAJE', 'mensaje');
 	
 	// Tabla de archivos.
 	define('TB_ARCHIVO', 'archivo');
+	
+	// Tabla de versiones de ficheros.
+	define('TB_VERSION', 'version');
 	
 	// Tabla intermedia entre usuarios y archivos.
 	define('TB_USUARIO_ARCHIVO', 'usuario_archivo');
@@ -33,8 +39,6 @@
 	
 	define('TB_PAYPAL','paypal');
 
-	//Tabla de configuracion
-	define('TB_CONFIGURACION','configuracion');
 
 	
 	

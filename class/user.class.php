@@ -10,10 +10,14 @@ class UserClass {
 		private $oBD;
 		private $sTablaUsuario;
 		private $sTablaUsuarioRol;
+		private $sTablaUsuarioConfiguracion;
+		
 		
 		function __construct(){				 
 			$this->sTablaUsuario = TB_USUARIO;
 			$this->sTablaUsuarioRol = TB_USUARIO_ROL;		
+			$this->sTablaUsuarioConfiguracion = TB_CONFIGURACION_PARAMETROS;
+			
 		}
 		 
 		// Resultado = <id_usuario>, el usuario se ha registrado correctamente. Resultado = -1, error con la subida de la foto. Resultado = -2, error con la consulta SQL.
@@ -307,6 +311,24 @@ class UserClass {
 			return $resultado;
 			
 		}
+
+		// Función para obtener la configuración del usuario
+		public function getSettingParams($id) {
+				$result = -1;
+			
+				$consulta_sql = "SELECT * FROM ".$this->sTablaUsuarioConfiguracion." WHERE id_usuario=".$id.";";
+				$rs = $this->oBD->Execute($consulta_sql);
+				$aResultado = $rs->GetRows();
+				$rs->Close();
+				
+				if ($rs->RecordCount() > 0){
+					$result = $aResultado[0];
+				}
+			
+			return $result;
+		}
+		
+		
 
 		public function getNombreUsuario($id_usuario) {
 			$consulta_sql = "SELECT nombre, apellidos FROM ".$this->sTablaUsuario." WHERE id_usuario=".$id_usuario;

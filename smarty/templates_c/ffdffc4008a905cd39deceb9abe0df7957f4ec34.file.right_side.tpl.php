@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-04 23:08:49
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 18:26:47
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/right_side.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6339825024f04cdf16d1a28-13483631%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:5343766814f05dd574c2492-64901285%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ffdffc4008a905cd39deceb9abe0df7957f4ec34' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/right_side.tpl',
-      1 => 1325501790,
+      1 => 1325784403,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6339825024f04cdf16d1a28-13483631',
+  'nocache_hash' => '5343766814f05dd574c2492-64901285',
   'function' => 
   array (
   ),
@@ -79,9 +79,11 @@ images/icons/icon_almacenamiento.png"/>
         				 		<a class="azul" style="margin-bottom:10px;width:140px;clear:right;" href="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 almacenamiento"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_options_storages<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-: 40.0MB <?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+: <?php echo $_smarty_tpl->getVariable('actual_size')->value;?>
+ <?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_from<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
- 10GB</a>
+ <?php echo $_smarty_tpl->getVariable('max_size')->value;?>
+</a>
        				     	</li>
        				     </ul>
        				     

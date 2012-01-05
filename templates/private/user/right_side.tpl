@@ -39,7 +39,7 @@
         				 	</li>
         				 	<li>
         				 		<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_almacenamiento.png"/>
-        				 		<a class="azul" style="margin-bottom:10px;width:140px;clear:right;" href="{$RUTA_WEB_ABSOLUTA}almacenamiento">{translate}tx_options_storages{/translate}: 40.0MB {translate}tx_from{/translate} 10GB</a>
+        				 		<a class="azul" style="margin-bottom:10px;width:140px;clear:right;" href="{$RUTA_WEB_ABSOLUTA}almacenamiento">{translate}tx_options_storages{/translate}: {$actual_size} {translate}tx_from{/translate} {$max_size}</a>
        				     	</li>
        				     </ul>
        				     

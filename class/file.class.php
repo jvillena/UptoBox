@@ -12,12 +12,14 @@ class FileClass {
 		private $sTablaUsuarioRol;
 		private $sTablaArchivo;
 		private $sTablaUsuarioArchivo;
+		private $sTablaArchivoVersion;
 		
 		function __construct(){				 
 			$this->sTablaUsuario = TB_USUARIO;
 			$this->sTablaUsuarioRol = TB_USUARIO_ROL;
 			$this->sTablaArchivo = TB_ARCHIVO;
-			$this->sTablaUsuarioArchivo = TB_USUARIO_ARCHIVO;		
+			$this->sTablaUsuarioArchivo = TB_USUARIO_ARCHIVO;	
+			$this->sTablaArchivoVersion = TB_VERSION;	
 		}
 		
 		// Método que nos devuelve los ficheros y carpetas del arbol raiz de un usuario
@@ -30,6 +32,22 @@ class FileClass {
 			if ($rs->RecordCount()>0){
 				$result = $rs->GetRows();
 			}
+			return $result;
+		}
+		
+		// Función para obtener la configuración del usuario
+		public function getActualSizeUser($id_usuario) {
+				$result = 0;
+			
+				$consulta_sql = "SELECT SUM(size) as actual_size FROM ".$this->sTablaArchivoVersion." as v, ".$this->sTablaArchivo." as a , ".$this->sTablaUsuarioArchivo." as ua , ".$this->sTablaUsuario." as u WHERE v.id_archivo = a.id_archivo AND a.id_archivo = ua.id_archivo AND ua.id_usuario = u.id_usuario AND u.id_usuario=".$id_usuario.";";
+				$rs = $this->oBD->Execute($consulta_sql);
+				$aResultado = $rs->GetRows();
+				$rs->Close();
+				
+				if ($rs->RecordCount() > 0){
+					$result = $aResultado[0]['actual_size'];
+				}
+			
 			return $result;
 		}
 		

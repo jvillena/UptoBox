@@ -83,7 +83,9 @@
     <translation id="tx_button_cancel"><![CDATA[Cancel]]></translation>
     <translation id="tx_update_name_file"><![CDATA[Update]]></translation>
     <translation id="tx_update_name_file2"><![CDATA[by]]></translation>
-    
+    <translation id="tx_options_open"><![CDATA[Open]]></translation>
+    <translation id="tx_options_new_tabs"><![CDATA[Open in a New Tab]]></translation>
+    <translation id="tx_options_upload_fold"><![CDATA[Upload File in a folder]]></translation>
     
      <!-- PÁGINA FORMULARIO -->
      <translation id="tx_form_name"><![CDATA[Name]]></translation>

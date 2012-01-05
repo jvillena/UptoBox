@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-04 23:08:39
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 18:26:47
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:15310558364f04cde7bff217-85028018%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:9750019054f05dd576cb5f9-32071318%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1325714916,
+      1 => 1325781459,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15310558364f04cde7bff217-85028018',
+  'nocache_hash' => '9750019054f05dd576cb5f9-32071318',
   'function' => 
   array (
   ),
@@ -49,24 +49,18 @@ $_smarty_tpl->decodeProperties(array (
 					menu: 'myMenu'
 				},
 					function(action, el, pos) {
-					alert(
+					/*alert(
 						'Action: ' + action + '\n\n' +
 						'Element ID: ' + $(el).attr('id') + '\n\n' + 
 						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
 						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
-						);
+						);*/
 				});
 				
 				// Show menu when a list item is clicked
 				$("#myList TR TD").contextMenu({
 					menu: 'myMenu'
 				}, function(action, el, pos) {
-					alert(
-						'Action: ' + action + '\n\n' +
-						'Element text: ' + $(el).text() + '\n\n' + 
-						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
-						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
-						);
 				});
 				
 				
@@ -75,12 +69,6 @@ $_smarty_tpl->decodeProperties(array (
 					menu: 'myMenuOption'
 				},
 					function(action, el, pos) {
-					alert(
-						'Action: ' + action + '\n\n' +
-						'Element ID: ' + $(el).attr('id') + '\n\n' + 
-						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
-						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
-						);
 				});		
 				
 			});
@@ -228,14 +216,26 @@ if ($_smarty_tpl->_count($_from) > 0){
 		</div>
 		
 		<ul id="myMenu" class="contextMenu">
-			<li class="new"><a href="#edit">Abrir</a></li>
-			<li class="open separator"><a href="#cut">Abrir en un nuevo Tab</a></li>
-			<li class="upload"><a href="#copy">Subir fichero a la carpeta</a></li>
+			<li class="new"><a href="#edit"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_open<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="open separator"><a href="#cut"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_new_tabs<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="upload"><a href="#copy"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_upload_fold<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
 		</ul>
 		
 		<ul id="myMenuOption" class="contextMenu">
-			<li class="folder"><a href="#folder">Nueva Carpeta</a></li>
-			<li class="file"><a href="#file">Nuevo Archivo</a></li>
+			<li class="folder"><a onclick="createFolder('<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_create_new_folder<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+');" href="#"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_new_folder<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="upload"><a href="#file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
 		</ul>
 	
 		<?php }?>

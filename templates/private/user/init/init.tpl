@@ -30,24 +30,18 @@
 					menu: 'myMenu'
 				},
 					function(action, el, pos) {
-					alert(
+					/*alert(
 						'Action: ' + action + '\n\n' +
 						'Element ID: ' + $(el).attr('id') + '\n\n' + 
 						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
 						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
-						);
+						);*/
 				});
 				
 				// Show menu when a list item is clicked
 				$("#myList TR TD").contextMenu({
 					menu: 'myMenu'
 				}, function(action, el, pos) {
-					alert(
-						'Action: ' + action + '\n\n' +
-						'Element text: ' + $(el).text() + '\n\n' + 
-						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
-						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
-						);
 				});
 				
 				
@@ -56,12 +50,6 @@
 					menu: 'myMenuOption'
 				},
 					function(action, el, pos) {
-					alert(
-						'Action: ' + action + '\n\n' +
-						'Element ID: ' + $(el).attr('id') + '\n\n' + 
-						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
-						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
-						);
 				});		
 				
 			});
@@ -187,14 +175,14 @@ $(document).ready(function() {
 		</div>
 		
 		<ul id="myMenu" class="contextMenu">
-			<li class="new"><a href="#edit">Abrir</a></li>
-			<li class="open separator"><a href="#cut">Abrir en un nuevo Tab</a></li>
-			<li class="upload"><a href="#copy">Subir fichero a la carpeta</a></li>
+			<li class="new"><a href="#edit">{translate}tx_options_open{/translate}</a></li>
+			<li class="open separator"><a href="#cut">{translate}tx_options_new_tabs{/translate}</a></li>
+			<li class="upload"><a href="#copy">{translate}tx_options_upload_fold{/translate}</a></li>
 		</ul>
 		
 		<ul id="myMenuOption" class="contextMenu">
-			<li class="folder"><a href="#folder">Nueva Carpeta</a></li>
-			<li class="file"><a href="#file">Nuevo Archivo</a></li>
+			<li class="folder"><a onclick="createFolder('{translate}tx_options_create_new_folder{/translate}');" href="#">{translate}tx_options_new_folder{/translate}</a></li>
+			<li class="upload"><a href="#file">{translate}tx_options_upload_file{/translate}</a></li>
 		</ul>
 	
 		{/if}
