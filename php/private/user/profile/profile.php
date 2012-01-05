@@ -21,6 +21,17 @@
 	$datos_perfil = $oProfile->get($datos_usuario['id_usuario']);
 	$oSmarty->assign('datos_perfil',$datos_perfil);
 	
+	//Comprobamos capacidad de almacenamiento máximo para el usuario
+	$datos_usuario_configuracion = $oUser->getSettingParams($datos_usuario['id_usuario']);
+	$oSmarty->assign('datos_usuario_configuracion',$datos_usuario_configuracion);
+	//Calculamos el tamaño actual usado por el usuario
+	$actual_size = $oFile->getActualSizeUser($datos_usuario['id_usuario']);
+	$actual_size = Settings::getByteSize($actual_size);
+	$oSmarty->assign('actual_size',$actual_size);
+	//Calculamos el tamaño máximo en MB
+	$max_size = Settings::getByteSize($datos_usuario_configuracion['max_size']);
+	$oSmarty->assign('max_size',$max_size);
+	
 	$metatitle = "uptobox.net";
 	$metadescription = "uptobox.net";
 	$oSmarty->assign('metatitle',$metatitle);
