@@ -26,6 +26,7 @@
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-twipsy.js" type="text/javascript"></script>
+		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
 		<!-- Javascripts necesarios para usar el context Menu. -->
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
 		

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 20:41:01
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 22:35:27
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/profile/profile.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:14316919474f05fccd7be8a5-37677908%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:4256608684f06179f2b36f5-40765760%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'b681541d46c135e8378b2b7a6ac7a0910064cd7d' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/profile/profile.tpl',
-      1 => 1325791544,
+      1 => 1325799325,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '14316919474f05fccd7be8a5-37677908',
+  'nocache_hash' => '4256608684f06179f2b36f5-40765760',
   'function' => 
   array (
   ),
@@ -105,167 +105,10 @@ user/profile/edit',
 
 
 
-
-<div class="alert-message block-message info" style="margin-top:120px;margin-left:5px;margin-right:5px;">
-        <p><strong><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_profile_tittle<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</strong> <?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_profile_sub_tittle<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</p>
+<div id="profile" class="row tab_content">
+		<?php $_template = new Smarty_Internal_Template('profile/tab_profile.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?>
 </div>
-<div id="mensaje" style="display:none">
-	<div id="error" class="alert-message">
-	    <p id="retorno_usuario"></p>
-    </div>
-</div>	
-<div class="row" style="margin-top:30px;margin-bottom:30px">
-	 <div class="span3" style="margin-top:-15px;">
-			<form id="form_upload_picture" name="form_upload_picture" method="post" action="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-user/profile/upload_picture"  enctype="multipart/form-data">
-				
-				
-				<?php if ($_smarty_tpl->getVariable('datos_perfil')->value[0]['ruta_foto']!=''){?>
-					<img style="border: 1px solid #CCC" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-libs/php/rescalado_imagen/image.php/<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-datas/users/<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['id_usuario'];?>
-/profile/<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['ruta_foto'];?>
-?height=150&amp;image=<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-datas/users/<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['id_usuario'];?>
-/profile/<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['ruta_foto'];?>
-"  alt="avatar-grande" />
-				<?php }else{ ?>
-					<img style="border: 1px solid #CCC" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-libs/php/rescalado_imagen/image.php/<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-images/icons/icon_avatar_grande.png?height=150&amp;image=<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-images/icons/icon_avatar_grande.png"  alt="avatar-grande" />
-				<?php }?>	
-				<div id="div_input_foto" style="margin-top:2px">
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_picture<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-					<input type="file" name="foto_usuario" id="foto_usuario" style="width:200px;"></br>
-					<input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['id_usuario'];?>
-"/>
-					<input type="submit" value="<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_button_upload_picture<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-" id="boton_modificar_perfil" class="btn info" style="margin-top:3px;">
-				</div>
-			</form>
-	</div>
-	<div class="span8 offset2">
-			<form id="form_profile" name="form_profile" method="post">
-		<table id="datos_perfil" cellspacing="10px;" width="100%" style="padding:20px;">
-			<tr>
-				<td style="border:0" colspan="3" id="retorno_perfil">
-					
-				</td>
-			</tr>
-			<tr>
-				<td width="30%">	
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_password<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-				</td>
-				<td>
-					<input class="xlarge" type="password" name="password" >
-				</td>
-			</tr>
-			<tr>
-				<td  width="30%">	
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_repassword<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-				</td>
-				<td >
-					<input class="xlarge" type="password" name="password2">
-				</td>
-			</tr>
-			<tr>
-				<td  width="30%">	
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_email<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-				</td>
-				<td align="left">
-					<input class="xlarge required" type="text" name="email" id="email" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['email'];?>
-"/>
-				</td>
-			</tr>
-			<tr>
-				<td width="30%">	
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_phone<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-				</td>
-				<td align="left">
-					<input class="xlarge required" type="text" name="telefono" id="telefono" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['telefono'];?>
-"/>
-				</td>
-			</tr>
-			<tr>
-				<td width="30%">	
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_username<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-				</td>
-				<td align="left">
-					<input class="xlarge required" type="text" name="nombre" id="nombre" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['nombre'];?>
-">
-				</td>
-			</tr>
-			<tr>
-				<td width="30%">	
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_surname<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-				</td>
-				<td align="left">
-					<input class="xlarge required" type="text" name="apellidos" id="apellidos" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['apellidos'];?>
-">
-				</td>
-			</tr>
-			<tr>
-				<td width="30%">	
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_company<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-					<small class="gris"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_optional<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</small>
-				</td>
-				<td align="left">
-					<input class="xlarge required" type="text" name="empresa" id="empresa" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['empresa'];?>
-">
-				</td>
-			</tr>
-			<tr>
-				<td width="30%">	
-					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_web<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-:</span>
-					<small class="gris"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_form_name_optional<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</small>
-				</td>
-				<td align="left">
-					<input class="xlarge required" type="text" name="web" id="web" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['web'];?>
-">
-				</td>
-			</tr>
-			<tr>
-				<td style="border:0;" colspan="2">
-					<img id="id_cargando" style="display:none;float:left" src="<?php echo $_smarty_tpl->getVariable('IMAGES_URL')->value;?>
-/resources/loading.gif" />
-					<input type="submit" value="<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_button_edit<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-" id="boton_modificar_perfil" class="btn info right" style="margin-right: 45px;margin-top:4px">
-				</td>
-			</tr>
-			
-			
-		</table>
-	</form>
-
-		
-	</div>
+<div id="general" class="row tab_content" style="margin-top:30px;margin-bottom:30px">
+	asdfasdfasdf
 </div>

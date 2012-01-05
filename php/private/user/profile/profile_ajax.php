@@ -10,7 +10,6 @@
 	require(BASE_PATH.'/php/private/user/security.php');	
 	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
-	
 	$errores=$oProfile->editProfile($datos_usuario['id_usuario'], $_POST);
 	$resultado=array();
 	$aErrores=array();

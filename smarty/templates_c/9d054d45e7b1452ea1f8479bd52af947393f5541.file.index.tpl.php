@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 20:41:02
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 23:46:57
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:5172817774f05fcce0d59f4-56759742%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:4368641284f0628613001c7-30445922%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9d054d45e7b1452ea1f8479bd52af947393f5541' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl',
-      1 => 1325712389,
+      1 => 1325795413,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5172817774f05fcce0d59f4-56759742',
+  'nocache_hash' => '4368641284f0628613001c7-30445922',
   'function' => 
   array (
   ),
@@ -61,6 +61,8 @@ libs/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
 libs/javascript/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
 		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 libs/javascript/bootstrap/bootstrap-twipsy.js" type="text/javascript"></script>
+		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
 		<!-- Javascripts necesarios para usar el context Menu. -->
 		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 libs/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"></script>

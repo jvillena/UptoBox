@@ -1,8 +1,47 @@
 {literal}
 <script type="text/javascript">
-$(document).ready(function() {
-	$('#topbar').dropdown();
-});
+	$(document).ready(function() {
+		$('#topbar').dropdown();
+		$(".tab_content").hide(); //Esconde todo el contenido
+		$("ul.tabs li:first").addClass("active").show(); //Activa la primera tab
+		$(".tab_content:first").show(); //Muestra el contenido de la primera tab
+		
+		$("ul.tabs li").click(function() {
+
+
+		$("ul.tabs li").removeClass("active"); //Elimina las clases activas
+	
+		$(this).addClass("active"); //Agrega la clase activa a la tab seleccionada
+	
+		$(".tab_content").hide(); //Esconde todo el contenido de la tab
+	
+		var activeTab = $(this).find("a").attr("href"); //Encuentra el valor del atributo href para identificar la tab activa + el contenido
+		
+		if(activeTab=='#profile'){
+			ruta="profile";
+		}
+		else if(activeTab=='#general'){
+			ruta="general";
+		}
+
+		$("#loading").show();		
+		$.ajax({
+			      type: "POST",
+			      url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/tabs/'+ruta,
+		      	  success:function(data){
+		      	  	var result = jQuery.parseJSON(data);
+					$("#loading").hide();
+					$(activeTab).html(result);
+					$(activeTab).fadeIn(); //Agrega efecto de transición (fade) en el contenido activo
+		      	  }
+			});
+			
+			
+		
+			return false;
+	
+		});
+	});
 </script>
 {/literal}
 <div class="topbar" data-dropdown="dropdown">
@@ -95,9 +134,14 @@ $(document).ready(function() {
         							<h1>{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_sub_myaccount{/translate}{/if} <small>{if $menu_principal == 'files'}{translate}tx_sub_message{/translate}{/if}</small></h1>			
         							  <div id="tabs_menu" style="float:left;margin-bottom:-3px;">
         							    <ul class="tabs">
-									    	<li class="active" style="background-color:#fff">
-									    		<a href="#" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;">{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_tabs_profile{/translate}{/if}</a>
+									    	<li style="background-color:#fff">
+									    		<a href="#profile" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;">{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_tabs_profile{/translate}{/if}</a>
 									    	</li>
+									    	{if isset($menu_principal) && $menu_principal=='myaccount'}
+									    	<li>
+									    		<a href="#general" style="line-height:10px; color:#545454;font-weight: bold;background-image: none;">{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_tabs_profile_general{/translate}{/if}</a>
+									    	</li>
+									    	{/if}
 									    </ul>
 									   </div>
         						</td>

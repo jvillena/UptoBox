@@ -31,8 +31,12 @@
     <translation id="tx_init_message2"><![CDATA[Puedes crear carpetas o subir archivos. Además, puedes compartirlas con tus colaboradores o amigos.]]></translation>
    <!-- PAGE  - TABS TAGS -->
     <translation id="tx_tabs_profile"><![CDATA[Perfil]]></translation>
+    <translation id="tx_tabs_profile_general"><![CDATA[General]]></translation>
     <translation id="tx_profile_tittle"><![CDATA[Perfil de Usuario]]></translation>
     <translation id="tx_profile_sub_tittle"><![CDATA[Rellena tus datos personales y así podrán los usuarios ponerse en contacto contigo!.]]></translation>
+    
+    <translation id="tx_general_tittle"><![CDATA[Configuración General]]></translation>
+    <translation id="tx_general_sub_tittle"><![CDATA[Zona horaria y Selecciona su idioma.]]></translation>
     
     <!-- PÁGINA PRINCIPAL  - CABECERA -->
     <translation id="tx_menu_mi_cuenta"><![CDATA[Mi Cuenta]]></translation>
@@ -102,6 +106,8 @@
      <translation id="tx_form_name_company"><![CDATA[Nombre de la Empresa]]></translation>
      <translation id="tx_form_name_web"><![CDATA[Web]]></translation>
      <translation id="tx_form_name_optional"><![CDATA[(opcional)]]></translation>
+     <translation id="tx_form_name_time_zone"><![CDATA[Zona horaria]]></translation>
+     <translation id="tx_form_name_language"><![CDATA[Selecciona el Idioma]]></translation>
      
     <translation id="tx_button_edit"><![CDATA[Modificar]]></translation>
     <translation id="tx_button_upload_picture"><![CDATA[Subir Foto]]></translation>

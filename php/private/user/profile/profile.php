@@ -32,6 +32,10 @@
 	$max_size = Settings::getByteSize($datos_usuario_configuracion['max_size']);
 	$oSmarty->assign('max_size',$max_size);
 	
+	//Ultimas actualizaciones de ficheros y carpetas
+	$aRecentFile = $oFile->getRecentUpdates($datos_usuario['id_usuario']);
+	$oSmarty->assign('aRecentFile',$aRecentFile);	
+	
 	$metatitle = "uptobox.net";
 	$metadescription = "uptobox.net";
 	$oSmarty->assign('metatitle',$metatitle);

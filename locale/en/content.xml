@@ -39,8 +39,17 @@
     
     <!-- PAGE  - TABS TAGS -->
     <translation id="tx_tabs_profile"><![CDATA[Profile]]></translation>
+    <translation id="tx_tabs_profile_general"><![CDATA[General]]></translation>
+    
+    
     <translation id="tx_profile_tittle"><![CDATA[User Profile]]></translation>
     <translation id="tx_profile_sub_tittle"><![CDATA[Enter your personal details so that users can contact you!.]]></translation>
+   
+   <translation id="tx_general_tittle"><![CDATA[General Settings]]></translation>
+   <translation id="tx_general_sub_tittle"><![CDATA[Time Zone and Selected your language.]]></translation>
+   
+   
+   
    
     <!-- PÁGINA PRINCIPAL  - PIE -->
     <translation id="tx_footer_ayuda"><![CDATA[www.uptobox.net]]></translation>
@@ -101,6 +110,9 @@
      <translation id="tx_form_name_company"><![CDATA[Company]]></translation>
      <translation id="tx_form_name_web"><![CDATA[Web]]></translation>
      <translation id="tx_form_name_optional"><![CDATA[(optional)]]></translation>
+     
+     <translation id="tx_form_name_time_zone"><![CDATA[Time Zone]]></translation>
+     <translation id="tx_form_name_language"><![CDATA[Language]]></translation>
      
      <translation id="tx_button_edit"><![CDATA[Edit]]></translation>
      <translation id="tx_button_upload_picture"><![CDATA[Upload Picture]]></translation> 

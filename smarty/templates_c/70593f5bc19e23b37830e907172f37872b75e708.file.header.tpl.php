@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 20:41:01
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 23:46:56
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:11173699304f05fccda5ef79-39668687%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10592297944f062860bfc591-50065778%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '70593f5bc19e23b37830e907172f37872b75e708' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl',
-      1 => 1325704479,
+      1 => 1325801783,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '11173699304f05fccda5ef79-39668687',
+  'nocache_hash' => '10592297944f062860bfc591-50065778',
   'function' => 
   array (
   ),
@@ -19,9 +19,49 @@ $_smarty_tpl->decodeProperties(array (
 )); /*/%%SmartyHeaderCode%%*/?>
 
 <script type="text/javascript">
-$(document).ready(function() {
-	$('#topbar').dropdown();
-});
+	$(document).ready(function() {
+		$('#topbar').dropdown();
+		$(".tab_content").hide(); //Esconde todo el contenido
+		$("ul.tabs li:first").addClass("active").show(); //Activa la primera tab
+		$(".tab_content:first").show(); //Muestra el contenido de la primera tab
+		
+		$("ul.tabs li").click(function() {
+
+
+		$("ul.tabs li").removeClass("active"); //Elimina las clases activas
+	
+		$(this).addClass("active"); //Agrega la clase activa a la tab seleccionada
+	
+		$(".tab_content").hide(); //Esconde todo el contenido de la tab
+	
+		var activeTab = $(this).find("a").attr("href"); //Encuentra el valor del atributo href para identificar la tab activa + el contenido
+		
+		if(activeTab=='#profile'){
+			ruta="profile";
+		}
+		else if(activeTab=='#general'){
+			ruta="general";
+		}
+
+		$("#loading").show();		
+		$.ajax({
+			      type: "POST",
+			      url: '<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+user/tabs/'+ruta,
+		      	  success:function(data){
+		      	  	var result = jQuery.parseJSON(data);
+					$("#loading").hide();
+					$(activeTab).html(result);
+					$(activeTab).fadeIn(); //Agrega efecto de transición (fade) en el contenido activo
+		      	  }
+			});
+			
+			
+		
+			return false;
+	
+		});
+	});
 </script>
 
 <div class="topbar" data-dropdown="dropdown">
@@ -177,13 +217,22 @@ tx_sub_message<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo
 <?php }?></small></h1>			
         							  <div id="tabs_menu" style="float:left;margin-bottom:-3px;">
         							    <ul class="tabs">
-									    	<li class="active" style="background-color:#fff">
-									    		<a href="#" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;"><?php if (isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='files'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+									    	<li style="background-color:#fff">
+									    		<a href="#profile" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;"><?php if (isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='files'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_sub_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 <?php }elseif(isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='myaccount'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_tabs_profile<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 <?php }?></a>
 									    	</li>
+									    	<?php if (isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='myaccount'){?>
+									    	<li>
+									    		<a href="#general" style="line-height:10px; color:#545454;font-weight: bold;background-image: none;"><?php if (isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='files'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_sub_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+<?php }elseif(isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='myaccount'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_tabs_profile_general<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+<?php }?></a>
+									    	</li>
+									    	<?php }?>
 									    </ul>
 									   </div>
         						</td>
