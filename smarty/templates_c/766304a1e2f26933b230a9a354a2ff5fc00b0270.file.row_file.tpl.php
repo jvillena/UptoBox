@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 18:41:13
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 20:36:37
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:16111967774f05e0b9b34765-70284319%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:13494052574f05fbc5e9aaa0-05446302%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1325781150,
+      1 => 1325785889,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '16111967774f05e0b9b34765-70284319',
+  'nocache_hash' => '13494052574f05fbc5e9aaa0-05446302',
   'function' => 
   array (
   ),
@@ -33,9 +33,11 @@ tx_update_name_file<?php $_block_content = ob_get_clean(); $_block_repeat=false;
  <?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_update_name_file2<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </span></span>
-	         <a class="azul" style=" clear:right;" href="#"> <?php echo $_smarty_tpl->getVariable('item')->value['nombre_usuario'];?>
+	         <a class="azul" style=" clear:right;" href="#"> <?php if ($_smarty_tpl->getVariable('item')->value['id_usuario']!=$_smarty_tpl->getVariable('id_usuario')->value){?><?php echo $_smarty_tpl->getVariable('item')->value['nombre_usuario'];?>
  <?php echo $_smarty_tpl->getVariable('item')->value['apellidos_usuario'];?>
-</a>
+<?php }else{ ?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_you<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+<?php }?></a>
 			<ul class="options_list right">
 				<li class="op_more">
 				 	<a id="more_options_<?php echo $_smarty_tpl->getVariable('item')->value['id_archivo'];?>

@@ -40,6 +40,11 @@
 	$oSmarty->assign('aFile',$aFile);	
 	$oSmarty->assign('id_padre',0);
 	
+	//Ultimas actualizaciones de ficheros y carpetas
+	$aRecentFile = $oFile->getRecentUpdates($datos_usuario['id_usuario']);
+	$oSmarty->assign('aRecentFile',$aRecentFile);	
+	
+	
 	// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.
 	$oSmarty->template_dir = $config_urls['APP_TEMPLATES_DIR']."private/user";
 

@@ -53,7 +53,10 @@
         			</div>
         			<div class="bd" style="line-height: 12px;margin-left:10px;">
         				<ul> 
-        				 	<li>
+        					{foreach name="recent_files" from=$aRecentFile item=item_recent key=key}
+								{include file='files/recent_file.tpl'}
+							{/foreach}
+        				 	<!-- <li>
         				 	 	<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_folder.png"/>
         				 		<a class="azul" style=" margin-bottom:10px;width:140px;clear:right;" href="{$RUTA_WEB_ABSOLUTA}perfil">Proyecto Uptobox</a>
         				 	</li>
@@ -69,6 +72,7 @@
         				 		<img style="width:20px;vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_pdf.png"/>
         				 		<a class="azul" style="margin-bottom:10px;width:140px;clear:right;" href="{$RUTA_WEB_ABSOLUTA}almacenamiento">Tutorial Cocoa</a>
        				     	</li>
+       				     -->
        				     </ul>
        				     
         			</div>

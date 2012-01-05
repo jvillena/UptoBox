@@ -86,6 +86,8 @@
     <translation id="tx_options_open"><![CDATA[Abrir]]></translation>
     <translation id="tx_options_new_tabs"><![CDATA[Abrir en un nuevo Tab]]></translation>
     <translation id="tx_options_upload_fold"><![CDATA[Subir fichero a la carpeta]]></translation>
+    <translation id="tx_options_you"><![CDATA[Tí]]></translation>
+    
     
      <!-- PÁGINA FORMULARIO -->
      <translation id="tx_form_name"><![CDATA[Nombre]]></translation>
@@ -97,6 +99,10 @@
      <translation id="tx_form_name_phone"><![CDATA[Teléfono]]></translation>
      <translation id="tx_form_name_username"><![CDATA[Nombre]]></translation>
      <translation id="tx_form_name_surname"><![CDATA[Apellidos]]></translation>
+     <translation id="tx_form_name_company"><![CDATA[Nombre de la Empresa]]></translation>
+     <translation id="tx_form_name_web"><![CDATA[Web]]></translation>
+     <translation id="tx_form_name_optional"><![CDATA[(opcional)]]></translation>
+     
     <translation id="tx_button_edit"><![CDATA[Modificar]]></translation>
     <translation id="tx_button_upload_picture"><![CDATA[Subir Foto]]></translation>
     <translation id="tx_tipo_objeto"><![CDATA[Sección]]></translation>

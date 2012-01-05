@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 18:41:13
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 20:41:01
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/right_side.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:8619630364f05e0b952a847-16631530%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18050026404f05fccd5796a8-28818504%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ffdffc4008a905cd39deceb9abe0df7957f4ec34' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/right_side.tpl',
-      1 => 1325784403,
+      1 => 1325790261,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8619630364f05e0b952a847-16631530',
+  'nocache_hash' => '18050026404f05fccd5796a8-28818504',
   'function' => 
   array (
   ),
@@ -99,7 +99,17 @@ tx_menu_activity<?php $_block_content = ob_get_clean(); $_block_repeat=false; ec
         			</div>
         			<div class="bd" style="line-height: 12px;margin-left:10px;">
         				<ul> 
-        				 	<li>
+        					<?php  $_smarty_tpl->tpl_vars['item_recent'] = new Smarty_Variable;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('aRecentFile')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if ($_smarty_tpl->_count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['item_recent']->key => $_smarty_tpl->tpl_vars['item_recent']->value){
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item_recent']->key;
+?>
+								<?php $_template = new Smarty_Internal_Template('files/recent_file.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?>
+							<?php }} ?>
+        				 	<!-- <li>
         				 	 	<img style="width:20px;vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 images/icons/icon_folder.png"/>
         				 		<a class="azul" style=" margin-bottom:10px;width:140px;clear:right;" href="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
@@ -123,6 +133,7 @@ images/icons/icon_pdf.png"/>
         				 		<a class="azul" style="margin-bottom:10px;width:140px;clear:right;" href="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 almacenamiento">Tutorial Cocoa</a>
        				     	</li>
+       				     -->
        				     </ul>
        				     
         			</div>

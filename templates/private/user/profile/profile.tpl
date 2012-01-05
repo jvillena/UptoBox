@@ -169,6 +169,24 @@ $(document).ready(function() {
 				</td>
 			</tr>
 			<tr>
+				<td width="30%">	
+					<span class="marron" style="font-weight: bold">{translate}tx_form_name_company{/translate}:</span>
+					<small class="gris">{translate}tx_form_name_optional{/translate}</small>
+				</td>
+				<td align="left">
+					<input class="xlarge required" type="text" name="empresa" id="empresa" value="{$datos_perfil.0.empresa}">
+				</td>
+			</tr>
+			<tr>
+				<td width="30%">	
+					<span class="marron" style="font-weight: bold">{translate}tx_form_name_web{/translate}:</span>
+					<small class="gris">{translate}tx_form_name_optional{/translate}</small>
+				</td>
+				<td align="left">
+					<input class="xlarge required" type="text" name="web" id="web" value="{$datos_perfil.0.web}">
+				</td>
+			</tr>
+			<tr>
 				<td style="border:0;" colspan="2">
 					<img id="id_cargando" style="display:none;float:left" src="{$IMAGES_URL}/resources/loading.gif" />
 					<input type="submit" value="{translate}tx_button_edit{/translate}" id="boton_modificar_perfil" class="btn info right" style="margin-right: 45px;margin-top:4px">

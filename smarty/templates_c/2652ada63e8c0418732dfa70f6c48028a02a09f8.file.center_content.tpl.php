@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 18:41:13
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 20:41:01
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/center_content.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:16434728914f05e0b96f05c5-83131099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:17552316294f05fccd77e6c9-29191058%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '16434728914f05e0b96f05c5-83131099',
+  'nocache_hash' => '17552316294f05fccd77e6c9-29191058',
   'function' => 
   array (
   ),

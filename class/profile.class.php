@@ -31,7 +31,7 @@ class ProfileClass{
 			if($datos['password2']!=""){
 				$contrasena=md5($datos['password2']);
 			}
-			$sql="UPDATE ".TB_USUARIO." SET nombre='".$datos['nombre']."',apellidos='".$datos['apellidos']."',telefono='".$datos['telefono']."'";
+			$sql="UPDATE ".TB_USUARIO." SET nombre='".$datos['nombre']."',apellidos='".$datos['apellidos']."',telefono='".$datos['telefono']."', empresa='".$datos['empresa']."', web='".$datos['web']."'";
 											 
 			
 			if($contrasena!=""){

@@ -27,13 +27,26 @@ class FileClass {
 		public function getDocumentosPadreArbol($id_usuario, $id_padre){
 			$result = "";
 			$consulta_sql = "SELECT a.*, u.nombre as nombre_usuario, u.apellidos as apellidos_usuario, u.id_usuario FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuario." as u WHERE ";
-			$consulta_sql .= "a.id_archivo_padre=".$id_padre." AND a.id_archivo IN (SELECT ua.id_archivo FROM ".$this->sTablaUsuarioArchivo." as ua WHERE ua.id_usuario='".$id_usuario."');";
+			$consulta_sql .= "a.id_archivo_padre=".$id_padre." AND a.id_archivo IN (SELECT ua.id_archivo FROM ".$this->sTablaUsuarioArchivo." as ua WHERE ua.id_usuario='".$id_usuario."') ORDER BY a.fecha_update DESC;";
 			$rs = $this->oBD->Execute($consulta_sql);
 			if ($rs->RecordCount()>0){
 				$result = $rs->GetRows();
 			}
 			return $result;
 		}
+		
+		// Función que nos devuelve las 5 últimas actualizaciones de carpetas y ficheros
+		public function getRecentUpdates($id_usuario){
+			$result = "";
+			$consulta_sql = "SELECT a.*, u.nombre as nombre_usuario, u.apellidos as apellidos_usuario, u.id_usuario FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuario." as u WHERE ";
+			$consulta_sql .= " a.id_archivo IN (SELECT ua.id_archivo FROM ".$this->sTablaUsuarioArchivo." as ua WHERE ua.id_usuario='".$id_usuario."') ORDER BY a.fecha_update DESC LIMIT 0,5;";
+			$rs = $this->oBD->Execute($consulta_sql);
+			if ($rs->RecordCount()>0){
+				$result = $rs->GetRows();
+			}
+			return $result;
+		}
+		
 		
 		// Función para obtener la configuración del usuario
 		public function getActualSizeUser($id_usuario) {
@@ -62,8 +75,8 @@ class FileClass {
 				
 						$fecha = date("Y-m-d H:i:s");
 						// Insertamos la información en la base de datos.
-						$consulta_sql = "INSERT INTO ".$this->sTablaArchivo." (tipo,fecha, nombre, id_archivo_padre, privacidad) ";
-						$consulta_sql .= " VALUES(0,'$fecha','".$datos['nombre']."', '".$aDatos['id_padre']."', 1 )";
+						$consulta_sql = "INSERT INTO ".$this->sTablaArchivo." (tipo,fecha, nombre, id_archivo_padre, privacidad, fecha_update) ";
+						$consulta_sql .= " VALUES(0,'$fecha','".$datos['nombre']."', '".$aDatos['id_padre']."', 1 , '$fecha')";
 						
 						if (!$this->oBD->Execute($consulta_sql)){
 							$result = false;

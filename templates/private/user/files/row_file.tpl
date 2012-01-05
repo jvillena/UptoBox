@@ -6,7 +6,7 @@
 	    <div id="data_file" style="margin-bottom: 5px;margin-top: 5px;">     
 	         <h3>{$item.nombre}</h3>
 	         <span class="gris">{translate}tx_update_name_file{/translate} <span class="gris"> {$item.fecha|date_format:"%d/%m/%Y"} {translate}tx_update_name_file2{/translate}</span></span>
-	         <a class="azul" style=" clear:right;" href="#"> {$item.nombre_usuario} {$item.apellidos_usuario}</a>
+	         <a class="azul" style=" clear:right;" href="#"> {if $item.id_usuario != $id_usuario}{$item.nombre_usuario} {$item.apellidos_usuario}{else}{translate}tx_options_you{/translate}{/if}</a>
 			<ul class="options_list right">
 				<li class="op_more">
 				 	<a id="more_options_{$item.id_archivo}" data-placement="above" rel='twipsy'  href="#" data-original-title='More Options'></a>

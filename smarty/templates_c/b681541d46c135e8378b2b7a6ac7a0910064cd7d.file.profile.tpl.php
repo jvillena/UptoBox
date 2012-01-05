@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 18:41:08
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-05 20:41:01
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/profile/profile.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:10024386114f05e0b470c853-52319084%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:14316919474f05fccd7be8a5-37677908%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'b681541d46c135e8378b2b7a6ac7a0910064cd7d' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/profile/profile.tpl',
-      1 => 1325351874,
+      1 => 1325791544,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '10024386114f05e0b470c853-52319084',
+  'nocache_hash' => '14316919474f05fccd7be8a5-37677908',
   'function' => 
   array (
   ),
@@ -221,6 +221,34 @@ tx_form_name_surname<?php $_block_content = ob_get_clean(); $_block_repeat=false
 				</td>
 				<td align="left">
 					<input class="xlarge required" type="text" name="apellidos" id="apellidos" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['apellidos'];?>
+">
+				</td>
+			</tr>
+			<tr>
+				<td width="30%">	
+					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_form_name_company<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+:</span>
+					<small class="gris"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_form_name_optional<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</small>
+				</td>
+				<td align="left">
+					<input class="xlarge required" type="text" name="empresa" id="empresa" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['empresa'];?>
+">
+				</td>
+			</tr>
+			<tr>
+				<td width="30%">	
+					<span class="marron" style="font-weight: bold"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_form_name_web<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+:</span>
+					<small class="gris"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_form_name_optional<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</small>
+				</td>
+				<td align="left">
+					<input class="xlarge required" type="text" name="web" id="web" value="<?php echo $_smarty_tpl->getVariable('datos_perfil')->value[0]['web'];?>
 ">
 				</td>
 			</tr>
