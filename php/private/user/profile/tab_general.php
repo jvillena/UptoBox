@@ -19,6 +19,14 @@
 	$datos_perfil = $oProfile->get($datos_usuario['id_usuario']);
 	$oSmarty->assign('datos_perfil',$datos_perfil);
 	
+	//Calculamos los idiomas del sistema
+	$aLanguages = Combos::getAllLanguages();
+	$oSmarty->assign('aLanguages',$aLanguages);
+	
+	//Obtenemos todas las zonas horarias
+	$aTimeZone = Combos::getTimeZones();
+	$oSmarty->assign('aTimeZone',$aTimeZone);
+	
 	// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.
 	$oSmarty->template_dir = $config_urls['APP_TEMPLATES_DIR']."private/user";
 

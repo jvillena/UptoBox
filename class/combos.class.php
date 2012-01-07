@@ -6,10 +6,10 @@
  * @copyright Alea Technology
  * @version 1.0
  */
-class CombosClass{
+class Combos{
 
 	
-	function getPaises($idioma=7,$id_pais=0){
+	public static function getPaises($idioma=7,$id_pais=0){
 		
 		global $oBD;
 		
@@ -24,7 +24,7 @@ class CombosClass{
 		return $paises;
 	}
 	
-	function getTodosPaises($idioma=7,$id_pais=0){
+	public static function getTodosPaises($idioma=7,$id_pais=0){
 		global $oBD;
 		
 		//Obtenemos las categorías padre
@@ -38,13 +38,13 @@ class CombosClass{
 		return $paises;
 	}
 	
-	function cambiarEstadoPais($id_pais, $activo){
+	public static function cambiarEstadoPais($id_pais, $activo){
 		global $oBD;
 		$sql = "UPDATE ".TB_PAISES." SET activo=$activo WHERE id=$id_pais";
 		$rs=$oBD->Execute($sql);
 	}
 	
-	function getPais($id_pais, $idioma=7) {
+	public static function getPais($id_pais, $idioma=7) {
 		global $oBD;
 	
 		//Obtenemos las categorías padre
@@ -55,7 +55,7 @@ class CombosClass{
 		return $paises[0];
 	}	
 	
-	function getRegiones($idioma=7,$id_pais=0){
+	public static function getRegiones($idioma=7,$id_pais=0){
 		global $oBD;
 		
 		//Obtenemos las categorías padre
@@ -69,7 +69,7 @@ class CombosClass{
 		return $regiones;
 	}
 	
-	function getRegion($id_region, $idioma=7) {
+	public static function getRegion($id_region, $idioma=7) {
 		global $oBD;
 	
 		//Obtenemos las categorías padre
@@ -80,7 +80,7 @@ class CombosClass{
 		return $regiones[0];
 	}	
 	
-	function getLocalidades($idioma=7,$id_region=0){
+	public static function getLocalidades($idioma=7,$id_region=0){
 		global $oBD;
 		
 		//Obtenemos las categorías padre
@@ -93,7 +93,7 @@ class CombosClass{
 		return $localidades;
 	}
 	
-	function getLocalidad($id_localidad, $idioma=7) {
+	public static function getLocalidad($id_localidad, $idioma=7) {
 		global $oBD;
 	
 		//Obtenemos las categorías padre
@@ -104,10 +104,35 @@ class CombosClass{
 		return $localidades[0];
 	}	
 	
+	public static function getAllLanguages(){
+		
+		global $oBD;
+		
+		//Obtenemos las categorías padre
+		$sql="SELECT * FROM ".TB_IDIOMA;
+		$rs=$oBD->Execute($sql);
+		$languages=$rs->GetRows();
+		
+		return $languages;
+	}
 	
+	PUBLIC static function getTimeZones(){
+			
+		global $oBD;
+		
+		//Obtenemos el tiempo horario de todas las zonas mundiales
+		$sql = "SELECT z.zone_id,z.country_code, z.zone_name, tz.abbreviation, tz.gmt_offset, tz.dst
+				FROM `timezone` tz JOIN `zone` z
+				ON tz.zone_id=z.zone_id
+				WHERE tz.time_start < UNIX_TIMESTAMP(UTC_TIMESTAMP())
+				ORDER BY tz.time_start DESC;";
+		$rs=$oBD->Execute($sql);
+		$tz=$rs->GetRows();
+		
+		return $tz;
+	}
 	
 	
 	
 }
-$oCombos=new CombosClass();
 ?>

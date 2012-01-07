@@ -25,8 +25,11 @@
 	// Tabla intermedia entre usuarios y archivos.
 	define('TB_USUARIO_ARCHIVO', 'usuario_archivo');
 	
-	//Tabla paises
+	//Tabla countries
 	define('TB_PAIS', 'pais');
+	
+	//Tabla languages
+	define('TB_IDIOMA', 'idioma');
 	
 	
 	define('TB_CAMBIO_EMAIL','cambio_email');
