@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-07 11:57:03
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-08 23:30:27
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:9156651454f0824ffb0e066-31026801%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3818056824f0a271318c380-72795692%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1325781459,
+      1 => 1326064646,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '9156651454f0824ffb0e066-31026801',
+  'nocache_hash' => '3818056824f0a271318c380-72795692',
   'function' => 
   array (
   ),
@@ -151,6 +151,7 @@ user/files/create',
 						$("#baceptar").attr("value","Aceptar");
 						$("#loading").toggle();
 						$('#loading').delay(2000).fadeOut(400);
+						$('#row_file').html(result[2]);
 			      	  }
 
 					
@@ -163,7 +164,7 @@ user/files/create',
 </script>
 
 
-<div id="div_inicio" style="margin-top:120px;width:98%">
+<div id="div_inicio" style="margin-top:120px;width:98%;margin-bottom:50px;">
 	<div id="mensaje" style="display:none">
 		<div id="error" class="alert-message">
 		    <p id="retorno_usuario"></p>
@@ -200,17 +201,9 @@ tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=fal
 		
 		<div id="myList">
 			<table class="zebra-striped">
-			<tbody>
-				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable;
- $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
- $_from = $_smarty_tpl->getVariable('aFile')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-if ($_smarty_tpl->_count($_from) > 0){
-    foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
- $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
-?>
+			<tbody id="row_file">			
 					<?php $_template = new Smarty_Internal_Template('files/row_file.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
  echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?>
-				<?php }} ?>
 			</tbody>
 			</table>
 		</div>

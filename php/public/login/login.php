@@ -8,7 +8,6 @@
 	require('../../../config/config.php');
 	require($config_urls['BASE_PATH'].'class/user.class.php');
 	require($config_urls['BASE_PATH'].'class/notificacion.class.php');
-	require($config_urls['BASE_PATH'].'class/combos.class.php');
 	
 	
 	//Comprobamos el login
@@ -83,7 +82,7 @@
 		
 	$oSmarty->assign('menu_principal','login');
 	
-	$paises = $oCombos->getPaises(7);
+	$paises = Combos::getPaises(7);
 	$oSmarty->assign('paises',$paises);
 	
 	// Asignamos la varable estilo para la utilización en la plantilla.

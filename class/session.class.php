@@ -99,6 +99,14 @@
 		   	
 	       	return $resultado;
        }
+		
+			// Devuelve un array con los objetos de la sesión actual o null en caso de no existir.
+	   	public static function setSesion($xVar, $value) {
+		   	if(isset($_SESSION)) {
+		            $_SESSION['datos_usuario'][$xVar] = $value;
+			}		   	
+	       	return $resultado;
+       }
 	}
 	
 	$oSesion = new SessionClass();

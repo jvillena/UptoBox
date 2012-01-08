@@ -16,13 +16,26 @@ class Localizer {
 	 * @param $language idioma por defecto
 	 */
     public static function init($language) {
-
-        $temp_content = simplexml_load_file(LOCALE. $language . '/content.xml');
+			
+		global $config_urls;
+	    $temp_content = simplexml_load_file($config_urls['LOCALE']. $language . '/content.xml');
         foreach ($temp_content as $key => $value){
             self::$translations[(string)$value['id']] = (string)$value;
         }
 
     }
+	
+	public static function init_ajax($language) {
+			
+		global $config_urls;
+		
+	    $temp_content = simplexml_load_file($config_urls['LOCALE']. $language . '/content.xml');
+        foreach ($temp_content as $key => $value){
+            self::$translations[(string)$value['id']] = (string)$value;
+        }
+
+    }
+	
     
     public static function getTranslate($tag){
     	return self::$translations[$tag];

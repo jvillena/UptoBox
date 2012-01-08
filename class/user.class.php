@@ -11,12 +11,13 @@ class UserClass {
 		private $sTablaUsuario;
 		private $sTablaUsuarioRol;
 		private $sTablaUsuarioConfiguracion;
-		
+		private $sTablaIdioma;
 		
 		function __construct(){				 
 			$this->sTablaUsuario = TB_USUARIO;
 			$this->sTablaUsuarioRol = TB_USUARIO_ROL;		
 			$this->sTablaUsuarioConfiguracion = TB_CONFIGURACION_PARAMETROS;
+			$this->sTablaIdioma = TB_IDIOMA;
 			
 		}
 		 
@@ -423,7 +424,7 @@ class UserClass {
 				// Codificamos la clave junto con el "salt" obtenido.
 				$clave_codificada = $clave_codificada ? $clave : md5($clave);
 				// Obtenemos el usuario que tiene por nombre de usuario el pasado como parámetro y como clave la pasada como parámetro.
-				$consulta_sql = "SELECT * FROM ".$this->sTablaUsuario." WHERE eliminado=0  AND usuario='$usuario' AND clave='$clave_codificada'";
+				$consulta_sql = "SELECT * FROM ".$this->sTablaUsuario." as u, ".$this->sTablaIdioma." as l WHERE u.eliminado=0  AND u.usuario='$usuario' AND u.clave='$clave_codificada' AND u.id_idioma = l.id";
 				$rs = $this->oBD->Execute($consulta_sql);
 				
 				$resultado_sql = $rs->GetRows();
@@ -437,10 +438,15 @@ class UserClass {
 					// Encriptamos los datos para almacenarlos en la sesión.
 					$id_rol = $resultado_sql[0]['id_rol'];
 					$id_usuario = $resultado_sql[0]['id_usuario'];
-					
+					$id_idioma = $resultado_sql[0]['id_idioma'];
+					$codigo_idioma = $resultado_sql[0]['codigo'];
+					$id_zone = $resultado_sql[0]['id_zone'];
 					// Establecemos los datos en la sesión.
 					$_SESSION['datos_usuario']['id_rol'] = $id_rol;
 					$_SESSION['datos_usuario']['id_usuario'] = $id_usuario;
+					$_SESSION['datos_usuario']['id_idioma'] = $id_idioma;
+					$_SESSION['datos_usuario']['codigo_idioma'] = $codigo_idioma;
+					$_SESSION['datos_usuario']['id_zone'] = $id_zone;
 					
 					$resultado=1;
 					
@@ -615,7 +621,7 @@ class UserClass {
 		
 		
 
-	}
+}
 	
 	
 	

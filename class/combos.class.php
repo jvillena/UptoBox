@@ -109,28 +109,99 @@ class Combos{
 		global $oBD;
 		
 		//Obtenemos las categorías padre
-		$sql="SELECT * FROM ".TB_IDIOMA;
+		$sql="SELECT * FROM ".TB_IDIOMA." WHERE activo=1";
 		$rs=$oBD->Execute($sql);
 		$languages=$rs->GetRows();
 		
 		return $languages;
 	}
 	
-	PUBLIC static function getTimeZones(){
+	public static function getTimeZones(){
 			
 		global $oBD;
 		
 		//Obtenemos el tiempo horario de todas las zonas mundiales
-		$sql = "SELECT z.zone_id,z.country_code, z.zone_name, tz.abbreviation, tz.gmt_offset, tz.dst
+		$sql = "SELECT DISTINCT(z.zone_id),z.country_code, z.zone_name, tz.abbreviation, tz.gmt_offset, tz.dst
 				FROM `timezone` tz JOIN `zone` z
 				ON tz.zone_id=z.zone_id
 				WHERE tz.time_start < UNIX_TIMESTAMP(UTC_TIMESTAMP())
-				ORDER BY tz.time_start DESC;";
+				ORDER BY (tz.gmt_offset/3600) DESC;";
+		$rs=$oBD->Execute($sql);
+		$tz=$rs->GetRows();
+		for ($i=0; $i<count($tz); $i++){
+				
+			if ( $tz[$i]['gmt_offset'] >= 0){
+				$result = round($tz[$i]['gmt_offset']/3600);
+				$tz[$i]['gmt'] = "GMT+".$result.":00";
+			}else{
+				$result = round($tz[$i]['gmt_offset']/3600);
+				$tz[$i]['gmt'] = "GMT".$result.":00";
+			} 
+				
+		}
+		
+		return $tz;
+	}
+	
+	public static function getNameTimeZone($id_zone){
+			
+		global $oBD;
+		
+		$result = "";
+		//Obtenemos el tiempo horario de todas las zonas mundiales
+		$sql = "SELECT z.zone_name
+				FROM `zone` z
+				WHERE z.zone_id = $id_zone;";
+		$rs=$oBD->Execute($sql);
+		$result=$rs->GetRows();
+		if ($rs->RecordCount()>0){
+			$result = $result[0]['zone_name'];
+		}
+		return $result;	
+	}
+	
+	public static function getTimeZonesUser($id_zone){
+		global $oBD;
+		//Obtenemos el tiempo horario de una zona en particular
+		$sql = "SELECT z.zone_id,z.country_code, z.zone_name, tz.abbreviation, tz.gmt_offset, tz.dst
+		FROM `timezone` tz JOIN `zone` z
+		ON tz.zone_id=z.zone_id
+		WHERE tz.time_start < UNIX_TIMESTAMP(UTC_TIMESTAMP()) AND z.zone_id=$id_zone
+		ORDER BY tz.time_start DESC LIMIT 1;";
 		$rs=$oBD->Execute($sql);
 		$tz=$rs->GetRows();
 		
 		return $tz;
 	}
+	
+	public static function getDateTimeZone($name_zone){
+		global $oBD;
+		date_default_timezone_set($name_zone);
+		date_default_timezone_get();
+		$abbr = date('T');
+		//Obtenemos la hora y fecha de una zona horaria
+		$sql = "SELECT FROM_UNIXTIME(UNIX_TIMESTAMP(UTC_TIMESTAMP()) + tz.gmt_offset, '%Y-%m-%d %H:%i:%s') AS local_time
+				FROM `timezone` tz JOIN `zone` z
+				ON tz.zone_id=z.zone_id
+				WHERE tz.time_start < UNIX_TIMESTAMP(UTC_TIMESTAMP()) AND z.zone_name='$name_zone' AND tz.abbreviation='$abbr'
+				ORDER BY tz.time_start DESC LIMIT 1;";
+		$rs=$oBD->Execute($sql);
+		$tz=$rs->GetRows();
+		
+		return $tz[0]['local_time'];
+	}
+
+
+	public static function getIdioma($id_idioma){
+		global $oBD;
+		//Obtenemos el tiempo horario de una zona en particular
+		$sql = "SELECT * FROM ".TB_IDIOMA." WHERE id=$id_idioma and activo=1;";
+		$rs=$oBD->Execute($sql);
+		$language=$rs->GetRows();
+		
+		return $language[0];
+	}
+	
 	
 	
 	

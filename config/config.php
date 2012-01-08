@@ -85,13 +85,8 @@
 	
 	// Include Settings Class
 	include($config_urls['CLASS_URL'].'settings.class.php');
+	include($config_urls['CLASS_URL'].'combos.class.php');
 	
-	// Include Language Class
-	include(Settings::getSettingsVars('CLASS_URL').'localizer.class.php');
-	Localizer::init(Settings::getSettingsVars('DEFAULT_LANG'));
-	
-	// Include Error Class
-	include(Settings::getSettingsVars('CLASS_URL').'error.class.php');
 	
 	// Include Tools Class
 	include(Settings::getSettingsVars('CLASS_URL').'tools.class.php');
@@ -116,6 +111,31 @@
 	$oBD->debug = DEBUG_SQL;	
 	$oBD->Connect(BD_SERVER, BD_USER,  BD_PASSWORD, BD_DATABASE);
 	$oBD->Execute("SET NAMES '".DATABASE_CHARSET."'");
+
+	// Include Language Class
+	include(Settings::getSettingsVars('CLASS_URL').'localizer.class.php');
+	
+	$oSesion->inicioSesion();
+		
+	$datos_usuario=$oSesion->getSesion('datos_usuario');
+	
+	if (isset($datos_usuario['id_usuario'])){
+		Settings::setSettingsVars('DEFAULT_LANG',$datos_usuario['codigo_idioma']);
+		
+		Settings::setSettingsVars('ID_ZONE',$datos_usuario['id_zone']);
+		$name_zone = Combos::getNameTimeZone($datos_usuario['id_zone']);
+		Settings::setSettingsVars('NAME_ZONE',$name_zone);
+		date_default_timezone_set($name_zone);
+		
+	}else{
+		Settings::setSettingsVars('DEFAULT_LANG','en');
+		Settings::setSettingsVars('NAME_ZONE','Europe/London');
+		date_default_timezone_set('Europe/London');
+	}	
+	Localizer::init(Settings::getSettingsVars('DEFAULT_LANG'));
+	// Include Error Class
+	include(Settings::getSettingsVars('CLASS_URL').'error.class.php');
+	
 
 	// Include Basic Functions
 	include(Settings::getSettingsVars('LIB_URL').'php/functions.php');

@@ -36,6 +36,19 @@ class Settings{
 		return $config_urls[$vars];
 	}
 	
+	/**
+	 * setSettingsVars allows you to get settings var configurations.
+	 *
+	 * @return Object
+	 */
+	public static function setSettingsVars($vars, $value)
+	{
+		global $config_urls;
+
+		$config_urls[$vars] = $value;
+		
+	}
+	
 	
 	/**
 	 * ByteSize allows convert bytes in GB, MB & KB.

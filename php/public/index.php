@@ -8,6 +8,7 @@
 	require_once '../../config/config.php';
 	require_once $config_urls['BASE_PATH'].'class/combos.class.php';
 		
+		
 	// Incluímos la clase smarty.php.
 	// Al incluir esta clase siempre tendremos disponibles en todas las plantillas automáticamente dos variables:
 	// 			DIRECTORIO_SITIO									directorio del sitio.

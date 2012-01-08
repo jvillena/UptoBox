@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-08 23:30:43
-         compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:5966026484f0a27238c6d96-04629870%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-08 23:17:22
+         compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file_list.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:245615244f0a24022262d2-15372044%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
+    '3036df0dacf4fa6ed95943ff99ee1392ff1439f5' => 
     array (
-      0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1326065420,
+      0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file_list.tpl',
+      1 => 1326064497,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5966026484f0a27238c6d96-04629870',
+  'nocache_hash' => '245615244f0a24022262d2-15372044',
   'function' => 
   array (
   ),
@@ -25,8 +25,7 @@ if ($_smarty_tpl->_count($_from) > 0){
     foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-<tr style="border-bottom: 1px solid  #DDDDDD;" id="more_options_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
-">
+<tr style="border-bottom: 1px solid  #DDDDDD;">
 	<td>
 		<div id="sprite_file" style="float:left;width:42px;margin-bottom: 5px;margin-top: 5px;">
 			 <img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>

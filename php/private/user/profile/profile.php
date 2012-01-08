@@ -8,10 +8,10 @@
 	require('../../../../config/config.php');
 	require($config_urls['BASE_PATH'].'class/user.class.php');
 	require($config_urls['BASE_PATH'].'class/profile.class.php');
-	require($config_urls['BASE_PATH'].'class/combos.class.php');
 	require($config_urls['BASE_PATH'].'class/file.class.php');	
 	require($config_urls['BASE_PATH'].'php/private/user/security.php');	
-	
+//echo date_default_timezone_get() . ' => ' . date('e') . ' => ' . date('T');
+//die("");
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
 	$datos = $oUser->getDatosUsuario($datos_usuario['id_usuario']);
 	$oSmarty->assign('nombre_usuario',$datos['nombre']." ".$datos['apellidos']);
@@ -20,7 +20,6 @@
 	
 	$datos_perfil = $oProfile->get($datos_usuario['id_usuario']);
 	$oSmarty->assign('datos_perfil',$datos_perfil);
-	
 	//Comprobamos capacidad de almacenamiento máximo para el usuario
 	$datos_usuario_configuracion = $oUser->getSettingParams($datos_usuario['id_usuario']);
 	$oSmarty->assign('datos_usuario_configuracion',$datos_usuario_configuracion);

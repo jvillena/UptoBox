@@ -8,8 +8,7 @@
 		
 		// Define name APP
 		define('APP_NAME', 'uptobox');
-		// Default language
-   		define("DEFAULT_LANG", "en");
+		
    		 
    		// Variables de la base de datos. 
 		define('DATABASE_GESTOR', 'mysql');

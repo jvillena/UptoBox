@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-07 12:31:05
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-09 00:22:01
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/profile/tab_profile.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3471344024f082cf9a0b7c9-85134448%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2672289404f0a17091ee592-43739338%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9939d891ecf0c6da1095d749a19f65dcec5d0d51' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/profile/tab_profile.tpl',
-      1 => 1325801598,
+      1 => 1325973503,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3471344024f082cf9a0b7c9-85134448',
+  'nocache_hash' => '2672289404f0a17091ee592-43739338',
   'function' => 
   array (
   ),
@@ -63,7 +63,7 @@ $(document).ready(function() {
 	        $.ajax({
 	            type: 'POST',
 	            url: '<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-user/profile/edit',
+user/edit/profile',
 	            data: $('#form_profile').serialize(),
 	            // before: mostrarVentanaCargando(),
 	            // complete: ocultarVentanaCargando(), 

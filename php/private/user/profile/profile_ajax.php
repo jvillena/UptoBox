@@ -10,7 +10,24 @@
 	require(BASE_PATH.'/php/private/user/security.php');	
 	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
-	$errores=$oProfile->editProfile($datos_usuario['id_usuario'], $_POST);
+	if (isset($_GET['action']) && ($_GET['action'] == 'profile')){
+		$errores=$oProfile->editProfile($datos_usuario['id_usuario'], $_POST);	
+	}else if (isset($_GET['action']) && ($_GET['action'] == 'general')){
+		$errores=$oProfile->editProfileGeneral($datos_usuario['id_usuario'], $_POST);
+		//Obtenemos el nombre del idioma del usuario
+		$datos_perfil = $oProfile->get($datos_usuario['id_usuario']);
+		$language_user = Combos::getIdioma($datos_perfil[0]['id_idioma']);	
+		Settings::setSettingsVars('DEFAULT_LANG',$language_user['codigo']);
+		$oSesion->setSesion('id_idioma',$datos_perfil[0]['id_idioma']);
+		$oSesion->setSesion('codigo_idioma',$language_user['codigo']);
+		
+		//Obtenemos el nombre de la zona horaria
+		$oSesion->setSesion('id_zone',$_POST['timezone']);
+		
+		
+		
+	}
+	
 	$resultado=array();
 	$aErrores=array();
 	if(is_array($errores)){

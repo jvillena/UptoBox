@@ -1,4 +1,5 @@
-<tr style="border-bottom: 1px solid  #DDDDDD;">
+{foreach name="files_tree" from=$aFile item=item key=key}
+<tr style="border-bottom: 1px solid  #DDDDDD;" id="more_options_{$item.id_archivo}">
 	<td>
 		<div id="sprite_file" style="float:left;width:42px;margin-bottom: 5px;margin-top: 5px;">
 			 <img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_folder.png"/>
@@ -29,3 +30,4 @@
 		</div>
 	</td>
 </tr>
+{/foreach}

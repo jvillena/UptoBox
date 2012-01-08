@@ -43,7 +43,7 @@ $(document).ready(function() {
 			// Inicamos la petición.
 	        $.ajax({
 	            type: 'POST',
-	            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/profile/edit',
+	            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/edit/profile',
 	            data: $('#form_profile').serialize(),
 	            // before: mostrarVentanaCargando(),
 	            // complete: ocultarVentanaCargando(), 

@@ -65,6 +65,8 @@ class FileClass {
 		}
 		
 		public function setFolderTree($id_usuario,$datos){
+				global $config_urls;
+				
 				$result = false;
 				//Primero comprobamos que no existe una carpeta con el mismo nombre en el raiz
 				$consulta_sql = "SELECT a.nombre FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=0 AND a.id_archivo_padre='".$datos['id_padre']."' AND a.nombre = '".$datos['nombre']."' AND a.id_archivo = ua.id_archivo AND ua.id_archivo =".$datos['id_usuario'].";";
@@ -73,7 +75,8 @@ class FileClass {
 				$rs->Close();
 				if ($rs->RecordCount() == 0){
 				
-						$fecha = date("Y-m-d H:i:s");
+						$name_zone = Combos::getNameTimeZone(Settings::getSettingsVars('ID_ZONE'));
+						$fecha = Combos::getDateTimeZone($name_zone);
 						// Insertamos la información en la base de datos.
 						$consulta_sql = "INSERT INTO ".$this->sTablaArchivo." (tipo,fecha, nombre, id_archivo_padre, privacidad, fecha_update) ";
 						$consulta_sql .= " VALUES(0,'$fecha','".$datos['nombre']."', '".$aDatos['id_padre']."', 1 , '$fecha')";

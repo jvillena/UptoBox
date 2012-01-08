@@ -24,7 +24,7 @@
 			ruta="general";
 		}
 
-		$("#loading").show();		
+		$("#loading").show();	
 		$.ajax({
 			      type: "POST",
 			      url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/tabs/'+ruta,

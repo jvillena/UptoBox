@@ -9,7 +9,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^user/files$ ./php/private/user/init/index.php
 RewriteRule ^user/files/create$ ./php/private/user/files/create_fold.php
 RewriteRule ^user/profile$ ./php/private/user/profile/profile.php
-RewriteRule ^user/profile/edit$ ./php/private/user/profile/profile_ajax.php
+RewriteRule ^user/edit/(.+)$ ./php/private/user/profile/profile_ajax.php?action=$1
 RewriteRule ^user/profile/upload_picture$ ./php/private/user/profile/upload_picture_user.php
 RewriteRule ^user/tabs/profile$ ./php/private/user/profile/tab_profile.php
 RewriteRule ^user/tabs/general$ ./php/private/user/profile/tab_general.php

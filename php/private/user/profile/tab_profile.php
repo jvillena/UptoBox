@@ -6,7 +6,6 @@
 	require('../../../../config/config.php');
 	require($config_urls['BASE_PATH'].'class/user.class.php');
 	require($config_urls['BASE_PATH'].'class/profile.class.php');
-	require($config_urls['BASE_PATH'].'class/combos.class.php');
 	require($config_urls['BASE_PATH'].'class/file.class.php');	
 	require($config_urls['BASE_PATH'].'php/private/user/security.php');		
 	

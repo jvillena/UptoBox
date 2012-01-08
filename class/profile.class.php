@@ -77,6 +77,31 @@ class ProfileClass{
 		return $error;
 		
 	}
+
+	function editProfileGeneral($id_usuario,$datos){
+		
+		global $oBD;
+		
+		$error=array();
+		if($datos['language']==""){
+			$error[]="Debe seleccionar un idioma";
+		}
+		if($datos['timezone']==""){
+			$error[]="Debe seleccionar su zona horaria";
+		}
+		
+		if(count($error)==0){
+			
+			$sql="UPDATE ".TB_USUARIO." SET id_idioma='".$datos['language']."',id_zone='".$datos['timezone']."'";
+			$sql.=" WHERE id_usuario=$id_usuario";
+			$oBD->Execute($sql);
+			
+			$error='ok';
+		}
+		
+		return $error;
+		
+	}
 	
 	function asociar_foto_usuario($id_usuario,$fotos){
 			global $oBD;

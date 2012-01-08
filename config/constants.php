@@ -86,8 +86,7 @@
     					"MODULE_URL"=>MODULE_URL,
     					"APP_TEMPLATES_DIR"=>APP_TEMPLATES_DIR,
     					"APP_ROOT"=>APP_ROOT,
-    					"INDEX_NAME"=>INDEX_NAME,
-    					"DEFAULT_LANG"=>DEFAULT_LANG);
+    					"INDEX_NAME"=>INDEX_NAME);
 	
 	 $config_mode = array("DEVELOP" =>true,
     					"DEBUG"=>false,

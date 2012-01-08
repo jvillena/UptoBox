@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-07 12:31:05
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-08 23:30:27
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:5463835884f082cf9dac930-34274386%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:5810196184f0a2713558777-53143034%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '70593f5bc19e23b37830e907172f37872b75e708' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl',
-      1 => 1325801783,
+      1 => 1325979215,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5463835884f082cf9dac930-34274386',
+  'nocache_hash' => '5810196184f0a2713558777-53143034',
   'function' => 
   array (
   ),
@@ -43,7 +43,7 @@ $_smarty_tpl->decodeProperties(array (
 			ruta="general";
 		}
 
-		$("#loading").show();		
+		$("#loading").show();	
 		$.ajax({
 			      type: "POST",
 			      url: '<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>

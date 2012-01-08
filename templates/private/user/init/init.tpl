@@ -129,6 +129,7 @@ $(document).ready(function() {
 						$("#baceptar").attr("value","Aceptar");
 						$("#loading").toggle();
 						$('#loading').delay(2000).fadeOut(400);
+						$('#row_file').html(result[2]);
 			      	  }
 
 					
@@ -141,7 +142,7 @@ $(document).ready(function() {
 </script>
 {/literal}
 
-<div id="div_inicio" style="margin-top:120px;width:98%">
+<div id="div_inicio" style="margin-top:120px;width:98%;margin-bottom:50px;">
 	<div id="mensaje" style="display:none">
 		<div id="error" class="alert-message">
 		    <p id="retorno_usuario"></p>
@@ -166,10 +167,8 @@ $(document).ready(function() {
 		
 		<div id="myList">
 			<table class="zebra-striped">
-			<tbody>
-				{foreach name="files_tree" from=$aFile item=item key=key}
+			<tbody id="row_file">			
 					{include file='files/row_file.tpl'}
-				{/foreach}
 			</tbody>
 			</table>
 		</div>
