@@ -1,5 +1,4 @@
 <?php
-include_once('../../../../class/error.class.php');
 
 if(!$oSesion->ComprobarSesion()){
 	

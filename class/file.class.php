@@ -85,7 +85,11 @@ class FileClass {
 							$result = false;
 						}else{
 							$id_file=$this->oBD->Insert_ID();
-						
+							
+							if(!file_exists(BASE_PATH.'datas/users/'.$id_usuario.'/files')){
+								mkdir(BASE_PATH.'datas/users/'.$id_usuario.'/files', 0777);
+							}
+							
 							if(!file_exists(BASE_PATH.'datas/users/'.$id_usuario.'/files/'.$id_file)){
 								mkdir(BASE_PATH.'datas/users/'.$id_usuario.'/files/'.$id_file, 0777);
 							}

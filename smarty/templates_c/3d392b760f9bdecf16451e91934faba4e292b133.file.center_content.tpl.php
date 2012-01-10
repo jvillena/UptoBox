@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-08 21:57:19
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-10 00:38:06
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/login/center_content.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:14326142964f0a113f014e96-87236711%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:9375016434f0b886e0b2e47-61007797%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '3d392b760f9bdecf16451e91934faba4e292b133' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/login/center_content.tpl',
-      1 => 1325434813,
+      1 => 1326155436,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '14326142964f0a113f014e96-87236711',
+  'nocache_hash' => '9375016434f0b886e0b2e47-61007797',
   'function' => 
   array (
   ),
