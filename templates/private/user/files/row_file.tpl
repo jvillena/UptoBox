@@ -30,13 +30,14 @@
 									menu: 'myMenu',
 									leftButton: true
 								}, function(action, el, pos) {
+									if (action = 'open'){
 											{literal}
 											cambiarUrl('/{/literal}{$item.id_archivo}{literal}/{/literal}{$item.nombre}{literal}');
 											
 											$.ajax({
 										            type: 'POST',
 										            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/path/{/literal}{$item.id_archivo}{literal}/{/literal}{$item.nombre}{literal}',
-										            data: $('#form_crear_carpeta').serialize(),
+										            data: '',
 										            // before: mostrarVentanaCargando(),
 										            // complete: ocultarVentanaCargando(), 
 										            success: function(data) {
@@ -48,8 +49,8 @@
 														
 										            }
 										        });
-									
 										{/literal}
+									}
 								});
 					 		
 					 	</script>

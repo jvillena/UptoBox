@@ -182,7 +182,7 @@ $(document).ready(function() {
 		</div>
 		
 		<ul id="myMenu" class="contextMenu">
-			<li class="new"><a href="#edit">{translate}tx_options_open{/translate}</a></li>
+			<li class="new"><a href="#open">{translate}tx_options_open{/translate}</a></li>
 			<li class="open separator"><a href="#cut">{translate}tx_options_new_tabs{/translate}</a></li>
 			<li class="upload"><a href="#copy">{translate}tx_options_upload_fold{/translate}</a></li>
 		</ul>
