@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-10 00:43:34
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-11 01:36:29
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:16876982534f0b89b6e706c4-90465866%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18579100654f0ce79ddcc9e1-25802698%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9d054d45e7b1452ea1f8479bd52af947393f5541' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl',
-      1 => 1326155436,
+      1 => 1326234485,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '16876982534f0b89b6e706c4-90465866',
+  'nocache_hash' => '18579100654f0ce79ddcc9e1-25802698',
   'function' => 
   array (
   ),
@@ -78,8 +78,7 @@ libs/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"
 			<?php echo $_smarty_tpl->getVariable('HEADER')->value;?>
 
 		</div>
-		<div id="wrapper" <?php if ($_smarty_tpl->getVariable('menu_principal')->value=='login'){?> style="background: url('<?php echo $_smarty_tpl->getVariable('IMAGES_URL')->value;?>
-/bg/bg_foto.png') no-repeat 0 30px;"<?php }?>>
+		<div id="wrapper">
 			<div  class="wrapper-all">
 				<?php echo $_smarty_tpl->getVariable('CONTENIDO_CENTRAL')->value;?>
 

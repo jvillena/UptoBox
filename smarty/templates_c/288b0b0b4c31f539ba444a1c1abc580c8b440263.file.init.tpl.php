@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-10 00:43:34
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-11 01:36:29
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:13938094104f0b89b6629199-59247108%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10417983694f0ce79d4b2554-42862673%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1326155436,
+      1 => 1326244685,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '13938094104f0b89b6629199-59247108',
+  'nocache_hash' => '10417983694f0ce79d4b2554-42862673',
   'function' => 
   array (
   ),
@@ -19,7 +19,15 @@ $_smarty_tpl->decodeProperties(array (
 )); /*/%%SmartyHeaderCode%%*/?>
 
 <script type="text/javascript">
-			
+			function setBlankHash2() {
+			     	if (location.href.indexOf("#") > -1) {
+					    location.assign(location.href.replace(/\/?#/, "/"));
+					}
+
+			}
+			function cambiarUrl(url){
+				parent.location.hash = url;
+			}
 			
 			
 			function createFolder(titulo){
@@ -43,7 +51,7 @@ $_smarty_tpl->decodeProperties(array (
 			}
 			
 			$(document).ready( function() {
-				
+				setBlankHash2();
 				// Show menu when #myDiv is clicked
 				$("#myDiv").contextMenu({
 					menu: 'myMenu'
@@ -234,7 +242,7 @@ tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=fal
 		<?php }?>
 		 <!-- The Modal Dialog  Para mostrar mensaje-->
 	  <div id="modal-from-dom" class="modal hide fade" style="width:500px;">
-	  	<form action="#" method="post" id="form_crear_carpeta" name="form_crear_carpeta" class="form_mensaje">
+	  	<form  method="post" id="form_crear_carpeta" name="form_crear_carpeta" class="form_mensaje">
 		    <div class="modal-header">
 		    	<img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 imagenes/iconos/icon_folder.png"/>

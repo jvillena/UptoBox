@@ -8,7 +8,6 @@
 	require('../../../../config/config.php');
 	require($config_urls['BASE_PATH'].'/class/file.class.php');	
 	require($config_urls['BASE_PATH'].'/php/private/user/security.php');	
-	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
 	
 	$resultado=array();

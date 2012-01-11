@@ -1,6 +1,14 @@
 {literal}
 <script type="text/javascript">
-			
+			function setBlankHash2() {
+			     	if (location.href.indexOf("#") > -1) {
+					    location.assign(location.href.replace(/\/?#/, "/"));
+					}
+
+			}
+			function cambiarUrl(url){
+				parent.location.hash = url;
+			}
 			
 			
 			function createFolder(titulo){
@@ -24,7 +32,7 @@
 			}
 			
 			$(document).ready( function() {
-				
+				setBlankHash2();
 				// Show menu when #myDiv is clicked
 				$("#myDiv").contextMenu({
 					menu: 'myMenu'
@@ -187,7 +195,7 @@ $(document).ready(function() {
 		{/if}
 		 <!-- The Modal Dialog  Para mostrar mensaje-->
 	  <div id="modal-from-dom" class="modal hide fade" style="width:500px;">
-	  	<form action="#" method="post" id="form_crear_carpeta" name="form_crear_carpeta" class="form_mensaje">
+	  	<form  method="post" id="form_crear_carpeta" name="form_crear_carpeta" class="form_mensaje">
 		    <div class="modal-header">
 		    	<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}imagenes/iconos/icon_folder.png"/>
 			    <span style="font-size:22px;color:#525252;font-weight: bold;" id="titulo_archivo"></span>

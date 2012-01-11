@@ -79,7 +79,7 @@ class FileClass {
 						$fecha = Combos::getDateTimeZone($name_zone);
 						// Insertamos la información en la base de datos.
 						$consulta_sql = "INSERT INTO ".$this->sTablaArchivo." (tipo,fecha, nombre, id_archivo_padre, privacidad, fecha_update) ";
-						$consulta_sql .= " VALUES(0,'$fecha','".$datos['nombre']."', '".$aDatos['id_padre']."', 1 , '$fecha')";
+						$consulta_sql .= " VALUES(0,'$fecha','".$datos['nombre']."', '".$datos['id_padre']."', 1 , '$fecha')";
 						
 						if (!$this->oBD->Execute($consulta_sql)){
 							$result = false;
