@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-12 00:48:58
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-12 00:51:39
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:4504798304f0e2dfabdca24-48633821%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:7607886004f0e2e9b3b3245-83165292%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '70593f5bc19e23b37830e907172f37872b75e708' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl',
-      1 => 1326329305,
+      1 => 1326329494,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '4504798304f0e2dfabdca24-48633821',
+  'nocache_hash' => '7607886004f0e2e9b3b3245-83165292',
   'function' => 
   array (
   ),
@@ -123,7 +123,7 @@ php/private/user/init/sample-data3.json"
     });
     
      $("#wrapper").click(function(){
-      $("#tree").toggle();
+      $("#tree").hide();
       return false;
     });
     

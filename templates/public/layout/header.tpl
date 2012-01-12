@@ -102,7 +102,7 @@
     });
     
      $("#wrapper").click(function(){
-      $("#tree").toggle();
+      $("#tree").hide();
       return false;
     });
     
