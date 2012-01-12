@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-11 01:36:29
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-12 00:48:59
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:18579100654f0ce79ddcc9e1-25802698%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:9018043264f0e2dfb3468c1-85501384%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9d054d45e7b1452ea1f8479bd52af947393f5541' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl',
-      1 => 1326234485,
+      1 => 1326323982,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '18579100654f0ce79ddcc9e1-25802698',
+  'nocache_hash' => '9018043264f0e2dfb3468c1-85501384',
   'function' => 
   array (
   ),
@@ -45,6 +45,16 @@ libs/javascript/jquery/jquery.js" type="text/javascript"></script>
 libs/javascript/jquery/validate/validate.js" type="text/javascript"></script>
         <script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 libs/javascript/jquery/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/javascript/jquery/jquery-ui/jquery-ui.custom.js" type="text/javascript"></script>
+		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/javascript/jquery/jquery.cookie.js" type="text/javascript"></script>
+		
+		<!-- Javascripts necesarios para treeview. -->
+		<link href="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/javascript/jquery/dynatree/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/javascript/jquery/dynatree/jquery.dynatree.js" type="text/javascript"></script>
 
 		<!-- Javascripts necesarios para estilos en radio y checkbox. -->
 		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>

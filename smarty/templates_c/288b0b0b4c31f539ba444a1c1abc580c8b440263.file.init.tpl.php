@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-11 01:36:29
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-12 00:48:58
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:10417983694f0ce79d4b2554-42862673%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:5425353934f0e2dfa843910-27320576%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1326244685,
+      1 => 1326313677,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '10417983694f0ce79d4b2554-42862673',
+  'nocache_hash' => '5425353934f0e2dfa843910-27320576',
   'function' => 
   array (
   ),
@@ -217,14 +217,20 @@ tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=fal
 		</div>
 		
 		<ul id="myMenu" class="contextMenu">
-			<li class="new"><a href="#edit"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+			<li class="new"><a href="#open"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_options_open<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </a></li>
-			<li class="open separator"><a href="#cut"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+			<li class="open separator"><a href="#new_tab"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_options_new_tabs<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </a></li>
-			<li class="upload"><a href="#copy"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+			<li class="upload"><a href="#submit_file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_options_upload_fold<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="settings separator"><a href="#submit_file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_setting_fold<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="delete"><a href="#submit_file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_delete_fold<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </a></li>
 		</ul>
 		

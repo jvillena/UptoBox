@@ -65,5 +65,6 @@
 .contextMenu LI.upload A { background-image: url(../../../../images/icons/icon_upload_p.png); }
 .contextMenu LI.folder A { background-image: url(../../../../images/icons/icon_folder_p.png); }
 .contextMenu LI.file A { background-image: url(../../../../images/icons/icon_file_p.png); }
-.contextMenu LI.delete A { background-image: url(images/page_white_delete.png); }
 .contextMenu LI.quit A { background-image: url(images/door.png); }
+.contextMenu LI.settings A { background-image: url(../../../../images/icons/icon_info.png); }
+.contextMenu LI.delete A { background-image: url(../../../../images/icons/icon_delete.png); }

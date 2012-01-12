@@ -82,6 +82,8 @@
     
     <!-- OPTIONS LABELS-->
     <translation id="tx_options_new_folder"><![CDATA[New Folder]]></translation>
+    <translation id="tx_options_delete_fold"><![CDATA[Delete]]></translation>
+    <translation id="tx_options_setting_fold"><![CDATA[Settings Folder]]></translation>
     <translation id="tx_options_create_new_folder"><![CDATA[Create New Folder]]></translation>
     <translation id="tx_options_upload_file"><![CDATA[Upload file]]></translation>
     <translation id="tx_options_title"><![CDATA[What can I do?]]></translation>

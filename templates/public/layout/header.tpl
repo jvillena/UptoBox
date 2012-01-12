@@ -43,6 +43,95 @@
 		});
 	});
 </script>
+
+<script type="text/javascript">
+  $(function(){
+	 
+
+    // --- Initialize sample trees
+    $("#tree").dynatree({
+      title: "Ficheros y Carpetas",
+      fx: { height: "toggle", duration: 200 },
+      minExpandLevel: 1,
+      autoFocus: false, // Set focus to first child, when expanding or lazy-loading.
+      // In real life we would call a URL on the server like this:
+//          initAjax: {
+//              url: "/getTopLevelNodesAsJson",
+//              data: { mode: "funnyMode" }
+//              },
+      // .. but here we use a local file instead:
+      initAjax: {
+        url: "{/literal}{$RUTA_WEB_ABSOLUTA}{literal}php/private/user/init/sample-data3.json"
+        },
+	  
+      onActivate: function(node) {
+        $("#echoActive").text("" + node + " (" + node.getKeyPath()+ ")");
+      },
+
+      onLazyRead: function(node){
+        // In real life we would call something like this:
+//              node.appendAjax({
+//                  url: "/getChildrenAsJson",
+//                data: {key: node.data.key,
+//                       mode: "funnyMode"
+//                         }
+//              });
+        // .. but here we use a local file instead:
+        node.appendAjax({
+          url: "sample-data2.json",
+          // We don't want the next line in production code:
+          debugLazyDelay: 750
+        });
+      }
+    });
+    $("#btnReloadActive").click(function(){
+      var node = $("#tree").dynatree("getActiveNode");
+      if( node && node.isLazy() ){
+        node.reloadChildren(function(node, isOk){
+        });
+      }else{
+        alert("Please activate a lazy node first.");
+      }
+     });
+     
+     $("#tree_collapse").click(function(){
+      $("#tree").dynatree("getRoot").visit(function(node){
+        node.expand(false);
+      });
+      return false;
+    });
+    
+     $("#wrapper").click(function(){
+      $("#tree").toggle();
+      return false;
+    });
+    
+
+    $("#btnLoadKeyPath").click(function(){
+      var tree = $("#tree").dynatree("getTree");
+      // Make sure that node #_27 is loaded, by traversing the parents.
+      // The callback is executed for every node as we go:
+      tree.loadKeyPath("/folder4/_23/_26/_27", function(node, status){
+        if(status == "loaded") {
+          // 'node' is a parent that was just traversed.
+          // If we call expand() here, then all nodes will be expanded
+          // as we go
+          node.expand();
+        }else if(status == "ok") {
+          // 'node' is the end node of our path.
+          // If we call activate() or makeVisible() here, then the
+          // whole branch will be exoanded now
+          node.activate();
+        }
+      });
+     });
+  });
+</script>
+
+
+
+
+
 {/literal}
 <div class="topbar" data-dropdown="dropdown">
 	<div class="topbar-inner">
@@ -125,9 +214,17 @@
 		</div>
 	</div>
 	{if $LOGUEADO}
-	<div class="page-header">
+	
+	<div  class="page-header">
 			<div class="wrapper-all">
-		          
+		       		<a href="#" id="tree_collapse" onclick="$('#tree').toggle();" style="color:#3376A4;background: none">All Files</a>
+					<div id="tree" style="color:#222; display: none;
+									    left: 215px;
+									    position: absolute;
+									    top: 79px;
+									    width: 325px;
+									    z-index: 10;"><!-- When using initAjax, it may be nice to put a throbber here, that spins until the initial content is loaded: -->
+				  	</div>
 		          	<table class="page_table">
         					<tr>
         						<td>

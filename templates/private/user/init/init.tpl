@@ -183,8 +183,10 @@ $(document).ready(function() {
 		
 		<ul id="myMenu" class="contextMenu">
 			<li class="new"><a href="#open">{translate}tx_options_open{/translate}</a></li>
-			<li class="open separator"><a href="#cut">{translate}tx_options_new_tabs{/translate}</a></li>
-			<li class="upload"><a href="#copy">{translate}tx_options_upload_fold{/translate}</a></li>
+			<li class="open separator"><a href="#new_tab">{translate}tx_options_new_tabs{/translate}</a></li>
+			<li class="upload"><a href="#submit_file">{translate}tx_options_upload_fold{/translate}</a></li>
+			<li class="settings separator"><a href="#submit_file">{translate}tx_options_setting_fold{/translate}</a></li>
+			<li class="delete"><a href="#submit_file">{translate}tx_options_delete_fold{/translate}</a></li>
 		</ul>
 		
 		<ul id="myMenuOption" class="contextMenu">

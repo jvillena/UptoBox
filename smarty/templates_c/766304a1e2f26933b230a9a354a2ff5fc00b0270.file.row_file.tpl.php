@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-11 01:36:29
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-12 00:48:58
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:985266254f0ce79d6d8498-55613659%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:17629852604f0e2dfaa52595-06188508%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1326244527,
+      1 => 1326312186,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '985266254f0ce79d6d8498-55613659',
+  'nocache_hash' => '17629852604f0e2dfaa52595-06188508',
   'function' => 
   array (
   ),
@@ -82,6 +82,8 @@ tx_options_you<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo
 									menu: 'myMenu',
 									leftButton: true
 								}, function(action, el, pos) {
+									
+									if (action == 'open'){
 											
 											cambiarUrl('/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 /<?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
@@ -93,7 +95,7 @@ tx_options_you<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo
 user/path/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 /<?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
 ',
-										            data: $('#form_crear_carpeta').serialize(),
+										            data: '',
 										            // before: mostrarVentanaCargando(),
 										            // complete: ocultarVentanaCargando(), 
 										            success: function(data) {
@@ -105,8 +107,14 @@ user/path/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 														
 										            }
 										        });
-									
 										
+									}else if (action == 'new_tab'){
+										window.open('<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+user/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+/<?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
+');
+									}
+									
 								});
 					 		
 					 	</script>

@@ -16,6 +16,12 @@
         <script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/jquery.js" type="text/javascript"></script>
         <script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/validate/validate.js" type="text/javascript"></script>
         <script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/jquery-ui/jquery-ui.custom.js" type="text/javascript"></script>
+		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/jquery.cookie.js" type="text/javascript"></script>
+		
+		<!-- Javascripts necesarios para treeview. -->
+		<link href="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/dynatree/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/dynatree/jquery.dynatree.js" type="text/javascript"></script>
 
 		<!-- Javascripts necesarios para estilos en radio y checkbox. -->
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/checkbox/customInput.jquery.js" type="text/javascript"></script>

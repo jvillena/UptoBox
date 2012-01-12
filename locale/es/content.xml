@@ -77,7 +77,9 @@
     
      <!-- OPTIONS LABELS-->
     <translation id="tx_options_new_folder"><![CDATA[Nueva Carpeta]]></translation>
+    <translation id="tx_options_delete_fold"><![CDATA[Eliminar]]></translation>
     <translation id="tx_options_create_new_folder"><![CDATA[Crear Nueva Carpeta]]></translation>
+    <translation id="tx_options_setting_fold"><![CDATA[Propiedades del Archivo]]></translation>
     <translation id="tx_options_upload_file"><![CDATA[Subir Documentos]]></translation>
     <translation id="tx_options_title"><![CDATA[¿Qué puedes hacer?]]></translation>
     <translation id="tx_options_personal_account"><![CDATA[Cuenta Personal]]></translation>

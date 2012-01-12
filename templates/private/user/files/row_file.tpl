@@ -30,8 +30,9 @@
 									menu: 'myMenu',
 									leftButton: true
 								}, function(action, el, pos) {
-									if (action = 'open'){
-											{literal}
+									{literal}
+									if (action == 'open'){
+											
 											cambiarUrl('/{/literal}{$item.id_archivo}{literal}/{/literal}{$item.nombre}{literal}');
 											
 											$.ajax({
@@ -49,8 +50,11 @@
 														
 										            }
 										        });
-										{/literal}
+										
+									}else if (action == 'new_tab'){
+										window.open('{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/files/{/literal}{$item.id_archivo}{literal}/{/literal}{$item.nombre}{literal}');
 									}
+									{/literal}
 								});
 					 		
 					 	</script>
