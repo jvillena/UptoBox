@@ -59,6 +59,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^user/files$ ./php/private/user/init/index.php
 RewriteRule ^user/files/create$ ./php/private/user/files/create_fold.php
+RewriteRule ^user/files/treeview/(.+)$ ./php/private/user/files/treeview_data.php?id_root=$1
 
 RewriteRule ^user/files/(.+)/(.+)$ ./php/private/user/init/index.php?id_root=$1&name=$2
 RewriteRule ^user/path/(.+)/(.+)$ ./php/private/user/init/index_ajax.php?id_root=$1&name=$2
@@ -69,6 +70,8 @@ RewriteRule ^user/profile/upload_picture$ ./php/private/user/profile/upload_pict
 RewriteRule ^user/tabs/profile$ ./php/private/user/profile/tab_profile.php
 RewriteRule ^user/tabs/general$ ./php/private/user/profile/tab_general.php
 RewriteRule ^admin$ ./php/private/admin/init/init.php
+
+
 
 RewriteRule ^login$ ./php/public/login/login.php
 RewriteRule ^activate/(.+)$ ./php/public/login.php?activate_code=$1

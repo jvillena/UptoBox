@@ -35,6 +35,18 @@ class FileClass {
 			return $result;
 		}
 		
+		// Método que nos devuelve un array con las carpetas del directorio que le hemos pasado por parámetro
+		public function getFoldersTree($id_usuario, $id_padre){
+			$result = "";
+			$consulta_sql = "SELECT a.*, u.nombre as nombre_usuario, u.apellidos as apellidos_usuario, u.id_usuario FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuario." as u WHERE ";
+			$consulta_sql .= "a.id_archivo_padre=".$id_padre." AND a.tipo=0 AND a.id_archivo IN (SELECT ua.id_archivo FROM ".$this->sTablaUsuarioArchivo." as ua WHERE ua.id_usuario='".$id_usuario."') ORDER BY a.fecha_update DESC;";
+			$rs = $this->oBD->Execute($consulta_sql);
+			if ($rs->RecordCount()>0){
+				$result = $rs->GetRows();
+			}
+			return $result;
+		}
+		
 		// Función que nos devuelve las 5 últimas actualizaciones de carpetas y ficheros
 		public function getRecentUpdates($id_usuario){
 			$result = "";

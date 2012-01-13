@@ -1,7 +1,7 @@
 <?php 
-	require_once ('../../configuracion/configuracion.php');
-	require_once ('usuario.class.php');
-	require_once ('sesion.class.php');	
+	require_once ('../../config/config.php');
+	require($config_urls['BASE_PATH'].'/class/user.class.php');
+	require($config_urls['BASE_PATH'].'/class/file.class.php');	
 	require_once ("RestServer.php");
 	require_once ("WebServices.php");
 	

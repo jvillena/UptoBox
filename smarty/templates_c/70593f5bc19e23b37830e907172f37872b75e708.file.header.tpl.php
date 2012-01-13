@@ -1,23 +1,24 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-12 00:51:39
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-13 00:52:51
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:7607886004f0e2e9b3b3245-83165292%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:16428853584f0f8063235843-78743368%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '70593f5bc19e23b37830e907172f37872b75e708' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl',
-      1 => 1326329494,
+      1 => 1326410748,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '7607886004f0e2e9b3b3245-83165292',
+  'nocache_hash' => '16428853584f0f8063235843-78743368',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
 
+	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#topbar').dropdown();
@@ -65,9 +66,9 @@ user/tabs/'+ruta,
 </script>
 
 <script type="text/javascript">
-  $(function(){
+  $(document).ready(function() {
 	 
-
+	 
     // --- Initialize sample trees
     $("#tree").dynatree({
       title: "Ficheros y Carpetas",
@@ -82,11 +83,29 @@ user/tabs/'+ruta,
       // .. but here we use a local file instead:
       initAjax: {
         url: "<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-php/private/user/init/sample-data3.json"
+user/files/treeview/0"
         },
 	  
       onActivate: function(node) {
-        $("#echoActive").text("" + node + " (" + node.getKeyPath()+ ")");
+       				 cambiarUrl('/'+node.data.key+'/'+node.data.title);
+											
+					 $.ajax({
+				            type: 'POST',
+				            url: '<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+user/path/'+node.data.key+'/'+node.data.title,
+				            data: '',
+				            // before: mostrarVentanaCargando(),
+				            // complete: ocultarVentanaCargando(), 
+				            success: function(data) {
+					        	var result = jQuery.parseJSON(data);
+									$("#loading").toggle();
+									$('#loading').delay(2000).fadeOut(400);
+									$('#row_file').html(result[0]);
+									$('#id_padre').val(result[1]);
+									$("#tree").hide();
+								
+				            }
+				        });
       },
 
       onLazyRead: function(node){
@@ -99,7 +118,8 @@ php/private/user/init/sample-data3.json"
 //              });
         // .. but here we use a local file instead:
         node.appendAjax({
-          url: "sample-data2.json",
+          url: "<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+user/files/treeview/"+node.data.key,
           // We don't want the next line in production code:
           debugLazyDelay: 750
         });
@@ -115,6 +135,11 @@ php/private/user/init/sample-data3.json"
       }
      });
      
+     $("#wrapper").click(function(){
+      $("#tree").hide();
+      return true;
+    });
+     
      $("#tree_collapse").click(function(){
       $("#tree").dynatree("getRoot").visit(function(node){
         node.expand(false);
@@ -122,10 +147,7 @@ php/private/user/init/sample-data3.json"
       return false;
     });
     
-     $("#wrapper").click(function(){
-      $("#tree").hide();
-      return false;
-    });
+    
     
 
     $("#btnLoadKeyPath").click(function(){

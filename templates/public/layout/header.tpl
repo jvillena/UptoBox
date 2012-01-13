@@ -1,4 +1,5 @@
 {literal}
+	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#topbar').dropdown();
@@ -45,9 +46,9 @@
 </script>
 
 <script type="text/javascript">
-  $(function(){
+  $(document).ready(function() {
 	 
-
+	 
     // --- Initialize sample trees
     $("#tree").dynatree({
       title: "Ficheros y Carpetas",
@@ -61,11 +62,28 @@
 //              },
       // .. but here we use a local file instead:
       initAjax: {
-        url: "{/literal}{$RUTA_WEB_ABSOLUTA}{literal}php/private/user/init/sample-data3.json"
+        url: "{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/files/treeview/0"
         },
 	  
       onActivate: function(node) {
-        $("#echoActive").text("" + node + " (" + node.getKeyPath()+ ")");
+       				 cambiarUrl('/'+node.data.key+'/'+node.data.title);
+											
+					 $.ajax({
+				            type: 'POST',
+				            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/path/'+node.data.key+'/'+node.data.title,
+				            data: '',
+				            // before: mostrarVentanaCargando(),
+				            // complete: ocultarVentanaCargando(), 
+				            success: function(data) {
+					        	var result = jQuery.parseJSON(data);
+									$("#loading").toggle();
+									$('#loading').delay(2000).fadeOut(400);
+									$('#row_file').html(result[0]);
+									$('#id_padre').val(result[1]);
+									$("#tree").hide();
+								
+				            }
+				        });
       },
 
       onLazyRead: function(node){
@@ -78,7 +96,7 @@
 //              });
         // .. but here we use a local file instead:
         node.appendAjax({
-          url: "sample-data2.json",
+          url: "{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/files/treeview/"+node.data.key,
           // We don't want the next line in production code:
           debugLazyDelay: 750
         });
@@ -94,6 +112,11 @@
       }
      });
      
+     $("#wrapper").click(function(){
+      $("#tree").hide();
+      return true;
+    });
+     
      $("#tree_collapse").click(function(){
       $("#tree").dynatree("getRoot").visit(function(node){
         node.expand(false);
@@ -101,10 +124,7 @@
       return false;
     });
     
-     $("#wrapper").click(function(){
-      $("#tree").hide();
-      return false;
-    });
+    
     
 
     $("#btnLoadKeyPath").click(function(){
