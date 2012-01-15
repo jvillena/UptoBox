@@ -92,7 +92,8 @@
     <translation id="tx_options_open"><![CDATA[Abrir]]></translation>
     <translation id="tx_options_new_tabs"><![CDATA[Abrir en un nuevo Tab]]></translation>
     <translation id="tx_options_upload_fold"><![CDATA[Subir fichero a la carpeta]]></translation>
-    <translation id="tx_options_you"><![CDATA[Tí]]></translation>
+    <translation id="tx_options_you"><![CDATA[Usted]]></translation>
+    <translation id="tx_options_display_folder"><![CDATA[Propiedades de Carpeta]]></translation>
     
     
      <!-- PÁGINA FORMULARIO -->
@@ -130,4 +131,7 @@
     <translation id="tx_insertado_error4"><![CDATA[Seleccione una categoría.]]></translation>
     <translation id="tx_insertado_error5"><![CDATA[Seleccione un país.]]></translation>
     <!-- ADMINISTRACION -->
+    
+    <!-- TREEVIEW -->
+    <translation id="tx_root_tree"><![CDATA[Todas las carpetas]]></translation>
 </translations>

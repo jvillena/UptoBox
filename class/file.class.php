@@ -47,6 +47,18 @@ class FileClass {
 			return $result;
 		}
 		
+		// Método que nos devuelve la ruta de los nombres de las carpetas padres del fichero
+		public function getFilePath($id_file){
+			$result = "";
+			$consulta_sql = "SELECT a.nombre, a.id_archivo_padre, a.id_archivo FROM ".$this->sTablaArchivo." as a WHERE ";
+			$consulta_sql .= "a.id_archivo=".$id_file." AND a.tipo=0 ";
+			$rs = $this->oBD->Execute($consulta_sql);
+			if ($rs->RecordCount()>0){
+				$result = $rs->GetRows();
+			}
+			return $result[0];
+		}
+		
 		// Función que nos devuelve las 5 últimas actualizaciones de carpetas y ficheros
 		public function getRecentUpdates($id_usuario){
 			$result = "";

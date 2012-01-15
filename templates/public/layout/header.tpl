@@ -46,12 +46,12 @@
 </script>
 
 <script type="text/javascript">
+	
   $(document).ready(function() {
-	 
 	 
     // --- Initialize sample trees
     $("#tree").dynatree({
-      title: "Ficheros y Carpetas",
+      title: "{/literal}{$tx_titulo_treeview}{literal}",
       fx: { height: "toggle", duration: 200 },
       minExpandLevel: 1,
       autoFocus: false, // Set focus to first child, when expanding or lazy-loading.
@@ -80,6 +80,10 @@
 									$('#loading').delay(2000).fadeOut(400);
 									$('#row_file').html(result[0]);
 									$('#id_padre').val(result[1]);
+									$('#title_root').html(node.data.title);	
+									$('#tree_collapse').css('display','none');
+									$('#sub_root_tree').html(result[2]);
+									$('#sub_root_tree').css('display','block');
 									$("#tree").hide();
 								
 				            }
@@ -146,6 +150,30 @@
       });
      });
   });
+  
+  function loadPath(id_archivo, nombre, url){
+  					cambiarUrl('/'+id_archivo+'/'+nombre);
+											$.ajax({
+									            type: 'POST',
+									            url: url,
+									            data: '',
+									            // before: mostrarVentanaCargando(),
+									            // complete: ocultarVentanaCargando(), 
+									            success: function(data) {
+										        	var result = jQuery.parseJSON(data);
+														$("#loading").toggle();
+														$('#loading').delay(2000).fadeOut(400);
+														$('#row_file').html(result[0]);
+														$('#id_padre').val(result[1]);
+														$('#tree_collapse').css('display','none');
+														$('#sub_root_tree').html(result[2]);
+														$('#sub_root_tree').css('display','block');
+														$("#tree").hide();
+													
+									            }
+									        });
+  }
+  
 </script>
 
 
@@ -237,7 +265,9 @@
 	
 	<div  class="page-header">
 			<div class="wrapper-all">
-		       		<a href="#" id="tree_collapse" onclick="$('#tree').toggle();" style="color:#3376A4;background: none">All Files</a>
+					{if isset($menu_principal) && $menu_principal!='myaccount'}
+		       		<a href="#" id="tree_collapse" onclick="$('#tree').toggle();" style="color:#3376A4;background: none"><img src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_tree.png"/>{translate}tx_root_tree{/translate}</a>
+		       		<div id="sub_root_tree" style="display:none;"></div>
 					<div id="tree" style="color:#222; display: none;
 									    left: 215px;
 									    position: absolute;
@@ -245,10 +275,11 @@
 									    width: 325px;
 									    z-index: 10;"><!-- When using initAjax, it may be nice to put a throbber here, that spins until the initial content is loaded: -->
 				  	</div>
+				  	{/if}
 		          	<table class="page_table">
         					<tr>
         						<td>
-        							<h1>{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_sub_myaccount{/translate}{/if} <small>{if $menu_principal == 'files'}{translate}tx_sub_message{/translate}{/if}</small></h1>			
+        							<h1 id="title_root">{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_sub_myaccount{/translate}{/if} <small>{if $menu_principal == 'files'}{translate}tx_sub_message{/translate}{/if}</small></h1>			
         							  <div id="tabs_menu" style="float:left;margin-bottom:-3px;">
         							    <ul class="tabs">
 									    	<li style="background-color:#fff">

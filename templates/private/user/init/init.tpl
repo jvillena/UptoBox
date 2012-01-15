@@ -1,5 +1,7 @@
 {literal}
 <script type="text/javascript">
+			var tx_titulo_display ='{/literal}{$tx_titulo_display}{literal}';
+			
 			function setBlankHash2() {
 			     	if (location.href.indexOf("#") > -1) {
 					    location.assign(location.href.replace(/\/?#/, "/"));
@@ -15,6 +17,16 @@
 				$('#titulo_archivo').html(titulo);
 
 			 	$('#modal-from-dom').modal({
+				   show : true,
+				   keyboard : true,
+				   backdrop : true
+				});
+			}
+			
+			function displaySettingsFolder(titulo, id){
+				$('#titulo_archivo').html(titulo);
+
+			 	$('#modal-folder-property_'+id).modal({
 				   show : true,
 				   keyboard : true,
 				   backdrop : true
@@ -185,7 +197,7 @@ $(document).ready(function() {
 			<li class="new"><a href="#open">{translate}tx_options_open{/translate}</a></li>
 			<li class="open separator"><a href="#new_tab">{translate}tx_options_new_tabs{/translate}</a></li>
 			<li class="upload"><a href="#submit_file">{translate}tx_options_upload_fold{/translate}</a></li>
-			<li class="settings separator"><a href="#submit_file">{translate}tx_options_setting_fold{/translate}</a></li>
+			<li class="settings separator"><a href="#settings_folder">{translate}tx_options_setting_fold{/translate}</a></li>
 			<li class="delete"><a href="#submit_file">{translate}tx_options_delete_fold{/translate}</a></li>
 		</ul>
 		
@@ -195,7 +207,7 @@ $(document).ready(function() {
 		</ul>
 	
 		{/if}
-		 <!-- The Modal Dialog  Para mostrar mensaje-->
+	<!-- The Modal Dialog  Para mostrar mensaje-->
 	  <div id="modal-from-dom" class="modal hide fade" style="width:500px;">
 	  	<form  method="post" id="form_crear_carpeta" name="form_crear_carpeta" class="form_mensaje">
 		    <div class="modal-header">
@@ -222,4 +234,6 @@ $(document).ready(function() {
 	  		</div>
   		</form>
 	  </div>
+	  
+	
 </div>

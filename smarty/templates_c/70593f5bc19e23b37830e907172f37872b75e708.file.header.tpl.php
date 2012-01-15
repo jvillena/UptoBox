@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-13 00:52:51
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-15 23:25:26
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:16428853584f0f8063235843-78743368%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:12597576474f136066861e00-91558682%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '70593f5bc19e23b37830e907172f37872b75e708' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl',
-      1 => 1326410748,
+      1 => 1326669924,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '16428853584f0f8063235843-78743368',
+  'nocache_hash' => '12597576474f136066861e00-91558682',
   'function' => 
   array (
   ),
@@ -66,12 +66,13 @@ user/tabs/'+ruta,
 </script>
 
 <script type="text/javascript">
+	
   $(document).ready(function() {
-	 
 	 
     // --- Initialize sample trees
     $("#tree").dynatree({
-      title: "Ficheros y Carpetas",
+      title: "<?php echo $_smarty_tpl->getVariable('tx_titulo_treeview')->value;?>
+",
       fx: { height: "toggle", duration: 200 },
       minExpandLevel: 1,
       autoFocus: false, // Set focus to first child, when expanding or lazy-loading.
@@ -102,6 +103,10 @@ user/path/'+node.data.key+'/'+node.data.title,
 									$('#loading').delay(2000).fadeOut(400);
 									$('#row_file').html(result[0]);
 									$('#id_padre').val(result[1]);
+									$('#title_root').html(node.data.title);	
+									$('#tree_collapse').css('display','none');
+									$('#sub_root_tree').html(result[2]);
+									$('#sub_root_tree').css('display','block');
 									$("#tree").hide();
 								
 				            }
@@ -169,6 +174,30 @@ user/files/treeview/"+node.data.key,
       });
      });
   });
+  
+  function loadPath(id_archivo, nombre, url){
+  					cambiarUrl('/'+id_archivo+'/'+nombre);
+											$.ajax({
+									            type: 'POST',
+									            url: url,
+									            data: '',
+									            // before: mostrarVentanaCargando(),
+									            // complete: ocultarVentanaCargando(), 
+									            success: function(data) {
+										        	var result = jQuery.parseJSON(data);
+														$("#loading").toggle();
+														$('#loading').delay(2000).fadeOut(400);
+														$('#row_file').html(result[0]);
+														$('#id_padre').val(result[1]);
+														$('#tree_collapse').css('display','none');
+														$('#sub_root_tree').html(result[2]);
+														$('#sub_root_tree').css('display','block');
+														$("#tree").hide();
+													
+									            }
+									        });
+  }
+  
 </script>
 
 
@@ -317,7 +346,12 @@ tx_menu_desconectarse<?php $_block_content = ob_get_clean(); $_block_repeat=fals
 	
 	<div  class="page-header">
 			<div class="wrapper-all">
-		       		<a href="#" id="tree_collapse" onclick="$('#tree').toggle();" style="color:#3376A4;background: none">All Files</a>
+					<?php if (isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value!='myaccount'){?>
+		       		<a href="#" id="tree_collapse" onclick="$('#tree').toggle();" style="color:#3376A4;background: none"><img src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+images/icons/icon_tree.png"/><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_root_tree<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a>
+		       		<div id="sub_root_tree" style="display:none;"></div>
 					<div id="tree" style="color:#222; display: none;
 									    left: 215px;
 									    position: absolute;
@@ -325,10 +359,11 @@ tx_menu_desconectarse<?php $_block_content = ob_get_clean(); $_block_repeat=fals
 									    width: 325px;
 									    z-index: 10;"><!-- When using initAjax, it may be nice to put a throbber here, that spins until the initial content is loaded: -->
 				  	</div>
+				  	<?php }?>
 		          	<table class="page_table">
         					<tr>
         						<td>
-        							<h1><?php if (isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='files'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+        							<h1 id="title_root"><?php if (isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='files'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_sub_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 <?php }elseif(isset($_smarty_tpl->getVariable('menu_principal',null,true,false)->value)&&$_smarty_tpl->getVariable('menu_principal')->value=='myaccount'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_sub_myaccount<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>

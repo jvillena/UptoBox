@@ -2768,3 +2768,12 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 #tabs_menu a:hover{
 	color: #FFFFFF;
 }
+
+
+.link_blue{
+	color: #3376A4;
+	
+}
+.link_blue:hover{
+	text-decoration: underline;
+}

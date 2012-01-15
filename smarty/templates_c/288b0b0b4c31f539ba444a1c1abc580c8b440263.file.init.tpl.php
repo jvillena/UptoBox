@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-13 00:52:50
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-15 23:25:26
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:647069124f0f8062db4638-53287974%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:14018115654f136066427975-73476278%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1326313677,
+      1 => 1326629839,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '647069124f0f8062db4638-53287974',
+  'nocache_hash' => '14018115654f136066427975-73476278',
   'function' => 
   array (
   ),
@@ -19,6 +19,9 @@ $_smarty_tpl->decodeProperties(array (
 )); /*/%%SmartyHeaderCode%%*/?>
 
 <script type="text/javascript">
+			var tx_titulo_display ='<?php echo $_smarty_tpl->getVariable('tx_titulo_display')->value;?>
+';
+			
 			function setBlankHash2() {
 			     	if (location.href.indexOf("#") > -1) {
 					    location.assign(location.href.replace(/\/?#/, "/"));
@@ -34,6 +37,16 @@ $_smarty_tpl->decodeProperties(array (
 				$('#titulo_archivo').html(titulo);
 
 			 	$('#modal-from-dom').modal({
+				   show : true,
+				   keyboard : true,
+				   backdrop : true
+				});
+			}
+			
+			function displaySettingsFolder(titulo, id){
+				$('#titulo_archivo').html(titulo);
+
+			 	$('#modal-folder-property_'+id).modal({
 				   show : true,
 				   keyboard : true,
 				   backdrop : true
@@ -226,7 +239,7 @@ tx_options_new_tabs<?php $_block_content = ob_get_clean(); $_block_repeat=false;
 			<li class="upload"><a href="#submit_file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_options_upload_fold<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </a></li>
-			<li class="settings separator"><a href="#submit_file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+			<li class="settings separator"><a href="#settings_folder"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_options_setting_fold<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </a></li>
 			<li class="delete"><a href="#submit_file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
@@ -246,7 +259,7 @@ tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=fal
 		</ul>
 	
 		<?php }?>
-		 <!-- The Modal Dialog  Para mostrar mensaje-->
+	<!-- The Modal Dialog  Para mostrar mensaje-->
 	  <div id="modal-from-dom" class="modal hide fade" style="width:500px;">
 	  	<form  method="post" id="form_crear_carpeta" name="form_crear_carpeta" class="form_mensaje">
 		    <div class="modal-header">
@@ -284,4 +297,6 @@ tx_button_accept<?php $_block_content = ob_get_clean(); $_block_repeat=false; ec
 	  		</div>
   		</form>
 	  </div>
+	  
+	
 </div>

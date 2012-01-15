@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-12 00:51:39
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-15 23:25:51
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3226471904f0e2e9b2089d8-73158916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:14279213044f13607fd97449-80778883%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1326312186,
+      1 => 1326629587,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3226471904f0e2e9b2089d8-73158916',
+  'nocache_hash' => '14279213044f13607fd97449-80778883',
   'function' => 
   array (
   ),
@@ -108,6 +108,9 @@ user/path/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 										            }
 										        });
 										
+									}else if (action == 'settings_folder'){
+										displaySettingsFolder(tx_titulo_display,<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+);
 									}else if (action == 'new_tab'){
 										window.open('<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 user/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
@@ -121,6 +124,45 @@ user/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 					</li>
 				</ul>
 			</div>
+			  <!-- The Modal Dialog Folder Property-->
+			  <div id="modal-folder-property_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+" class="modal hide fade" style="width:500px;">
+			  	<form  method="post" id="form_ver_carpeta_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+" name="form_ver_carpeta_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+" class="form_mensaje">
+				    <div class="modal-header">
+				    	<img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+imagenes/iconos/icon_folder.png"/>
+					    <span style="font-size:22px;color:#525252;font-weight: bold;" id="titulo_archivo"></span>
+					    <a href="#" class="close">&times;</a><br/>
+				    </div>
+				    <div class="modal-body">
+				    	<div id="mensaje" style="display:none">
+							<div id="error" class="alert-message">
+							    <p id="retorno_usuario"></p>
+						    </div>
+					 	</div>
+				    	<h4 style="color: #666666"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_form_name<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+:</h4>
+						<input type="text" class="span8 required" id="nombre" name="nombre" placeholder="<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_form_name_placeholder<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+">
+				      <p id="textoobj"></p>
+				    </div>
+				    <div class="modal-footer" style="text-align:right;">
+				    	<input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+"/> 
+				    	<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_button_cancel<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+" />
+						<input type="submit" id="baceptar" name="baceptar" value="<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_button_accept<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+" class="btn small bold azul"/>
+						
+			  		</div>
+		  		</form>
+			  </div>
 		</td>
 	</tr>
 	<?php }} ?>

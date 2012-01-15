@@ -51,6 +51,8 @@
 										            }
 										        });
 										
+									}else if (action == 'settings_folder'){
+										displaySettingsFolder(tx_titulo_display,{/literal}{$item.id_archivo}{literal});
 									}else if (action == 'new_tab'){
 										window.open('{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/files/{/literal}{$item.id_archivo}{literal}/{/literal}{$item.nombre}{literal}');
 									}
@@ -61,6 +63,32 @@
 					</li>
 				</ul>
 			</div>
+			  <!-- The Modal Dialog Folder Property-->
+			  <div id="modal-folder-property_{$item.id_archivo}" class="modal hide fade" style="width:500px;">
+			  	<form  method="post" id="form_ver_carpeta_{$item.id_archivo}" name="form_ver_carpeta_{$item.id_archivo}" class="form_mensaje">
+				    <div class="modal-header">
+				    	<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}imagenes/iconos/icon_folder.png"/>
+					    <span style="font-size:22px;color:#525252;font-weight: bold;" id="titulo_archivo"></span>
+					    <a href="#" class="close">&times;</a><br/>
+				    </div>
+				    <div class="modal-body">
+				    	<div id="mensaje" style="display:none">
+							<div id="error" class="alert-message">
+							    <p id="retorno_usuario"></p>
+						    </div>
+					 	</div>
+				    	<h4 style="color: #666666">{translate}tx_form_name{/translate}:</h4>
+						<input type="text" class="span8 required" id="nombre" name="nombre" placeholder="{translate}tx_form_name_placeholder{/translate}">
+				      <p id="textoobj"></p>
+				    </div>
+				    <div class="modal-footer" style="text-align:right;">
+				    	<input type="hidden" name="id_usuario" id="id_usuario" value="{$id_usuario}"/> 
+				    	<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="{translate}tx_button_cancel{/translate}" />
+						<input type="submit" id="baceptar" name="baceptar" value="{translate}tx_button_accept{/translate}" class="btn small bold azul"/>
+						
+			  		</div>
+		  		</form>
+			  </div>
 		</td>
 	</tr>
 	{/foreach}

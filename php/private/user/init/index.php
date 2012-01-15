@@ -53,6 +53,10 @@
 	// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.
 	$oSmarty->template_dir = $config_urls['APP_TEMPLATES_DIR']."private/user";
 
+	//Cargamos las variables de las etiquetas dinámicas de texto
+	$oSmarty->assign('tx_titulo_display',Localizer::getTranslate('tx_options_display_folder'));
+	$oSmarty->assign('tx_titulo_treeview',Localizer::getTranslate('tx_root_tree'));
+	
 	
 	//Asignamos las plantillas que vamos a utilizar
 	
