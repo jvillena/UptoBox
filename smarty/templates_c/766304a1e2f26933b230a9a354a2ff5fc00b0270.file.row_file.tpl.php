@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-15 23:25:51
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-15 23:36:24
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:14279213044f13607fd97449-80778883%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:12598998244f1362f81190d9-91759151%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1326629587,
+      1 => 1326670574,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '14279213044f13607fd97449-80778883',
+  'nocache_hash' => '12598998244f1362f81190d9-91759151',
   'function' => 
   array (
   ),
@@ -67,9 +67,13 @@ tx_update_name_file<?php $_block_content = ob_get_clean(); $_block_repeat=false;
  <?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_update_name_file2<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </span></span>
-		         <a class="azul" style=" clear:right;" href="#"> <?php if ($_smarty_tpl->tpl_vars['item']->value['id_usuario']!=$_smarty_tpl->getVariable('id_usuario')->value){?><?php echo $_smarty_tpl->tpl_vars['item']->value['nombre_usuario'];?>
+		         <?php if ($_smarty_tpl->tpl_vars['item']->value['id_usuario']!=$_smarty_tpl->getVariable('id_usuario')->value){?>
+		         	 <a class="azul" style=" clear:right;" href="#"><?php echo $_smarty_tpl->tpl_vars['item']->value['nombre_usuario'];?>
  <?php echo $_smarty_tpl->tpl_vars['item']->value['apellidos_usuario'];?>
-<?php }else{ ?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+</a>
+		        <?php }else{ ?>
+		         <a class="azul" style=" clear:right;" href="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+user/profile"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_options_you<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 <?php }?></a>
 				<ul class="options_list right">
@@ -80,7 +84,7 @@ tx_options_you<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo
 					 		$("#more_options_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 ").contextMenu({
 									menu: 'myMenu',
-									leftButton: true
+									leftButton: false
 								}, function(action, el, pos) {
 									
 									if (action == 'open'){
