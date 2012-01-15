@@ -1,4 +1,4 @@
-<div class="left-nav col two" style="margin-top:100px">
+<div class="left-nav col two" style="margin-top:110px">
 	<div class="equal-height">
 		<ul class="lat_menu_navigation">
 			<li class="perfil" style="border-top:0px;">

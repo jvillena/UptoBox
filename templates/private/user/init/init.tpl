@@ -162,7 +162,7 @@ $(document).ready(function() {
 </script>
 {/literal}
 
-<div id="div_inicio" style="margin-top:120px;width:98%;margin-bottom:50px;">
+<div id="div_inicio" style="margin-top:130px;width:98%;margin-bottom:50px;">
 	<div id="mensaje" style="display:none">
 		<div id="error" class="alert-message">
 		    <p id="retorno_usuario"></p>

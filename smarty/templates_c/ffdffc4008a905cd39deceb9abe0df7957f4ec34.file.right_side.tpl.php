@@ -1,23 +1,23 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-15 23:36:23
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-15 23:41:25
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/right_side.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:7513745254f1362f7a47e94-95063129%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:16844551604f1364250146a6-35732543%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ffdffc4008a905cd39deceb9abe0df7957f4ec34' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/right_side.tpl',
-      1 => 1326155436,
+      1 => 1326670789,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '7513745254f1362f7a47e94-95063129',
+  'nocache_hash' => '16844551604f1364250146a6-35732543',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
-<div class="left-nav col two" style="margin-top:100px">
+<div class="left-nav col two" style="margin-top:110px">
 	<div class="equal-height">
 		<ul class="lat_menu_navigation">
 			<li class="perfil" style="border-top:0px;">
