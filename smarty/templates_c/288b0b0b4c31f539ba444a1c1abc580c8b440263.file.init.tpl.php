@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-15 23:36:23
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-16 00:00:14
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:7156966564f1362f7e250b8-21809079%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:20234972264f13688e6b5da5-77427214%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1326629839,
+      1 => 1326670881,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '7156966564f1362f7e250b8-21809079',
+  'nocache_hash' => '20234972264f13688e6b5da5-77427214',
   'function' => 
   array (
   ),
@@ -185,7 +185,7 @@ user/files/create',
 </script>
 
 
-<div id="div_inicio" style="margin-top:120px;width:98%;margin-bottom:50px;">
+<div id="div_inicio" style="margin-top:130px;width:98%;margin-bottom:50px;">
 	<div id="mensaje" style="display:none">
 		<div id="error" class="alert-message">
 		    <p id="retorno_usuario"></p>
