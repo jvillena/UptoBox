@@ -2,6 +2,66 @@
 <script type="text/javascript">
 			var tx_titulo_display ='{/literal}{$tx_titulo_display}{literal}';
 			
+			   $(document).ready(function() {
+			   	
+			   		$(".edit_submit").submit(function(){
+			   			var form = $(this);
+						var id = form.attr("id");
+						
+						cambiarBotonEditar(id);
+						// Inicamos la petición.
+				        $.ajax({
+				            type: 'POST',
+				            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/files/edit',
+				            data: form.serialize(),
+				            // before: mostrarVentanaCargando(),
+				            // complete: ocultarVentanaCargando(), 
+				            success: function(data) {
+					        	var result = jQuery.parseJSON(data);
+					      	  	if (result[1]==1){
+						      	  	$('#retorno_usuario').html(result[0]);
+									$('#mensaje').css('display','block');
+									$('#error').addClass('error');
+									$('#error').removeClass('success');
+									$('#mensaje').delay(4000).fadeOut(400);
+									$("#nombre").val("");
+									$("#baceptar_"+id).removeClass("gris");
+									$("#baceptar_"+id).addClass("azul");
+									$("#baceptar_"+id).removeAttr("disabled");
+									$('#modal-folder-property_'+id).modal('hide');
+									$("#id_cargando").hide("slow");
+									$("#baceptar_"+id).attr("value","Aceptar");
+									$("#loading").toggle();
+									$('#loading').delay(2000).fadeOut(400);
+									
+					      	  }else if (result[1]==2){
+						      		$('#retorno_usuario').html(result[0]);
+									$('#mensaje').css('display','block');
+									$('#error').addClass('success');
+									$('#error').removeClass('error');
+									$('#mensaje').delay(4000).fadeOut(400);
+									$("#nombre").val("");
+									$("#baceptar_"+id).removeClass("gris");
+									$("#baceptar_"+id).addClass("azul");
+									$("#baceptar_"+id).removeAttr("disabled");
+									$("#id_cargando").hide("slow");
+									$('#modal-folder-property_'+id).modal('hide');
+									$("#baceptar_"+id).attr("value","Aceptar");
+									$("#loading").toggle();
+									$('#loading').delay(2000).fadeOut(400);
+									$('#row_file').html(result[2]);
+						      	  }
+			
+								
+				            }
+						
+							});
+						return false;
+							
+				     });
+			 });
+			
+			
 			function setBlankHash2() {
 			     	if (location.href.indexOf("#") > -1) {
 					    location.assign(location.href.replace(/\/?#/, "/"));
@@ -41,6 +101,16 @@
 				$("#id_cargando").toggle();
 				$("#loading").toggle();
 				$("#mensaje").css("display","none");
+			}
+			
+			function cambiarBotonEditar(id){
+				$("#baceptar_"+id).removeClass("azul");
+				$("#baceptar_"+id).addClass("gris");
+				$("#baceptar_"+id).attr("value","loading...");
+				$("#baceptar_"+id).attr('disabled', 'disabled');
+				$("#id_cargando").toggle();
+				$("#loading").toggle();
+				$("#mensaje_"+id).css("display","none");
 			}
 			
 			$(document).ready( function() {
@@ -157,6 +227,11 @@ $(document).ready(function() {
 	        });
         }
     });
+    
+    
+   
+    
+    
 });	
 
 </script>
@@ -225,11 +300,12 @@ $(document).ready(function() {
 				<input type="text" class="span8 required" id="nombre" name="nombre" placeholder="{translate}tx_form_name_placeholder{/translate}">
 		      <p id="textoobj"></p>
 		    </div>
-		    <div class="modal-footer" style="text-align:right;">
+		    <div class="modal-footer" style="text-align:center;">
 		    	<input type="hidden" name="id_padre" id="id_padre" value="{$id_padre}"/> 
 		    	<input type="hidden" name="id_usuario" id="id_usuario" value="{$id_usuario}"/> 
-		    	<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="{translate}tx_button_cancel{/translate}" />
+		    	
 				<input type="submit" id="baceptar" name="baceptar" value="{translate}tx_button_accept{/translate}" class="btn small bold azul"/>
+				<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;float:none" value="{translate}tx_button_cancel{/translate}" />
 				
 	  		</div>
   		</form>

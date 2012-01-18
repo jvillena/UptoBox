@@ -98,7 +98,7 @@
     <translation id="tx_options_new_tabs"><![CDATA[Open in a New Tab]]></translation>
     <translation id="tx_options_upload_fold"><![CDATA[Upload File in a folder]]></translation>
     <translation id="tx_options_you"><![CDATA[You]]></translation>
-    <translation id="tx_options_display_folder"><![CDATA[Folder Property]]></translation>
+    <translation id="tx_options_display_folder"><![CDATA[Folder Properties]]></translation>
     
     
      <!-- PÁGINA FORMULARIO -->
@@ -114,6 +114,12 @@
      <translation id="tx_form_name_company"><![CDATA[Company]]></translation>
      <translation id="tx_form_name_web"><![CDATA[Web]]></translation>
      <translation id="tx_form_name_optional"><![CDATA[(optional)]]></translation>
+     <translation id="tx_form_description"><![CDATA[Description]]></translation>
+     <translation id="tx_form_location"><![CDATA[Location]]></translation>
+     <translation id="tx_form_owner"><![CDATA[Owner]]></translation>
+     <translation id="tx_form_size"><![CDATA[Size]]></translation>
+     <translation id="tx_form_created"><![CDATA[Created]]></translation>
+     <translation id="tx_form_update"><![CDATA[Updated]]></translation>
      
      <translation id="tx_form_name_time_zone"><![CDATA[Time Zone]]></translation>
      <translation id="tx_form_name_language"><![CDATA[Language]]></translation>

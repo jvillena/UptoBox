@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-16 00:00:14
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-18 00:39:24
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:20234972264f13688e6b5da5-77427214%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18467896534f1614bc29bda8-18567525%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1326670881,
+      1 => 1326846997,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '20234972264f13688e6b5da5-77427214',
+  'nocache_hash' => '18467896534f1614bc29bda8-18567525',
   'function' => 
   array (
   ),
@@ -21,6 +21,67 @@ $_smarty_tpl->decodeProperties(array (
 <script type="text/javascript">
 			var tx_titulo_display ='<?php echo $_smarty_tpl->getVariable('tx_titulo_display')->value;?>
 ';
+			
+			   $(document).ready(function() {
+			   	
+			   		$(".edit_submit").submit(function(){
+			   			var form = $(this);
+						var id = form.attr("id");
+						
+						cambiarBotonEditar(id);
+						// Inicamos la petición.
+				        $.ajax({
+				            type: 'POST',
+				            url: '<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+user/files/edit',
+				            data: form.serialize(),
+				            // before: mostrarVentanaCargando(),
+				            // complete: ocultarVentanaCargando(), 
+				            success: function(data) {
+					        	var result = jQuery.parseJSON(data);
+					      	  	if (result[1]==1){
+						      	  	$('#retorno_usuario').html(result[0]);
+									$('#mensaje').css('display','block');
+									$('#error').addClass('error');
+									$('#error').removeClass('success');
+									$('#mensaje').delay(4000).fadeOut(400);
+									$("#nombre").val("");
+									$("#baceptar_"+id).removeClass("gris");
+									$("#baceptar_"+id).addClass("azul");
+									$("#baceptar_"+id).removeAttr("disabled");
+									$('#modal-folder-property_'+id).modal('hide');
+									$("#id_cargando").hide("slow");
+									$("#baceptar_"+id).attr("value","Aceptar");
+									$("#loading").toggle();
+									$('#loading').delay(2000).fadeOut(400);
+									
+					      	  }else if (result[1]==2){
+						      		$('#retorno_usuario').html(result[0]);
+									$('#mensaje').css('display','block');
+									$('#error').addClass('success');
+									$('#error').removeClass('error');
+									$('#mensaje').delay(4000).fadeOut(400);
+									$("#nombre").val("");
+									$("#baceptar_"+id).removeClass("gris");
+									$("#baceptar_"+id).addClass("azul");
+									$("#baceptar_"+id).removeAttr("disabled");
+									$("#id_cargando").hide("slow");
+									$('#modal-folder-property_'+id).modal('hide');
+									$("#baceptar_"+id).attr("value","Aceptar");
+									$("#loading").toggle();
+									$('#loading').delay(2000).fadeOut(400);
+									$('#row_file').html(result[2]);
+						      	  }
+			
+								
+				            }
+						
+							});
+						return false;
+							
+				     });
+			 });
+			
 			
 			function setBlankHash2() {
 			     	if (location.href.indexOf("#") > -1) {
@@ -61,6 +122,16 @@ $_smarty_tpl->decodeProperties(array (
 				$("#id_cargando").toggle();
 				$("#loading").toggle();
 				$("#mensaje").css("display","none");
+			}
+			
+			function cambiarBotonEditar(id){
+				$("#baceptar_"+id).removeClass("azul");
+				$("#baceptar_"+id).addClass("gris");
+				$("#baceptar_"+id).attr("value","loading...");
+				$("#baceptar_"+id).attr('disabled', 'disabled');
+				$("#id_cargando").toggle();
+				$("#loading").toggle();
+				$("#mensaje_"+id).css("display","none");
 			}
 			
 			$(document).ready( function() {
@@ -180,6 +251,11 @@ user/files/create',
 	        });
         }
     });
+    
+    
+   
+    
+    
 });	
 
 </script>
@@ -282,17 +358,18 @@ tx_form_name_placeholder<?php $_block_content = ob_get_clean(); $_block_repeat=f
 ">
 		      <p id="textoobj"></p>
 		    </div>
-		    <div class="modal-footer" style="text-align:right;">
+		    <div class="modal-footer" style="text-align:center;">
 		    	<input type="hidden" name="id_padre" id="id_padre" value="<?php echo $_smarty_tpl->getVariable('id_padre')->value;?>
 "/> 
 		    	<input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
 "/> 
-		    	<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;" value="<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_button_cancel<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-" />
+		    	
 				<input type="submit" id="baceptar" name="baceptar" value="<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_button_accept<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 " class="btn small bold azul"/>
+				<input type="button" href="#" class="btn small close bold azul" style="margin-top: 0px;opacity: 1;float:none" value="<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_button_cancel<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+" />
 				
 	  		</div>
   		</form>

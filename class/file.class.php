@@ -59,6 +59,29 @@ class FileClass {
 			return $result[0];
 		}
 		
+		//Nombre de la carpeta o fichero
+		public function getNameFolder($id_archivo, $tipo){
+			$result = "";
+			$consulta_sql = "SELECT nombre FROM ".$this->sTablaArchivo." WHERE ";
+			$consulta_sql .= " id_archivo = ".$id_archivo." AND tipo = ".$tipo;
+			$rs = $this->oBD->Execute($consulta_sql);
+			if ($rs->RecordCount()>0){
+				$result = $rs->GetRows();
+			}
+			return $result[0][0];
+		}
+		
+		public function getParentNameFolder($id_parent){
+			$result = "";
+			$consulta_sql = "SELECT nombre FROM ".$this->sTablaArchivo." WHERE ";
+			$consulta_sql .= " tipo=0 AND id_archivo = ( SELECT id_archivo_padre FROM ".$this->sTablaArchivo." WHERE id_archivo =".$id_parent." )  ";
+			$rs = $this->oBD->Execute($consulta_sql);
+			if ($rs->RecordCount()>0){
+				$result = $rs->GetRows();
+			}
+			return $result[0];
+		}
+		
 		// Función que nos devuelve las 5 últimas actualizaciones de carpetas y ficheros
 		public function getRecentUpdates($id_usuario){
 			$result = "";
@@ -85,6 +108,28 @@ class FileClass {
 					$result = $aResultado[0]['actual_size'];
 				}
 			
+			return $result;
+		}
+		
+		public function editFolderTree($id_usuario,$datos){
+			$result = 0;
+				//Primero comprobamos que no existe una carpeta con el mismo nombre en el raiz
+				$consulta_sql = "SELECT a.nombre FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=0 AND a.id_archivo_padre='".$datos['id_padre']."' AND a.nombre = '".$datos['nombre']."' AND a.id_archivo = ua.id_archivo AND ua.id_archivo =".$datos['id_archivo'].";";
+				$rs = $this->oBD->Execute($consulta_sql);
+				$aResultado = $rs->GetRows();
+				$rs->Close();
+				if ($rs->RecordCount() == 0){
+					
+					$consulta_sql = "UPDATE ".$this->sTablaArchivo." as a INNER JOIN (".$this->sTablaUsuarioArchivo." as ua INNER JOIN ".$this->sTablaUsuario." as u ON ua.id_usuario = u.id_usuario AND u.id_usuario = ".$id_usuario.") ON  a.id_archivo = ua.id_archivo SET a.nombre='".$datos['nombre']."', a.descripcion='".$datos['descripcion']."' WHERE a.id_archivo = '".$datos[id_archivo]."' ;";
+					$rs = $this->oBD->Execute($consulta_sql);
+					$rs->Close();
+					//if ($this->oBD->Affected_Rows() > 0){
+					//	die("entra");
+					$result = 1;
+				//}
+				}
+					
+			//die("no entraa");
 			return $result;
 		}
 		

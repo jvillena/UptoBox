@@ -35,17 +35,33 @@
 	$oSmarty->assign('menu_principal','files');
 	$oSmarty->assign('contenido_central','inicio');
 	
+	//Nombre de la carpeta padre por defecto la carpeta raiz
+	$name_parent_folder = Localizer::getTranslate('tx_sub_file');
+	
 	//Comprobamos el directorio en el que estamos sino nos metemos en el directorio root
 	if (isset($_GET['id_root']) && $_GET['id_root']!=0){
 		$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario'], $_GET['id_root']);
 		$oSmarty->assign('aFile',$aFile);	
 		$oSmarty->assign('id_padre',$_GET['id_root']);
+		
+		//Return name of parent folder
+		$name_parent_folder = $oFile->getParentNameFolder($id_padre);
+		if ($name_parent_folder==""){
+			$name_parent_folder = Localizer::getTranslate('tx_sub_file');
+		}
+		
 	}else{
 		//Nos traemos los ficheros y carpetas del directorio root
 		$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario'], 0);
 		$oSmarty->assign('aFile',$aFile);	
 		$oSmarty->assign('id_padre',0);
+		
+		$name_parent_folder = Localizer::getTranslate('tx_sub_file');
 	}
+	
+	//Asignamos el nombre de la carpeta padre
+	$oSmarty->assign('name_parent_folder',$name_parent_folder);
+	
 	//Ultimas actualizaciones de ficheros y carpetas
 	$aRecentFile = $oFile->getRecentUpdates($datos_usuario['id_usuario']);
 	$oSmarty->assign('aRecentFile',$aRecentFile);	

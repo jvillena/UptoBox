@@ -541,6 +541,9 @@ blockquote small {
 blockquote small:before {
   content: '\2014 \00A0';
 }
+.font-weight-normal{
+	font-weight: normal;
+}
 address {
   display: block;
   line-height: 18px;
@@ -599,7 +602,7 @@ fieldset legend {
 
 }
 form .clearfix {
-  margin-bottom: 18px;
+  margin-bottom: 2px;
   zoom: 1;
 }
 form .clearfix:before, form .clearfix:after {
@@ -2397,7 +2400,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   clear: both;
 }
 .modal-footer .btn {
-  float: right;
+  
   margin-left: 5px;
 }
 .modal .popover, .modal .twipsy {

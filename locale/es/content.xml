@@ -111,6 +111,12 @@
      <translation id="tx_form_name_optional"><![CDATA[(opcional)]]></translation>
      <translation id="tx_form_name_time_zone"><![CDATA[Zona horaria]]></translation>
      <translation id="tx_form_name_language"><![CDATA[Selecciona el Idioma]]></translation>
+     <translation id="tx_form_description"><![CDATA[Descripción]]></translation>
+     <translation id="tx_form_location"><![CDATA[Ubicación]]></translation>
+     <translation id="tx_form_owner"><![CDATA[Propietario]]></translation>
+     <translation id="tx_form_size"><![CDATA[Tamaño]]></translation>
+     <translation id="tx_form_created"><![CDATA[Creado]]></translation>
+     <translation id="tx_form_update"><![CDATA[Actualizado]]></translation>
      
     <translation id="tx_button_edit"><![CDATA[Modificar]]></translation>
     <translation id="tx_button_upload_picture"><![CDATA[Subir Foto]]></translation>

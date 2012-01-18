@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-16 00:00:14
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-18 00:39:24
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:14167885374f13688ebb7e83-92157604%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10743395224f1614bc993823-91522905%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '70593f5bc19e23b37830e907172f37872b75e708' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl',
-      1 => 1326669924,
+      1 => 1326752673,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '14167885374f13688ebb7e83-92157604',
+  'nocache_hash' => '10743395224f1614bc993823-91522905',
   'function' => 
   array (
   ),
@@ -192,6 +192,7 @@ user/files/treeview/"+node.data.key,
 														$('#tree_collapse').css('display','none');
 														$('#sub_root_tree').html(result[2]);
 														$('#sub_root_tree').css('display','block');
+														$('#title_root').html(result[3]);
 														$("#tree").hide();
 													
 									            }

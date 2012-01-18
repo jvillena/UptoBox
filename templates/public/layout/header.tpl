@@ -168,6 +168,7 @@
 														$('#tree_collapse').css('display','none');
 														$('#sub_root_tree').html(result[2]);
 														$('#sub_root_tree').css('display','block');
+														$('#title_root').html(result[3]);
 														$("#tree").hide();
 													
 									            }
