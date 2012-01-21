@@ -79,7 +79,7 @@
 									$("#loading").toggle();
 									$('#loading').delay(2000).fadeOut(400);
 									$('#row_file').html(result[0]);
-									$('#id_padre').val(result[1]);
+									//$('#id_padre').val(result[1]);
 									$('#title_root').html(node.data.title);	
 									$('#tree_collapse').css('display','none');
 									$('#sub_root_tree').html(result[2]);

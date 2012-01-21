@@ -111,25 +111,42 @@ class FileClass {
 			return $result;
 		}
 		
-		public function editFolderTree($id_usuario,$datos){
+		public function editFolderTree($id_usuario,$id_archivo, $datos){
 			$result = 0;
-				//Primero comprobamos que no existe una carpeta con el mismo nombre en el raiz
-				$consulta_sql = "SELECT a.nombre FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=0 AND a.id_archivo_padre='".$datos['id_padre']."' AND a.nombre = '".$datos['nombre']."' AND a.id_archivo = ua.id_archivo AND ua.id_archivo =".$datos['id_archivo'].";";
+			$nombre = $datos["nombre_".$id_archivo];
+			$descripcion = $datos["descripcion_".$id_archivo];
+				// 1. Recupero el nombre de la carpeta 
+				// 2. Comprobamos que no el nombre de la carpeta es distinto del nombre de cualquier carpeta del mismo nivel
+				// 3. Si existe en el mismo nivel una carpeta con el mismo nombre actualizo sólo la descripción 
+				$consulta_sql = "SELECT a.id_archivo, a.nombre, a.descripcion FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=0 AND a.id_archivo_padre='".$datos['id_padre']."' AND a.nombre = '".$nombre."' AND a.id_archivo = ua.id_archivo AND ua.propietario=1 AND ua.id_usuario =".$datos['id_usuario'].";";
+				
 				$rs = $this->oBD->Execute($consulta_sql);
 				$aResultado = $rs->GetRows();
 				$rs->Close();
 				if ($rs->RecordCount() == 0){
 					
-					$consulta_sql = "UPDATE ".$this->sTablaArchivo." as a INNER JOIN (".$this->sTablaUsuarioArchivo." as ua INNER JOIN ".$this->sTablaUsuario." as u ON ua.id_usuario = u.id_usuario AND u.id_usuario = ".$id_usuario.") ON  a.id_archivo = ua.id_archivo SET a.nombre='".$datos['nombre']."', a.descripcion='".$datos['descripcion']."' WHERE a.id_archivo = '".$datos[id_archivo]."' ;";
-					$rs = $this->oBD->Execute($consulta_sql);
-					$rs->Close();
-					//if ($this->oBD->Affected_Rows() > 0){
-					//	die("entra");
-					$result = 1;
-				//}
+					$consulta_sql = "UPDATE ".$this->sTablaArchivo." as a INNER JOIN (".$this->sTablaUsuarioArchivo." as ua INNER JOIN ".$this->sTablaUsuario." as u ON ua.id_usuario = u.id_usuario AND u.id_usuario = ".$id_usuario.") ON  a.id_archivo = ua.id_archivo SET a.nombre='".$nombre."', a.descripcion='".$descripcion."' WHERE a.id_archivo = '".$datos['id_archivo']."' ;";
+					if  ($this->oBD->Execute($consulta_sql)){
+						$result = 1;						
+					}
+				}else{
+ 					// Caso: Yo tengo una carpeta en ese directorio con ese nombre. 
+ 					// 1. Compruebo si su id es el mismo actualizo descripción.
+ 					// 2. en otro caso: devolvemos 0 com error. No pueden haber dos carpetas en el mismo nivel con el mismo nombre.
+					 		$id_archivo = $aResultado[0]['id_archivo'];
+					 		if ($id_archivo == $datos['id_archivo']){
+					 			$consulta_sql = "UPDATE ".$this->sTablaArchivo." as a INNER JOIN (".$this->sTablaUsuarioArchivo." as ua INNER JOIN ".$this->sTablaUsuario." as u ON ua.id_usuario = u.id_usuario AND u.id_usuario = ".$id_usuario.") ON  a.id_archivo = ua.id_archivo SET a.nombre='".$nombre."', a.descripcion='".$descripcion."' WHERE a.id_archivo = '".$datos['id_archivo']."' ;";
+								if  ($this->oBD->Execute($consulta_sql)){
+									$result = 1;	
+								}else{
+									$result = 0;
+								}
+					 		}else{
+					 				$result = 0;
+					 		}							
 				}
+				
 					
-			//die("no entraa");
 			return $result;
 		}
 		

@@ -2,65 +2,6 @@
 <script type="text/javascript">
 			var tx_titulo_display ='{/literal}{$tx_titulo_display}{literal}';
 			
-			   $(document).ready(function() {
-			   	
-			   		$(".edit_submit").submit(function(){
-			   			var form = $(this);
-						var id = form.attr("id");
-						
-						cambiarBotonEditar(id);
-						// Inicamos la petición.
-				        $.ajax({
-				            type: 'POST',
-				            url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/files/edit',
-				            data: form.serialize(),
-				            // before: mostrarVentanaCargando(),
-				            // complete: ocultarVentanaCargando(), 
-				            success: function(data) {
-					        	var result = jQuery.parseJSON(data);
-					      	  	if (result[1]==1){
-						      	  	$('#retorno_usuario').html(result[0]);
-									$('#mensaje').css('display','block');
-									$('#error').addClass('error');
-									$('#error').removeClass('success');
-									$('#mensaje').delay(4000).fadeOut(400);
-									$("#nombre").val("");
-									$("#baceptar_"+id).removeClass("gris");
-									$("#baceptar_"+id).addClass("azul");
-									$("#baceptar_"+id).removeAttr("disabled");
-									$('#modal-folder-property_'+id).modal('hide');
-									$("#id_cargando").hide("slow");
-									$("#baceptar_"+id).attr("value","Aceptar");
-									$("#loading").toggle();
-									$('#loading').delay(2000).fadeOut(400);
-									
-					      	  }else if (result[1]==2){
-						      		$('#retorno_usuario').html(result[0]);
-									$('#mensaje').css('display','block');
-									$('#error').addClass('success');
-									$('#error').removeClass('error');
-									$('#mensaje').delay(4000).fadeOut(400);
-									$("#nombre").val("");
-									$("#baceptar_"+id).removeClass("gris");
-									$("#baceptar_"+id).addClass("azul");
-									$("#baceptar_"+id).removeAttr("disabled");
-									$("#id_cargando").hide("slow");
-									$('#modal-folder-property_'+id).modal('hide');
-									$("#baceptar_"+id).attr("value","Aceptar");
-									$("#loading").toggle();
-									$('#loading').delay(2000).fadeOut(400);
-									$('#row_file').html(result[2]);
-						      	  }
-			
-								
-				            }
-						
-							});
-						return false;
-							
-				     });
-			 });
-			
 			
 			function setBlankHash2() {
 			     	if (location.href.indexOf("#") > -1) {
@@ -82,15 +23,16 @@
 				   backdrop : true
 				});
 			}
-			
-			function displaySettingsFolder(titulo, id){
-				$('#titulo_archivo').html(titulo);
-
-			 	$('#modal-folder-property_'+id).modal({
-				   show : true,
-				   keyboard : true,
-				   backdrop : true
+			function displaySettingsFolder(titulo, id, nombre, descripcion){
+			 	$('#modal_edit_'+id).modal({
+				   show: true, 
+				   backdrop : true, 
+				   keyboard: true
 				});
+				
+				$('#titulo_archivo_'+id).html(titulo);
+				$('#nombre_'+id).val(nombre);
+				$('#descripcion_'+id).html(descripcion);
 			}
 			
 			function cambiarBotonCrear(){
@@ -104,13 +46,13 @@
 			}
 			
 			function cambiarBotonEditar(id){
-				$("#baceptar_"+id).removeClass("azul");
-				$("#baceptar_"+id).addClass("gris");
-				$("#baceptar_"+id).attr("value","loading...");
-				$("#baceptar_"+id).attr('disabled', 'disabled');
+				$("#bedit_"+id).removeClass("azul");
+				$("#bedit_"+id).addClass("gris");
+				$("#bedit_"+id).attr("value","loading...");
+				$("#bedit_"+id).attr('disabled', 'disabled');
 				$("#id_cargando").toggle();
 				$("#loading").toggle();
-				$("#mensaje_"+id).css("display","none");
+				$("#mensaje").css("display","none");
 			}
 			
 			$(document).ready( function() {
@@ -229,10 +171,70 @@ $(document).ready(function() {
     });
     
     
-   
+	
+
+    
+   			   	
+
     
     
 });	
+
+$(document).ready(function() {
+	$(".edit_folder").click(function() {
+		var id = $(this).attr("id");
+		var ids = id.split("_");
+		cambiarBotonEditar(ids[1]);
+		$.ajax({
+		   type: "POST",
+		    url: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/files/edit',
+		    data: $('#form_edit_fold_'+ids[1]).serialize(),
+		   cache: false,
+		    success: function(data) {
+	        	var result = jQuery.parseJSON(data);
+	      	  	if (result[1]==1){
+		      	  	$('#retorno_usuario').html(result[0]);
+					$('#mensaje').css('display','block');
+					$('#error').addClass('error');
+					$('#error').removeClass('success');
+					$('#nombre_'+ids[1]).val('');
+					$('#mensaje').delay(4000).fadeOut(400);
+					$("#bedit_"+result[3]).removeClass("gris");
+					$("#bedit_"+result[3]).addClass("azul");
+					$("#bedit_"+result[3]).removeAttr("disabled");
+					$('#modal_edit_'+result[3]).modal('hide');
+					$("#id_cargando").hide("slow");
+					$("#bedit_"+result[3]).attr("value","Aceptar");
+					$("#loading").toggle();
+					$('#loading').delay(2000).fadeOut(400);
+					$('#row_file').html(result[2]);
+					
+	      	  }else if (result[1]==2){
+		      		$('#retorno_usuario').html(result[0]);
+					$('#mensaje').css('display','block');
+					$('#error').addClass('success');
+					$('#error').removeClass('error');
+					$('#nombre_'+ids[1]).val('');
+					$('#mensaje').delay(4000).fadeOut(400);
+					$("#bedit_"+result[3]).removeClass("gris");
+					$("#bedit_"+result[3]).addClass("azul");
+					$("#bedit_"+result[3]).removeAttr("disabled");
+					$("#id_cargando").hide("slow");
+					$('#modal_edit_'+result[3]).modal('hide');
+					$("#bedit_"+result[3]).attr("value","Aceptar");
+					$("#loading").toggle();
+					$('#loading').delay(2000).fadeOut(400);
+					$('#row_file').html(result[2]);
+		      	  }
+
+				
+            }
+		
+		 });
+		
+		return false;
+	});
+});
 
 </script>
 {/literal}
@@ -262,12 +264,100 @@ $(document).ready(function() {
 		
 		<div id="myList">
 			<table class="zebra-striped">
-			<tbody id="row_file">			
-					{include file='files/row_file.tpl'}
-			</tbody>
+				<tbody id="row_file">	
+						{include file='files/row_file.tpl'}
+				</tbody>
 			</table>
 		</div>
-		
+		 {foreach name="files_tree" from=$aFile item=item key=key}
+		 		 <div id="modal_edit_{$item.id_archivo}" name="modal_edit_{$item.id_archivo}" class="modal hide fade" style="width:500px;">
+						  	<form  method="post"  name="form_edit_fold_{$item.id_archivo}" id="form_edit_fold_{$item.id_archivo}" action="" class="form_edit_fold">
+							    <div class="modal-header">
+							    	<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_folder.png"/>
+								    <span style="font-size:22px;color:#525252;font-weight: bold;" id="titulo_archivo_{$item.id_archivo}"></span>
+								    <a href="#" class="close">&times;</a><br/>
+							    </div>
+							    <div class="modal-body">
+								 	<fieldset>
+								 	<div class="clearfix">
+							 			<label for="tx_form_name">{translate}tx_form_name{/translate}:</label>
+							    		<div class="input">
+							    			<div class="inline-inputs">
+												<input type="text" class="span6 required" style="padding-left:4px;" id="nombre_{$item.id_archivo}" name="nombre_{$item.id_archivo}" placeholder="{translate}tx_form_name_placeholder{/translate}" value="{if isset($item.nombre)}{$item.nombre}{/if}"/>
+							      				<p id="textoobj"></p>
+							      			</div>
+							      		</div>
+							      	</div>
+							      	<div class="clearfix">
+							      			<label for="tx_form_description">{translate}tx_form_description{/translate}: {translate}tx_form_name_optional{/translate}</label>
+							    			<div class="input">
+							    				<div class="inline-inputs">
+													<textarea  rows="3" class="span6 required" id="descripcion_{$item.id_archivo}" name="descripcion_{$item.id_archivo}" style="width: 331px; height: 88px;padding-left:4px">{if isset($item.descripcion)}{$item.descripcion}{/if}</textarea>
+							      					<p id="textoobj"></p>
+							      				</div>
+							      			</div>
+							      	</div>
+							      	<div class="clearfix">
+							      			<label for="tx_form_location">{translate}tx_form_location{/translate}:</label>
+							    			<div class="input">
+							    				<div class="inline-inputs">
+													<label for="form_location" class="span6 font-weight-normal">{if isset($name_parent_folder)}{$name_parent_folder}{/if}</label>
+							      					<p id="textoobj"></p>
+							      				</div>
+							      			</div>
+							      	</div>
+							      	<div class="clearfix">
+							      			<label for="tx_form_owner">{translate}tx_form_owner{/translate}:</label>
+							    			<div class="input">
+							    				<div class="inline-inputs">
+													<label for="form_owner" class="span6 font-weight-normal">{if isset($item.nombre_usuario)}{$item.nombre_usuario}{/if} {if isset($item.apellidos_usuario)}{$item.apellidos_usuario}{/if}</label>
+							      					<p id="textoobj"></p>
+							      				</div>
+							      			</div>
+							      	</div>
+							      	<div class="clearfix">
+							      			<label for="tx_form_size">{translate}tx_form_size{/translate}:</label>
+							    			<div class="input">
+							    				<div class="inline-inputs">
+													<label for="form_size" class="span6 font-weight-normal">{if isset($item.max_size)}{Settings::getByteSize($item.max_size)}{/if}</label>
+							      					<p id="textoobj"></p>
+							      				</div>
+							      			</div>
+							      	</div>
+							      	<div class="clearfix">
+							      			<label for="tx_form_created">{translate}tx_form_created{/translate}:</label>
+							    			<div class="input">
+							    				<div class="inline-inputs">
+													<label for="form_created" class="span6 font-weight-normal">{if isset($item.fecha)}{$item.fecha|date_format}{/if}</label>
+							      					<p id="textoobj"></p>
+							      				</div>
+							      			</div>
+							      	</div>
+							      	<div class="clearfix">
+							      			<label for="tx_form_update">{translate}tx_form_update{/translate}:</label>
+							    			<div class="input">
+							    				<div class="inline-inputs">
+													<label for="form_update" class="span6 font-weight-normal">{if isset($item.fecha_update)}{$item.fecha_update|date_format}{/if}</label>
+							      					<p id="textoobj"></p>
+							      				</div>
+							      			</div>
+							      	</div>
+							      </fieldset>
+							    </div>
+							    <div class="modal-footer" style="text-align:center;">
+							    	<input type="hidden" name="id_usuario" id="id_usuario" value="{$id_usuario}"/> 
+							    	<input type="hidden" name="id_archivo" id="id_archivo" value="{$item.id_archivo}"/> 
+							    	<input type="hidden" name="id_padre" id="id_padre" value="{$item.id_archivo_padre}"/> 
+									<a id="bedit_{$item.id_archivo}"  href="#" class="btn small bold azul edit_folder">{translate}tx_button_accept{/translate}</a>
+									<input type="button" href="#"  class="btn small close bold azul" style="margin-top: 0px;opacity: 1;float:none;" value="{translate}tx_button_cancel{/translate}" />
+									
+						  		</div>
+					  		</form>
+						  </div>
+		 {/foreach}
+		 
+		 
+		 
 		<ul id="myMenu" class="contextMenu">
 			<li class="new"><a href="#open">{translate}tx_options_open{/translate}</a></li>
 			<li class="open separator"><a href="#new_tab">{translate}tx_options_new_tabs{/translate}</a></li>
