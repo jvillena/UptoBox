@@ -447,6 +447,7 @@ class UserClass {
 					$_SESSION['datos_usuario']['id_idioma'] = $id_idioma;
 					$_SESSION['datos_usuario']['codigo_idioma'] = $codigo_idioma;
 					$_SESSION['datos_usuario']['id_zone'] = $id_zone;
+					$_SESSION['datos_usuario']['id_root'] = 0;
 					
 					$resultado=1;
 					

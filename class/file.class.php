@@ -150,12 +150,12 @@ class FileClass {
 			return $result;
 		}
 		
-		public function setFolderTree($id_usuario,$datos){
+		public function setFolderTree($id_usuario,$id_padre,$datos){
 				global $config_urls;
 				
 				$result = false;
 				//Primero comprobamos que no existe una carpeta con el mismo nombre en el raiz
-				$consulta_sql = "SELECT a.nombre FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=0 AND a.id_archivo_padre='".$datos['id_padre']."' AND a.nombre = '".$datos['nombre']."' AND a.id_archivo = ua.id_archivo AND ua.id_archivo =".$datos['id_usuario'].";";
+				$consulta_sql = "SELECT a.nombre FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=0 AND a.id_archivo_padre='".$id_padre."' AND a.nombre = '".$datos['nombre']."' AND a.id_archivo = ua.id_archivo AND ua.id_archivo =".$datos['id_usuario'].";";
 				$rs = $this->oBD->Execute($consulta_sql);
 				$aResultado = $rs->GetRows();
 				$rs->Close();
@@ -165,7 +165,7 @@ class FileClass {
 						$fecha = Combos::getDateTimeZone($name_zone);
 						// Insertamos la información en la base de datos.
 						$consulta_sql = "INSERT INTO ".$this->sTablaArchivo." (tipo,fecha, nombre, id_archivo_padre, privacidad, fecha_update) ";
-						$consulta_sql .= " VALUES(0,'$fecha','".$datos['nombre']."', '".$datos['id_padre']."', 1 , '$fecha')";
+						$consulta_sql .= " VALUES(0,'$fecha','".$datos['nombre']."', '".$id_padre."', 1 , '$fecha')";
 						
 						if (!$this->oBD->Execute($consulta_sql)){
 							$result = false;

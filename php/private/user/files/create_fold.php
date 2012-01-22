@@ -9,15 +9,14 @@
 	require($config_urls['BASE_PATH'].'/class/file.class.php');	
 	require($config_urls['BASE_PATH'].'/php/private/user/security.php');	
 	$datos_usuario=$oSesion->getSesion('datos_usuario');
-	
 	$resultado=array();
-	if($id_file = $oFile->setFolderTree($datos_usuario['id_usuario'], $_POST)){
+	if($id_file = $oFile->setFolderTree($datos_usuario['id_usuario'], $datos_usuario['id_root'] ,$_POST)){
 			$resultado[0]="Yuhuu! Se ha creado correctamente";
 		 	$resultado[1]=2;
 			
 			//Cargamos los ficheros y resultados de carpetas del directorio
 			//Nos traemos los ficheros y carpetas del directorio root
-			$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario'], $_POST['id_padre']);
+			$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario'], $datos_usuario['id_root']);
 			$oSmarty->assign('aFile',$aFile);
 			$oSmarty->assign('id_usuario',$datos_usuario['id_usuario']);
 			// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.

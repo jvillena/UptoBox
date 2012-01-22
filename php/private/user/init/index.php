@@ -47,7 +47,7 @@
 		$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario'], $_GET['id_root']);
 		$oSmarty->assign('aFile',$aFile);	
 		$oSmarty->assign('id_padre',$_GET['id_root']);
-		
+		$oSesion->setSesion('id_root', $_GET['id_root']);
 		//Return name of parent folder
 		$name_parent_folder = $oFile->getParentNameFolder( $_GET['id_root']);
 		if ($name_parent_folder==""){
@@ -59,7 +59,7 @@
 		$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario'], 0);
 		$oSmarty->assign('aFile',$aFile);	
 		$oSmarty->assign('id_padre',0);
-		
+		$oSesion->setSesion('id_root',0);
 		$name_parent_folder = Localizer::getTranslate('tx_sub_file');
 	}
 	
