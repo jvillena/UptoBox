@@ -5,15 +5,18 @@
 			
 			function setBlankHash2() {
 			     	if (location.href.indexOf("#") > -1) {
+			     		location.hash ='' + location.hash ;
 					    location.assign(location.href.replace(/\/?#/, "/"));
 					}
 
 			}
 			function cambiarUrl(url){
-				parent.location.hash = url;
+				location.hash = url;
+				//parent.location.hash =   url_parent+url;
 			}
 			
-			
+	
+
 			function createFolder(titulo){
 				$('#titulo_archivo').html(titulo);
 

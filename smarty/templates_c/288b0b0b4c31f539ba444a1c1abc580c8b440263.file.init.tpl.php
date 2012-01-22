@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-21 20:37:17
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-22 20:54:00
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3175734914f1b21fdd281b2-04858860%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:15789268764f1c7768c57cb1-71885578%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1327177824,
+      1 => 1327186947,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3175734914f1b21fdd281b2-04858860',
+  'nocache_hash' => '15789268764f1c7768c57cb1-71885578',
   'function' => 
   array (
   ),
@@ -26,15 +26,18 @@ $_smarty_tpl->decodeProperties(array (
 			
 			function setBlankHash2() {
 			     	if (location.href.indexOf("#") > -1) {
+			     		location.hash ='' + location.hash ;
 					    location.assign(location.href.replace(/\/?#/, "/"));
 					}
 
 			}
 			function cambiarUrl(url){
-				parent.location.hash = url;
+				location.hash = url;
+				//parent.location.hash =   url_parent+url;
 			}
 			
-			
+	
+
 			function createFolder(titulo){
 				$('#titulo_archivo').html(titulo);
 

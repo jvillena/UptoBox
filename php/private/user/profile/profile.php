@@ -55,6 +55,6 @@
 	$oSmarty->assign('CONTENIDO_CENTRAL',$oSmarty->fetch('center_content.tpl'));
 	
 	
-	require($config_urls['BASE_PATH'].'php/public/load_layout.php')
+	require($config_urls['BASE_PATH'].'php/private/load_layout.php')
 
 ?>

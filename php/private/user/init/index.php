@@ -37,15 +37,19 @@
 	
 	//Nombre de la carpeta padre por defecto la carpeta raiz
 	$name_parent_folder = Localizer::getTranslate('tx_sub_file');
-	
 	//Comprobamos el directorio en el que estamos sino nos metemos en el directorio root
+	$aRoot = explode("/",$_GET['id_root']);
+	if (count($aRoot)>0)
+		$_GET['id_root'] = $aRoot[count($aRoot)-1];
+	
 	if (isset($_GET['id_root']) && $_GET['id_root']!=0){
+		
 		$aFile = $oFile->getDocumentosPadreArbol($datos_usuario['id_usuario'], $_GET['id_root']);
 		$oSmarty->assign('aFile',$aFile);	
 		$oSmarty->assign('id_padre',$_GET['id_root']);
 		
 		//Return name of parent folder
-		$name_parent_folder = $oFile->getParentNameFolder($id_padre);
+		$name_parent_folder = $oFile->getParentNameFolder( $_GET['id_root']);
 		if ($name_parent_folder==""){
 			$name_parent_folder = Localizer::getTranslate('tx_sub_file');
 		}
@@ -80,6 +84,6 @@
 	$oSmarty->assign('CONTENIDO_CENTRAL',$oSmarty->fetch('center_content.tpl'));
 	
 	
-	require($config_urls['BASE_PATH'].'/php/public/load_layout.php')
+	require($config_urls['BASE_PATH'].'/php/private/load_layout.php')
 
 ?>

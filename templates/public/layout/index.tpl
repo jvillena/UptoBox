@@ -7,7 +7,7 @@
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />         
 		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}css/login.css' />
 		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}css/bootstrap.css' />
-		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}css/base.css' />
+		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}css/public.css' />
 		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/jquery_ui/css/ui-lightness/jquery-ui-1.8.12.custom.css' />
 		<link rel='stylesheet' type='text/css' href='{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/contextmenu/jquery.contextMenu.css' />
 		<title>{$metatitle}</title>
@@ -31,12 +31,6 @@
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-twipsy.js" type="text/javascript"></script>
 		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
-		<!-- Javascripts necesarios para usar el context Menu. -->
-		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
-		
-		<!-- Javascripts necesarios para treeview. -->
-		<link href="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/dynatree/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
-		<script src="{$RUTA_WEB_ABSOLUTA}libs/javascript/jquery/dynatree/jquery.dynatree.js" type="text/javascript"></script>
 		
 		<!-- Añade esta etiqueta en la cabecera o delante de la etiqueta body. -->
 		<script type="text/javascript" src="https://apis.google.com/js/plusone.js">

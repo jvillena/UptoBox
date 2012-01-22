@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-21 20:37:18
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-22 20:54:40
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:19950514624f1b21fe524217-39846952%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:5636548894f1c779090ff91-06183493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '70593f5bc19e23b37830e907172f37872b75e708' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/header.tpl',
-      1 => 1326933755,
+      1 => 1327264213,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19950514624f1b21fe524217-39846952',
+  'nocache_hash' => '5636548894f1c779090ff91-06183493',
   'function' => 
   array (
   ),
@@ -64,146 +64,6 @@ user/tabs/'+ruta,
 		});
 	});
 </script>
-
-<script type="text/javascript">
-	
-  $(document).ready(function() {
-	 
-    // --- Initialize sample trees
-    $("#tree").dynatree({
-      title: "<?php echo $_smarty_tpl->getVariable('tx_titulo_treeview')->value;?>
-",
-      fx: { height: "toggle", duration: 200 },
-      minExpandLevel: 1,
-      autoFocus: false, // Set focus to first child, when expanding or lazy-loading.
-      // In real life we would call a URL on the server like this:
-//          initAjax: {
-//              url: "/getTopLevelNodesAsJson",
-//              data: { mode: "funnyMode" }
-//              },
-      // .. but here we use a local file instead:
-      initAjax: {
-        url: "<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-user/files/treeview/0"
-        },
-	  
-      onActivate: function(node) {
-       				 cambiarUrl('/'+node.data.key+'/'+node.data.title);
-											
-					 $.ajax({
-				            type: 'POST',
-				            url: '<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-user/path/'+node.data.key+'/'+node.data.title,
-				            data: '',
-				            // before: mostrarVentanaCargando(),
-				            // complete: ocultarVentanaCargando(), 
-				            success: function(data) {
-					        	var result = jQuery.parseJSON(data);
-									$("#loading").toggle();
-									$('#loading').delay(2000).fadeOut(400);
-									$('#row_file').html(result[0]);
-									//$('#id_padre').val(result[1]);
-									$('#title_root').html(node.data.title);	
-									$('#tree_collapse').css('display','none');
-									$('#sub_root_tree').html(result[2]);
-									$('#sub_root_tree').css('display','block');
-									$("#tree").hide();
-								
-				            }
-				        });
-      },
-
-      onLazyRead: function(node){
-        // In real life we would call something like this:
-//              node.appendAjax({
-//                  url: "/getChildrenAsJson",
-//                data: {key: node.data.key,
-//                       mode: "funnyMode"
-//                         }
-//              });
-        // .. but here we use a local file instead:
-        node.appendAjax({
-          url: "<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-user/files/treeview/"+node.data.key,
-          // We don't want the next line in production code:
-          debugLazyDelay: 750
-        });
-      }
-    });
-    $("#btnReloadActive").click(function(){
-      var node = $("#tree").dynatree("getActiveNode");
-      if( node && node.isLazy() ){
-        node.reloadChildren(function(node, isOk){
-        });
-      }else{
-        alert("Please activate a lazy node first.");
-      }
-     });
-     
-     $("#wrapper").click(function(){
-      $("#tree").hide();
-      return true;
-    });
-     
-     $("#tree_collapse").click(function(){
-      $("#tree").dynatree("getRoot").visit(function(node){
-        node.expand(false);
-      });
-      return false;
-    });
-    
-    
-    
-
-    $("#btnLoadKeyPath").click(function(){
-      var tree = $("#tree").dynatree("getTree");
-      // Make sure that node #_27 is loaded, by traversing the parents.
-      // The callback is executed for every node as we go:
-      tree.loadKeyPath("/folder4/_23/_26/_27", function(node, status){
-        if(status == "loaded") {
-          // 'node' is a parent that was just traversed.
-          // If we call expand() here, then all nodes will be expanded
-          // as we go
-          node.expand();
-        }else if(status == "ok") {
-          // 'node' is the end node of our path.
-          // If we call activate() or makeVisible() here, then the
-          // whole branch will be exoanded now
-          node.activate();
-        }
-      });
-     });
-  });
-  
-  function loadPath(id_archivo, nombre, url){
-  					cambiarUrl('/'+id_archivo+'/'+nombre);
-											$.ajax({
-									            type: 'POST',
-									            url: url,
-									            data: '',
-									            // before: mostrarVentanaCargando(),
-									            // complete: ocultarVentanaCargando(), 
-									            success: function(data) {
-										        	var result = jQuery.parseJSON(data);
-														$("#loading").toggle();
-														$('#loading').delay(2000).fadeOut(400);
-														$('#row_file').html(result[0]);
-														$('#id_padre').val(result[1]);
-														$('#tree_collapse').css('display','none');
-														$('#sub_root_tree').html(result[2]);
-														$('#sub_root_tree').css('display','block');
-														$('#title_root').html(result[3]);
-														$("#tree").hide();
-													
-									            }
-									        });
-  }
-  
-</script>
-
-
-
-
 
 
 <div class="topbar" data-dropdown="dropdown">

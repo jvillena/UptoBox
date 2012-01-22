@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-21 20:27:01
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-22 20:54:40
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/login/center_content.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3647364634f1b1f955b2af0-77056975%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:17269423564f1c7790786da8-09684008%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '3d392b760f9bdecf16451e91934faba4e292b133' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/login/center_content.tpl',
-      1 => 1326155436,
+      1 => 1327265557,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3647364634f1b1f955b2af0-77056975',
+  'nocache_hash' => '17269423564f1c7790786da8-09684008',
   'function' => 
   array (
   ),
@@ -131,15 +131,14 @@ user/files");
 
 
 
- <div class="container">
+ <div class="container" style="margin-top:-100px;">
     	   <div class="content">
 				  
-			   <div style="margin-top:50px; background-color: #E7EEF1;
+			   <div style="margin-top:50px;
 			    border-bottom-left-radius: 3px;
 			    border-bottom-right-radius: 3px;
-			    color: #23566D;
-			    padding: 20px 15px;
-			    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);">
+			    color: #FFF;
+			    padding: 20px 15px;margin-left:40px;">
 					<h1><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_login<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </h1>
@@ -154,12 +153,9 @@ tx_login<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Local
 				
 		        <!-- Main hero unit for a primary marketing message or call to action -->
 		 
-						<div class="row" style="margin-top:30px;">
-								<div class="span8">
-									<img style="opacity:0.8;margin-top:-10px" src="<?php echo $_smarty_tpl->getVariable('IMAGES_URL')->value;?>
-/login/cloud.jpg" width="985px" />         
-			      				</div>
-				      			<div class="span12" style="width:400px;border: none; padding: 40px;opacity:0.8" >
+						<div class="row" style="margin-top:50px;;margin-left:20px;">
+								
+				      			<div class="span12" style="width:800px;border: none; padding: 0px;opacity:1" >
 				      			 <!-- Modal -->
 				      			 	
 							        <form name="form_login" id="form_login" method="post">
@@ -188,25 +184,7 @@ tx_login<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Local
 							        </form>
 							      </div>
 							    </div>
-						        <!-- Example row of columns -->
-						        <div class="row" style="margin-left:10px;">
-						          <div class="span6">
-						            <h2>Heading</h2>
-						            <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-						            <p><a class="btn" href="#">View details &raquo;</a></p>
-						          </div>
-						          <div class="span5">
-						            <h2>Heading</h2>
-						             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-						            <p><a class="btn" href="#">View details &raquo;</a></p>
-						         </div>
-						         <div class="span5">
-						            <h2>Heading</h2>
-						             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-						            <p><a class="btn" href="#">View details &raquo;</a></p>
-						         </div>
-						        </div>
-				         		<hr>
+						        
 						  </div>
 			</div>
 	</div>

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-21 20:38:19
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-22 20:54:01
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2741726654f1b223b68f916-85649585%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:19741029624f1c7769205711-73654957%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1327167920,
+      1 => 1327190876,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2741726654f1b223b68f916-85649585',
+  'nocache_hash' => '19741029624f1c7769205711-73654957',
   'function' => 
   array (
   ),
@@ -95,8 +95,7 @@ tx_options_you<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo
 											}, function(action, el, pos) {
 												
 												if (action == 'open'){
-														
-														cambiarUrl('/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+														cambiarUrl('/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo_padre'];?>
 /<?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
 ');
 														
@@ -111,6 +110,7 @@ user/path/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 													            // complete: ocultarVentanaCargando(), 
 													            success: function(data) {
 														        	var result = jQuery.parseJSON(data);
+														        	
 																		$("#loading").toggle();
 																		$('#loading').delay(2000).fadeOut(400);
 																		$('#row_file').html(result[0]);

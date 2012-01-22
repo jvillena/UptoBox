@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-21 20:37:18
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-22 20:54:40
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:8094770044f1b21feb9f3a5-80285166%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3891943774f1c7790e78ed7-12427853%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9d054d45e7b1452ea1f8479bd52af947393f5541' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/index.tpl',
-      1 => 1326413989,
+      1 => 1327263867,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8094770044f1b21feb9f3a5-80285166',
+  'nocache_hash' => '3891943774f1c7790e78ed7-12427853',
   'function' => 
   array (
   ),
@@ -30,7 +30,7 @@ css/login.css' />
 		<link rel='stylesheet' type='text/css' href='<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 css/bootstrap.css' />
 		<link rel='stylesheet' type='text/css' href='<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-css/base.css' />
+css/public.css' />
 		<link rel='stylesheet' type='text/css' href='<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 libs/javascript/jquery/jquery_ui/css/ui-lightness/jquery-ui-1.8.12.custom.css' />
 		<link rel='stylesheet' type='text/css' href='<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
@@ -69,15 +69,6 @@ libs/javascript/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
 libs/javascript/bootstrap/bootstrap-twipsy.js" type="text/javascript"></script>
 		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 libs/javascript/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
-		<!-- Javascripts necesarios para usar el context Menu. -->
-		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-libs/javascript/jquery/contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
-		
-		<!-- Javascripts necesarios para treeview. -->
-		<link href="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-libs/javascript/jquery/dynatree/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
-		<script src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-libs/javascript/jquery/dynatree/jquery.dynatree.js" type="text/javascript"></script>
 		
 		<!-- Añade esta etiqueta en la cabecera o delante de la etiqueta body. -->
 		<script type="text/javascript" src="https://apis.google.com/js/plusone.js">

@@ -105,15 +105,14 @@ $(document).ready(function() {
 
 
 
- <div class="container">
+ <div class="container" style="margin-top:-100px;">
     	   <div class="content">
 				  
-			   <div style="margin-top:50px; background-color: #E7EEF1;
+			   <div style="margin-top:50px;
 			    border-bottom-left-radius: 3px;
 			    border-bottom-right-radius: 3px;
-			    color: #23566D;
-			    padding: 20px 15px;
-			    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);">
+			    color: #FFF;
+			    padding: 20px 15px;margin-left:40px;">
 					<h1>{translate}tx_login{/translate}</h1>
 					<p>Join today and start to upload and share your online file storage.<strong>UptoBox</strong> is the best open sources online file storage
 					</p>
@@ -126,11 +125,9 @@ $(document).ready(function() {
 				
 		        <!-- Main hero unit for a primary marketing message or call to action -->
 		 
-						<div class="row" style="margin-top:30px;">
-								<div class="span8">
-									<img style="opacity:0.8;margin-top:-10px" src="{$IMAGES_URL}/login/cloud.jpg" width="985px" />         
-			      				</div>
-				      			<div class="span12" style="width:400px;border: none; padding: 40px;opacity:0.8" >
+						<div class="row" style="margin-top:50px;;margin-left:20px;">
+								
+				      			<div class="span12" style="width:800px;border: none; padding: 0px;opacity:1" >
 				      			 <!-- Modal -->
 				      			 	
 							        <form name="form_login" id="form_login" method="post">
@@ -156,25 +153,7 @@ $(document).ready(function() {
 							        </form>
 							      </div>
 							    </div>
-						        <!-- Example row of columns -->
-						        <div class="row" style="margin-left:10px;">
-						          <div class="span6">
-						            <h2>Heading</h2>
-						            <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-						            <p><a class="btn" href="#">View details &raquo;</a></p>
-						          </div>
-						          <div class="span5">
-						            <h2>Heading</h2>
-						             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-						            <p><a class="btn" href="#">View details &raquo;</a></p>
-						         </div>
-						         <div class="span5">
-						            <h2>Heading</h2>
-						             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-						            <p><a class="btn" href="#">View details &raquo;</a></p>
-						         </div>
-						        </div>
-				         		<hr>
+						        
 						  </div>
 			</div>
 	</div>

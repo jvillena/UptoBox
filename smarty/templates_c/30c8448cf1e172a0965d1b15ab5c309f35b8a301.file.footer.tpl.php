@@ -1,23 +1,23 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-21 20:37:18
+<?php /* Smarty version Smarty-3.0.8, created on 2012-01-22 20:54:40
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/footer.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:11244999244f1b21feafbf54-95832669%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:21326468324f1c7790dd88e6-11870459%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '30c8448cf1e172a0965d1b15ab5c309f35b8a301' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/public/layout/footer.tpl',
-      1 => 1326155436,
+      1 => 1327264132,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '11244999244f1b21feafbf54-95832669',
+  'nocache_hash' => '21326468324f1c7790dd88e6-11870459',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
-<div class="main spacer">
+<div class="main spacer" style="border-top:1px solid rgba(255, 255, 255, 0.1)">
 	<ul>
 		<li style="margin-bottom:10px;">
 			<a href="<?php echo $_smarty_tpl->getVariable('BASE_URL')->value;?>
@@ -47,12 +47,12 @@ tx_footer_term<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo
 tx_footer_term<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </a>
 		</li>
-        <li>Copyright 2011 - uptobox.net - <?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+        <li style="color:#FFF;">Copyright 2011 - uptobox.net - <?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_footer_right<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 .</li>
    	</ul>
    	<div style="float: left;" >
-   		<br /><br /><a href="http://www.aleatechnology.es" target="_blank" style="font-weight: bold; color: #63676c;" title="Alea Technology"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+   		<br /><br /><a href="http://www.aleatechnology.es" target="_blank" style=" color: #FFF;" title="Alea Technology"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_footer_developer<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
  <?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_footer_company<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>

@@ -37,8 +37,7 @@
 											}, function(action, el, pos) {
 												{literal}
 												if (action == 'open'){
-														
-														cambiarUrl('/{/literal}{$item.id_archivo}{literal}/{/literal}{$item.nombre}{literal}');
+														cambiarUrl('/{/literal}{$item.id_archivo_padre}{literal}/{/literal}{$item.nombre}{literal}');
 														
 														$.ajax({
 													            type: 'POST',
@@ -48,6 +47,7 @@
 													            // complete: ocultarVentanaCargando(), 
 													            success: function(data) {
 														        	var result = jQuery.parseJSON(data);
+														        	
 																		$("#loading").toggle();
 																		$('#loading').delay(2000).fadeOut(400);
 																		$('#row_file').html(result[0]);
