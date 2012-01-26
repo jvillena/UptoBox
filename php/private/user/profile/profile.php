@@ -35,8 +35,8 @@
 	$aRecentFile = $oFile->getRecentUpdates($datos_usuario['id_usuario']);
 	$oSmarty->assign('aRecentFile',$aRecentFile);	
 	
-	$metatitle = "uptobox.net";
-	$metadescription = "uptobox.net";
+	$metatitle = "UptoSave.com";
+	$metadescription = "UptoSave.com";
 	$oSmarty->assign('metatitle',$metatitle);
 	$oSmarty->assign('metadescription',$metadescription);
 	

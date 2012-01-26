@@ -20,8 +20,8 @@
 	$oSmarty->assign('LATERAL_IZQUIERDO','');
 
 	//Para el título y la descripción de la página
-	$metatitle = "uptobox.net";
-	$metadescription = "uptobox.net";
+	$metatitle = "UptoSave.com";
+	$metadescription = "UptoSave.com";
 	$oSmarty->assign('metatitle',$metatitle);
 	$oSmarty->assign('metadescription',$metadescription);
 	

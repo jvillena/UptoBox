@@ -27,8 +27,8 @@
 	$max_size = Settings::getByteSize($datos_usuario_configuracion['max_size']);
 	$oSmarty->assign('max_size',$max_size);
 	
-	$metatitle = "uptobox.net";
-	$metadescription = "uptobox.net";
+	$metatitle = "UptoSave.com";
+	$metadescription = "UptoSave.com";
 	$oSmarty->assign('metatitle',$metatitle);
 	$oSmarty->assign('metadescription',$metadescription);
 	// Marcamos documentos como opción principal
