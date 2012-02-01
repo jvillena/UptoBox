@@ -72,6 +72,7 @@ $(document).ready(function() {
         </div>
       </div>
  {else}
+ 
 	{foreach name="files_tree" from=$aFile item=item key=key}
 				<tr style="border-bottom: 1px solid  #DDDDDD;" id="more_options_row_{$item.id_archivo}">
 					<td>

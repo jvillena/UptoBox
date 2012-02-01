@@ -1,4 +1,49 @@
 {literal}
+ <script>        
+        function createUploader(){            
+            var uploader = new qq.FileUploaderBasic({
+            	element: document.getElementById('file-upload'),
+                button:document.getElementById('file-upload'),
+                name: 'ifiles',
+                params: {
+        			id_user: '{/literal}{$id_usuario}{literal}'
+    			},
+    			multiple: true,
+                allowedExtensions: ['jpg', 'jpeg', 'png', 'gif','doc','docx','ppt','pptx','bmp','psd','dmg'],
+                sizeLimit: 419430400, // max size   
+				minSizeLimit: 0, // min size
+ 				onProgress: function(id, filename, loaded, total) {
+ 					 $('.qq-upload-list').hide();
+ 					$("#progressbar").css('display','block'); 
+                    console.log('Progress for file: %s, ID: %s, loaded: %s, total: %s => %s', id, filename, loaded, total, "divID");
+                    var percent = Math.round((loaded / total) * 100);
+                     $("#progressbar").progressbar({ value: percent });
+                    $('#message_progress').html('Uploading: ' + filename + ', ' + percent + '%' + ' (' + loaded + '/' + total + ')');
+                    $('#upload_progress').show('slow');
+                    
+                },
+                onComplete: function(id, filename, responseJSON) {
+                    console.log('File upload for file %s, id %s done with status %s => %s', filename, id, responseJSON, "divID");
+                    $('#upload_success').toggle();
+                    //$('#upload_progress').hide();
+                    $('#message_success').html( 'Finished: ' + filename);
+                    $("#progressbar").css('display','none');
+                },
+                onSubmit: function(id, fileName){
+                	 $(".qq-upload-list").empty();
+                	 $("#progressbar").css('display','block');
+                	  $("#progressbar").progressbar({ value: 0 });
+	             	 //$('#file-upload').addClass("loading");
+	             },
+                action: '{/literal}{$RUTA_WEB_ABSOLUTA}{literal}user/upload/files',
+                debug: true
+            });           
+        }
+        
+        // in your app create uploader as soon as the DOM is ready
+        // don't wait for the window to load  
+        window.onload = createUploader;     
+    </script>   
 <script type="text/javascript">
 			var tx_titulo_display ='{/literal}{$tx_titulo_display}{literal}';
 			
@@ -186,6 +231,7 @@ $(document).ready(function() {
 
 
 </script>
+
 {/literal}
 
 <div id="div_inicio" style="margin-top:130px;width:98%;margin-bottom:50px;">
@@ -194,7 +240,12 @@ $(document).ready(function() {
 		    <p id="retorno_usuario"></p>
     	</div>
 	</div>
-	
+	<div id="file-uploader">       
+   	 <noscript>          
+   	     <p>Please enable JavaScript to use file uploader.</p>
+   	     <!-- or put a simple form for upload here -->
+   	 </noscript>         
+	</div>
 	{if isset($aFile) && $aFile==""}
 	<div class="alert-message block-message warning">
         <p><strong>{translate}tx_init_message{/translate}</strong> {translate}tx_init_message2{/translate}</p>
@@ -210,84 +261,11 @@ $(document).ready(function() {
       </div>
       {else}
      
-		<form style="border-bottom: 1px solid  #DDDDDD;" id="fileupload" action="{$RUTA_WEB_ABSOLUTA}class/class.upload.php" method="POST" enctype="multipart/form-data">
-        <div class="row">
-            <div class="span13 fileupload-buttonbar">
-                <div class="progressbar fileupload-progressbar fade"><div style="width:0%;"></div></div>
-                <span class="btn success fileinput-button">
-                    <span>Add files...</span>
-                    <input type="file" name="files[]" multiple>
-                </span>
-                <button type="submit" class="btn primary start">Start upload</button>
-               
-            </div>
-           
-        </div>
-        <br>
-        <div class="row">
-            <div class="span13">
-                <table class="zebra-striped"><tbody class="files"></tbody></table>
-            </div>
-        </div>
-    </form>
-   {literal}
-    <script>
-var fileUploadErrors = {
-    maxFileSize: 'File is too big',
-    minFileSize: 'File is too small',
-    acceptFileTypes: 'Filetype not allowed',
-    maxNumberOfFiles: 'Max number of files exceeded',
-    uploadedBytes: 'Uploaded bytes exceed file size',
-    emptyResult: 'Empty file upload result'
-};
-</script>
-<script id="template-upload" type="text/html">
-{% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
-    <tr class="template-upload fade azul" style="border-bottom: 1px solid  #DDDDDD;height:45px;">
-        <td class="preview" style="vertical-align:middle"><span class="fade"></span></td>
-        <td class="name" style="vertical-align:middle">{%=file.name%}</td>
-        <td class="size" style="vertical-align:middle">{%=o.formatFileSize(file.size)%}</td>
-        {% if (file.error) { %}
-            <td class="error" colspan="2" style="vertical-align:middle"><span class="label important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</td>
-        {% } else if (o.files.valid && !i) { %}
-            <td class="progress" style="vertical-align:middle"><div class="progressbar"><div style="width:0%;"></div></div></td>
-            <td class="start" style="vertical-align:middle">{% if (!o.options.autoUpload) { %}<button class="btn primary">Start</button>{% } %}</td>
-        {% } else { %}
-            <td colspan="2"></td>
-        {% } %}
-        <td class="cancel" style="vertical-align:middle">{% if (!i) { %}<button class="btn info">Cancel</button>{% } %}</td>
-    </tr>
-{% } %}
-</script>
-<script id="template-download" type="text/html">
-{% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
-    <tr class="template-download fade" style"border-bottom: 1px solid  #DDDDDD;height:45px;">
-        {% if (file.error) { %}
-            <td></td>
-            <td class="name" style="vertical-align:middle">{%=file.name%}</td>
-            <td class="size" style="vertical-align:middle">{%=o.formatFileSize(file.size)%}</td>
-            <td class="error " colspan="2" style="vertical-align:middle"><span class="label important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</td>
-        {% } else { %}
-            <td class="preview" style="vertical-align:middle">{% if (file.thumbnail_url) { %}
-                <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery"><img src="{%=file.thumbnail_url%}"></a>
-            {% } %}</td>
-            <td class="name" style="vertical-align:middle">
-                <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}">{%=file.name%}</a>
-            </td>
-            <td class="size" style="vertical-align:middle">{%=o.formatFileSize(file.size)%}</td>
-            <td colspan="2"></td>
-        {% } %}
-        <td class="delete">
-            <button class="btn danger" style="vertical-align:middle" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">Delete</button>
-            <input type="checkbox" style="vertical-align:middle" name="delete" value="1">
-        </td>
-    </tr>
-{% } %}
-</script>
-{/literal}
-		<div id="myList">
-			<table class="zebra-striped">
+		
+		<div id="myList" class="drop_zone">
+			<table style="float:left;" class="zebra-striped">
 				<tbody id="row_file">	
+						{include file='files/row_success'}
 						{include file='files/row_file.tpl'}
 				</tbody>
 			</table>

@@ -55,6 +55,10 @@ RewriteRule ^$ ./php/public/index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+<IfModule mod_security.c>
+SecFilterEngine Off
+SecFilterScanPOST Off
+</IfModule>
 
 
 RewriteRule ^user/files$ ./php/private/user/init/index.php
@@ -64,6 +68,7 @@ RewriteRule ^user/files/treeview/(.+)$ ./php/private/user/files/treeview_data.ph
 
 RewriteRule ^user/files/(.+)/(.+)$ ./php/private/user/init/index.php?id_root=$1&name=$2
 RewriteRule ^user/path/(.+)/(.+)$ ./php/private/user/init/index_ajax.php?id_root=$1&name=$2
+RewriteRule ^user/upload/files$ ./php/private/user/files/upload_files.php
 
 
 RewriteRule ^user/profile$ ./php/private/user/profile/profile.php

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-01-22 22:52:38
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-01 01:13:53
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:4429531754f1c93364a4e97-22607935%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:20562066844f2891d19529c7-77585989%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1327272703,
+      1 => 1327613841,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '4429531754f1c93364a4e97-22607935',
+  'nocache_hash' => '20562066844f2891d19529c7-77585989',
   'function' => 
   array (
   ),
@@ -105,6 +105,7 @@ tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=fal
         </div>
       </div>
  <?php }else{ ?>
+ 
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('aFile')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}

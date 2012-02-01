@@ -161,10 +161,12 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 button,
 input[type="button"],
+input[type="file"],
 input[type="reset"],
 input[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
+  cursor: hand;
 }
 input[type="search"] {
   -webkit-appearance: textfield;
