@@ -234,6 +234,8 @@ $(document).ready(function() {
 
 {/literal}
 
+
+
 <div id="div_inicio" style="margin-top:130px;width:98%;margin-bottom:50px;">
 	<div id="mensaje" style="display:none">
 		<div id="error" class="alert-message">
@@ -264,9 +266,11 @@ $(document).ready(function() {
 		
 		<div id="myList" class="drop_zone">
 			<table style="float:left;" class="zebra-striped">
-				<tbody id="row_file">	
-						{include file='files/row_success'}
-						{include file='files/row_file.tpl'}
+				<tbody >	
+						{include file='files/row_success.tpl'}
+						<div id="row_file">
+							{include file='files/row_file.tpl'}
+						</div>
 				</tbody>
 			</table>
 		</div>

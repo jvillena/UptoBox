@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-01 01:13:53
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-06 00:27:28
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:815105304f2891d1653ae1-99438990%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18229873104f2f1e70975018-39108030%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1328058763,
+      1 => 1328486365,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '815105304f2891d1653ae1-99438990',
+  'nocache_hash' => '18229873104f2f1e70975018-39108030',
   'function' => 
   array (
   ),
@@ -259,6 +259,8 @@ user/files/create',
 
 
 
+
+
 <div id="div_inicio" style="margin-top:130px;width:98%;margin-bottom:50px;">
 	<div id="mensaje" style="display:none">
 		<div id="error" class="alert-message">
@@ -301,11 +303,13 @@ tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=fal
 		
 		<div id="myList" class="drop_zone">
 			<table style="float:left;" class="zebra-striped">
-				<tbody id="row_file">	
-						<?php $_template = new Smarty_Internal_Template('files/row_success', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+				<tbody >	
+						<?php $_template = new Smarty_Internal_Template('files/row_success.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
  echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?>
-						<?php $_template = new Smarty_Internal_Template('files/row_file.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+						<div id="row_file">
+							<?php $_template = new Smarty_Internal_Template('files/row_file.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
  echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?>
+						</div>
 				</tbody>
 			</table>
 		</div>

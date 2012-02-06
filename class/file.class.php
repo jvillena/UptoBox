@@ -323,6 +323,10 @@ class qqUploadedFileForm {
     function getSize() {
         return $_FILES['qqfile']['size'];
     }
+    
+    function getType(){
+        return $_FILES['qqfile']['type'];
+    }
 }
 
 /**
@@ -360,15 +364,34 @@ class qqUploadedFileXhr {
             throw new Exception('Getting content length is not supported.');
         }      
     }   
+    
+    function getType(){
+        return substr($_GET['qqfile'],strripos($_GET['qqfile'], '.'));
+    }
 }
 
 
 class qqFileUploader {
-    private $allowedExtensions = array();
-    private $sizeLimit = 419430400;
-    private $file;
+        private $allowedExtensions = array();
+        private $sizeLimit = 419430400;
+        private $file;
+    
+        private $oBD;
+        private $sTablaUsuario;
+        private $sTablaUsuarioRol;
+        private $sTablaArchivo;
+        private $sTablaUsuarioArchivo;
+        private $sTablaArchivoVersion;
 
-    function __construct(array $allowedExtensions = array(), $sizeLimit = 419430400){        
+    function __construct(array $allowedExtensions = array(), $sizeLimit = 419430400){
+            
+            $this->sTablaUsuario = TB_USUARIO;
+            $this->sTablaUsuarioRol = TB_USUARIO_ROL;
+            $this->sTablaArchivo = TB_ARCHIVO;
+            $this->sTablaUsuarioArchivo = TB_USUARIO_ARCHIVO;   
+            $this->sTablaArchivoVersion = TB_VERSION;        
+        
+                
         $allowedExtensions = array_map("strtolower", $allowedExtensions);
             
         $this->allowedExtensions = $allowedExtensions;        
@@ -383,6 +406,10 @@ class qqFileUploader {
         } else {
             $this->file = false; 
         }
+    }
+    
+    public function setBD($oBD) {
+            $this->oBD = $oBD;                
     }
     
     private function checkServerSettings(){        
@@ -409,7 +436,7 @@ class qqFileUploader {
     /**
      * Returns array('success'=>true) or array('error'=>'error message')
      */
-    function handleUpload($uploadDirectory, $replaceOldFile = FALSE){
+    function handleUpload($uploadDirectory, $replaceOldFile = FALSE,$id_user,$id_padre){
         if (!is_writable($uploadDirectory)){
             return array('error' => "Server error. Upload directory isn't writable.");
         }
@@ -426,7 +453,7 @@ class qqFileUploader {
         if ($size > $this->sizeLimit) {
             return array('error' => 'File is too large');
         }
-        
+        $type_file = $this->file->getType();
         $pathinfo = pathinfo($this->file->getName());
         $filename = $pathinfo['filename'];
         //$filename = md5(uniqid());
@@ -437,15 +464,66 @@ class qqFileUploader {
             return array('error' => 'File has an invalid extension, it should be one of '. $these . '.');
         }
         
-        if(!$replaceOldFile){
-            /// don't overwrite previous files that were uploaded
-            while (file_exists($uploadDirectory . $filename . '.' . $ext)) {
-                $filename .= rand(10, 99);
-            }
-        }
+                //Primero comprobamos que no existe un fichero con el mismo nombre en el raiz
+                $file_version = 0;
+                $consulta_sql = "SELECT a.nombre FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=1 AND a.id_archivo_padre='".$id_padre."' AND a.nombre = '".$filename."' AND a.id_archivo = ua.id_archivo AND ua.id_archivo =".$id_user.";";
+                $rs = $this->oBD->Execute($consulta_sql);
+                $aResultado = $rs->GetRows();
+                $rs->Close();
+                if ($rs->RecordCount() > 0){
+                //Si existe ya un fichero en el mismo nivel actualizamos la versión
+                        if(!$replaceOldFile){
+                            /// don't overwrite previous files that were uploaded
+                            while (file_exists($uploadDirectory . $filename . '.' . $ext)) {
+                                $filename .= rand(10, 99);
+                            }
+                        }  
+                        
+                        $file_version = 1;
+              
+                }
+            
+        
+       
         
         if ($this->file->save($uploadDirectory . $filename . '.' . $ext)){
-            return array('success'=>true);
+                //Upload and insert file in DDBB
+                 $result = false;
+                
+                    if ($file_version == 0){
+                        $name_zone = Combos::getNameTimeZone(Settings::getSettingsVars('ID_ZONE'));
+                        $fecha = Combos::getDateTimeZone($name_zone);
+                        // Insertamos la información en la base de datos.
+                        $consulta_sql = "INSERT INTO ".$this->sTablaArchivo." (tipo,fecha, nombre, id_archivo_padre, privacidad, fecha_update,name_file,type_file,type_size,max_size) ";
+                        $consulta_sql .= " VALUES(1,'$fecha','".$filename."', '".$id_padre."', 1 , '$fecha','".$filename."','".$type_file."','".$size."','".$size."')";
+                        
+                        if (!$this->oBD->Execute($consulta_sql)){
+                           return array('error' => 'Error insert File in Data Base');
+                        }else{
+                            $id_file=$this->oBD->Insert_ID();
+                            
+                            $consulta_sql = "INSERT INTO ".$this->sTablaUsuarioArchivo." (id_usuario, id_archivo, propietario) ";
+                            $consulta_sql .= " VALUES($id_user, $id_file, 1 )";
+                            if (!$this->oBD->Execute($consulta_sql)){
+                                return array('error' => 'Error insert File in Data Base');
+                            }else{
+                                    
+                                $consulta_sql = "INSERT INTO ".$this->sTablaArchivoVersion." (id_archivo, fecha, nombre, nversion, size) ";
+                                $consulta_sql .= " VALUES($id_file,'$fecha','$filename', 1,'$size')";
+                                if (!$this->oBD->Execute($consulta_sql)){        
+                                     return array('error' => 'Error insert File in Data Base');
+                                }else{   
+                                     return array('success'=>true);
+                                }
+                            }
+                        }
+              
+                    }else{ //if $file_version == 1 update version of file
+                        
+                    }
+            
+            
+           
         } else {
             return array('error'=> 'Could not save uploaded file.' .
                 'The upload was cancelled, or server error encountered');
