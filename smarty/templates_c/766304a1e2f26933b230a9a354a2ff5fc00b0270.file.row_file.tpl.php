@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-06 00:27:37
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-08 00:22:00
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:14114669084f2f1e79430906-45134462%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3124443514f31c0289599d2-76253223%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1328488046,
+      1 => 1328660232,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '14114669084f2f1e79430906-45134462',
+  'nocache_hash' => '3124443514f31c0289599d2-76253223',
   'function' => 
   array (
   ),
@@ -137,8 +137,41 @@ if ($_smarty_tpl->_count($_from) > 0){
 									 <img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 images/icons/icon_folder.png"/>
 								 <?php }else{ ?>
-								 	 <img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+								 	<?php if ($_smarty_tpl->tpl_vars['item']->value['ext']=='png'){?>
+								 		<?php if ($_smarty_tpl->tpl_vars['item']->value['id_archivo_padre']==0){?>
+								 			<?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+<?php $_tmp1=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+<?php $_tmp2=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['type_file'];?>
+<?php $_tmp3=ob_get_clean();?><?php echo Tools::getImageFromFile($_tmp1,$_tmp2,$_tmp3);?>
+
+								 			<img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/php/rescalado_imagen/image.php/<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+datas/users/<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+.<?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+?width=30&amp;image=<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+datas/users/<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+.<?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+"/>
+								 		<?php }else{ ?>
+								 			<img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/php/rescalado_imagen/image.php/<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+datas/users/<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo_padre'];?>
+/<?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+.<?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+?width=30&amp;image=<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+datas/users/<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo_padre'];?>
+/<?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+.<?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+"/>
+								 		<?php }?>
+								 	<?php }else{ ?>
+								 	 	<img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 images/icons/icon_file.png"/>
+								 	<?php }?>
 								 <?php }?>
 						  	  </div>
 					 		   <div id="data_file" style="margin-bottom: 5px;margin-top: 5px;">     

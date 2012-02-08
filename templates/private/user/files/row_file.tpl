@@ -96,7 +96,16 @@ $(document).ready(function() {
 								{if $item.tipo==0}
 									 <img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_folder.png"/>
 								 {else}
-								 	 <img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_file.png"/>
+								 	{if $item.ext=='png'}
+								 		{if $item.id_archivo_padre == 0}
+								 			{Tools::getImageFromFile({$item.name_file}, {$item.ext}, {$item.type_file})}
+								 			<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}libs/php/rescalado_imagen/image.php/{$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/files/{$item.name_file}.{$item.ext}?width=30&amp;image={$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/files/{$item.name_file}.{$item.ext}"/>
+								 		{else}
+								 			<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}libs/php/rescalado_imagen/image.php/{$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/files/{$item.id_archivo_padre}/{$item.name_file}.{$item.ext}?width=30&amp;image={$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/files/{$item.id_archivo_padre}/{$item.name_file}.{$item.ext}"/>
+								 		{/if}
+								 	{else}
+								 	 	<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_file.png"/>
+								 	{/if}
 								 {/if}
 						  	  </div>
 					 		   <div id="data_file" style="margin-bottom: 5px;margin-top: 5px;">     

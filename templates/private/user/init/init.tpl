@@ -9,7 +9,7 @@
         			id_user: '{/literal}{$id_usuario}{literal}'
     			},
     			multiple: true,
-                allowedExtensions: ['jpg', 'jpeg', 'png', 'gif','doc','docx','ppt','pptx','bmp','psd','dmg'],
+                allowedExtensions: ['docx','ppt','pptx','bmp','psd','dmg',"txt","csv","xml",'css','doc','xls','rtf','pdf','swf','flv','avi','wmv','mov','jpg','jpeg','gif','png'],
                 sizeLimit: 419430400, // max size   
 				minSizeLimit: 0, // min size
  				onProgress: function(id, filename, loaded, total) {

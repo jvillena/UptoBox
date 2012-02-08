@@ -103,7 +103,7 @@ class FileClass {
 		public function getActualSizeUser($id_usuario) {
 				$result = 0;
 			
-				$consulta_sql = "SELECT SUM(size) as actual_size FROM ".$this->sTablaArchivoVersion." as v, ".$this->sTablaArchivo." as a , ".$this->sTablaUsuarioArchivo." as ua , ".$this->sTablaUsuario." as u WHERE v.id_archivo = a.id_archivo AND a.id_archivo = ua.id_archivo AND ua.id_usuario = u.id_usuario AND u.id_usuario=".$id_usuario.";";
+				$consulta_sql = "SELECT SUM(v.size) as actual_size FROM ".$this->sTablaArchivoVersion." as v, ".$this->sTablaArchivo." as a , ".$this->sTablaUsuarioArchivo." as ua , ".$this->sTablaUsuario." as u WHERE v.id_archivo = a.id_archivo AND a.id_archivo = ua.id_archivo AND ua.id_usuario = u.id_usuario AND ua.propietario=1 AND u.id_usuario=".$id_usuario.";";
 				$rs = $this->oBD->Execute($consulta_sql);
 				$aResultado = $rs->GetRows();
 				$rs->Close();
@@ -366,7 +366,15 @@ class qqUploadedFileXhr {
     }   
     
     function getType(){
-        return substr($_GET['qqfile'],strripos($_GET['qqfile'], '.'));
+        $imagetypes = array(
+            '.png' => 'image/png',
+            '.gif' => 'image/gif',
+            '.jpg' => 'image/jpeg',
+            '.bmp' => 'image/bmp');
+        $type = $imagetypes[substr($_GET['qqfile'],strripos($_GET['qqfile'], '.'))];
+        
+        
+        return $type;
     }
 }
 
@@ -464,29 +472,32 @@ class qqFileUploader {
             return array('error' => 'File has an invalid extension, it should be one of '. $these . '.');
         }
         
-                //Primero comprobamos que no existe un fichero con el mismo nombre en el raiz
+                //Primero comprobamos que no existe un fichero con el mismo nombre en el nivel de carpeta en el que está
                 $file_version = 0;
-                $consulta_sql = "SELECT a.nombre FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=1 AND a.id_archivo_padre='".$id_padre."' AND a.nombre = '".$filename."' AND a.id_archivo = ua.id_archivo AND ua.id_archivo =".$id_user.";";
+                $consulta_sql = "SELECT a.nombre, a.id_archivo FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuarioArchivo." as ua WHERE a.tipo=1 AND a.id_archivo_padre='".$id_padre."' AND a.nombre = '".$filename."' AND a.ext = '".$ext."' AND a.type_file='".$type_file."' AND a.id_archivo = ua.id_archivo AND ua.id_usuario =".$id_user.";";
                 $rs = $this->oBD->Execute($consulta_sql);
                 $aResultado = $rs->GetRows();
                 $rs->Close();
                 if ($rs->RecordCount() > 0){
                 //Si existe ya un fichero en el mismo nivel actualizamos la versión
-                        if(!$replaceOldFile){
-                            /// don't overwrite previous files that were uploaded
-                            while (file_exists($uploadDirectory . $filename . '.' . $ext)) {
-                                $filename .= rand(10, 99);
-                            }
-                        }  
-                        
                         $file_version = 1;
+                        $id_archivo_version = $aResultado[0]['id_archivo'];
               
                 }
+                    
+                 if(!$replaceOldFile){
+                            //Generamos un número único para el fichero
+                            $filename_new = md5(uniqid());
+                            $filename_new = "f".$filename_new.rand(0,999999999999999);
+                            while (file_exists($uploadDirectory . $filename_new)) {
+                                $filename_new = "f".$filename_new.rand(0,999999999999999);
+                            }
+                  }  
             
         
        
         
-        if ($this->file->save($uploadDirectory . $filename . '.' . $ext)){
+            if ($this->file->save($uploadDirectory . $filename_new )){ //. '.' . $ext
                 //Upload and insert file in DDBB
                  $result = false;
                 
@@ -494,9 +505,8 @@ class qqFileUploader {
                         $name_zone = Combos::getNameTimeZone(Settings::getSettingsVars('ID_ZONE'));
                         $fecha = Combos::getDateTimeZone($name_zone);
                         // Insertamos la información en la base de datos.
-                        $consulta_sql = "INSERT INTO ".$this->sTablaArchivo." (tipo,fecha, nombre, id_archivo_padre, privacidad, fecha_update,name_file,type_file,type_size,max_size) ";
-                        $consulta_sql .= " VALUES(1,'$fecha','".$filename."', '".$id_padre."', 1 , '$fecha','".$filename."','".$type_file."','".$size."','".$size."')";
-                        
+                        $consulta_sql = "INSERT INTO ".$this->sTablaArchivo." (tipo,fecha, nombre, id_archivo_padre, privacidad, fecha_update,name_file,type_file,type_size,max_size,ext) ";
+                        $consulta_sql .= " VALUES(1,'$fecha','".$filename."', '".$id_padre."', 1 , '$fecha','".$filename_new."','".$type_file."','".$size."','".$size."', '".$ext."')";
                         if (!$this->oBD->Execute($consulta_sql)){
                            return array('error' => 'Error insert File in Data Base');
                         }else{
@@ -507,19 +517,67 @@ class qqFileUploader {
                             if (!$this->oBD->Execute($consulta_sql)){
                                 return array('error' => 'Error insert File in Data Base');
                             }else{
-                                    
-                                $consulta_sql = "INSERT INTO ".$this->sTablaArchivoVersion." (id_archivo, fecha, nombre, nversion, size) ";
-                                $consulta_sql .= " VALUES($id_file,'$fecha','$filename', 1,'$size')";
-                                if (!$this->oBD->Execute($consulta_sql)){        
-                                     return array('error' => 'Error insert File in Data Base');
-                                }else{   
-                                     return array('success'=>true);
+                                           
+                                //Comprobamos el último id       
+                                $consulta_sql = "SELECT MAX(v.id_version) as version FROM ".$this->sTablaArchivoVersion." as v WHERE v.id_archivo='".$id_file."';";
+                                $rs = $this->oBD->Execute($consulta_sql);
+                                $aResultado = $rs->GetRows();
+                                $rs->Close();
+                                $version =1;    
+                                if($aResultado[0]['version']!="" || $aResultado[0]['version']!=NULL){
+                                    $version = $aResultado[0]['version'] + 1;    
                                 }
+                                    
+                                $consulta_sql = "INSERT INTO ".$this->sTablaArchivoVersion." (id_version,id_archivo, fecha, nombre, size) ";
+                                $consulta_sql .= " VALUES($version,$id_file,'$fecha','$filename','$size')";
+                                
+                                if (!$this->oBD->Execute($consulta_sql)){
+                                    $consulta_sql = "UPDATE ".$this->sTablaArchivo." as a INNER JOIN (".$this->sTablaUsuarioArchivo." as ua INNER JOIN ".$this->sTablaUsuario." as u ON ua.id_usuario = u.id_usuario AND u.id_usuario = ".$id_user.") ON  a.id_archivo = ua.id_archivo SET a.max_size=a.max_size+$size WHERE a.tipo=0 AND a.id_archivo = '".$id_padre."' ;";
+                        
+                                    if (!$this->oBD->Execute($consulta_sql)){         
+                                      return array('error' => 'Error insert File in Data Base');
+                                    }else{   
+                                      return array('success'=>true);
+                                     }       
+                                }else{   
+                                  return array('success'=>true);
+                                }
+                                 
                             }
                         }
               
                     }else{ //if $file_version == 1 update version of file
-                        
+                        $name_zone = Combos::getNameTimeZone(Settings::getSettingsVars('ID_ZONE'));
+                        $fecha = Combos::getDateTimeZone($name_zone);
+                        // Insertamos la información en la base de datos.
+                        if ($id_padre!=0){
+                            $consulta_sql = "UPDATE ".$this->sTablaArchivo." as a INNER JOIN (".$this->sTablaUsuarioArchivo." as ua INNER JOIN ".$this->sTablaUsuario." as u ON ua.id_usuario = u.id_usuario AND u.id_usuario = ".$id_user.") ON  a.id_archivo = ua.id_archivo SET a.max_size=a.max_size+$size WHERE a.tipo=0 AND a.id_archivo = '".$id_padre."' ;";
+                             if (!$this->oBD->Execute($consulta_sql)){
+                                 return array('error' => 'Error insert File in Data Base');
+                              }
+                        }
+                       
+                            
+                                           
+                                //Comprobamos el último id       
+                                $consulta_sql = "SELECT MAX(v.id_version) as version FROM ".$this->sTablaArchivoVersion." as v WHERE v.id_archivo='".$id_archivo_version."';";
+                                $rs = $this->oBD->Execute($consulta_sql);
+                                $aResultado = $rs->GetRows();
+                                $rs->Close();
+                                $version =1;    
+                                if($aResultado[0]['version']!="" || $aResultado[0]['version']!=NULL){
+                                    $version = $aResultado[0]['version'] + 1;    
+                                }
+                                    
+                                $consulta_sql = "INSERT INTO ".$this->sTablaArchivoVersion." (id_version,id_archivo, fecha, nombre, size) ";
+                                $consulta_sql .= " VALUES($version,$id_archivo_version,'$fecha','$filename','$size')";
+                                
+                                if (!$this->oBD->Execute($consulta_sql)){        
+                                  return array('error' => 'Error insert File in Data Base');
+                                }else{   
+                                  return array('success'=>true);
+                                }
+                                 
                     }
             
             

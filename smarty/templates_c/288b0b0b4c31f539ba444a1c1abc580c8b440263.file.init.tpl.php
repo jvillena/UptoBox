@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-06 00:27:28
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-08 00:22:00
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:18229873104f2f1e70975018-39108030%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10558215614f31c028695134-94331051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1328486365,
+      1 => 1328653765,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '18229873104f2f1e70975018-39108030',
+  'nocache_hash' => '10558215614f31c028695134-94331051',
   'function' => 
   array (
   ),
@@ -29,7 +29,7 @@ $_smarty_tpl->decodeProperties(array (
 '
     			},
     			multiple: true,
-                allowedExtensions: ['jpg', 'jpeg', 'png', 'gif','doc','docx','ppt','pptx','bmp','psd','dmg'],
+                allowedExtensions: ['docx','ppt','pptx','bmp','psd','dmg',"txt","csv","xml",'css','doc','xls','rtf','pdf','swf','flv','avi','wmv','mov','jpg','jpeg','gif','png'],
                 sizeLimit: 419430400, // max size   
 				minSizeLimit: 0, // min size
  				onProgress: function(id, filename, loaded, total) {

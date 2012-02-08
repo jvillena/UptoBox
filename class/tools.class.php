@@ -175,6 +175,18 @@ class Tools{
         $count = array_slice($count, 0, 10);
         return implode(", ", array_keys($count));
     }
+    
+    
+    /**
+    * getImageFromFile return output image
+    *
+    * @param string $filename name of file
+    * @param string $ext file extension
+    * @param string $type $type of file 
+    */
+    public static function getImageFromFile($filename,$ext, $type){
+
+    }
 }
 
 ?>
