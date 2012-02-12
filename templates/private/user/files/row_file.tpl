@@ -2,6 +2,22 @@
 <script>
 $(document).ready(function() {
 	
+	//create bubble popups for each element with class "button"
+	
+	var positions = {
+							'top-left'     : {position: 'top',    align: 'left'   },
+							'top-center'   : {position: 'top',    align: 'center' },
+							'top-right'    : {position: 'top',    align: 'right'  },
+							'left-middle'  : {position: 'left',   align: 'middle' },
+							'right-middle' : {position: 'right',  align: 'middle' },	
+							'bottom-left'  : {position: 'bottom', align: 'left'   },
+							'bottom-center': {position: 'bottom', align: 'center' },
+							'bottom-right' : {position: 'bottom', align: 'right'  }
+						};
+			
+			
+		
+  	
 	$(".row_f:odd").css("background-color", "#F4F4F8");
     $(".row_f:even").css("background-color", "#FFFFFF");
     $(".row_f:odd").hover(function(){
@@ -96,21 +112,72 @@ $(document).ready(function() {
 								{if $item.tipo==0}
 									 <img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_folder.png"/>
 								 {else}
-								 	{if $item.ext=='png'}
 								 		{if $item.id_archivo_padre == 0}
-								 			{Tools::getImageFromFile({$item.name_file}, {$item.ext}, {$item.type_file})}
-								 			<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}libs/php/rescalado_imagen/image.php/{$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/files/{$item.name_file}.{$item.ext}?width=30&amp;image={$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/files/{$item.name_file}.{$item.ext}"/>
+								 			{Tools::getImageFromFile( {$id_usuario}, {$RUTA_WEB_ABSOLUTA}, {$item.name_file}, {$item.ext}, {$item.type_file}, 0, 35,'',{$item.id_archivo})}
+								 			<script>
+								 				{literal}
+								 				$(document).ready(function() {
+									 					$('#div_{/literal}{$item.id_archivo}{literal}').CreateBubblePopup();
+									 					$('#div_{/literal}{$item.id_archivo}{literal}').SetBubblePopupOptions({
+				
+				
+														position : 'left',
+														align	 :'middle',
+														tail	 : {align: 'middle'},
+														
+														innerHtml: '{/literal}{Tools::getImageFromFile( {$id_usuario}, {$RUTA_WEB_ABSOLUTA}, {$item.name_file}, {$item.ext}, {$item.type_file}, 0, 80, {$item.id_archivo} )}{literal}',
+					
+														innerHtmlStyle: {
+																			color:'#FFFFFF', 
+																			'text-align':'center',
+																			'padding':'6px'
+																		},
+														
+														themeName: 	'azure',
+														themePath: 	'{/literal}{$RUTA_WEB_ABSOLUTA}{literal}libs/javascript/jquery/bubblePopup/Examples/images/jquerybubblepopup-theme',
+														
+														closingDelay: 200
+													 
+													});
+												}); 
+								 				{/literal}
+								 			</script>
 								 		{else}
-								 			<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}libs/php/rescalado_imagen/image.php/{$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/files/{$item.id_archivo_padre}/{$item.name_file}.{$item.ext}?width=30&amp;image={$RUTA_WEB_ABSOLUTA}datas/users/{$id_usuario}/files/{$item.id_archivo_padre}/{$item.name_file}.{$item.ext}"/>
+								 			{Tools::getImageFromFile( {$id_usuario}, {$RUTA_WEB_ABSOLUTA}, {$item.name_file}, {$item.ext}, {$item.type_file}, {$item.id_archivo_padre}, 30,'' ,{$item.id_archivo})}
+								 			<script>
+								 				{literal}
+								 				$(document).ready(function() {
+									 					$('#div_{/literal}{$item.id_archivo}{literal}').CreateBubblePopup();
+									 					$('#div_{/literal}{$item.id_archivo}{literal}').SetBubblePopupOptions({
+				
+				
+														position : 'left',
+														align	 :'middle',
+														tail	 : {align: 'middle'},
+														
+														innerHtml: '{/literal}{Tools::getImageFromFile( {$id_usuario}, {$RUTA_WEB_ABSOLUTA}, {$item.name_file}, {$item.ext}, {$item.type_file}, {$item.id_archivo_padre}, 80,'' ,{$item.id_archivo})}{literal}',
+					
+														innerHtmlStyle: {
+																			color:'#FFFFFF', 
+																			'text-align':'center',
+																			'padding':'6px'
+																		},
+														
+														themeName: 	'azure',
+														themePath: 	'{/literal}{$RUTA_WEB_ABSOLUTA}{literal}libs/javascript/jquery/bubblePopup/Examples/images/jquerybubblepopup-theme',
+														
+														closingDelay: 200
+													 
+													});
+												}); 
+								 				{/literal}
+								 			</script>
 								 		{/if}
-								 	{else}
-								 	 	<img style="vertical-align:bottom" src="{$RUTA_WEB_ABSOLUTA}images/icons/icon_file.png"/>
-								 	{/if}
 								 {/if}
 						  	  </div>
 					 		   <div id="data_file" style="margin-bottom: 5px;margin-top: 5px;">     
 					        		 <h3>
-					        		 		<a style="font-size:13px;color:#000;" href="#" onclick="loadPath('{$item.id_archivo}','{$item.nombre}' ,'{$RUTA_WEB_ABSOLUTA}user/path/{$item.id_archivo}/{$item.nombre}');return false;">{$item.nombre}</a>
+					        		 	<a style="font-size:13px;color:#000;" href="#" onclick="loadPath('{$item.id_archivo}','{$item.nombre}' ,'{$RUTA_WEB_ABSOLUTA}user/path/{$item.id_archivo}/{$item.nombre}');return false;">{$item.nombre}</a>
 					        		 </h3>
 					         		<span class="gris">{translate}tx_update_name_file{/translate} <span class="gris"> {$item.fecha_update|date_format} {translate}tx_update_name_file2{/translate}</span></span>
 					         		{if $item.id_usuario != $id_usuario}

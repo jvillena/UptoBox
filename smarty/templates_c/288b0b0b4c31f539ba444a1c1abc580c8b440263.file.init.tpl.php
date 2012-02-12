@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-08 00:22:00
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-12 23:27:34
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:10558215614f31c028695134-94331051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:6062611524f384ae6978ad6-47473375%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1328653765,
+      1 => 1329083768,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '10558215614f31c028695134-94331051',
+  'nocache_hash' => '6062611524f384ae6978ad6-47473375',
   'function' => 
   array (
   ),
@@ -161,11 +161,6 @@ user/upload/files',
 			
 			
 $(document).ready(function() {
-	$(function () {
-		$("a[rel=twipsy]").twipsy({
-			live: true
-		})
-	}); 
     // Validación del formulario.
     var_requerido_nombre = "<?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_requerido_nombre_carpeta<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>

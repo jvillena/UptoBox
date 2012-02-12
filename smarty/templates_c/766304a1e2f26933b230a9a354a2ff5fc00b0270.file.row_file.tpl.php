@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-08 00:22:00
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-12 23:27:34
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3124443514f31c0289599d2-76253223%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:8303699734f384ae6c9c032-56927859%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1328660232,
+      1 => 1329089209,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3124443514f31c0289599d2-76253223',
+  'nocache_hash' => '8303699734f384ae6c9c032-56927859',
   'function' => 
   array (
   ),
@@ -22,6 +22,22 @@ $_smarty_tpl->decodeProperties(array (
 <script>
 $(document).ready(function() {
 	
+	//create bubble popups for each element with class "button"
+	
+	var positions = {
+							'top-left'     : {position: 'top',    align: 'left'   },
+							'top-center'   : {position: 'top',    align: 'center' },
+							'top-right'    : {position: 'top',    align: 'right'  },
+							'left-middle'  : {position: 'left',   align: 'middle' },
+							'right-middle' : {position: 'right',  align: 'middle' },	
+							'bottom-left'  : {position: 'bottom', align: 'left'   },
+							'bottom-center': {position: 'bottom', align: 'center' },
+							'bottom-right' : {position: 'bottom', align: 'right'  }
+						};
+			
+			
+		
+  	
 	$(".row_f:odd").css("background-color", "#F4F4F8");
     $(".row_f:even").css("background-color", "#FFFFFF");
     $(".row_f:odd").hover(function(){
@@ -137,46 +153,108 @@ if ($_smarty_tpl->_count($_from) > 0){
 									 <img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 images/icons/icon_folder.png"/>
 								 <?php }else{ ?>
-								 	<?php if ($_smarty_tpl->tpl_vars['item']->value['ext']=='png'){?>
 								 		<?php if ($_smarty_tpl->tpl_vars['item']->value['id_archivo_padre']==0){?>
-								 			<?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
-<?php $_tmp1=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
-<?php $_tmp2=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['type_file'];?>
-<?php $_tmp3=ob_get_clean();?><?php echo Tools::getImageFromFile($_tmp1,$_tmp2,$_tmp3);?>
+								 			<?php ob_start();?><?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+<?php $_tmp1=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+<?php $_tmp2=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+<?php $_tmp3=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+<?php $_tmp4=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['type_file'];?>
+<?php $_tmp5=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+<?php $_tmp6=ob_get_clean();?><?php echo Tools::getImageFromFile($_tmp1,$_tmp2,$_tmp3,$_tmp4,$_tmp5,0,35,'',$_tmp6);?>
 
-								 			<img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-libs/php/rescalado_imagen/image.php/<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-datas/users/<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
-/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
-.<?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
-?width=30&amp;image=<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-datas/users/<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
-/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
-.<?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
-"/>
+								 			<script>
+								 				
+								 				$(document).ready(function() {
+									 					$('#div_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+').CreateBubblePopup();
+									 					$('#div_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+').SetBubblePopupOptions({
+				
+				
+														position : 'left',
+														align	 :'middle',
+														tail	 : {align: 'middle'},
+														
+														innerHtml: '<?php ob_start();?><?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+<?php $_tmp7=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+<?php $_tmp8=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+<?php $_tmp9=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+<?php $_tmp10=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['type_file'];?>
+<?php $_tmp11=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+<?php $_tmp12=ob_get_clean();?><?php echo Tools::getImageFromFile($_tmp7,$_tmp8,$_tmp9,$_tmp10,$_tmp11,0,80,$_tmp12);?>
+',
+					
+														innerHtmlStyle: {
+																			color:'#FFFFFF', 
+																			'text-align':'center',
+																			'padding':'6px'
+																		},
+														
+														themeName: 	'azure',
+														themePath: 	'<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/javascript/jquery/bubblePopup/Examples/images/jquerybubblepopup-theme',
+														
+														closingDelay: 200
+													 
+													});
+												}); 
+								 				
+								 			</script>
 								 		<?php }else{ ?>
-								 			<img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-libs/php/rescalado_imagen/image.php/<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-datas/users/<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
-/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo_padre'];?>
-/<?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
-.<?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
-?width=30&amp;image=<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-datas/users/<?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
-/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo_padre'];?>
-/<?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
-.<?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
-"/>
+								 			<?php ob_start();?><?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+<?php $_tmp13=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+<?php $_tmp14=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+<?php $_tmp15=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+<?php $_tmp16=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['type_file'];?>
+<?php $_tmp17=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo_padre'];?>
+<?php $_tmp18=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+<?php $_tmp19=ob_get_clean();?><?php echo Tools::getImageFromFile($_tmp13,$_tmp14,$_tmp15,$_tmp16,$_tmp17,$_tmp18,30,'',$_tmp19);?>
+
+								 			<script>
+								 				
+								 				$(document).ready(function() {
+									 					$('#div_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+').CreateBubblePopup();
+									 					$('#div_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+').SetBubblePopupOptions({
+				
+				
+														position : 'left',
+														align	 :'middle',
+														tail	 : {align: 'middle'},
+														
+														innerHtml: '<?php ob_start();?><?php echo $_smarty_tpl->getVariable('id_usuario')->value;?>
+<?php $_tmp20=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+<?php $_tmp21=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['name_file'];?>
+<?php $_tmp22=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['ext'];?>
+<?php $_tmp23=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['type_file'];?>
+<?php $_tmp24=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo_padre'];?>
+<?php $_tmp25=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+<?php $_tmp26=ob_get_clean();?><?php echo Tools::getImageFromFile($_tmp20,$_tmp21,$_tmp22,$_tmp23,$_tmp24,$_tmp25,80,'',$_tmp26);?>
+',
+					
+														innerHtmlStyle: {
+																			color:'#FFFFFF', 
+																			'text-align':'center',
+																			'padding':'6px'
+																		},
+														
+														themeName: 	'azure',
+														themePath: 	'<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
+libs/javascript/jquery/bubblePopup/Examples/images/jquerybubblepopup-theme',
+														
+														closingDelay: 200
+													 
+													});
+												}); 
+								 				
+								 			</script>
 								 		<?php }?>
-								 	<?php }else{ ?>
-								 	 	<img style="vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
-images/icons/icon_file.png"/>
-								 	<?php }?>
 								 <?php }?>
 						  	  </div>
 					 		   <div id="data_file" style="margin-bottom: 5px;margin-top: 5px;">     
 					        		 <h3>
-					        		 		<a style="font-size:13px;color:#000;" href="#" onclick="loadPath('<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+					        		 	<a style="font-size:13px;color:#000;" href="#" onclick="loadPath('<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
 ' ,'<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 user/path/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>

@@ -139,11 +139,6 @@
 			
 			
 $(document).ready(function() {
-	$(function () {
-		$("a[rel=twipsy]").twipsy({
-			live: true
-		})
-	}); 
     // Validación del formulario.
     var_requerido_nombre = {/literal}"{translate}tx_requerido_nombre_carpeta{/translate}"{literal};
     var validator = $("#form_crear_carpeta").validate({

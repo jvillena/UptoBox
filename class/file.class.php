@@ -370,7 +370,10 @@ class qqUploadedFileXhr {
             '.png' => 'image/png',
             '.gif' => 'image/gif',
             '.jpg' => 'image/jpeg',
-            '.bmp' => 'image/bmp');
+            '.bmp' => 'image/bmp',
+            '.doc' => 'files/doc',
+            '.ppt' => 'files/ppt',
+            '.zip' => 'files/zip');
         $type = $imagetypes[substr($_GET['qqfile'],strripos($_GET['qqfile'], '.'))];
         
         
@@ -497,7 +500,7 @@ class qqFileUploader {
         
        
         
-            if ($this->file->save($uploadDirectory . $filename_new )){ //. '.' . $ext
+            if ($this->file->save($uploadDirectory . $filename_new . '.' . $ext )){ //. '.' . $ext
                 //Upload and insert file in DDBB
                  $result = false;
                 

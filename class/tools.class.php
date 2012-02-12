@@ -180,11 +180,54 @@ class Tools{
     /**
     * getImageFromFile return output image
     *
+    * @param string $id_user id of propietary
+    * @param string $path Absolute path of the image
     * @param string $filename name of file
     * @param string $ext file extension
-    * @param string $type $type of file 
+    * @param string $type $type of file
+    * @param string $width $width of image
+    * @param string $height $width of image 
     */
-    public static function getImageFromFile($filename,$ext, $type){
+    public static function getImageFromFile($id_user, $path, $filename, $ext, $type, $parent_folder, $width='',  $height='', $id_file='0'){
+            $width_tmp='';
+            $height_tmp='';
+            if ($width==''){
+                  if ($height!=''){
+                    $height_tmp = 'height='.$height;
+                }
+            }else{
+                $width_tmp='width='.$width;
+                if ($height!=''){
+                    $height_tmp = '&amp;height='.$height;
+                }
+            }
+            
+            
+            
+        
+            if ( ($type=='image/png') || ($type=='image/jpeg') || ($type=='image/gif') || ($type=='image/bmp')   ){
+                if ($parent_folder==0){
+                    
+                    echo '<div id="div_'.$id_file.'" class="img_show"><img style="vertical-align:bottom" src="'.$path.'libs/php/rescalado_imagen/image.php/'.$path.'datas/users/'.$id_user.'/files/'.$filename.'.'.$ext.'?'.$width_tmp.$height_tmp.'&amp;image='.$path.'datas/users/'.$id_user.'/files/'.$filename.'.'.$ext.'" /></div>';
+                }else{
+                    echo '<div id="div_'.$id_file.'" class="img_show"><img style="vertical-align:bottom" src="'.$path.'libs/php/rescalado_imagen/image.php/'.$path.'datas/users/'.$id_user.'/files/'.$parent_folder.'/'.$filename.'.'.$ext.'?'.$width_tmp.$height_tmp.'&amp;image='.$path.'datas/users/'.$id_user.'/files/'.$parent_folder.'/'.$filename.'.'.$ext.'" /></div>';
+                }
+            }else if (($type=='files/doc') || ($type=='files/docx')){
+                echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_doc.png"/>';
+            }else if (  ($type=='files/pdf') ){
+                 echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_pdf.png"/>';
+            }else if (  ($type=='files/xls') || ($type=='files/csv') ){
+                 echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_excel.png"/>';
+            }else if (  ($type=='files/ppt') || ($type=='files/pptx') ){
+                 echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_ppt.png"/>';                 
+            }else if ( ($type=='files/zip')  ){
+                echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_dat.png"/>';
+              }else if ( ($type=='files/flv') || ($type=='files/swf')  ){
+                echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_flv.png"/>';
+            }else{
+                echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file.png"/>';
+            }
+
 
     }
 }
