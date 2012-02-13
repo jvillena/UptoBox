@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-12 23:27:34
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-13 00:23:47
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/right_side.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6508698644f384ae6583700-55866951%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:7133166804f3858130b0ba1-94153571%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ffdffc4008a905cd39deceb9abe0df7957f4ec34' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/right_side.tpl',
-      1 => 1327270084,
+      1 => 1329092366,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6508698644f384ae6583700-55866951',
+  'nocache_hash' => '7133166804f3858130b0ba1-94153571',
   'function' => 
   array (
   ),
@@ -98,7 +98,8 @@ tx_menu_activity<?php $_block_content = ob_get_clean(); $_block_repeat=false; ec
         				<div class="linea_horizontal" style="margin-top:5px;"></div>
         			</div>
         			<div class="bd" style="line-height: 12px;margin-left:10px;">
-        				<ul> 
+        				<ul>
+        					<?php if ($_smarty_tpl->getVariable('aRecentFile')->value!=''){?> 
         					<?php  $_smarty_tpl->tpl_vars['item_recent'] = new Smarty_Variable;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('aRecentFile')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -106,9 +107,16 @@ if ($_smarty_tpl->_count($_from) > 0){
     foreach ($_from as $_smarty_tpl->tpl_vars['item_recent']->key => $_smarty_tpl->tpl_vars['item_recent']->value){
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item_recent']->key;
 ?>
-								<?php $_template = new Smarty_Internal_Template('files/recent_file.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+        						<?php if ($_smarty_tpl->tpl_vars['item_recent']->value['tipo']==0){?>
+									<?php $_template = new Smarty_Internal_Template('files/recent_file.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
  echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?>
+								<?php }?>
 							<?php }} ?>
+							<?php }else{ ?>
+								<span class="azul"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_no_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</span>
+							<?php }?>
         				 	<!-- <li>
         				 	 	<img style="width:20px;vertical-align:bottom" src="<?php echo $_smarty_tpl->getVariable('RUTA_WEB_ABSOLUTA')->value;?>
 images/icons/icon_folder.png"/>

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-12 23:27:34
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-13 00:23:47
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6062611524f384ae6978ad6-47473375%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18060149894f3858135258a0-76516605%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1329083768,
+      1 => 1329092608,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6062611524f384ae6978ad6-47473375',
+  'nocache_hash' => '18060149894f3858135258a0-76516605',
   'function' => 
   array (
   ),
@@ -29,7 +29,7 @@ $_smarty_tpl->decodeProperties(array (
 '
     			},
     			multiple: true,
-                allowedExtensions: ['docx','ppt','pptx','bmp','psd','dmg',"txt","csv","xml",'css','doc','xls','rtf','pdf','swf','flv','avi','wmv','mov','jpg','jpeg','gif','png'],
+                allowedExtensions: ['docx','ppt','pptx','bmp','psd','dmg',"txt","csv","xml",'css','doc','xls','rtf','pdf','swf','flv','avi','wmv','mov','jpg','jpeg','gif','png','zip','rar'],
                 sizeLimit: 419430400, // max size   
 				minSizeLimit: 0, // min size
  				onProgress: function(id, filename, loaded, total) {
@@ -48,6 +48,9 @@ $_smarty_tpl->decodeProperties(array (
                     //$('#upload_progress').hide();
                     $('#message_success').html( 'Finished: ' + filename);
                     $("#progressbar").css('display','none');
+                  	$('#upload_success').delay(4000).fadeOut(400);
+                  	$('#upload_progress').delay(4000).fadeOut(400);
+
                 },
                 onSubmit: function(id, fileName){
                 	 $(".qq-upload-list").empty();

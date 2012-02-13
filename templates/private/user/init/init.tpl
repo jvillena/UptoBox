@@ -9,7 +9,7 @@
         			id_user: '{/literal}{$id_usuario}{literal}'
     			},
     			multiple: true,
-                allowedExtensions: ['docx','ppt','pptx','bmp','psd','dmg',"txt","csv","xml",'css','doc','xls','rtf','pdf','swf','flv','avi','wmv','mov','jpg','jpeg','gif','png'],
+                allowedExtensions: ['docx','ppt','pptx','bmp','psd','dmg',"txt","csv","xml",'css','doc','xls','rtf','pdf','swf','flv','avi','wmv','mov','jpg','jpeg','gif','png','zip','rar'],
                 sizeLimit: 419430400, // max size   
 				minSizeLimit: 0, // min size
  				onProgress: function(id, filename, loaded, total) {
@@ -28,6 +28,9 @@
                     //$('#upload_progress').hide();
                     $('#message_success').html( 'Finished: ' + filename);
                     $("#progressbar").css('display','none');
+                  	$('#upload_success').delay(4000).fadeOut(400);
+                  	$('#upload_progress').delay(4000).fadeOut(400);
+
                 },
                 onSubmit: function(id, fileName){
                 	 $(".qq-upload-list").empty();

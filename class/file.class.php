@@ -90,7 +90,7 @@ class FileClass {
 		public function getRecentUpdates($id_usuario){
 			$result = "";
 			$consulta_sql = "SELECT a.*, u.nombre as nombre_usuario, u.apellidos as apellidos_usuario, u.id_usuario FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuario." as u WHERE ";
-			$consulta_sql .= " a.id_archivo IN (SELECT ua.id_archivo FROM ".$this->sTablaUsuarioArchivo." as ua WHERE ua.id_usuario='".$id_usuario."') ORDER BY a.fecha_update DESC LIMIT 0,5;";
+			$consulta_sql .= " a.id_archivo IN (SELECT ua.id_archivo FROM ".$this->sTablaUsuarioArchivo." as ua WHERE ua.id_usuario='".$id_usuario."') AND a.tipo=0 ORDER BY a.fecha_update DESC LIMIT 0,5;";
 			$rs = $this->oBD->Execute($consulta_sql);
 			if ($rs->RecordCount()>0){
 				$result = $rs->GetRows();
@@ -373,6 +373,8 @@ class qqUploadedFileXhr {
             '.bmp' => 'image/bmp',
             '.doc' => 'files/doc',
             '.ppt' => 'files/ppt',
+            '.xls' => 'files/xls',
+            '.rar' => 'files/rar',
             '.zip' => 'files/zip');
         $type = $imagetypes[substr($_GET['qqfile'],strripos($_GET['qqfile'], '.'))];
         

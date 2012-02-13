@@ -94,7 +94,7 @@
     <translation id="tx_options_upload_fold"><![CDATA[Subir fichero a la carpeta]]></translation>
     <translation id="tx_options_you"><![CDATA[Usted]]></translation>
     <translation id="tx_options_display_folder"><![CDATA[Propiedades de Carpeta]]></translation>
-    
+    <translation id="tx_no_file"><![CDATA[No hay carpeta creada recientemente.]]></translation>
     
      <!-- PÁGINA FORMULARIO -->
      <translation id="tx_form_name"><![CDATA[Nombre]]></translation>

@@ -220,7 +220,7 @@ class Tools{
                  echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_excel.png"/>';
             }else if (  ($type=='files/ppt') || ($type=='files/pptx') ){
                  echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_ppt.png"/>';                 
-            }else if ( ($type=='files/zip')  ){
+            }else if ( ($type=='files/zip')  || ($type=='files/rar')  ){
                 echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_dat.png"/>';
               }else if ( ($type=='files/flv') || ($type=='files/swf')  ){
                 echo '<img style="vertical-align:bottom" src="'.$path.'images/icons/icon_file_flv.png"/>';
