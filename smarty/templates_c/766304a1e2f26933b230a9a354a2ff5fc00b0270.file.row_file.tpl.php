@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-12 23:27:34
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-14 22:48:28
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:8303699734f384ae6c9c032-56927859%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:19742716424f3ae4bc7ae589-88475301%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '766304a1e2f26933b230a9a354a2ff5fc00b0270' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/files/row_file.tpl',
-      1 => 1329089209,
+      1 => 1329256964,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8303699734f384ae6c9c032-56927859',
+  'nocache_hash' => '19742716424f3ae4bc7ae589-88475301',
   'function' => 
   array (
   ),
@@ -282,6 +282,7 @@ tx_options_you<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo
 											<li class="op_more">
 											 	<a id="more_options_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 " data-placement="above" rel='twipsy'  href="#" data-original-title='More Options'></a>
+											 	<?php if ($_smarty_tpl->tpl_vars['item']->value['tipo']==0){?> <!-- Folder Options -->
 											 	<script>
 											 		$("#more_options_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 ").contextMenu({
@@ -381,6 +382,49 @@ user/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 														});
 											 		
 											 	</script>
+											 	<?php }else{ ?> <!-- Files Options -->
+											 		 	<script>
+											 		$("#more_options_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+").contextMenu({
+															menu: 'myMenuFile',
+															leftButton: true
+														}, function(action, el, pos) {
+															
+															if (action == 'preview'){
+																
+															}else if (action == 'download'){
+															}else if (action == 'upload'){
+															}else if (action == 'share'){
+															}else if (action == 'tags'){
+															}else if (action == 'properties'){
+															}else if (action == 'move_copy'){
+															}else if (action == 'delete_file'){	
+															}
+															
+														});
+														
+														
+														$("#more_options_row_<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+").contextMenu({
+															menu: 'myMenuFile',
+															leftButton: false
+														}, function(action, el, pos) {
+															
+															if (action == 'preview'){
+																
+															}else if (action == 'download'){
+															}else if (action == 'upload'){
+															}else if (action == 'share'){
+															}else if (action == 'tags'){
+															}else if (action == 'properties'){
+															}else if (action == 'move_copy'){
+															}else if (action == 'delete_file'){	
+															}
+															
+														});
+											 		
+											 	</script>
+											 	<?php }?>
 											</li>
 									</ul>
 								</div>

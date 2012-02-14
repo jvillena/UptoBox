@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-13 00:23:47
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-14 22:48:28
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:18060149894f3858135258a0-76516605%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:9395113974f3ae4bc487250-81747582%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '288b0b0b4c31f539ba444a1c1abc580c8b440263' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptobox/templates/private/user/init/init.tpl',
-      1 => 1329092608,
+      1 => 1329258947,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '18060149894f3858135258a0-76516605',
+  'nocache_hash' => '9395113974f3ae4bc487250-81747582',
   'function' => 
   array (
   ),
@@ -144,9 +144,28 @@ user/upload/files',
 						);*/
 				});
 				
+				$("#myDivFile").contextMenu({
+					menu: 'myMenuFile'
+				},
+					function(action, el, pos) {
+					/*alert(
+						'Action: ' + action + '\n\n' +
+						'Element ID: ' + $(el).attr('id') + '\n\n' + 
+						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
+						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
+						);*/
+				});
+				
 				// Show menu when a list item is clicked
 				$("#myList TR TD").contextMenu({
 					menu: 'myMenu'
+				}, function(action, el, pos) {
+				});
+				
+				
+				// Show menu when a list item is clicked
+				$("#myListFile TR TD").contextMenu({
+					menu: 'myMenuFile'
 				}, function(action, el, pos) {
 				});
 				
@@ -340,6 +359,33 @@ tx_options_new_folder<?php $_block_content = ob_get_clean(); $_block_repeat=fals
 </a></li>
 			<li class="upload"><a href="#file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+		</ul>
+		
+		<ul id="myMenuFile" class="contextMenu">
+			<li class="preview"><a href="#preview"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_preview<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="download separator"><a href="#download"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_new_download_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="upload"><a href="#upload"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_upload_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="share separator"><a href="#share"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_share<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="tags"><a href="#tags"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_tags<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="settings separator"><a href="#properties"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_setting_files<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="copy"><a href="#move_copy"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_move_copy<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+</a></li>
+			<li class="delete"><a href="#delete_file"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
+tx_options_delete_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 </a></li>
 		</ul>
 	

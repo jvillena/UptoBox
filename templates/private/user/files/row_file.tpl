@@ -188,6 +188,7 @@ $(document).ready(function() {
 									<ul class="options_list right">
 											<li class="op_more">
 											 	<a id="more_options_{$item.id_archivo}" data-placement="above" rel='twipsy'  href="#" data-original-title='More Options'></a>
+											 	{if $item.tipo==0} <!-- Folder Options -->
 											 	<script>
 											 		$("#more_options_{$item.id_archivo}").contextMenu({
 															menu: 'myMenu',
@@ -262,6 +263,47 @@ $(document).ready(function() {
 														});
 											 		
 											 	</script>
+											 	{else} <!-- Files Options -->
+											 		 	<script>
+											 		$("#more_options_{$item.id_archivo}").contextMenu({
+															menu: 'myMenuFile',
+															leftButton: true
+														}, function(action, el, pos) {
+															{literal}
+															if (action == 'preview'){
+																
+															}else if (action == 'download'){
+															}else if (action == 'upload'){
+															}else if (action == 'share'){
+															}else if (action == 'tags'){
+															}else if (action == 'properties'){
+															}else if (action == 'move_copy'){
+															}else if (action == 'delete_file'){	
+															}
+															{/literal}
+														});
+														
+														
+														$("#more_options_row_{$item.id_archivo}").contextMenu({
+															menu: 'myMenuFile',
+															leftButton: false
+														}, function(action, el, pos) {
+															{literal}
+															if (action == 'preview'){
+																
+															}else if (action == 'download'){
+															}else if (action == 'upload'){
+															}else if (action == 'share'){
+															}else if (action == 'tags'){
+															}else if (action == 'properties'){
+															}else if (action == 'move_copy'){
+															}else if (action == 'delete_file'){	
+															}
+															{/literal}
+														});
+											 		
+											 	</script>
+											 	{/if}
 											</li>
 									</ul>
 								</div>

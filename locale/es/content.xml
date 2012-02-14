@@ -19,7 +19,7 @@
     <translation id="tx_menu_precios"><![CDATA[Planes y Precios]]></translation>
     <translation id="tx_menu_faqs"><![CDATA[Preguntas Frecuentes]]></translation>
     <translation id="tx_menu_activity"><![CDATA[Actividad Reciente]]></translation>
-    
+    <translation id="tx_search_file"><![CDATA[Buscar Archivo]]></translation>
     <!-- PAGE   - SUBHEADER -->
     <translation id="tx_sub_file"><![CDATA[Ficheros y Carpetas]]></translation>
     <translation id="tx_sub_message"><![CDATA[Bienvenidos a Uptobox.net]]></translation>
@@ -66,6 +66,16 @@
     <translation id="tx_menu_sub_estadisticas"><![CDATA[Estadísticas]]></translation>
     <translation id="tx_menu_sub_informes"><![CDATA[Informes]]></translation>
     <translation id="tx_menu_sub_configuracion"><![CDATA[Configuración]]></translation>
+    
+    <translation id="tx_options_preview"><![CDATA[Vista Previa]]></translation>
+    <translation id="tx_options_new_download_file"><![CDATA[Descargar]]></translation>
+    <translation id="tx_options_upload_file"><![CDATA[Subir nueva versión]]></translation>
+    <translation id="tx_options_share"><![CDATA[Compartir Fichero]]></translation>
+    <translation id="tx_options_tags"><![CDATA[Añadir Etiquetas]]></translation>
+    <translation id="tx_options_setting_files"><![CDATA[Propiedades]]></translation>
+    <translation id="tx_options_move_copy"><![CDATA[Mover o Copiar]]></translation>
+    <translation id="tx_options_delete_file"><![CDATA[Borrar]]></translation>
+    
     <!-- PÁGINA ACTIVIDAD  - CONTENIDO CENTRAL -->
     <translation id="tx_fecha"><![CDATA[Fecha]]></translation>
      <translation id="tx_requerido_nombre_carpeta"><![CDATA[Debes insertar un nombre para la carpeta]]></translation>

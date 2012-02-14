@@ -122,9 +122,28 @@
 						);*/
 				});
 				
+				$("#myDivFile").contextMenu({
+					menu: 'myMenuFile'
+				},
+					function(action, el, pos) {
+					/*alert(
+						'Action: ' + action + '\n\n' +
+						'Element ID: ' + $(el).attr('id') + '\n\n' + 
+						'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' + 
+						'X: ' + pos.docX + '  Y: ' + pos.docY+ ' (relative to document)'
+						);*/
+				});
+				
 				// Show menu when a list item is clicked
 				$("#myList TR TD").contextMenu({
 					menu: 'myMenu'
+				}, function(action, el, pos) {
+				});
+				
+				
+				// Show menu when a list item is clicked
+				$("#myListFile TR TD").contextMenu({
+					menu: 'myMenuFile'
 				}, function(action, el, pos) {
 				});
 				
@@ -286,6 +305,17 @@ $(document).ready(function() {
 		<ul id="myMenuOption" class="contextMenu">
 			<li class="folder"><a onclick="createFolder('{translate}tx_options_create_new_folder{/translate}');" href="#">{translate}tx_options_new_folder{/translate}</a></li>
 			<li class="upload"><a href="#file">{translate}tx_options_upload_file{/translate}</a></li>
+		</ul>
+		
+		<ul id="myMenuFile" class="contextMenu">
+			<li class="preview"><a href="#preview">{translate}tx_options_preview{/translate}</a></li>
+			<li class="download separator"><a href="#download">{translate}tx_options_new_download_file{/translate}</a></li>
+			<li class="upload"><a href="#upload">{translate}tx_options_upload_file{/translate}</a></li>
+			<li class="share separator"><a href="#share">{translate}tx_options_share{/translate}</a></li>
+			<li class="tags"><a href="#tags">{translate}tx_options_tags{/translate}</a></li>
+			<li class="settings separator"><a href="#properties">{translate}tx_options_setting_files{/translate}</a></li>
+			<li class="copy"><a href="#move_copy">{translate}tx_options_move_copy{/translate}</a></li>
+			<li class="delete"><a href="#delete_file">{translate}tx_options_delete_file{/translate}</a></li>
 		</ul>
 	
 		{/if}

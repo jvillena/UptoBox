@@ -61,6 +61,16 @@
     <translation id="tx_menu_sub_estadisticas"><![CDATA[Estadísticas]]></translation>
     <translation id="tx_menu_sub_informes"><![CDATA[Informes]]></translation>
     <translation id="tx_menu_sub_configuracion"><![CDATA[Configuración]]></translation>
+    
+    <translation id="tx_options_preview"><![CDATA[Preview]]></translation>
+    <translation id="tx_options_new_download_file"><![CDATA[Download]]></translation>
+    <translation id="tx_options_upload_file"><![CDATA[Upload new version]]></translation>
+    <translation id="tx_options_share"><![CDATA[Share File]]></translation>
+    <translation id="tx_options_tags"><![CDATA[Add Tags]]></translation>
+    <translation id="tx_options_setting_files"><![CDATA[File Properties]]></translation>
+    <translation id="tx_options_move_copy"><![CDATA[Move or Copy]]></translation>
+    <translation id="tx_options_delete_file"><![CDATA[Delete]]></translation>
+    
     <!-- PAGE LOGIN  - CONTENIDO CENTRAL -->
     <translation id="tx_login"><![CDATA[Log in]]></translation>
      <translation id="tx_menssage_success"><![CDATA[tx_menu_conf_perfil]]></translation>
