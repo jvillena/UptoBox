@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>jQuery Bubble Popup - How to implement a Bubble Popup with an Add-to-Cart E-Commerce button</title>
+<meta name="description" content="How to implement a Bubble Popup with an Add-to-Cart E-Commerce button">
+<meta name="keywords" content="jquery, bubble, popup, position, align, element, jquery bubble popup, ecommerce, shopping, cart">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/document.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.bubblepopup.v2.3.1.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.bubblepopup.v2.3.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+
+	// delete the link of each shopping cart button to prevent loading on click
+
+	$('.shoppingcart_button').each(function(index, element){
+		$(element).attr('href','#null');
+	});
+
+	// create bubble popups and attach them to each element in the DOM with "shoppingcart_button" as class attribute;
+	// by default, bubble popups are shown on mouse over on the shoppingcart button and hidden on mouse out.
+
+	$('.shoppingcart_button').CreateBubblePopup({
+													align: 'right',
+													
+													innerHtml: 'click to add <br />the product!', 
+													innerHtmlStyle: {
+																		color:'#FFFFFF', 
+																		'text-align':'center'
+																	},
+																	
+													themeName: 	'all-black',
+													themePath: 	'images/jquerybubblepopup-theme'
+											   });
+											   // Note: you need to use quotation marks for each CSS property of "innerHtmlStyle" with a "-"
+
+	// Note: 
+	// you can add more mouseover/mouseout events to the shopping cart button, 
+	// new events don't interfere with bubble popup events.
+
+	$('.shoppingcart_button').mouseover(function(){
+		$('#status').css({
+							'background-color':'#ECFFD9',
+							border:'#006600 1px solid'
+						});
+		$('#status').html('your mouse is over a button');
+	});
+	$('.shoppingcart_button').mouseout(function(){
+		$('#status').css({
+							'background-color':'#FFFFFF',
+							border:'#FFFFFF 1px solid'
+						});
+		$('#status').html('');
+	});
+
+	// when shoppingcart button is clicked then new bubble popup is shown with new options;
+	// finally, if the bubble popup is not closed, pause for 10 seconds then hide it...
+
+	$('.shoppingcart_button').click(function(){
+
+		// get the product ID
+		var product_id = this.id;
+		product_id = product_id.split('productId');
+		product_id = product_id[1];
+
+		// right here, you could add the product to your shopping cart application performing an asynchronous HTTP request...
+		// $.get('shoppingcart.php?id='+product_id, function(data){});
+		
+		var shoppingcart_button = $(this);
+		var bubble_popup_id = shoppingcart_button.GetBubblePopupID(); //get the ID of the Bubble Popup associated to this shoppingcart button
+		var seconds_to_wait = 10;
+
+		// show a bubble popup with new options when "this" shoppingcart button is clicked
+		shoppingcart_button.ShowBubblePopup({
+
+												align: 'center',
+												innerHtml: '<p>product n.' + product_id + ' <br />added to cart sucessfully!</p><br />' + 
+														   '<p><strong style="color:#003366">the bubble popup <br />will be closed <br />in <span class="countdown">'+seconds_to_wait+'</span> sec.</strong></p><br />' + 
+														   '<p><a href="#null">close</a></p>',
+														   
+												innerHtmlStyle:{ 
+																color:'#666666', 
+																'text-align':'left'
+															   },
+												   
+												themeName: 	'azure',
+												themePath: 	'images/jquerybubblepopup-theme'
+
+											}, false); //save_options = false; it will use new options only on click event, it does not overwrite old options.
+
+
+		// "freeze" the Bubble Popup then it will not respond to mouse events (as mouseover/mouseout) 
+		// until ".ShowBubblePopup()" or ".HideBubblePopup()" is called again.
+		shoppingcart_button.FreezeBubblePopup(); 
+
+		// when the "close" link is clicked, hide the bubble popup
+		$('#'+bubble_popup_id+' a:last').click(function(){
+			$(shoppingcart_button).HideBubblePopup();
+		});
+
+		//start the countdown then hide the bubble popup
+		function doCountdown(){
+			var timer = setTimeout(function(){
+				seconds_to_wait--;
+				if($('#'+bubble_popup_id+' span.countdown').length>0){ //if exists... 
+					$('#'+bubble_popup_id+' span.countdown').html(seconds_to_wait);
+				};
+				if(seconds_to_wait > 0){
+					doCountdown();
+				}else{
+					$(shoppingcart_button).HideBubblePopup(); //hide the bubble popup associated to the shoppingcart button
+				};
+			},1000);
+		};
+		doCountdown();
+
+	});//end onclick event
+
+});
+//-->
+</script>
+</head>
+<body>
+<div class="page">
+	<div class="header">
+		<h1>jQuery Bubble Popup</h1>
+		<h2>How to implement a Bubble Popup with an Add-to-Cart E-Commerce button</h2>
+	</div>
+	<div class="content">
+		<div id="status" style="width:300px;height:24px; margin:0 auto; margin-top:15px; padding:5px; font-size:16px;"></div>
+		<table style="border-collapse:separate;border-spacing:10px;">
+		  <tr>
+			<td><img src="images/products/clock.jpg" /> <a href="shoppingcart.php?id=1" id="productId1" class="shoppingcart_button"><span>add to cart</span></a> </td>
+			<td><img src="images/products/consolle.jpg" /> <a href="shoppingcart.php?id=2" id="productId2" class="shoppingcart_button"><span>add to cart</span></a> </td>
+			<td><img src="images/products/mobile.jpg" /> <a href="shoppingcart.php?id=3" id="productId3" class="shoppingcart_button"><span>add to cart</span></a> </td>
+		  </tr>
+		  <tr>
+			<td><img src="images/products/notebook.jpg" /> <a href="shoppingcart.php?id=4" id="productId4" class="shoppingcart_button"><span>add to cart</span></a> </td>
+			<td><img src="images/products/shoes.jpg" /> <a href="shoppingcart.php?id=5" id="productId5" class="shoppingcart_button"><span>add to cart</span></a> </td>
+			<td><img src="images/products/umbrella.jpg" /> <a href="shoppingcart.php?id=6" id="productId6" class="shoppingcart_button"><span>add to cart</span></a> </td>
+		  </tr>
+		  <tr>
+			<td><img src="images/products/notebook.jpg" /> <a href="shoppingcart.php?id=7" id="productId7" class="shoppingcart_button"><span>add to cart</span></a> </td>
+			<td><img src="images/products/shoes.jpg" /> <a href="shoppingcart.php?id=8" id="productId8" class="shoppingcart_button"><span>add to cart</span></a> </td>
+			<td><img src="images/products/umbrella.jpg" /> <a href="shoppingcart.php?id=9" id="productId9" class="shoppingcart_button"><span>add to cart</span></a> </td>
+		  </tr>
+		  <tr>
+			<td colspan="3">
+			<br />
+			<strong>
+			Take a look to the HTML source of this page to learn how the plugin works!</strong>
+			</td>
+		  </tr>
+		</table>
+	</div>
+	<div class="footer">
+		<p><a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">JQUERY BUBBLE POPUP</a> &copy; 2010 MAX VERGELLI</p>
+	</div>
+</body>
+</html>

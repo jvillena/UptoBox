@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>jQuery Bubble Popup - How to create Bubble Popups for HTML image map</title>
+<meta name="description" content="How to create Bubble Popups for HTML image map">
+<meta name="keywords" content="jquery, bubble, popup, position, align, element, jquery bubble popup, DOM, elements, browser">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/document.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.bubblepopup.v2.3.1.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.bubblepopup.v2.3.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+
+		// <AREA> tags are invisible elements inside the DOM, 
+		// therefore to attach correctly a bubble popup to them, 
+		// we need to display and position <AREA> tags...
+
+		$('area').css({ display: 'block'});
+		$('area').offset({ top: $('img').offset().top, left: $('img').offset().left });
+
+		//create bubble popups for each area tag and disable mouse events...
+		$('area').CreateBubblePopup({ innerHtmlStyle: 	  	{ color:'#FFFFFF', 'text-align':'center' },
+									  themeName: 	  	 	'all-black',
+									  themePath: 	  	 	'images/jquerybubblepopup-theme',
+									  manageMouseEvents:	false 
+								   });
+
+		// all popups of <AREA> tags are invisible
+		$('area').data('visible', false);
+		
+		//set a timer
+		var timer;
+		
+		// add a customized mouseover event for each <AREA> tag...
+		$('area').mouseover(function(){
+		
+				clearTimeout(timer);
+		
+				if( !$(this).data('visible') ){
+				
+					// all popups must be invisible, but only this one is visible
+					$('area').data('visible', false);
+					$(this).data('visible', true);
+					
+					//hide all popups, update the innerHtml and show this popup
+					$('area').HideAllBubblePopups();
+					$(this).SetBubblePopupInnerHtml( $(this).attr('alt') );
+					$(this).ShowBubblePopup();
+					
+					//get <IMG> position and <AREA> coordinates...
+					var img_position = $('img').offset();
+					var img_top = parseInt(img_position.top);
+					var img_left = parseInt(img_position.left);
+					var area_x = parseInt($(this).attr('coords').split(',')[0]);
+					var area_y = parseInt($(this).attr('coords').split(',')[1]);
+					var bubble_width  = parseInt($('#'+$(this).GetBubblePopupID()).outerWidth(false));
+					var bubble_height = parseInt($('#'+$(this).GetBubblePopupID()).outerHeight(false));
+				
+					//move the bubble popup to the <AREA> coordinates...
+					$('#'+$(this).GetBubblePopupID()).css({ top: (area_y+img_top-bubble_height)+'px', left: (area_x+img_left-Math.abs(bubble_width/2))+'px' });
+				
+				};
+		});
+
+		//if the mouse leaves the <AREA>, wait 3 seconds then hide all bubble poups...
+		$('area').mouseleave(function(){
+
+			if( $(this).data('visible') ){
+				var seconds_to_wait = 3;
+				function doCountdown(){
+					timer = setTimeout(function(){
+						seconds_to_wait--;
+						if(seconds_to_wait > 0){
+							doCountdown();
+						}else{
+							clearTimeout(timer);
+							$('area').HideAllBubblePopups();
+							$('area').data('visible', false);
+						};
+					},1000);
+				};
+				doCountdown();
+			};
+			
+		});
+
+});
+//-->
+</script>
+</head>
+<body>
+<div class="page">
+	<div class="header">
+	  <h1>jQuery Bubble Popup</h1>
+	  <h2>How to create Bubble Popups for HTML image map</h2>
+	</div>
+	<div class="content">
+
+		<table style="border-collapse:separate;border-spacing:20px;">
+			<tbody>
+				<tr>
+					<td>
+						<img src="images/jolie.jpg" alt="" usemap="#map" style="width:400px; height:294px; border:0px;" />
+						<map name="map">
+						<area shape="circle" coords="220,100,35" href="#null" alt="Angelina Jolie">
+						<area shape="rect" coords="138,210,166,233" href="#null" alt="Tattoo!">
+						<area shape="poly" coords="273,204,297,183,301,202,288,241" href="#null" alt="another Tattoo!">
+						</map>
+						<!--
+						coordinates values of the <AREA> tags:
+						
+						x1,y1,x2,y2				-> If the shape attribute is set to "rect", it specifies the coordinates of the top-left corner and the bottom-right corner of the rectangle
+						x,y,radius				-> If the shape attribute is set to "circle", it specifies the coordinates of the circle center and the radius
+						x1,y1,x2,y2,..,xn,yn	-> If the shape attribute is set to "poly", it specifies the coordinates of the edges of the polygon. If the first and last coordinate pairs are not the same, the browser must add the last coordinate pair to close the polygon
+						
+						for more information, take a look at http://www.w3schools.com/tags/att_area_coords.asp
+						-->
+					</td>
+				</tr>
+				<tr><td>The image is using an image-map; try to mouse over the face or tattoo, <br />
+				  then a bubble popup will appears; if the mouse leaves that area,<br /> 
+				  it waits 3 seconds then hide bubble poup</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br /><br /><br /><strong>Take a look to the HTML source of this page to learn how the plugin works!</strong>
+	</div>
+
+	<div class="footer">
+	  <p><a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">JQUERY BUBBLE POPUP</a> &copy; 2010 MAX VERGELLI</p>
+	</div>
+</div>
+</body>
+</html>

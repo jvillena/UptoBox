@@ -1,0 +1,76 @@
+
+/* Doc Styles */
+
+html, body, div, table, td, a, p, img{
+	margin:0px;
+	padding:0px;
+	width:auto;
+	height:auto;
+	font-family:'Trebuchet MS', Arial;
+	font-size:11px;
+	text-align:center; 
+	vertical-align:middle;
+	color:#333333;
+}
+h1{
+	font-size:24px;
+}
+h2{ 
+	font-size:16px;
+}
+table{
+	margin:auto;
+	display:table;
+	border-collapse:collapse;
+	border-spacing:0px;
+	empty-cells:show;
+}
+a{
+	color:#006699;
+}
+a:hover{
+	color:#0099FF;
+}
+img{
+	display:block;
+	border:0px;
+}
+div.page{
+	margin:0px auto;
+}
+div.header{
+	margin:25px auto;
+}
+div.content{
+	margin:auto auto;
+	text-align:center;
+}
+div.footer{
+	margin-top:50px;
+}
+div.footer a{	
+	font-size:10px;
+}
+.button{
+	display:table-cell;
+	vertical-align:middle;
+	width:200px;
+	height:60px;
+	color:#FFFFFF;
+	background-color:#006699;
+	border:#003366 1px solid;
+	cursor:pointer;
+}
+.shoppingcart_button {
+	width:186px;
+	height:40px;
+	display:block;
+	background-image:url(../images/addtocart.jpg);
+}
+.shoppingcart_button:hover {
+	background-image:url(../images/addtocart_hover.jpg);
+}
+.shoppingcart_button span {
+	display:none;
+	visibility:hidden;
+}

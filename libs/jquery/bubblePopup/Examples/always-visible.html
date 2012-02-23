@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>jQuery Bubble Popup - </title>
+<meta name="description" content="">
+<meta name="keywords" content="jquery, bubble, popup, position, align, element, jquery bubble popup">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/document.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.bubblepopup.v2.3.1.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.bubblepopup.v2.3.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+
+		//create a bubble popup for each <DIV> element with class attribute as ".button"
+		$('div.button').CreateBubblePopup( {themePath: 	'images/jquerybubblepopup-theme'} );
+		
+		//set a different position for each <DIV>
+		var positions = {		
+							'left'  : { position: 'left'  },
+	
+							'top'   : { position: 'top'   },
+	
+							'right' : { position: 'right' },
+	
+							'bottom': { position: 'bottom'}
+						};
+
+		for(var classname in positions){
+
+			$('.'+classname).SetBubblePopupOptions({
+			
+															alwaysVisible: true,
+					
+															position : positions[classname].position,
+															
+															innerHtml: 'Bubble Popup!',
+						
+															innerHtmlStyle: {
+																				color:'#FFFFFF', 
+																				'text-align':'center'
+																			},
+															
+															themeName: 	'all-black',
+															themePath: 	'images/jquerybubblepopup-theme'
+								 
+														});
+		}; //end loop
+		
+});
+
+//-->
+</script>
+</head>
+<body>
+<div class="page">
+	<div class="header">
+	<div style="top:0px; right:0px; position:absolute; margin:25px;">
+	  <h1>jQuery Bubble Popup</h1>
+	  <h2>How to make a Bubble Popup always visible</h2>
+	  <strong>Take a look to the HTML source of this page to learn how the plugin works!</strong>
+	  <br />
+	  <br />
+	  <p><a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">JQUERY BUBBLE POPUP</a> &copy; 2010 MAX VERGELLI</p>
+	</div>
+	</div>
+	<div class="content">
+	
+	
+		<div style="border:#009900 3px solid; top:0px; left: 200px; position:absolute;">
+			
+			<div class="button top"></div>
+			<br />
+			<br />
+			those two blue buttons have the <br />
+		  same settings with the<br /> 
+		  bubble popup   that has been <br />
+		  set as always visible  and <br />
+		  on TOP side,<br />
+		  otherwise if it is not 
+		  possible, <br />
+		  the bubble popup will be shown <br />
+		  on BOTTOM
+		  side<br />
+			<br />
+			<br />
+			<div class="button top"></div>
+		
+		</div>	
+		
+		
+		<div style="border:#009900 3px solid; top:400px; left: 0px; position:absolute; width:420px;">
+			
+			<div class="button left" style="float:left; display:inline; margin-right:25px;"></div> <div class="button left"></div>
+			<br />
+			<br />
+			buttons with bubble popup <br />
+		  on the LEFT side if it's possible
+			<br />
+			<br />
+			<br />
+
+		</div>	
+		
+		
+		<div style="border:#009900 3px solid; top:400px; right: 0px; position:absolute; width:420px">
+			
+			<div class="button right" style="float:left; display:inline; margin-right:25px;"></div> <div class="button right"></div>
+			<br />
+			<br />
+			buttons with bubble popup <br />
+		  on the RIGHT side if it's possible
+			<br />
+			<br />
+			<br />
+
+		</div>	
+		
+		
+		<div style="border:#009900 3px solid; bottom:0px; left: 500px; position:absolute;">
+			
+			<div class="button bottom"></div>
+			<br />
+			<br />
+			buttons with bubble popup <br />
+		  on BOTTOM side if it's possible
+			<br />
+			<br />
+			<br />
+			<div class="button bottom"></div>
+		
+		</div>	
+		
+	</div>
+	<div class="footer">
+	</div>
+</div>
+</body>
+</html>
