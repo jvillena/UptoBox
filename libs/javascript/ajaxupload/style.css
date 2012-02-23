@@ -1,7 +1,0 @@
-div.preview {float: left; width: 100px; height: 100px; border: 2px dotted #CCCCCC; }
-div.preview.loading {background: url(loading.gif) no-repeat 39px 40px; }
-div.preview.loading img {display: none;}
-
-div.preview_logo {float: left; width: 100px; height: 100px; border: 2px dotted #CCCCCC; }
-div.preview_logo.loading {background: url(loading.gif) no-repeat 39px 40px; }
-div.preview_logo.loading img {display: none;}

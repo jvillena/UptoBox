@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<translations>
-<translation id="name"><![CDATA[Login]]></translation>
-<translation id="username"><![CDATA[Username]]></translation>
-<translation id="password"><![CDATA[Password]]></translation>
-<translation id="button_login"><![CDATA[Login]]></translation>
-<translation id="tx_requerido_usuario"><![CDATA[Username Required!]]></translation>
-<translation id="tx_requerido_password"><![CDATA[Password Required!]]></translation> 
-</translations>
