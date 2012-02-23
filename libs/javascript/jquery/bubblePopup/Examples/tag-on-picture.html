@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>jQuery Bubble Popup - How to tag a picture or add a Bubble Popup for each hotspot in a picture</title>
+<meta name="description" content="How to tag a picture or add a Bubble Popup for each hotspot in a picture">
+<meta name="keywords" content="jquery, bubble, popup, position, align, element, jquery bubble popup, DOM, elements, browser">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/document.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.bubblepopup.v2.3.1.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.bubblepopup.v2.3.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+
+		// add animation for each hotspot
+		function blink(){
+			$(".hotspot").animate({ opacity: 0.2 }, 300 ).delay(400).animate({ opacity: 0.6 }, 300, function(){ blink(); } );
+		};blink();
+
+		// create bubble popups
+		$('.hotspot').CreateBubblePopup({
+												innerHtmlStyle: {
+																	color:'#FFFFFF', 
+																	'text-align':'center'
+																},
+												
+												themeName: 	'all-black',
+												themePath: 	'images/jquerybubblepopup-theme'
+
+										});
+		
+		$('#hotspot1').SetBubblePopupInnerHtml('Wall!');
+		$('#hotspot2').SetBubblePopupInnerHtml('Angelina Jolie!');
+		$('#hotspot3').SetBubblePopupInnerHtml('Tattoo!');
+		
+});
+//-->
+</script>
+<style type="text/css">
+#imagecontainer{
+	margin:0 auto; background-image:url(images/jolie.jpg); width:400px; height:294px; position:relative;
+}
+.hotspot{
+	background-color:#0066CC; border:#003366 1px solid; cursor:pointer; position:absolute;
+}
+</style>
+</head>
+<body>
+<div class="page">
+	<div class="header">
+	  <h1>jQuery Bubble Popup</h1>
+	  <h2>How to &quot;tag&quot; a picture or add a Bubble Popup for each hotspot</h2>
+	</div>
+	<div class="content">
+
+		<div id="imagecontainer">
+			<div id="hotspot1" class="hotspot" style="top:100px; left:50px; width:40px; height:40px;"></div>
+			<div id="hotspot2" class="hotspot" style="top:210px; left:190px; width:30px; height:30px;"></div>
+			<div id="hotspot3" class="hotspot" style="top:190px; left:280px; width:30px; height:30px;"></div>
+		</div>
+	
+		<br /><br /><br /><strong>Take a look to the HTML source of this page to learn how the plugin works!</strong>
+	</div>
+
+	<div class="footer">
+	  <p><a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">JQUERY BUBBLE POPUP</a> &copy; 2010 MAX VERGELLI</p>
+	</div>
+</div>
+</body>
+</html>

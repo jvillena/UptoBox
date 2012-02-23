@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>jQuery Bubble Popup - How to check if a Bubble Popup exists and remove it from DOM elements</title>
+<meta name="description" content="How to check if a Bubble Popup exists and remove it from DOM elements">
+<meta name="keywords" content="jquery, bubble, popup, jquery bubble popup, DOM, elements, remove">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/document.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.bubblepopup.v2.3.1.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.bubblepopup.v2.3.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+
+		//create bubble popups for <DIV> elements
+		$('#button1, #button2, #button3').CreateBubblePopup({
+																innerHtml: 'click on link below to completely remove this popup',
+							
+																innerHtmlStyle: {
+																					color:'#333333', 
+																					'text-align':'center'
+																				},
+																
+																themeName: 	'orange',
+																themePath: 	'images/jquerybubblepopup-theme'								 
+														   });
+	
+		//set customized click event for each link
+		$('a.link').click(function(){
+	
+			//get related button id
+			var button_id = this.id.replace('link', 'button');
+
+			//get a reference to the object button
+			var button = $( '#' + button_id );
+			
+			
+			//check if the button has a bubble popup or if it is already removed
+			if( button.HasBubblePopup() ){
+			
+				//if the bubble popup associated with this button exists then remove it
+				button.RemoveBubblePopup();
+
+				alert('Bubble Popup of the button #'+button_id.split('button')[1]+' removed!');
+				
+			}else{
+			
+				alert('Bubble Popup of the button #'+button_id.split('button')[1]+' has already been removed!');
+				
+			};
+	
+		}); //end click event
+
+});
+//-->
+</script>
+</head>
+<body>
+<div class="page">
+	<div class="header">
+	  <h1>jQuery Bubble Popup</h1>
+	  <h2>How to check if a Bubble Popup exists and remove it from DOM elements</h2>
+	</div>
+	<div class="content">
+		<br />
+		<strong>mouse over on buttons to show Bubble Popups, then click on links to completely remove popups</strong>.<br />
+		<br />
+		<table style="border-collapse:separate;border-spacing:20px;">
+			<tbody>
+				<tr>
+					<td><div id="button1" class="button">button #1</div></td>
+					<td><div id="button2" class="button">button #2</div></td>
+					<td><div id="button3" class="button">button #3</div></td>
+				</tr>
+				<tr>
+					<td><a href="#null" id="link1" class="link">remove bubble popup from button #1</a></td>
+					<td><a href="#null" id="link2" class="link">remove bubble popup from button #2</a></td>
+					<td><a href="#null" id="link3" class="link">remove bubble popup from button #3</a></td>
+				</tr>
+				<tr>
+					<td colspan="3"><br /><br /><br /><strong>Take a look to the HTML source of this page to learn how the plugin works!</strong></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="footer">
+	  <p><a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">JQUERY BUBBLE POPUP</a> &copy; 2010 MAX VERGELLI</p>
+	</div>
+</div>
+</body>
+</html>

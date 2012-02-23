@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>jQuery Bubble Popup - How to load asynchronously data inside the Bubble Popup</title>
+<meta name="description" content="How to load asynchronously data inside the Bubble Popup">
+<meta name="keywords" content="jquery, bubble, popup, position, align, element, jquery bubble popup, DOM, elements, browser">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/document.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.bubblepopup.v2.3.1.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.bubblepopup.v2.3.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+
+		/*
+		
+		this example works only when it's online and from http://www.vegabit.com 
+		due to browser security restrictions, most "Ajax" requests are subject to the same origin policy; 
+		the request can not successfully retrieve data from a different domain, subdomain, or protocol.
+		
+		*/
+
+		//create Bubble Popups for each "button" element with a loading image...
+		$('.button').CreateBubblePopup({
+										position: 'top',
+										align: 'center',
+										innerHtml: '<img src="images/loading.gif" style="border:0px; vertical-align:middle; margin-right:10px; display:inline;" />loading!',
+										innerHtmlStyle: { color:'#FFFFFF', 'text-align':'center' },
+										themeName: 'all-black',
+										themePath: 'images/jquerybubblepopup-theme'
+								  	  });
+
+		// add a mouseover event for the "button" element...
+		$('.button').mouseover(function(){
+
+				//get a reference object for "this" target element
+				var button = $(this);
+	
+				//load data asynchronously when mouse is over...
+				$.get('http://www.vegabit.com/examples/test-get.html', function(data) {
+	
+					//////////////////////////////////////////////////////////
+					// IN THIS EXAMPLE,
+					// the .get() method loads the data immediately, 
+					// then we force the script to pause for 2 seconds, 
+					// to see the loading effect; this is only an example,
+					// feel free to delete this code in a real application...
+					//
+					var seconds_to_wait = 2;
+					function pause(){
+						var timer = setTimeout(function(){
+							seconds_to_wait--;
+							if(seconds_to_wait > 0){
+								pause();
+							}else{
+	
+								//set new innerHtml for the Bubble Popup
+								button.SetBubblePopupInnerHtml(data, false); //false -> it shows new innerHtml but doesn't save it, then the script is forced to load everytime the innerHtml... 
+								
+								// take a look in documentation for SetBubblePopupInnerHtml() method
+	
+							};
+						},1000);
+					};pause();
+					//////////////////////////////////////////////////////////
+	
+				}); 
+
+		}); //end mouseover event
+
+});
+//-->
+</script>
+</head>
+<body>
+<div class="page">
+	<div class="header">
+	  <h1>jQuery Bubble Popup</h1>
+	  <h2>How to load asynchronously data inside the Bubble Popup</h2>
+	</div>
+	<div class="content">
+		<table style="border-collapse:separate;border-spacing:30px;">
+			<tbody>
+			<tr>
+				<td><div class="button">load content asynchronously</div></td>
+				<td><div class="button">load content asynchronously</div></td>	
+			</tr>
+				<tr>
+					<td colspan="2"><br /><br /><br /><strong>Take a look to the HTML source of this page to learn how the plugin works!</strong></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="footer">
+	  <p><a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">JQUERY BUBBLE POPUP</a> &copy; 2010 MAX VERGELLI</p>
+	</div>
+</div>
+</body>
+</html>

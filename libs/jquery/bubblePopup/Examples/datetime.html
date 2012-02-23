@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>jQuery Bubble Popup - Get creation, last-modified and last-display date and time of each Bubble Popup</title>
+<meta name="description" content="Get creation, last-modified and last-display date and time of each Bubble Popup">
+<meta name="keywords" content="jquery, bubble, popup, position, align, element, jquery bubble popup, DOM, elements, date, time, events">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/document.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.bubblepopup.v2.3.1.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.bubblepopup.v2.3.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+
+		//create bubble popups for each element with class "button"
+		$('.button').CreateBubblePopup();
+	
+		//set customized mouseover event for each button
+		$('.button').mouseover(function(){
+	
+			//get a reference to the object button
+			var button = $(this);
+			
+			//get bubble popup current display datetime
+			var bubble_popup_open_on = '<p><b>opened on <br />' + new Date().toUTCString()+'</b></p><br />';
+
+			//get bubble popup creation datetime
+			var bubble_popup_creation = button.GetBubblePopupCreationDateTime() != null ? 
+										'<p><b>popup created on <br />' + button.GetBubblePopupCreationDateTime().toUTCString()+'</b></p><br />' : '';
+			
+			//get bubble popup last display datetime
+			var bubble_popup_last_display = button.GetBubblePopupLastDisplayDateTime()!=null ? 
+											'<p><b>last display on <br />' + button.GetBubblePopupLastDisplayDateTime().toUTCString()+'</b></p><br />' : '';
+	
+			//show the bubble popup with new options
+			button.ShowBubblePopup({
+										innerHtml: bubble_popup_open_on + bubble_popup_creation + bubble_popup_last_display,
+	
+										innerHtmlStyle: {
+															color:'#333333', 
+															'text-align':'center'
+														},
+										
+										themeName: 	'orange',
+										themePath: 	'images/jquerybubblepopup-theme'								 
+								  });
+	
+		}); //end mouseover event
+
+});
+//-->
+</script>
+</head>
+<body>
+<div class="page">
+	<div class="header">
+	  <h1>jQuery Bubble Popup</h1>
+	  <h2>Get creation, last-modified and last-display date and time of each Bubble Popup</h2>
+	</div>
+	<div class="content">
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<table style="border-collapse:separate;border-spacing:20px;">
+			<tbody>
+				<tr>
+					<td><div class="button">#1</div></td>
+					<td><div class="button">#2</div></td>
+					<td><div class="button">#3</div></td>
+				</tr>
+				<tr>
+					<td colspan="3"><br /><strong>Take a look to the HTML source of this page to learn how the plugin works!</strong></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="footer">
+	  <p><a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">JQUERY BUBBLE POPUP</a> &copy; 2010 MAX VERGELLI</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+#login-box {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: 452px;
+}
+#login-box h1 {
+    color: #3D89B9;
+    display: inline-block;
+    font-size: 40pt;
+    font-weight: bold;
+    margin: 20px 0 50px;
+    
+}
+#login-box a {
+    color: #6091BF;
+}
+#login-box a.forgot-password {
+    line-height: 31px;
+}
+
+#login-box span {
+    font-size: 1.2em;
+}
+#login-box form {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin: 0 auto 15px;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+    text-align: left;
+    width: 412px;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=5);
+}
+#login-box form input {
+    height: 38px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 412px;
+    
+}
+#login-box form dl {
+    margin-bottom: 20px;
+}
+#login-box form dl dd {
+    margin-bottom: 10px;
+    position: relative;
+}
+#login-box form button {
+    float: right;
+    margin-right: 0;
+    margin-top: 8px;
+}
+html.mobile-device #wrapper {
+    min-height: 0;
+}
+html.mobile-device #wrapper-box {
+    margin-top: 0;
+    min-height: 0;
+    width: 300px;
+}
+html.mobile-device #login-box {
+    margin-bottom: 20px;
+    width: 300px;
+}
+html.mobile-device #login-box h1 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+html.mobile-device #login-box .badge {
+    margin: 0 auto 30px;
+    width: 250px;
+}
+html.mobile-device #login-box form {
+    width: 250px;
+}
+html.mobile-device #login-box form label.hint {
+    float: left;
+}
+html.mobile-device #login-box form input.text, html.mobile-device #login-box form input.usuario, html.mobile-device #login-box form input.submit, html.mobile-device #login-box form input.contraseña {
+    width: 230px;
+}
+html.mobile-device #login-box form dl dt.tos label {
+    width: 200px;
+    word-wrap: break-word;
+}

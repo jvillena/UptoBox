@@ -1,0 +1,465 @@
+/*******************************************************************************
+ * Tree container
+ */
+#tree ul.dynatree-container
+{
+	background-color: #FFFFFF;
+    border: 1px solid #C1C1C1;
+    
+    max-height: 300px;
+    overflow: auto;
+    padding: 3px;
+    width: 200px;
+}
+
+#tree  ul.dynatree-container ul
+{
+	padding: 0 0 0 16px;
+	margin: 0;
+}
+
+#tree ul li
+{
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	-moz-background-clip:border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background-attachment: scroll;
+	background-color: transparent;
+	background-position: 0 0;
+	background-repeat: repeat-y;
+	background-image: none;  /* no v-lines */
+	width:100%;
+	margin:0;
+	padding:1px 0 0 0;
+}
+/* Suppress lines for last child node */
+#tree  ul.dynatree-container li.dynatree-lastsib
+{
+	background-image: none;
+}
+/* Suppress lines if level is fixed expanded (option minExpandLevel) */
+#tree  ul.dynatree-no-connector > li
+{
+	background-image: none;
+}
+
+/* Style, when control is disabled */
+#tree .ui-dynatree-disabled ul.dynatree-container
+{
+	opacity: 0.5;
+/*	filter: alpha(opacity=50); /* Yields a css warning */
+	background-color: silver;
+}
+
+
+/*******************************************************************************
+ * Common icon definitions
+ */
+span.dynatree-empty,
+span.dynatree-vline,
+span.dynatree-connector,
+span.dynatree-expander,
+span.dynatree-icon,
+span.dynatree-checkbox,
+span.dynatree-radio,
+span.dynatree-drag-helper-img,
+#dynatree-drop-marker 
+{
+	width: 16px;
+	height: 16px;
+/*	display: -moz-inline-box; /* @ FF 1+2 removed for issue 221*/
+/*	-moz-box-align: start; /* issue 221 */
+	display: inline-block; /* Required to make a span sizeable */
+	vertical-align: top;
+	background-repeat: no-repeat;
+	background-position: left;
+	background-image: url("icons.gif");
+	background-position: 0 0;
+}
+
+/** Used by 'icon' node option: */
+#tree ul.dynatree-container img
+{
+	width: 16px;
+	height: 16px;
+	margin-left: 3px;
+	vertical-align: top;
+	border-style: none;
+}
+
+
+/*******************************************************************************
+ * Lines and connectors
+ */
+
+/*
+span.dynatree-empty
+{
+}
+span.dynatree-vline
+{
+}
+*/
+#tree span.dynatree-connector
+{
+	background-image: none;
+}
+/*
+.dynatree-lastsib span.dynatree-connector
+{
+}
+*/
+/*******************************************************************************
+ * Expander icon
+ * Note: IE6 doesn't correctly evaluate multiples class names,
+ *		 so we create combined class names that can be used in the CSS.
+ *
+ * Prefix: dynatree-exp-
+ * 1st character: 'e': expanded, 'c': collapsed
+ * 2nd character (optional): 'd': lazy (Delayed)
+ * 3rd character (optional): 'l': Last sibling
+ */
+
+#tree span.dynatree-expander
+{
+	background-position: 0px -80px;
+	cursor: pointer;
+}
+#tree span.dynatree-expander:hover
+{
+	background-position: -16px -80px;
+}
+#tree .dynatree-exp-cl span.dynatree-expander /* Collapsed, not delayed, last sibling */
+{
+}
+#tree .dynatree-exp-cd span.dynatree-expander /* Collapsed, delayed, not last sibling */
+{
+}
+#tree .dynatree-exp-cdl span.dynatree-expander /* Collapsed, delayed, last sibling */
+{
+}
+.dynatree-exp-e span.dynatree-expander,  /* Expanded, not delayed, not last sibling */
+.dynatree-exp-ed span.dynatree-expander,  /* Expanded, delayed, not last sibling */
+.dynatree-exp-el span.dynatree-expander,  /* Expanded, not delayed, last sibling */
+.dynatree-exp-edl span.dynatree-expander  /* Expanded, delayed, last sibling */
+{
+	background-position: -32px -80px;
+}
+#tree .dynatree-exp-e span.dynatree-expander:hover,  /* Expanded, not delayed, not last sibling */
+#tree .dynatree-exp-ed span.dynatree-expander:hover,  /* Expanded, delayed, not last sibling */
+#tree .dynatree-exp-el span.dynatree-expander:hover,  /* Expanded, not delayed, last sibling */
+#tree .dynatree-exp-edl span.dynatree-expander:hover  /* Expanded, delayed, last sibling */
+{
+	background-position: -48px -80px;
+}
+#tree .dynatree-loading span.dynatree-expander  /* 'Loading' status overrides all others */
+{
+	background-position: 0 0;
+	background-image: url("loading.gif");
+}
+
+#tree div > ul a{
+	padding: 0;
+}
+/*******************************************************************************
+ * Checkbox icon
+ */
+#tree span.dynatree-checkbox
+{
+	margin-left: 3px;
+	background-position: 0px -32px;
+}
+#tree span.dynatree-checkbox:hover
+{
+	background-position: -16px -32px;
+}
+
+#tree .dynatree-partsel span.dynatree-checkbox
+{
+	background-position: -64px -32px;
+}
+#tree .dynatree-partsel span.dynatree-checkbox:hover
+{
+	background-position: -80px -32px;
+}
+
+#tree .dynatree-selected span.dynatree-checkbox
+{
+	background-position: -32px -32px;
+}
+#tree .dynatree-selected span.dynatree-checkbox:hover
+{
+	background-position: -48px -32px;
+}
+
+/*******************************************************************************
+ * Radiobutton icon
+ * This is a customization, that may be activated by overriding the 'checkbox'
+ * class name as 'dynatree-radio' in the tree options.
+ */
+#tree span.dynatree-radio
+{
+	margin-left: 3px;
+	background-position: 0px -48px;
+}
+#tree span.dynatree-radio:hover
+{
+	background-position: -16px -48px;
+}
+
+#tree .dynatree-partsel span.dynatree-radio
+{
+	background-position: -64px -48px;
+}
+#tree .dynatree-partsel span.dynatree-radio:hover
+{
+	background-position: -80px -48px;
+}
+
+#tree .dynatree-selected span.dynatree-radio
+{
+	background-position: -32px -48px;
+}
+#tree .dynatree-selected span.dynatree-radio:hover
+{
+	background-position: -48px -48px;
+}
+
+/*******************************************************************************
+ * Node type icon
+ * Note: IE6 doesn't correctly evaluate multiples class names,
+ *		 so we create combined class names that can be used in the CSS.
+ *
+ * Prefix: dynatree-ico-
+ * 1st character: 'e': expanded, 'c': collapsed
+ * 2nd character (optional): 'f': folder
+ */
+
+#tree span.dynatree-icon /* Default icon */
+{
+	margin-left: 3px;
+	background-position: 0px 0px;
+}
+
+#tree .dynatree-has-children span.dynatree-icon /* Default icon */
+{
+/*    background-position: 0px -16px; */
+}
+
+#tree .dynatree-ico-cf span.dynatree-icon  /* Collapsed Folder */
+{
+	background-position: 0px -16px;
+}
+
+#tree .dynatree-ico-ef span.dynatree-icon  /* Expanded Folder */
+{
+	background-position: -64px -16px;
+}
+
+/* Status node icons */
+
+#tree .dynatree-statusnode-wait span.dynatree-icon
+{
+	background-image: url("loading.gif");
+}
+
+#tree .dynatree-statusnode-error span.dynatree-icon
+{
+	background-position: 0px -112px;
+/*	background-image: url("ltError.gif");*/
+}
+
+/*******************************************************************************
+ * Node titles
+ */
+
+/* @Chrome: otherwise hit area of node titles is broken (issue 133)
+   Removed again for issue 165; (133 couldn't be reproduced) */
+#tree span.dynatree-node
+{
+/*	display: -moz-inline-box; /* issue 133, 165, 172, 192. removed for issue 221 */
+/*	-moz-box-align: start; /* issue 221 */
+/*  display: inline-block; /* Required to make a span sizeable */
+}
+
+
+/* Remove blue color and underline from title links */
+#tree ul.dynatree-container a
+/*, ul.dynatree-container a:visited*/
+{
+	color: black; /* inherit doesn't work on IE */
+	text-decoration: none;
+	vertical-align: top;
+	margin: 0px;
+	margin-left: 3px;
+	padding: 0px;
+/*	outline: 0; /* @ Firefox, prevent dotted border after click */
+	/* Set transparent border to prevent jumping when active node gets a border
+	   (we can do this, because this theme doesn't use vertical lines)
+	   */
+	border: 1px solid white; /* Note: 'transparent' would not work in IE6 */
+
+}
+
+
+
+#tree ul.dynatree-container a:hover
+{
+/*	text-decoration: underline; */
+	background: #F2F7FD; /* light blue */
+	border-color: #B8D6FB; /* darker light blue */
+	padding:0px;
+}
+
+#tree span.dynatree-node a
+{
+	display: inline-block; /* Better alignment, when title contains <br> */
+/*	vertical-align: top;*/
+	padding-left: 3px;
+	padding-right: 3px; /* Otherwise italic font will be outside bounds */
+	color: #666;
+	padding:0px;
+	/*	line-height: 16px; /* should be the same as img height, in case 16 px */
+}
+#tree span.dynatree-folder a
+{
+/*	font-weight: bold; */ /* custom */
+}
+
+#tree a{
+	  color: #666666;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;;
+}
+
+
+#tree ul.dynatree-container a:focus,
+#tree span.dynatree-focused a:link  /* @IE */
+{
+	background-color: #EFEBDE; /* gray */
+}
+
+#tree span.dynatree-has-children a
+{
+/*	font-style: oblique; /* custom: */
+}
+
+#tree span.dynatree-expanded a
+{
+}
+
+#tree span.dynatree-selected a
+{
+/*	color: green; */
+	font-style: italic;
+}
+
+#tree span.dynatree-active a
+{
+	border: 1px solid #99DEFD;
+	background-color: #D8F0FA;
+}
+
+/*******************************************************************************
+ * Drag'n'drop support
+ */
+
+/*** Helper object ************************************************************/
+#tree div.dynatree-drag-helper
+{
+}
+#tree div.dynatree-drag-helper a
+{
+	border: 1px solid gray;
+	background-color: white;
+	padding-left: 5px;
+	padding-right: 5px;
+	opacity: 0.8;
+}
+#tree span.dynatree-drag-helper-img
+{
+	/*
+	position: relative;
+	left: -16px;
+	*/
+}
+#tree div.dynatree-drag-helper /*.dynatree-drop-accept*/
+{
+/*    border-color: green;
+	background-color: red;*/
+}
+#tree div.dynatree-drop-accept span.dynatree-drag-helper-img
+{
+	background-position: -32px -112px;
+}
+#tree div.dynatree-drag-helper.dynatree-drop-reject
+{
+	border-color: red;
+}
+#tree div.dynatree-drop-reject span.dynatree-drag-helper-img
+{
+	background-position: -16px -112px;
+}
+
+/*** Drop marker icon *********************************************************/
+
+#tree #dynatree-drop-marker
+{
+	width: 24px;
+	position: absolute;
+	background-position: 0 -128px;
+	margin: 0;
+}
+#tree #dynatree-drop-marker.dynatree-drop-after,
+#tree #dynatree-drop-marker.dynatree-drop-before
+{
+	width:64px;
+	background-position: 0 -144px;
+}
+#tree #dynatree-drop-marker.dynatree-drop-copy
+{
+	background-position: -64px -128px;
+}
+#tree #dynatree-drop-marker.dynatree-drop-move
+{
+	background-position: -64px -128px;
+}
+
+/*** Source node while dragging ***********************************************/
+
+#tree span.dynatree-drag-source
+{
+	/* border: 1px dotted gray; */
+	background-color: #e0e0e0;
+}
+#tree span.dynatree-drag-source a
+{
+	color: gray;
+}
+
+/*** Target node while dragging cursor is over it *****************************/
+
+#tree span.dynatree-drop-target
+{
+	/*border: 1px solid gray;*/
+}
+#tree span.dynatree-drop-target a
+{
+}
+#tree span.dynatree-drop-target.dynatree-drop-accept a
+{
+	/*border: 1px solid green;*/
+	background-color: #3169C6 !important;
+	color: white !important; /* @ IE6 */
+	text-decoration: none;
+}
+#tree span.dynatree-drop-target.dynatree-drop-reject
+{
+	/*border: 1px solid red;*/
+}
+#tree span.dynatree-drop-target.dynatree-drop-after a
+{
+}

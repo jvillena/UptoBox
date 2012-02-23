@@ -1,0 +1,758 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JQUERY BUBBLE POPUP v.2.3.1 - display animated and shadowed "bubble" popups with few lines of code in jQuery</title>
+<meta name="description" content="jQuery Bubble Popup is a plugin to display smart, animated and shadowed, bubble popups with few lines of code in jQuery; The plugin support html5 and it is fully compatible with ie, firefox, chrome, opera and safari">
+<meta name="keywords" content="jquery, bubble, popup, animated, shadowed, code, html5, ie, firefox, chrome, opera, safari">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+html, body{
+	margin:0px;
+	padding:0px;
+	width:auto;
+	height:auto;
+}
+img{
+	border:0px;
+}
+.page{
+	margin:30px;
+	padding:0px;
+	font-family: 'Trebuchet MS', Arial;
+	font-size:16px;
+}
+.function {
+	font-family: 'Trebuchet MS', Arial;
+	font-size: 13px;
+	color: #333333;
+	background-color: #F9F9F9;
+	border: #CCCCCC 1px solid;
+	margin: 10px;
+	padding: 10px;
+}
+.function_title{
+	font-size:14px;
+	font-weight:bold;
+}
+.js_value {color: #0000FF; font-weight:bold}
+.js_object {color:#006666; font-weight:bold}
+.txt_underline{text-decoration:underline}
+.code {font-size:12px; margin:0px; padding:0px; color:#003300;}
+.row1{background-color:#F6F6F6;}
+.row2{background-color:#F3F3F3;}
+
+.row1o{background-color:#FFF5EC;}
+.row2o{background-color:#FFE9D2;}
+
+.row1g{background-color:#E8FFE8;}
+.row2g{background-color:#D7FFD7;}
+
+.row1b{background-color:#ECF9FF;}
+.row2b{background-color:#D5EAFF;}
+
+.td_center{text-align:center;}
+.table_options td{
+	margin:0px;
+	padding:4px;
+}
+.Stile1 {font-size: 14px}
+.Stile3 {text-align: center; font-style: italic; }
+-->
+</style>
+</head>
+
+<body>
+<div class="page">
+	<table style="border-collapse:collapse;">
+      <tr>
+        <td>
+		<h1>jQuery Bubble Popup v.2.3.1 </h1>
+		<p>Copyright (c) 2010 Max Vergelli, <a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">http://maxvergelli.wordpress.com/jquery-bubble-popup/ </a></p>
+		<p> jQuery Bubble Popup is licensed under the <a href="jquery.bubblepopup.license.txt" target="_blank">MIT license</a>; You are free to use jQuery Bubble Popup in commercial projects as long as the copyright header is left intact.</p>
+          <ul>
+            <li><a href="#usage">Description &amp; Usage</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#examples">Examples</a>
+              <ul>
+                <li><a href="../Examples/different-elements.html" target="_blank">Create Bubble Popups for different DOM elements</a></li>
+                <li><a href="../Examples/add-to-shopping-cart-ecommerce.html" target="_blank">Create Bubble Popups for &quot;add-to-cart&quot; shopping cart buttons</a></li>
+                <li><a href="../Examples/position-align.html" target="_blank">Position and Alignment for Bubble Popups</a></li>
+                <li><a href="../Examples/datetime.html" target="_blank">Get creation, las-modified or last-display datetime of each Bubble Popup</a></li>
+                <li><a href="../Examples/isopen-bubble-popup.html" target="_blank">Get if a Bubble Popup is open</a></li>
+                <li><a href="../Examples/remove-bubble-popup.html" target="_blank">Remove Bubble Popups</a></li>
+                <li><a href="../Examples/window-resize.html" target="_blank">Bubble Popup mantains position on window resize</a></li>
+				<li><a href="../Examples/window-resize-adaptable.html" target="_blank">Change or restore Bubble Popup's position on window resize to make it always visible</a></li>
+                <li><a href="../Examples/always-visible.html" target="_blank">How to make a Bubble Popup always visible in the browser's viewport</a></li>
+                <li><a href="../Examples/load-asynchronous-content.html" target="_blank">How to load asynchronously data inside the Bubble Popup</a></li>
+                <li><a href="../Examples/selectable-on-mouse-over.html" target="_blank">How to make a &quot;selectable&quot; Bubble Popup</a></li>
+                <li><a href="../Examples/tag-on-picture.html" target="_blank">How to &quot;tag&quot; a picture or add a Bubble Popup for each hotspot inside the picture</a></li>
+                <li><a href="../Examples/image-map.html" target="_blank">How to create Bubble Popups for HTML image map</a></li>
+                <li><a href="../Examples/change-colors.html" target="_blank">Change theme or color for each Bubble Popup at runtime</a></li>
+              </ul>
+            </li>
+            <li><a href="#browsers">Browser Compatibility</a></li>
+            <li><a href="#functions">Functions</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#engine">How Bubble Popup works</a></li>
+            <li><a href="#template">Template System &amp; Customization</a> </li>
+            <li><a href="#position">Position and Alignment</a></li>
+            <li> <a href="#notes">Implementation Notes</a></li>
+            <li><a href="#workarounds">Known Bugs &amp; Workarounds</a> </li>
+        </ul>          </td>
+        <td style="vertical-align:top;"><img src="bubble-popup-logo.gif" alt="" /></td>
+      </tr>
+    </table>
+<br />
+<a name="usage" id="usage"></a>
+  <h2>Description &amp; Usage</h2>
+	<p> &quot;jQuery Bubble Popup&quot; is a plugin to display smart, animated &amp; shadowed, &quot;bubble&quot; popups or <em class="txt_underline">tooltips</em> with few lines    of code in <a href="http://jquery.com/">jQuery</a>. The plugin support HTML5 and it is fully compatible with IE, Firefox, Chrome, Opera and Safari. It needs	<strong>jQuery v.1.4.2</strong> to run, the fastest and concise JavaScript Library.</p>
+	<p>First of all, add the following tags in the &lt;HEAD&gt; of the document</p>
+	<pre class="code">
+		&lt;link href=&quot;jquery.bubblepopup.v2.3.1.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;jquery.bubblepopup.v2.3.1.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+	</pre>
+	<p>Then, to create a Bubble Popup, add the following script in any part of the &lt;BODY&gt; (assuming that exists <SPAN title="" closure_uid_z5p9o9="126" se="almeno" te="at least">at least</SPAN> a DOM element with &quot;button&quot; as class attribute) </p>
+	<pre class="code">
+		&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+			$(document).ready(function(){
+				//create a bubble popup for each DOM element with class attribute as &quot;button&quot;
+				$('.button').CreateBubblePopup({ innerHtml: 'This is a Bubble Popup!' });
+			});
+		//--&gt;
+		&lt;/script&gt;
+    </pre>
+	This is a list of the main features of this plugin:
+    <ul style="font-size:11px;">
+<li>popups can be attached on the left, top, right or bottom side of any DOM element</li>
+<li>set position and alignment of the popup relative to the target element</li>
+<li>each popup is shown/hidden with a fading animation</li>
+<li>create more popups at the same time using the jQuery selector syntax</li>
+<li>attach more popups to each DOM element</li>
+<li>create timed popups or set opening/closing delays</li>
+<li>each popup is based on a customizable template system</li>
+<li>freeze or unfreeze popups status</li>
+<li>set opening velocity, distance from the target & margins</li>
+<li>get creation, last-modified or last-display date & time of each popup</li>
+<li>the plugin automatically manages popups postion when browser window is resized</li>
+<li>add or completely remove popups from the DOM</li>
+<li>access to any created popup through the jQuery selector</li>
+<li>toggle on/off image of the popup's tail</li>
+<li>shadowed popups display properly in all browsers</li>
+<li>mouseover/mouseout events automatically managed</li>
+<li>add more customized popups events</li>
+<li>insert HTML messages inside popups</li>
+<li>set a style for the message at runtime or by a CSS stylesheet</li>
+<li>set bubble popups always visible inside the browser's viewport</li>
+<li>load data asynchronously</li>
+<li>make a selectable bubble popup</li>
+<li>create bubble popups inside a picture with HTML image map or Divs </li>
+<li>support for HTML5</li>
+<li>support any HTML doctype</li>
+<li>several templates & colors ready to use</li>
+<li>customize a popup's template or images for your needs</li>
+<li>choose or change a popup's style template at runtime</li>
+<li>override template settings and edit popup's CSS properties at runtime</li>
+<li>define callback functions when popup is shown/hidden</li>
+<li>hide/show custom DOM elements when popup is open/close</li>
+<li>CSS styles of the popups have strong names for the best compatibility with other CSS stylesheets</li>
+<li>ability of changing the name of the base CSS class of the popups</li>
+<li>plugin's functions have strong names to ensure the best compatibility with other scripts</li>
+<li>fully compatible with <span class="txt_underline">Internet Explorer 6+</span>, <span class="txt_underline">Firefox 3.5+</span>, <span class="txt_underline">Opera 9+</span>, <span class="txt_underline">Chrome 6+</span>, <span class="txt_underline">Safari</span></li>
+</ul>
+	<br />
+	<a name="download" id="download"></a>
+		<h2>Download</h2>
+		<p>Download the latest version at <a href="http://plugins.jquery.com/project/jqBubblePopup" target="_blank">http://plugins.jquery.com/project/jqBubblePopup</a></p>
+<br />
+	<a name="installation" id="installation"></a>
+		<h2>Installation</h2>
+		<p>1) copy the content of the folder &quot;Install&quot; in the root of your website<br />
+		  2) in each page where you want to use the plugin, add the following &lt;link&gt; and &lt;script&gt; tags inside the tag &lt;head&gt;:</p>
+		<p> <span class="code">&lt;!DOCTYPE HTML&gt;<br />
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+	    ...<br />
+&lt;link href=&quot;jquery.bubblepopup.v2.3.1.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;<br />
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
+&lt;script src=&quot;jquery.bubblepopup.v2.3.1.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
+	    ...<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+...<br />
+&lt;/body&gt;
+<br />
+&lt;/html&gt;</span><br />
+        <br />
+        <a name="examples" id="examples"></a>  </p>
+		<h2>Examples</h2>
+        <ul>
+          <li><a href="../Examples/different-elements.html" target="_blank">Create Bubble Popups for different DOM elements</a></li>
+          <li><a href="../Examples/add-to-shopping-cart-ecommerce.html" target="_blank">Create Bubble Popups for &quot;add-to-cart&quot; shopping cart buttons  and E-commerce websites</a></li>
+          <li><a href="../Examples/position-align.html" target="_blank">Position and Alignment for Bubble Popups</a></li>
+          <li><a href="../Examples/datetime.html" target="_blank">Get creation datetime, las-modified or last-display date and time for each Bubble Popup</a></li>
+          <li><a href="../Examples/isopen-bubble-popup.html" target="_blank">Get if a Bubble Popup is open</a></li>
+          <li><a href="../Examples/remove-bubble-popup.html" target="_blank">Remove Bubble Popups</a></li>
+          <li><a href="../Examples/window-resize.html" target="_blank">Bubble Popup mantains position on window resize</a></li>
+          <li><a href="../Examples/window-resize-adaptable.html" target="_blank">How to change or restore Bubble Popup's position on window resize to make it always visible</a></li>
+          <li><a href="../Examples/always-visible.html" target="_blank">How to make a Bubble Popup always visible in the browser's viewport</a></li>
+          <li><a href="../Examples/load-asynchronous-content.html" target="_blank">How to load asynchronously data inside the Bubble Popup</a></li>
+          <li><a href="../Examples/selectable-on-mouse-over.html" target="_blank">How to make a &quot;selectable&quot; Bubble Popup</a></li>
+          <li><a href="../Examples/tag-on-picture.html" target="_blank">How to &quot;tag&quot; a picture or add a Bubble Popup for each hotspot inside the picture</a></li>
+          <li><a href="../Examples/image-map.html" target="_blank">How to create Bubble Popups for HTML image map</a></li>
+          <li><a href="../Examples/change-colors.html" target="_blank">Change theme or color for each Bubble Popup at runtime</a><br />
+          </li>
+        </ul>
+<br />
+<a name="browsers" id="browsers"></a>
+<h2>Browser Compatibility</h2>
+<p>jQuery Bubble Popup was tested and supports the following browsers:</p>
+<ul>
+  <li>Internet Explorer 6.5, 7, 8, 9 (beta) *   </li>
+  <li>Firefox 3.5.x    </li>
+  <li>Safari 5.0.x    </li>
+  <li>Opera 10.x    </li>
+  <li>Chrome 6.0.x    </li>
+  <li>iCab 4.x    </li>
+  <li>Webkit based browser (reKonq, Arora)    </li>
+  <li>KHTML-based browser (Konqueror) ** </li>
+</ul>
+<p>* Shadowed Bubble Popups  are displayed properly in all Internet Explorer versions; due to the incompatibility of certain animating functions of jQuery with IE 9 beta, the shadow is dropped only when the Bubble Popup is fully displayed. Others IE minor versions do not affect this, and the shadow is dropped   instantly.<br />
+  ** In KHTML-based browser the only exception is that Bubble Popups are placed in the center of the target elements due to the incompatibility of jQuery with KHTML-based browsers; <a href="http://docs.jquery.com/Browser_compatibility">view jQuery browser compatibility</a>.</p>
+<br />
+
+    <a name="functions" id="functions"></a>
+	<h2>Functions</h2>
+<div class="function">
+  <span class="function_title">.CreateBubblePopup()</span><br />
+	  <em>This function has 2 overloads:</em><br />
+    <br />
+	  <span class="function_title">.CreateBubblePopup( { themePath : '...' } )</span><br />
+	  It creates a Bubble Popup for each DOM element in the set of matched elements, <span class="txt_underline">with default options</span>.<br />
+	  <strong><em>Note: </em><br />
+  </strong>	  <em>You can create   obviously  an emptyt Bubble Popup also with &quot;<span class="Stile1">.CreateBubblePopup()</span>&quot; without a themePath option; however I suggest you to set always a valid path for the theme, because if the path does not exists and for any impredictable reason the browser load it, you'll get an error!</em><br />
+    <br />
+	  <span class="function_title">.CreateBubblePopup( options:Object )</span><br />
+	  It creates a Bubble Popup for each DOM element in the set of matched elements, with customized options.<br />
+    <br />
+  Example:<br />
+  <br />
+  <pre class="code">
+     // create a Bubble Popup for each element with the class attribute &quot;myclassname&quot;
+     $('.myclassname').CreateBubblePopup({ innerHtml: 'this is a text!' });
+   </pre>
+</div>
+<div class="function">
+	<span class="function_title">.IsBubblePopupOpen()</span><br />
+<br />
+	  The function returns <span class="js_value">true</span> if it is currently open the Bubble Popup associated to the first element in the set of matched elements.<br />
+  Note: if the Bubble Popup is not found, returns <span class="js_value">null</span>.</div>
+	
+	<div class="function"><span class="function_title">.GetBubblePopupLastDisplayDateTime()</span><br />
+	  <br />
+The function returns a <span class="js_object">Date()</span> object with Date and Time of the last display of the Bubble Popup associated to the first element in the set of matched elements.<br />
+Note: if the Bubble Popup is not found or no options were edited, returns <span class="js_value">null</span>.</div>
+    <div class="function"><span class="function_title">.GetBubblePopupLastModifiedDateTime()</span><br />
+      <br />
+The function returns a <span class="js_object">Date()</span> object with Date and Time of the last modification of the Bubble Popup associated to the first element in the set of matched elements.<br />
+Note: if the Bubble Popup is not found or no options were edited, returns <span class="js_value">null</span>.</div>
+    <div class="function"><span class="function_title">.GetBubblePopupCreationDateTime()</span><br />
+      <br />
+The function returns a <span class="js_object">Date()</span> object with Date and Time of the first creation of the Bubble Popup associated to the first element in the set of matched elements.<br />
+Note: if the Bubble Popup is not found, returns <span class="js_value">null</span>.</div>
+    <div class="function"><span class="function_title">.GetBubblePopupMarkup()</span><br />
+      <br />
+The function returns the HTML markup of the Bubble Popup associated to the first element in the set of matched elements.<br />
+Note: if the Bubble Popup is not found, returns <span class="js_value">null</span>.</div>
+    <div class="function"><span class="function_title">.GetBubblePopupID()</span><br />
+      <br />
+The function returns the ID attribute of the Bubble Popup associated to the first element in the set of matched elements.<br />
+Note: if ID is not found, returns <span class="js_value">null</span>. The function returns the ID without &quot;#&quot; symbol.</div>
+    <div class="function"><span class="function_title">.RemoveBubblePopup()</span><br />
+      <br />
+The function removes completely any Bubble Popup object and its markup from the DOM, that is associated to each element in the set of matched elements.<br />
+Note: the function returns the total count of the Bubble Popups removed, if no ones is removed, returns <span class="js_value">0</span>.<br />
+<br />
+Example:<br />
+<br />
+<pre class="code">
+		// remove any Bubble Popup associated to each element with class attribute &quot;myclassname&quot;
+		$('.myclassname').RemoveBubblePopup();
+
+</pre>
+</div>
+    <div class="function"><span class="function_title">.HasBubblePopup()</span><br />
+      <br />
+The function returns <span class="js_value">true</span> if a Bubble Popup is associated to the first element in the set of matched elements.<br />
+Note: if the target element does not have an associated Bubble Popup, then the function returns <span class="js_value">false</span>.</div>
+    <div class="function"><span class="function_title">.GetBubblePopupOptions()</span><br />
+      <br />
+The function returns an <span class="js_object">object</span> (not an Array) that contains the options of a Bubble Popup that is associated to the first element in the set of matched elements.<br />
+Note: if the target element does not have an associated Bubble Popup or doesn't exists options for the Bubble Popup, then the function returns <span class="js_value">null</span>.<br />
+<br />
+Example:<br />
+<br />
+<pre class="code">
+		// return the options of a Bubble Popup that is associated to the first DOM element in the set of matched elements with class attribute &quot;myclassname&quot;
+		$('.myclassname').GetBubblePopupOptions();
+
+</pre>
+</div>
+    <div class="function"><span class="function_title">.SetBubblePopupOptions( options:Object )</span><br />
+      <br />
+The function sets new options or replace entirely old options with the new ones of all Bubble Popups associated to the elements in the set of matched elements.<br />
+Note1: before using this function, you must call the function <strong>.CreateBubblePopup()</strong><br />
+Note2: <span class="txt_underline">new options do not inherit settings from old options</span> <br />
+<br />
+</div>
+    <div class="function"><span class="function_title">.SetBubblePopupInnerHtml( innerHtml:String , [save:Boolean] )</span><br />
+      <br />
+The function sets permanently the &quot;innerHtml&quot; of all Bubble Popups associated to the elements in the set of matched elements;<br />
+it takes an optional parameter to know if the new &quot;innerHtml&quot; must be saved permanently or not, by default is <span class="js_value">true</span>.<br />
+Note: before using this function, you must call the function <strong>.CreateBubblePopup()</strong><br />
+<br />
+</div>
+    <div class="function"><span class="function_title">.ShowBubblePopup()</span><br />
+      <em>This function has 2 overloads:</em><br />
+<br />
+<span class="function_title">.ShowBubblePopup()</span><br />
+It shows a Bubble Popup that is associated to the first element in the set of matched elements.<br />
+<br />
+<span class="function_title">.ShowBubblePopup( options:Object , [save_options:Boolean] )</span><br />
+It shows a Bubble Popup with new options and it takes an optional parameter to know if new options must be saved or not, by default &quot;save_options&quot; is <span class="js_value">false</span>.<br />
+<br />
+Example: <br />
+<br />
+<pre class="code">
+		// set a Bubble Popup for each element with the class attribute &quot;myclassname&quot;
+		$('.myclassname').CreateBubblePopup({ innerHtml: 'this is a text!' });
+		// show the Bubble Popup that is associated to the first DOM element in the set of matched elements with class attribute &quot;myclassname&quot; and with &quot;this is a text!&quot; as message
+		$('.myclassname').ShowBubblePopup();
+		// show the Bubble Popup with new options but do not save them
+		$('.myclassname').ShowBubblePopup({ width: 100, innerHtml: 'text is changed!' }, false);
+		// show the Bubble Popup with old options
+		$('.myclassname').ShowBubblePopup();
+
+</pre>
+</div>
+    <div class="function"><span class="function_title">.ShowAllBubblePopups()</span><br />
+The function shows all Bubble Popups that are associated to each element in the set of matched elements.</div>
+    <div class="function"><span class="function_title">.HideBubblePopup()</span><br />
+The function hides a Bubble Popup that is associated to the first element in the set of matched elements.</div>
+    <div class="function"><span class="function_title">.HideAllBubblePopups()</span><br />
+The function hides all Bubble Popups that are associated to each element in the set of matched elements.</div>
+<div class="function"><span class="function_title">.FreezeBubblePopup()</span><br />
+The function freezes a Bubble Popup associated to the first element of the set of matched elements; the Bubble Popup will not respond to mouse events (as mouseover/mouseout) until <strong>.UnfreezeBubblePopup()</strong> , <strong>.ShowBubblePopup()</strong> or <strong>.HideBubblePopup()</strong> are called.</div>
+    <div class="function"><span class="function_title">.FreezeAllBubblePopups()</span><br />
+The function freezes all Bubble Popups associated to the set of matched elements; <br />
+Bubble Popups will not respond to mouse events (as mouseover/mouseout) until <strong>.UnfreezeBubblePopup()</strong> , <strong>.ShowBubblePopup()</strong> or <strong>.HideBubblePopup()</strong> are called.</div>
+    <div class="function"><span class="function_title">.UnfreezeBubblePopup()</span><br />
+The function unfreezes a Bubble Popup associated to the first element of the set of matched elements.</div>
+    <div class="function"><span class="function_title">.UnfreezeAllBubblePopups()</span><br />
+The function unfreezes all Bubble Popups associated to the set of matched elements.</div>
+	<br />
+	<a name="options" id="options"></a>
+	<h2>Options</h2>
+<div class="function">
+The options of each Bubble Popup can be grouped in a javascript object, then they can be passed as a parameter to the following functions<br />
+  <br />
+  <span class="function_title">.CreateBubblePopup( options:Object )</span><br />
+  <span class="function_title">.ShowBubblePopup( options:Object , [save_options:Boolean] )</span><br />
+  <span class="function_title">.SetBubblePopupOptions( options:Object )</span><br />
+  <br />
+Example:
+<br />
+<br />
+<pre class="code">
+		//create a javascript object with Bubble Popup options
+		var options =	{ 
+							width: '100px', 
+							innerHtml: 'text inside the Bubble Popup!'
+						};
+		
+		// create bubble popups
+		$('.button').CreateBubblePopup( options );
+		
+		// show the bubble popup of the first button
+		$('.button').ShowBubblePopup( options );
+		
+		// set new options for all bubble popups
+		$('.button').SetBubblePopupOptions( options );
+</pre> 
+<p><br />
+The following options change the way in which the popup is displayed :<br /> 
+<br />
+  <span style="color:#FF854A; font-size:11px;">position, align, distance, width, height, divStyle, tableStyle, innerHtml, innerHtmlStyle, tail, dropShadow, alwaysVisible, selectable</span></p>
+<p>The following options control the mouse and popup events:</p>
+<p><span style="color:#007700; font-size:11px;">manageMouseEvents, mouseOver, mouseOut, openingSpeed, closingSpeed, openingDelay, closingDelay</span></p>
+<p>The following options control the template, themes and other settings:</p>
+<p><span style="color:#009999; font-size:11px;">baseClass, themeName, themePath, themeMargins, afterShown, afterHidden, hideElementId</span></p>
+<p><br />
+  <em>This is the complete list of all options with description: </em></p>
+<table style="border-spacing:1px; border-collapse:separate; background-color:#CCCCCC;" class="table_options">
+  <tr style="background-color:#333333;">
+    <td class="td_center" style="background-color:#333333; color:#FFFFFF; width:100px;">name</td>
+    <td class="td_center" style="background-color:#333333; color:#FFFFFF; width:100px; text-align:center;">datatype</td>
+    <td class="td_center" style="background-color:#333333; color:#FFFFFF; width:150px; text-align:center;">default value </td>
+    <td style="background-color:#333333; color:#FFFFFF;">description</td>
+  </tr>
+<tr class="row1o">
+    <td class="td_center">position</td>
+    <td class="td_center">String</td>
+    <td class="td_center">'top'</td>
+    <td><p>it sets the Bubble Popup on the left, top, right or bottom side of the target element;<br />
+      possible values are
+'left', 'top', 'right' or 'bottom'.</p>      </td>
+  </tr>
+  <tr class="row2o">
+    <td class="td_center">align</td>
+    <td class="td_center">String</td>
+    <td class="td_center">'center'</td>
+    <td>it sets the Bubble Popup alignment along the side of the target element;<br />
+possible values are
+'left', 'center' or 'right' when position is 'top' or 'bottom'<br />
+otherwise  'top', 'middle' or 'bottom' when position is 'left' or 'right' </td>
+  </tr>
+  <tr class="row1o">
+    <td class="td_center">distance</td>
+    <td class="td_center">Integer or String</td>
+    <td class="td_center">'20px'</td>
+    <td>it sets <SPAN title="" closure_uid_z5p9o9="174" se="imposta la distanza del punto dal quale il popup arriva" te="sets the distance of the point from which the popup comes">the distance   of the point from which the Bubble Popup comes</SPAN></td>
+  </tr>
+  <tr class="row2o">
+    <td class="td_center">width</td>
+    <td class="td_center">Integer or String </td>
+    <td style="text-align:center;" class="js_value">null</td>
+    <td>it sets the width of the Bubble Popup, an integer &quot;10&quot; or a string as &quot;10px&quot; is accepted; <br />      
+      this option sets a CSS width property for the main &lt;TABLE&gt; in the <a href="#engine">markup template</a>.</td>
+  </tr>
+  <tr class="row1o">
+    <td class="td_center">height</td>
+    <td class="td_center">Integer or String </td>
+    <td style="text-align:center;" class="js_value">null</td>
+    <td><p>it sets the height of the Bubble Popup, an integer &quot;10&quot; or a string as &quot;10px&quot; is accepted;<br />
+      this option sets a CSS height property for the main &lt;TABLE&gt; in the <a href="#engine">markup template</a>.</p>      </td>
+  </tr>
+  <tr class="row2o">
+    <td class="td_center">divStyle</td>
+    <td class="td_center">Object</td>
+    <td class="td_center">{} </td>
+    <td>it is an object that contains CSS properties as {color: '#000000', margin:'0px'} <br />
+      the CSS properties inside this object will be added to the main &lt;DIV&gt; tag in the <a href="#engine">markup template</a>; <br />
+      by default it is an empty object.</td>
+  </tr>
+  <tr class="row1o">
+    <td class="td_center">tableStyle</td>
+    <td class="td_center">Object</td>
+    <td class="td_center">{}</td>
+    <td>it is an object that contains CSS properties as {color: '#000000', margin:'0px'} <br />
+the CSS properties inside this object will be added to the main &lt;TABLE&gt; tag in the <a href="#engine">markup template</a>; <br />
+by default it is an empty object.</td>
+  </tr>
+<tr class="row2o">
+    <td class="td_center">innerHtml</td>
+    <td class="td_center">String</td>
+    <td class="js_value" style="text-align:center;">null</td>
+    <td>The inner text inside the Bubble Popup, it can contains HTML tags. </td>
+  </tr>
+<tr class="row1o">
+    <td class="td_center">innerHtmlStyle</td>
+    <td class="td_center">Object</td>
+    <td class="td_center">{}</td>
+    <td>it is an object that contains CSS properties as {color: '#000000', margin:'0px'} <br />
+the CSS properties inside this object will be added to the  &lt;TD&gt; tag container with &quot;{BASE CLASS}-innerHtml&quot; as class attribute in the <a href="#engine">markup template</a>; by default it is an empty object.</td>
+  </tr>
+    <tr class="row2o">
+    <td class="td_center">tail</td>
+    <td class="td_center">Object</td>
+    <td class="td_center">{<br />
+align:'center',<br />
+hidden: <span class="js_value">false</span><br />
+}</td>
+    <td><p>&quot;tail&quot; is an object that contains the following properties for the Bubble Popup's tail</p>
+      <ul>
+        <li>&quot;align&quot; (String) option sets the alignment for the tail and possible values are
+          'left', 'center' or 'right' when Bubble Popup's position is 'top' or 'bottom' otherwise  'top', 'middle' or 'bottom' when position is 'left' or 'right';</li>
+        <li>&quot;hidden&quot; (Boolean) option can be <span class="js_value">true</span> or <span class="js_value">false</span> and toggle on or off the tail's image. </li>
+      </ul></td>
+  </tr>
+  <tr class="row1o">
+    <td class="td_center">dropShadow</td>
+    <td class="td_center">Boolean</td>
+    <td class="js_value" style="text-align:center;">true</td>
+    <td><p>Drop the shadow (<span class="js_value">true</span>) or not (<span class="js_value">false</span>) for the Bubble Popup. </p>		</td>
+  </tr>
+  <tr class="row2o">
+    <td class="td_center">alwaysVisible</td>
+    <td class="td_center">Boolean</td>
+    <td class="js_value" style="text-align:center;">true</td>
+    <td><p>if it's <span class="js_value">true</span>, the Bubble Popup maintains the position and alignment if it's possible, <span class="txt_underline">also when the browser window is resized</span>; otherwise the plugin changes (or restore back) the Bubble Popup's position to make it  always visible in the browser's viewport, this works as well when browser window is resized. </p>		</td>
+  </tr>
+  <tr class="row1o">
+    <td class="td_center">selectable</td>
+    <td class="td_center">boolean</td>
+    <td class="js_value" style="text-align:center;">false</td>
+    <td>when the mouse is over the target element, a bubble popup appears; then, if &quot;selectable&quot; is <span class="js_value">true</span> you will be able to select the content inside it; if the mouse goes out of the <span style="text-decoration:underline;">button OR the bubble</span>, the popup will be closed.<br />
+      <br />
+      By default, this option is <span class="js_value">false</span>, then you will not be able to select the content because when the mouse is immediately out of the button, the popup will be closed.</td>
+  </tr>
+  <tr class="row1g">
+    <td class="td_center">manageMouseEvents</td>
+    <td class="td_center">Boolean</td>
+    <td class="js_value" style="text-align:center;">true</td>
+    <td><p>by default, mouseout and mouseover events are   automatically  managed, however you can disable it and set this option to <span class="js_value">false</span>;  in this case, you'll need to declare mouseover and mouseout events manually in your code for each target DOM element with a Bubble Popup. <span class="td_center">Disabling </span><span class="Stile3">manageMouseEvents</span> is useful when you need to develop customized functions to show or hide the Bubble Popup or to get the full control over that, <span class="txt_underline">however you will    lose all the checkings that the plugin is running to position and align the popup</span>,   so be careful when you turn off this feature.<br />
+        <br />
+          If you need to add customized mouseover or mouseout events to the target element, <span class="txt_underline">you don't need to disable managed events, because they do not affect managed events</span>, then just add them with jQuery syntax as <span class="code">$('#element').mouseover(function(){ ... });</span><br />
+          <br />
+          <strong>Note:</strong><br />
+           <br />
+        when <span class="Stile3">manageMouseEvents</span> is <span class="js_value">false</span>, the following functions don't take effect:</p>
+      <blockquote>
+        <p>.FreezeBubblePopup()<br />
+          .FreezeAllBubblePopups()<br />
+          .UnfreezeBubblePopup()<br />
+          .UnfreezeAllBubblePopups()</p>
+      </blockquote>
+      <p>also the following options don't take effect:</p>
+      <blockquote>
+        <p>mouseOver<br />
+          mouseOut<br /> 
+          <br />
+          <br />
+        </p>
+      </blockquote></td>
+  </tr>
+  <tr class="row2g">
+    <td class="td_center">mouseOver</td>
+    <td class="td_center">String</td>
+    <td class="td_center">'show'</td>
+    <td>it adds a managed mouseover event to the <span class="txt_underline">target DOM element</span> associated with the Bubble Popup; <br />
+      possible values are 'show' or 'hide'<br />
+      'show' : when mouse is over the target element, show the Bubble Popup associated with it<br />
+      'hide' : when mouse is over the target element, hide the Bubble Popup associated with it</td>
+  </tr>
+  <tr class="row1g">
+    <td class="td_center">mouseOut</td>
+    <td class="td_center">String</td>
+    <td class="td_center">'hide'</td>
+    <td>it adds a managed mouseout event to the <span class="txt_underline">target DOM element</span> associated with the Bubble Popup; <br />
+possible values are 'show' or 'hide'<br />
+'show' : when mouse is out the target element, show the Bubble Popup associated with it<br />
+'hide' : when mouse is out the target element, hide the Bubble Popup associated with it</td>
+  </tr>
+  <tr class="row2g">
+    <td class="td_center">openingSpeed</td>
+    <td class="td_center">Integer</td>
+    <td class="td_center">250</td>
+    <td>it sets the opening  speed. </td>
+  </tr>
+  <tr class="row1g">
+    <td class="td_center">closingSpeed</td>
+    <td class="td_center">Integer</td>
+    <td class="td_center">250</td>
+    <td>it sets the closing  speed.</td>
+  </tr>
+  <tr class="row2g">
+    <td class="td_center">openingDelay</td>
+    <td class="td_center">Integer</td>
+    <td class="td_center">0</td>
+    <td>it sets a delay in milliseconds when the Bubble Popup is opening.</td>
+  </tr>
+  <tr class="row1g">
+    <td class="td_center">closingDelay</td>
+    <td class="td_center">Integer</td>
+    <td class="td_center">0</td>
+    <td>it sets a delay in milliseconds when the Bubble Popup is closing.</td>
+  </tr>
+  
+
+  
+  
+  <tr class="row1b">
+    <td class="td_center">baseClass</td>
+    <td class="td_center">String</td>
+    <td class="td_center">'jquerybubblepopup'</td>
+    <td>it sets the base class name saved in the CSS file &quot;jquery.bubblepopup.v2.3.1.css&quot;;<br /> 
+      generally You don't need to edit this option, it is only useful if other CSS classes declared inside the document interfere with the main class of the Bubble Popup; 
+      in this case, You will need only to choose a new valid name for the base class and set this option with it, then You need to replace all occurrences of the base class name &quot;jquerybubblepopup&quot; inside the &quot;jquery.bubblepopup.v2.3.1.css&quot; file with the new name. See the <a href="#template">Template System</a> for more information. </td>
+  </tr>
+  <tr class="row2b">
+    <td class="td_center">themeName</td>
+    <td class="td_center">String</td>
+    <td class="td_center">'azure'</td>
+    <td>it sets the theme for the Bubble Popup; all the themes are saved inside the folder &quot;jquerybubblepopup-theme/&quot; ; possible values are: <br />
+      <br />
+      azure, black, blue, green, grey, orange, violet, yellow, all-azure, all-black, all-blue, all-green, all-grey, all-orange, all-violet, all-yellow</td>
+  </tr>
+  <tr class="row1b">
+    <td class="td_center">themePath</td>
+    <td class="td_center">String</td>
+    <td class="td_center">'jquerybubblepopup-theme/'</td>
+    <td>it sets the <span class="txt_underline">relative path</span> of the folder that contains all the themes </td>
+  </tr>
+  <tr class="row2b">
+    <td class="td_center">themeMargins</td>
+    <td class="td_center">Object</td>
+    <td class="td_center">{<br />
+total: '13px',<br />
+difference: '10px'<br />
+}</td>
+    <td><p>it is an object that contains the following properties</p>
+      <ul>
+        <li>&quot;total&quot; is the total margin from the target element </li>
+        <li>&quot;difference&quot; is the margin difference</li>
+        </ul>
+      <p><SPAN title="" closure_uid_z5p9o9="202" se="utilizza queste opzioni soltanto se devi modificare o creare un nuovo tema" te="use this option only if you edit or create a new theme">edit  &quot;themeMargins&quot; attributes <span class="txt_underline">only   if</span> you need to edit or create a new theme</SPAN>;
+        See the <a href="#template">Template System</a> for more information. </p></td>
+  </tr>
+  
+  <tr class="row1b">
+    <td class="td_center">afterShown</td>
+    <td class="td_center">Function</td>
+    <td class="td_center">function(){}</td>
+    <td><p>It sets a callback function to execute when Bubble Popup is opened; You can set it as</p>
+		<p class="code">
+				$('.button').CreateBubblePopup({ <br />
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;innerHtml: 'This is a Bubble Popup!',<br />
+
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afterShown: function(){<br />
+
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('Bubble Popup is open!');<br />
+
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+
+											  });		</p></td>
+  </tr>
+  <tr class="row2b">
+    <td class="td_center">afterHidden</td>
+    <td class="td_center">Function</td>
+    <td class="td_center">function(){}</td>
+    <td>It sets a callback function to execute when Bubble Popup is closed </td>
+  </tr>
+  <tr class="row1b">
+    <td class="td_center">hideElementId</td>
+    <td class="td_center">(String) Array</td>
+    <td class="td_center">[]</td>
+    <td>Insert in the array all IDs of the elements that You want to hide; it is useful if any element interfere with a Bubble Popup. By default, it is an empty array. </td>
+  </tr>
+</table>
+</div>
+<br />
+<br />
+<a name="engine" id="engine"></a>
+<h2>How jQuery Bubble Popup works</h2>
+
+
+	<p>When a Bubble Popup is created with the following function... <br />
+        <br />
+        <span class="code">$('#mybutton').CreateBubblePopup({ innerHtml: 'this is a text!' });</span><br />
+        <br />
+	  the plugin <em>attaches</em> a Bubble Popup to the target DOM element, in the above example the element with &quot;mybutton&quot; as id attribute.<br />
+  <br />
+	  The Bubble Popup's layout consists in a &lt;DIV&gt; container with a &lt;TABLE&gt; inside, and each &lt;TD&gt; has a transparent gif or png image as background<br />
+  <br />
+  <img src="bubble-popup-layout.gif" /><br />
+  <br />
+	  the Bubble Popup's markup (HTML) is hardcoded in the script (similar to a jQuery UI widget) then it's not needed to add any markup to your HTML document; it means that</p>
+	<ul>
+      <li>the HTML of the document will be clean and intact therefore it's useful to make SEO optimizations</li>
+	  <li>You will not get bored to add any markup and it ensures less writing errors </li>
+  </ul>
+	<p>This is the markup of the Bubble Popup created by the plugin:<br />
+      <br />
+      <img src="bubble-popup-template-HTML.gif" /><br />
+      <br />
+&lt;IMG&gt; tags highlighted in yellow are optional and they match the tail's image; just one exists  among those highlighted, and the plugin chooses what image to display based on the Bubble Popup's position.<br />
+<br />
+When You set CSS properties at runtime with the &quot;divStyle&quot;, &quot;tableStyle&quot; or &quot;innerHtmlStyle&quot; options, that properties are added to the inline style attributes highlighted in violet for each corresponding tag. <br />
+<br />
+&quot;divStyle&quot;, &quot;tableStyle&quot; or &quot;innerHtmlStyle&quot; options override any predefined CSS property in the stylesheet.<br />
+<br />
+<span class="txt_underline">Remember that You can edit CSS properties at runtime, when the Bubble Popup is created/shown, <SPAN title="" closure_uid_z5p9o9="292" se="altrimenti" te="otherwise">otherwise</SPAN> as well by a CSS stylesheet.</span><br />
+  <br />
+  <br />
+  <a name="template" id="template"></a> </p>
+    <h2>Template System &amp; Customization</h2>
+    <p>The Bubble Popup's markup  is controlled by the CSS file &quot;jquery.bubblepopup.v2.3.1.css&quot;;<br />
+        <br />
+      Inside that file, each CSS class has a prefix as &quot;jquerybubblepopup&quot; and this is the <span class="txt_underline">base class name</span>.<br />
+      <br />
+      If other CSS class definitions in the document are in conflict with the Bubble Popup's CSS class names, You will need only to choose a new valid base name, replace all occurrences of the old base class name &quot;jquerybubblepopup&quot; inside the &quot;jquery.bubblepopup.v2.3.1.css&quot; file with the new base name and  set the &quot;baseClass&quot; option at runtime.<br />
+      <br />
+  CSS classes control the style of each element inside the markup and You can access to each CSS properties of them to customize the layout: </p>
+<p><img src="bubble-popup-classes.gif" /><br />
+          <br />
+            <strong>Themes<br />
+        </strong>All the themes are inside the &quot;jquerybubblepopup-theme&quot; folder; each theme can be applied to the Bubble Popup at runtime by the &quot;themeName&quot; option.<br />
+          <br />
+          Each theme has different colors and background images; You can create your own theme drawing the images and saving them inside a folder's theme. Inside the folder &quot;Themes&quot;, You will find the file &quot;bubble-popup-themes.png&quot; and it can help you to create your customized themes.<br /> 
+          <br />
+    The  CSS file &quot;jquery.bubblepopup.v2.3.1.css&quot; controls the styles of each theme; the plugin adds the class of the theme (for example &quot;.jquerybubblepopup-azure&quot;) <br />
+to the main &lt;DIV&gt; container in the markup, then you can edit the style of any element inside the Bubble Popup markup for each theme.<br />
+<br />
+<strong>Theme Margins<br />
+</strong>The margins in the following images, control the distance of the Bubble Popup from the target DOM element;<br />
+  By default, &quot;themeMargins.total&quot; option (highlighted in red) and &quot;themeMargins.difference&quot; option (in orange) are <SPAN title="" closure_uid_z5p9o9="350" se="rispettivamente" te="respectively">respectively</SPAN> &quot;13px&quot; and &quot;10px&quot;; When the Bubble Popup is loaded, the plugin <em>deletes</em> the margin difference in orange, decreasing the distance from the target element and allowing that the tail is above the element.</p>
+<table>
+  <tr>
+    <td><img src="bubble-popup-margins.gif" /></td>
+    <td><img src="bubble-popup-animation.gif" /></td>
+  </tr>
+</table>
+<p><br />
+  <a name="position" id="position"></a></p>
+  <h2>Position and Alignment</h2>
+    The Bubble Popup can be <em>attached</em> and displayed on the left, top, right or bottom side of the target DOM element.<br />
+This is determinated by the &quot;position&quot; option that can be obviously set to one of the following values: 'left', 'top', 'right' or 'bottom'. <br />
+<br />
+Furthermore, the alignment of the Bubble Popup is conditional on the &quot;position&quot; option:</p>
+  <blockquote>
+    <p>if the Bubble Popup is on the left or right side of the target element (in other words, &quot;position&quot; option is 'left' or 'right') then the alignment of the Bubble Popup can be only vertical (&quot;align&quot; option is 'top', 'middle' or 'bottom')<br />
+      <br />
+      and<br />
+      <br />
+      if the Bubble Popup is on top or bottom side of the target element (in other words, &quot;position&quot; option is 'top' or 'bottom'), the alignment of the Bubble Popup can be only horizontal (&quot;align&quot; option is 'left', 'center' or 'right')<br />
+    </p>
+  </blockquote>
+  <p> Remember that if you set correctly a &quot;position&quot;  with a wrong &quot;align&quot; option, the plugin corrects it and &quot;align&quot; will be</p>
+  <blockquote>
+    <p>'center' if the Bubble Popup position is 'top' or 'bottom' <br />
+      <br />
+      or<br />
+      <br />
+    'middle' if the Bubble Popup position is 'left' or 'right'<br />
+    </p>
+  </blockquote>
+  <p>Note: the same rules, for the alignment and validation, are applied to the tail's image alignment.<br />
+  </p>
+    <p><a name="notes" id="notes"></a></p>
+  <h2>Implementation Notes</h2>
+  <p><strong>&lt;IMG&gt; and &lt;MAP&gt; tags<br />
+  </strong>If you create a Bubble Popup for a raw   &lt;IMG&gt; tag make sure to set also image's width and height by a CSS stylesheet or inline style attribute, according to HTML5 specifications as &lt;img src=&quot;image.jpg&quot; style=&quot;width:186px; height:40px&quot; /&gt; ; otherwise, in same browser the plugin cannot get the image dimensions then the alignment will fail.<br />
+  It's impossible to attach a Bubble Popup to a &lt;MAP&gt; tag because it has no top or left property and it will be still invisible inside the DOM, also jQuery cannot get any coordinates for a &lt;MAP&gt; tag; however you can attach a bubble popup to an &lt;IMG&gt; tag that uses that map tag and reposition the Bubble Popup where you want, getting the Bubble Popup's ID inside the DOM and set new top/left CSS properties. <br />
+    <br />
+    <strong>About .CreateBubblePopup() method... <br />
+  </strong>You can create obviously an empty Bubble Popup also with ".CreateBubblePopup()" without a themePath option; however I suggest you to set always a valid path for the theme, because if the path does not exists and for any impredictable reason the browser load it, you'll get an error! </p>
+  <p><strong>Adding customized mouse events...<br />
+    </strong>If you need to add customized mouseover or mouseout events to the target element, you don't need to disable managed events, because customized events do not affect managed events, then just add them with the jQuery syntax as &quot;<span class="code">$('#element').mouseover(function(){ ... });</span>&quot; .<br />
+  </p>
+  <p><a name="workarounds" id="workarounds"></a>  </p>
+  <h2>Known Bugs & Workarounds</h2>
+
+    <p>
+Bubble Popup plugin is <SPAN title="" closure_uid_z5p9o9="312" se="legata fortemente" te="strongly linked">strongly linked</SPAN> to the .data() function of the jQuery Library, this implies that it is not possible to create Bubble Popups for &lt;object&gt;, &lt;applet&gt; or &lt;embed&gt; elements in the DOM: &quot;Due to the way browsers interact with plugins and external code, the .data() method cannot be used on &lt;object&gt;, &lt;applet&gt; or &lt;embed&gt; elements&quot; , for more information, see: <a href="http://api.jquery.com/data/">http://api.jquery.com/data/</a></p>
+    <p>However, You can wrap an  &lt;object&gt;, &lt;applet&gt; or &lt;embed&gt; element with a &lt;div&gt; and <em>attach</em> to it a Bubble Popup. <br />
+      </span><br />
+    </p>
+	<br />
+<br />
+
+	<div class="footer">
+	  <p><a href="http://maxvergelli.wordpress.com/jquery-bubble-popup/">JQUERY BUBBLE POPUP</a> &copy; 2010 MAX VERGELLI</p>
+	</div>
+</div>
+</body>
+</html>
