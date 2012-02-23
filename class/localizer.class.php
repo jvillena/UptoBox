@@ -1,11 +1,13 @@
-<?php 
+<?php
 /**
  * Clase Localizer
- * @package uptobox
+ * @package AleaClass
  * @author José E. Villena
  * @copyright Alea Technology
  * @version 1.0
  */
+
+
 class Localizer {
 
     private static $translations = array();
@@ -15,31 +17,35 @@ class Localizer {
 	 *
 	 * @param $language idioma por defecto
 	 */
-    public static function init($language) {
-			
-		global $config_urls;
-	    $temp_content = simplexml_load_file($config_urls['LOCALE']. $language . '/content.xml');
+     public static function init($language,$module='') {
+            
+        global $config_urls;
+        if ($module==''){
+            $temp_content = simplexml_load_file($config_urls['LOCALE']. $language . '/content.xml');
+        }else{
+            $temp_content = simplexml_load_file($config_urls['MODULE_URL'].$module.'/locale/'. $language . '/content.xml');
+        }
         foreach ($temp_content as $key => $value){
             self::$translations[(string)$value['id']] = (string)$value;
         }
 
     }
-	
-	public static function init_ajax($language) {
-			
-		global $config_urls;
-		
-	    $temp_content = simplexml_load_file($config_urls['LOCALE']. $language . '/content.xml');
-        foreach ($temp_content as $key => $value){
-            self::$translations[(string)$value['id']] = (string)$value;
-        }
-
-    }
-	
     
-    public static function getTranslate($tag){
-    	return self::$translations[$tag];
+    public static function init_ajax($language) {
+            
+        global $config_urls;
+        
+        $temp_content = simplexml_load_file($config_urls['LOCALE']. $language . '/content.xml');
+        foreach ($temp_content as $key => $value){
+            self::$translations[(string)$value['id']] = (string)$value;
+        }
+
     }
+    
+     public static function getTranslate($tag){
+        return self::$translations[$tag];
+    }
+    
 
      /**
 	 * Procedimiento sustituir las cadenas del xml en su idioma.

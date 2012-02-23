@@ -8,24 +8,30 @@
  */
 class ProfileClass{
 	
+    /**
+     * Constructor to edit User Profile
+     * @param $id_usuario
+     * @param $datos array with input datas of user datas form
+     * @return integer if no error => $error = 0 | $error = 1 invalid name | $error = 2 invalid email | $error = 3 invalid password
+     */
 	function editProfile($id_usuario,$datos){
 		
 		global $oBD;
 		
-		$error=array();
+		$error=0;
 		if($datos['nombre']==""){
-			$error[]="Debe insertar un nombre";
+			$error = 1;
 		}
 		if($datos['email']==""){
-			$error[]="Debe insertar un email válido";
+			$error= 2;
 		}
 		if($datos['password']!=""){
 			if($datos['password2']!=$datos['password'] ){
-				$error[]="Debe introducir la misma contraseña en los dos campos";
+				$error=3;
 			}
 		}
 		
-		if(count($error)==0){
+		if($error==0){
 			
 			$contrasena="";
 			if($datos['password2']!=""){
@@ -41,7 +47,6 @@ class ProfileClass{
 			$sql.=" WHERE id_usuario=$id_usuario";
 			$oBD->Execute($sql);
 			
-			$error='ok';
 			//if($datos['email']!=""){
 				
 			//	$sql="SELECT email FROM ".TB_USUARIO." WHERE id=$id_usuario";
@@ -77,26 +82,32 @@ class ProfileClass{
 		return $error;
 		
 	}
-
+    
+    
+     /**
+     * Constructor to edit language of User Profile
+     * @param $id_usuario
+     * @param $datos array with input datas of user datas form
+     * @return integer if no error => $error = 0 | $error = 1 error language | $error = 2 no timezone
+     */
 	function editProfileGeneral($id_usuario,$datos){
 		
 		global $oBD;
 		
-		$error=array();
+		$error=0;
 		if($datos['language']==""){
-			$error[]="Debe seleccionar un idioma";
+			$error=1;
 		}
 		if($datos['timezone']==""){
-			$error[]="Debe seleccionar su zona horaria";
+			$error=2;
 		}
 		
-		if(count($error)==0){
+		if($error==0){
 			
 			$sql="UPDATE ".TB_USUARIO." SET id_idioma='".$datos['language']."',id_zone='".$datos['timezone']."'";
 			$sql.=" WHERE id_usuario=$id_usuario";
 			$oBD->Execute($sql);
 			
-			$error='ok';
 		}
 		
 		return $error;

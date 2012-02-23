@@ -82,10 +82,6 @@
 		
 	$oSmarty->assign('menu_principal','login');
 	
-	$paises = Combos::getPaises(7);
-	$oSmarty->assign('paises',$paises);
-	
-	// Asignamos la varable estilo para la utilización en la plantilla.
 				
 	
 	// Cambiamos el directorio de plantillas al que contiene la plantilla a llamar.

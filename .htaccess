@@ -9,7 +9,7 @@ Options +FollowSymlinks
     
 DirectorySlash Off
 RewriteEngine on
-#RewriteBase /uptobox/
+#RewriteBase /uptosave/
 
 # Rewrite www to no-www domain
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
@@ -50,7 +50,7 @@ RewriteCond %{THE_REQUEST} ^[A-Z]+\ /([^?#\ ]*)\?[^\ ]*\ HTTP/ [NC]
     RewriteCond %{REQUEST_URI} .+
     RewriteRule ^[^A-Z]*[A-Z] ${lc:%0} [R=301,L]
     
-RewriteRule ^$ ./php/public/index.php
+RewriteRule  ^$ index.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -61,36 +61,36 @@ SecFilterScanPOST Off
 </IfModule>
 
 
-RewriteRule ^user/files$ ./php/private/user/init/index.php
-RewriteRule ^user/files/create$ ./php/private/user/files/create_fold.php
-RewriteRule ^user/files/edit$ ./php/private/user/files/edit_folder.php
-RewriteRule ^user/files/treeview/(.+)$ ./php/private/user/files/treeview_data.php?id_root=$1
+RewriteRule ^user/files$ ./index.php?name=$0
+RewriteRule ^user/files/create$ ./www/php/private/user/files/create_fold.php
+RewriteRule ^user/files/edit$ ./index.php?name=$0
+RewriteRule ^user/files/treeview/(.+)$ ./www/php/private/user/files/treeview_data.php?id_root=$1
 
-RewriteRule ^user/files/(.+)/(.+)$ ./php/private/user/init/index.php?id_root=$1&name=$2
-RewriteRule ^user/path/(.+)/(.+)$ ./php/private/user/init/index_ajax.php?id_root=$1&name=$2
-RewriteRule ^user/upload/files$ ./php/private/user/files/upload_files.php
-
-
-RewriteRule ^user/profile$ ./php/private/user/profile/profile.php
-RewriteRule ^user/edit/(.+)$ ./php/private/user/profile/profile_ajax.php?action=$1
-RewriteRule ^user/profile/upload_picture$ ./php/private/user/profile/upload_picture_user.php
-RewriteRule ^user/tabs/profile$ ./php/private/user/profile/tab_profile.php
-RewriteRule ^user/tabs/general$ ./php/private/user/profile/tab_general.php
-RewriteRule ^admin$ ./php/private/admin/init/init.php
+RewriteRule ^user/files/(.+)/(.+)$ ./index.php?id_root=$1&name=$2
+RewriteRule ^user/path/(.+)/(.+)$ ./www/php/private/user/init/index_ajax.php?id_root=$1&name=$2
+RewriteRule ^user/upload/files$ ./www/php/private/user/files/upload_files.php
 
 
 
-RewriteRule ^login$ ./php/public/login/login.php
-RewriteRule ^activate/(.+)$ ./php/public/login.php?activate_code=$1
-
-RewriteRule ^login/verificate$ ./php/public/login/login_ajax.php
-
-RewriteRule ^clave/reset$ ./php/public/new_password.php
-
-RewriteRule ^init$ ./php/private/user/index.php
+RewriteRule ^user/edit/(.+)$ ./www/php/private/user/profile/profile_ajax.php?action=$1
+RewriteRule ^user/profile/upload_picture$ ./www/php/private/user/profile/upload_picture_user.php
+RewriteRule ^user/tabs/profile$ ./www/php/private/user/profile/tab_profile.php
+RewriteRule ^user/tabs/general$ ./www/php/private/user/profile/tab_general.php
 
 
-RewriteRule ^logout$ ./php/private/logout.php
+
+RewriteRule ^user/profile$ ./index.php?name=$0 [PT]
+RewriteRule ^login$ ./index.php?name=$0 [PT]
+RewriteRule ^activate/(.+)$ ./www/php/public/login.php?activate_code=$1
+
+RewriteRule ^login/verificate$ ./index.php?name=$0
+
+RewriteRule ^clave/reset$ ./www/php/public/new_password.php
+
+RewriteRule ^init$ ./www/php/private/user/index.php
+
+
+RewriteRule ^logout$ ./index.php?name=$0 [PT]
 
 RewriteRule ^webservices$ ./php/webservices/index.php [QSA,L]
 

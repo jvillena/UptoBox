@@ -6,7 +6,6 @@
 	// Una vez realizado el siguiente require, podemos incluir sin tener que poner rutas relativas cualquier script que exista en el directorio 'configuracion' o en
 	// el directorio 'php/funciones'.
 	require_once '../../config/config.php';
-	require_once $config_urls['BASE_PATH'].'class/combos.class.php';
 		
 		
 	// Incluímos la clase smarty.php.

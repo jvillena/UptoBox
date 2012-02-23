@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <translations>
 	<translation id="tx_metatitle">##metatitle##</translation>
+	<translation id="tx_welcome"><![CDATA[Yuhuuu! Bienvenido a UptoSave.com]]></translation>
+	<translation id="tx_welcome_error"><![CDATA[Usuario o contraseña no válidos.]]></translation>
     <!-- PÁGINA DE LOGIN -->
     <translation id="tx_usuario"><![CDATA[Usuario]]></translation>
     <translation id="tx_clave"><![CDATA[Contraseña]]></translation>
@@ -37,6 +39,10 @@
     
     <translation id="tx_general_tittle"><![CDATA[Configuración General]]></translation>
     <translation id="tx_general_sub_tittle"><![CDATA[Zona horaria y Selecciona su idioma.]]></translation>
+    
+    <!-- EDICIÓN DE PERFIL  - CONTENIDO CENTRAL -->
+    <translation id="tx_success_profile"><![CDATA[Yuhuu! Se ha modificado correctamente el perfil]]></translation>
+    <translation id="tx_error_profile"><![CDATA[Ups! No se ha podido modificar los datos. Inténtelo mas tarde.]]></translation>
     
     <!-- PÁGINA PRINCIPAL  - CABECERA -->
     <translation id="tx_menu_mi_cuenta"><![CDATA[Mi Cuenta]]></translation>
