@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.5, created on 2012-02-23 01:05:51
+<?php /* Smarty version Smarty-3.1.5, created on 2012-03-11 22:52:49
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptosave/www/templates/private/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:13877206294f4590ef8889c2-28488496%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:20952003594f5d2cc13a6b73-12072700%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c03ab2d7d35afb90e175d006f0aa3cc898911860' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptosave/www/templates/private/layout/header.tpl',
-      1 => 1329780706,
+      1 => 1330903770,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '13877206294f4590ef8889c2-28488496',
+  'nocache_hash' => '20952003594f5d2cc13a6b73-12072700',
   'function' => 
   array (
   ),
@@ -26,12 +26,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'BASE_THEMES_URL' => 0,
     'id_usuario' => 0,
     'nombre_usuario' => 0,
+    'name_file' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.5',
-  'unifunc' => 'content_4f4590efe43e4',
+  'unifunc' => 'content_4f5d2cc17f9f1',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_4f4590efe43e4')) {function content_4f4590efe43e4($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_4f5d2cc17f9f1')) {function content_4f5d2cc17f9f1($_smarty_tpl) {?>
 	
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -305,54 +306,7 @@ tx_search_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo
 					<?php }?>
 				</li>
 			</ul>
-			<?php }else{ ?>
-			<ul class="nav">
-				<li <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='inicio'){?>class="active"<?php }?>>
-					<a href="<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-" ><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_menu_inicio<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</a>
-				</li>
-				<li <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='como_funciona'){?>class="active"<?php }?>><a href="<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-personal" <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='pagina_personal'){?>class="seleccionado"<?php }?>><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_menu_personal<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</a></li>
-				<li <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='como_funciona'){?>class="active"<?php }?>><a href="<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-empresas" <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='pagina_empresa'){?>class="seleccionado"<?php }?>><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_menu_empresa<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</a></li>
-				<li <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='como_funciona'){?>class="active"<?php }?>><a href="<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-como_funciona" <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='como_funciona'){?>class="seleccionado"<?php }?>><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_menu_planes_pago<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</a></li>
-				<li <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='crea_tu_perfil'){?>class="active"<?php }?>><a href="<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-planes_precios" <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='pagina_precios'){?>class="seleccionado"<?php }?>><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_menu_precios<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</a></li>
-				<li <?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='faqs'){?>class="active"<?php }?>><a href="<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-faqs" ><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_menu_faqs<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</a></li>
-			</ul>
-			<ul class="nav secondary-nav" style="margin-right: 10px;">
-           		<li class="menu" data-dropdown="menu">
-           			<button class="btn small primary margin-top-5" onclick="location.href='<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-login'"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_login<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</button>
-           			<ul class="dropdown-menu">
-							<li><a href="<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-user/profile"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_menu_conf_perfil<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</a></li>
-							<li class="divider"></li>
-							<li><a href="<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
-logout"><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-tx_menu_desconectarse<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
-</a></li>
-					</ul>
-				</li>
-			</ul>
+			
 			<?php }?>
 		</div>
 	</div>
@@ -382,11 +336,14 @@ tx_root_tree<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo L
 tx_sub_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 <?php }elseif(isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='myaccount'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_sub_myaccount<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
+<?php }elseif(isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='viewer'){?><?php echo $_smarty_tpl->tpl_vars['name_file']->value;?>
 <?php }?> <small><?php if ($_smarty_tpl->tpl_vars['menu_principal']->value=='files'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_sub_message<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 <?php }?></small></h1>			
         							  <div id="tabs_menu" style="float:left;margin-bottom:-3px;">
+        							  	<?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value!='viewer'){?>
         							    <ul class="tabs">
+        							    	
 									    	<li style="background-color:#fff">
 									    		<a href="#profile" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;"><?php if (isset($_smarty_tpl->tpl_vars['menu_principal']->value)&&$_smarty_tpl->tpl_vars['menu_principal']->value=='files'){?><?php $_smarty_tpl->smarty->_tag_stack[] = array('translate', array()); $_block_repeat=true; echo Localizer::translate(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 tx_sub_file<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo Localizer::translate(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
@@ -404,6 +361,7 @@ tx_tabs_profile_general<?php $_block_content = ob_get_clean(); $_block_repeat=fa
 									    	</li>
 									    	<?php }?>
 									    </ul>
+									    <?php }?>
 									   </div>
         						</td>
         						<td>
@@ -442,19 +400,13 @@ tx_menu_desconectarse<?php $_block_content = ob_get_clean(); $_block_repeat=fals
         					</tr>
         				</table>
 				<div id="file-upload" style="float:left;margin-left:500px;margin-top:-40px">
-					<input style="width:100px;padding:6px;cursor:pointer;background-color: #3376A4;
-					  background-repeat: repeat-x;
-					  background-image: -khtml-gradient(linear, left top, left bottom, from(#3376A4), to(#1169a6));
-					  background-image: -moz-linear-gradient(top, #3376A4, #1169a6);
-					  background-image: -ms-linear-gradient(top, #3376A4, #1169a6);
-					  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3376A4), color-stop(100%, #1169a6));
-					  background-image: -webkit-linear-gradient(top, #3376A4, #1169a6);
-					  background-image: -o-linear-gradient(top,#3376A4, #1169a6);
-					  background-image: linear-gradient(top,#3376A4, #1169a6);
-					  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3376A4', endColorstr='#1169a6', GradientType=0);
-					  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-					  border-color: #1169a6 #1169a6 #3376A4;
-					  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);color:#FFF;" type="button" name="btnFile" id="btnFile" value="Subir fichero" />
+					<input style="width:100px;padding:6px;cursor:pointer;  background: -moz-linear-gradient(center top , #5989AC, #004A80) repeat scroll 0 0 transparent;
+    border: 1px solid #004373;
+    color: #FFFFFF;  margin-bottom: 9px;  border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px #000000;  display: inline-block;  outline: medium none;
+    padding: 0.55em 2em;
+    text-align: center;
+    text-decoration: none;" type="button" name="btnFile" id="btnFile" value="Subir fichero" />
 					
 				</div>        				
 		    </div>

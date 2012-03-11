@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.5, created on 2012-02-23 01:05:51
+<?php /* Smarty version Smarty-3.1.5, created on 2012-03-11 22:53:00
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/uptosave/www/templates/private/user/files/row_file.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:19650531244f4590ef133953-73918542%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:12631205924f5d2ccc607876-75445249%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '189a04f2d462ab05ecf9b1d3fcd71b899083669f' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/uptosave/www/templates/private/user/files/row_file.tpl',
-      1 => 1329781810,
+      1 => 1330904206,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19650531244f4590ef133953-73918542',
+  'nocache_hash' => '12631205924f5d2ccc607876-75445249',
   'function' => 
   array (
   ),
@@ -26,9 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.5',
-  'unifunc' => 'content_4f4590ef83148',
+  'unifunc' => 'content_4f5d2ccce2129',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_4f4590ef83148')) {function content_4f4590ef83148($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Applications/XAMPP/xamppfiles/htdocs/uptosave/smarty/libs/plugins/modifier.date_format.php';
+<?php if ($_valid && !is_callable('content_4f5d2ccce2129')) {function content_4f5d2ccce2129($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Applications/XAMPP/xamppfiles/htdocs/uptosave/smarty/libs/plugins/modifier.date_format.php';
 ?>
 <script>
 $(document).ready(function() {
@@ -407,6 +407,33 @@ user/files/<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
 															
 															if (action == 'preview'){
 																
+																(function($) {
+																    $.extend({
+																        doGet: function(url, params) {
+																            document.location = url + '?' + $.param(params);
+																        },
+																        doPost: function(url, params) {
+																            var $form = $("<form method='POST'>").attr("action", url);
+																            $.each(params, function(name, value) {
+																                $("<input type='hidden'>")
+																                    .attr("name", name)
+																                    .attr("value", value)
+																                    .appendTo($form);
+																            });
+																            $form.appendTo("body");
+																            $form.submit();
+																        }
+																    });
+																})(jQuery);
+
+																$.doPost("<?php echo $_smarty_tpl->tpl_vars['RUTA_WEB_ABSOLUTA']->value;?>
+viewer", {
+																    id: "<?php echo $_smarty_tpl->tpl_vars['item']->value['id_archivo'];?>
+",
+																    name: "<?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
+"
+																});
+																	
 															}else if (action == 'download'){
 															}else if (action == 'upload'){
 															}else if (action == 'share'){

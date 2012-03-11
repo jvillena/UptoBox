@@ -54,6 +54,7 @@
     define("APP_THEMES_DIR",BASE_URL."themes/");
     define("IMAGES_THEMES_URL",APP_THEMES_DIR.THEME_NAME."/images/");  
     define("BASE_THEMES_URL",APP_THEMES_DIR.THEME_NAME."/");
+    define("TEMP_URL",BASE_PATH."tmp/");
       
       
      //Array CSS Styles
@@ -89,6 +90,7 @@
                         "CONFIG_URL"=>CONFIG_URL,
                         "IMAGES_URL"=>IMAGES_URL,
                         "MODULE_URL"=>MODULE_URL,
+                        "TEMP_URL"=>TEMP_URL,
                         "CONTROLLER_URL"=>CONTROLLER_URL,
                         "APP_TEMPLATES_DIR"=>APP_TEMPLATES_DIR,
                         "APP_ROOT"=>APP_ROOT,

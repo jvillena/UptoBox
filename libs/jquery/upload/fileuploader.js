@@ -815,6 +815,7 @@ qq.UploadButton.prototype = {
             margin: 0,
             padding: 0,
             cursor: 'pointer',
+            cursor: 'hand',
             opacity: 0
         });
         

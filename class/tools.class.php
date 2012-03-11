@@ -1,7 +1,7 @@
 <?php 
 /**
  * Clase Tools
- * @package JPHPFramework
+ * @package uptosave
  * @author José E. Villena
  * @copyright Alea Technology
  * @version 1.0
@@ -130,7 +130,7 @@ class Tools{
 	public static function redirectPage($file){
 		require_once('application/core/config/config.php');	
 
-		include('www/php/login/login.php');
+		include('index.php');
 		//$url = explode('.',$file);
 		//header('Location: '.APP_VIEW_DIR."/php/".$url[0]."/".$file);
 		exit();

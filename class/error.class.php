@@ -2,7 +2,7 @@
 
 /**
  * Clase Error
- * @package AleaClass
+ * @package uptosave
  * @author José E. Villena
  * @copyright Alea Technology
  * @version 1.0

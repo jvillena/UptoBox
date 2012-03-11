@@ -272,6 +272,30 @@ $(document).ready(function() {
 															{literal}
 															if (action == 'preview'){
 																
+																(function($) {
+																    $.extend({
+																        doGet: function(url, params) {
+																            document.location = url + '?' + $.param(params);
+																        },
+																        doPost: function(url, params) {
+																            var $form = $("<form method='POST'>").attr("action", url);
+																            $.each(params, function(name, value) {
+																                $("<input type='hidden'>")
+																                    .attr("name", name)
+																                    .attr("value", value)
+																                    .appendTo($form);
+																            });
+																            $form.appendTo("body");
+																            $form.submit();
+																        }
+																    });
+																})(jQuery);
+
+																$.doPost("{/literal}{$RUTA_WEB_ABSOLUTA}{literal}viewer", {
+																    id: "{/literal}{$item.id_archivo}{literal}",
+																    name: "{/literal}{$item.nombre}{literal}"
+																});
+																	
 															}else if (action == 'download'){
 															}else if (action == 'upload'){
 															}else if (action == 'share'){

@@ -86,6 +86,8 @@ RewriteRule ^activate/(.+)$ ./www/php/public/login.php?activate_code=$1
 RewriteRule ^login/verificate$ ./index.php?name=$0
 
 RewriteRule ^clave/reset$ ./www/php/public/new_password.php
+RewriteRule ^viewer/(.+)/(.+)$ ./index.php?name=$0&id=$1&name_file=$3
+RewriteRule ^viewer$ ./index.php?name=$0
 
 RewriteRule ^init$ ./www/php/private/user/index.php
 

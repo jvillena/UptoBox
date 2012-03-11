@@ -1,5 +1,6 @@
 <?php
 require('../../../../../application/core/config/config.php');
+require($config_urls['BASE_PATH'].'class/pdftoswf.class.php');
 require($config_urls['BASE_PATH'].'class/file.class.php');
 require($config_urls['BASE_PATH'].'www/php/private/user/security.php');    
 
@@ -24,7 +25,6 @@ $sizeLimit = 119430400;
 $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
 $uploader->setBD($oBD);
 $result = $uploader->handleUpload($path,false,$id_user,$id_padre);    
-
 
     
 //$result = $oFile->uploadFileFolder($path);

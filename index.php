@@ -18,6 +18,16 @@ if ( (isset($_GET['name'])) && ($_GET['name'] == 'index')){
     }
 }else if ( (isset($_GET['name'])) && ($_GET['name'] == 'login')){
 	include('www/php/public/login/login.php');
+}else if ( (isset($_GET['name'])) && ($_GET['name'] == 'viewer')){
+    if (isset($_POST['id'])){
+        $id=$_POST['id'];
+        $name=$_POST['name'];    
+    }else{
+        $id=$_GET['id'];
+        $name=$_GET['name_file'];
+    }
+    
+    include('www/php/private/user/viewer/viewer.php');
 }else if ( (isset($_GET['name'])) && ($_GET['name'] == 'logout')){
     include('www/php/private/logout.php');
 }else if ( (isset($_GET['name'])) && ($_GET['name'] == 'login/verificate')){

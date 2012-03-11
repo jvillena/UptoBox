@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPHPFramework
+ * Login Controller
  * Template class
  *
  * @version 0.1

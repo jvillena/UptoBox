@@ -237,27 +237,7 @@
 					{/if}
 				</li>
 			</ul>
-			{else}
-			<ul class="nav">
-				<li {if isset($menu_principal) && $menu_principal=='inicio'}class="active"{/if}>
-					<a href="{$RUTA_WEB_ABSOLUTA}" >{translate}tx_menu_inicio{/translate}</a>
-				</li>
-				<li {if isset($menu_principal) && $menu_principal=='como_funciona'}class="active"{/if}><a href="{$RUTA_WEB_ABSOLUTA}personal" {if isset($menu_principal) && $menu_principal=='pagina_personal'}class="seleccionado"{/if}>{translate}tx_menu_personal{/translate}</a></li>
-				<li {if isset($menu_principal) && $menu_principal=='como_funciona'}class="active"{/if}><a href="{$RUTA_WEB_ABSOLUTA}empresas" {if isset($menu_principal) && $menu_principal=='pagina_empresa'}class="seleccionado"{/if}>{translate}tx_menu_empresa{/translate}</a></li>
-				<li {if isset($menu_principal) && $menu_principal=='como_funciona'}class="active"{/if}><a href="{$RUTA_WEB_ABSOLUTA}como_funciona" {if isset($menu_principal) && $menu_principal=='como_funciona'}class="seleccionado"{/if}>{translate}tx_menu_planes_pago{/translate}</a></li>
-				<li {if isset($menu_principal) && $menu_principal=='crea_tu_perfil'}class="active"{/if}><a href="{$RUTA_WEB_ABSOLUTA}planes_precios" {if isset($menu_principal) && $menu_principal=='pagina_precios'}class="seleccionado"{/if}>{translate}tx_menu_precios{/translate}</a></li>
-				<li {if isset($menu_principal) && $menu_principal=='faqs'}class="active"{/if}><a href="{$RUTA_WEB_ABSOLUTA}faqs" >{translate}tx_menu_faqs{/translate}</a></li>
-			</ul>
-			<ul class="nav secondary-nav" style="margin-right: 10px;">
-           		<li class="menu" data-dropdown="menu">
-           			<button class="btn small primary margin-top-5" onclick="location.href='{$RUTA_WEB_ABSOLUTA}login'">{translate}tx_login{/translate}</button>
-           			<ul class="dropdown-menu">
-							<li><a href="{$RUTA_WEB_ABSOLUTA}user/profile">{translate}tx_menu_conf_perfil{/translate}</a></li>
-							<li class="divider"></li>
-							<li><a href="{$RUTA_WEB_ABSOLUTA}logout">{translate}tx_menu_desconectarse{/translate}</a></li>
-					</ul>
-				</li>
-			</ul>
+			
 			{/if}
 		</div>
 	</div>
@@ -280,9 +260,11 @@
 		          	<table class="page_table">
         					<tr>
         						<td>
-        							<h1 id="title_root">{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_sub_myaccount{/translate}{/if} <small>{if $menu_principal == 'files'}{translate}tx_sub_message{/translate}{/if}</small></h1>			
+        							<h1 id="title_root">{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_sub_myaccount{/translate}{elseif isset($menu_principal) && $menu_principal=='viewer'}{$name_file}{/if} <small>{if $menu_principal == 'files'}{translate}tx_sub_message{/translate}{/if}</small></h1>			
         							  <div id="tabs_menu" style="float:left;margin-bottom:-3px;">
+        							  	{if isset($menu_principal) && $menu_principal!='viewer'}
         							    <ul class="tabs">
+        							    	
 									    	<li style="background-color:#fff">
 									    		<a href="#profile" style="line-height:10px; color:#545454;font-weight: bold;background-color:#fff;background-image: none;">{if isset($menu_principal) && $menu_principal=='files'}{translate}tx_sub_file{/translate}{elseif isset($menu_principal) && $menu_principal=='myaccount'}{translate}tx_tabs_profile{/translate}{/if}</a>
 									    	</li>
@@ -292,6 +274,7 @@
 									    	</li>
 									    	{/if}
 									    </ul>
+									    {/if}
 									   </div>
         						</td>
         						<td>
@@ -315,19 +298,13 @@
         					</tr>
         				</table>
 				<div id="file-upload" style="float:left;margin-left:500px;margin-top:-40px">
-					<input style="width:100px;padding:6px;cursor:pointer;background-color: #3376A4;
-					  background-repeat: repeat-x;
-					  background-image: -khtml-gradient(linear, left top, left bottom, from(#3376A4), to(#1169a6));
-					  background-image: -moz-linear-gradient(top, #3376A4, #1169a6);
-					  background-image: -ms-linear-gradient(top, #3376A4, #1169a6);
-					  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3376A4), color-stop(100%, #1169a6));
-					  background-image: -webkit-linear-gradient(top, #3376A4, #1169a6);
-					  background-image: -o-linear-gradient(top,#3376A4, #1169a6);
-					  background-image: linear-gradient(top,#3376A4, #1169a6);
-					  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3376A4', endColorstr='#1169a6', GradientType=0);
-					  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-					  border-color: #1169a6 #1169a6 #3376A4;
-					  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);color:#FFF;" type="button" name="btnFile" id="btnFile" value="Subir fichero" />
+					<input style="width:100px;padding:6px;cursor:pointer;  background: -moz-linear-gradient(center top , #5989AC, #004A80) repeat scroll 0 0 transparent;
+    border: 1px solid #004373;
+    color: #FFFFFF;  margin-bottom: 9px;  border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px #000000;  display: inline-block;  outline: medium none;
+    padding: 0.55em 2em;
+    text-align: center;
+    text-decoration: none;" type="button" name="btnFile" id="btnFile" value="Subir fichero" />
 					
 				</div>        				
 		    </div>

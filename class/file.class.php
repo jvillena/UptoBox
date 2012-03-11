@@ -1,12 +1,12 @@
 <?php
 /**
  * Clase File
- * @package uptobox
+ * @package uptosave
  * @author José E. Villena
  * @copyright Alea Technology
  * @version 1.0
  */
-class FileClass {
+class File{
 		private $oBD;
 		private $sTablaUsuario;
 		private $sTablaUsuarioRol;
@@ -38,6 +38,24 @@ class FileClass {
 			}
 			return $result;
 		}
+        
+        /**
+         * getDataIdFiles get all datas from id files
+         *
+         * @param integer $id_user id of file's owner
+         * @param integer $id_file file's id
+         * @return array datas
+         */
+        public function getDataIdFiles($id_user, $id_file){
+            $result = "";
+            $consulta_sql = "SELECT a.* FROM ".$this->sTablaArchivo." as a, ".$this->sTablaUsuario." as u WHERE ";
+            $consulta_sql .= "a.id_archivo=".$id_file." AND a.id_archivo IN (SELECT ua.id_archivo FROM ".$this->sTablaUsuarioArchivo." as ua WHERE ua.id_usuario='".$id_user."') ";
+            $rs = $this->oBD->Execute($consulta_sql);
+            if ($rs->RecordCount()>0){
+                $result = $rs->GetRows();
+            }
+            return $result[0];
+        }
 		
 		// Método que nos devuelve un array con las carpetas del directorio que le hemos pasado por parámetro
 		public function getFoldersTree($id_usuario, $id_padre){
@@ -374,6 +392,7 @@ class qqUploadedFileXhr {
             '.ppt' => 'files/ppt',
             '.xls' => 'files/xls',
             '.rar' => 'files/rar',
+            '.pdf' => 'files/pdf',
             '.zip' => 'files/zip');
         $type = $imagetypes[substr($_GET['qqfile'],strripos($_GET['qqfile'], '.'))];
         
@@ -540,10 +559,14 @@ class qqFileUploader {
                         
                                     if (!$this->oBD->Execute($consulta_sql)){         
                                       return array('error' => 'Error insert File in Data Base');
-                                    }else{   
+                                    }else{
+                                       //Convert PDF to SWF
+                                      PdfToSwfConverter::convertPdfToSwf($uploadDirectory . $filename_new . '.' . $ext, $uploadDirectory . $filename_new . '.swf' );     
                                       return array('success'=>true);
                                      }       
-                                }else{   
+                                }else{
+                                    //Convert PDF to SWF
+                                   PdfToSwfConverter::convertPdfToSwf($uploadDirectory . $filename_new . '.' . $ext, $uploadDirectory . $filename_new . '.swf' );    
                                   return array('success'=>true);
                                 }
                                  
@@ -578,7 +601,12 @@ class qqFileUploader {
                                 
                                 if (!$this->oBD->Execute($consulta_sql)){        
                                   return array('error' => 'Error insert File in Data Base');
-                                }else{   
+                                }else{
+                                    
+                                   //Convert PDF to SWF
+                                   PdfToSwfConverter::convertPdfToSwf($uploadDirectory . $filename_new . '.' . $ext, $uploadDirectory . $filename_new . '.swf' ); 
+                                    
+                                       
                                   return array('success'=>true);
                                 }
                                  
@@ -586,15 +614,15 @@ class qqFileUploader {
             
             
            
-        } else {
-            return array('error'=> 'Could not save uploaded file.' .
-                'The upload was cancelled, or server error encountered');
-        }
+            } else {
+                return array('error'=> 'Could not save uploaded file.' .
+                    'The upload was cancelled, or server error encountered');
+            }
         
     }    
 }	
 	
 	
-	$oFile = new FileClass();
+	$oFile = new File();
 	$oFile->setBD($oBD);
 ?>

@@ -1,12 +1,12 @@
 <?php 
 /**
  * Clase Notification
- * @package uptobox
+ * @package uptosave
  * @author José E. Villena
  * @copyright Alea Technology
  * @version 1.0
  */
-require(BASE_PATH.'libs/phpmailer/class.phpmailer.php');
+require(BASE_PATH.'vendors/phpmailer/class.phpmailer.php');
 class NotificationClass{
 	
 	private $mail=null;

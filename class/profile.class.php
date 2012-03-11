@@ -1,7 +1,7 @@
 <?php 
 /**
  * Clase Profile
- * @package uptobox
+ * @package uptosave
  * @author José E. Villena
  * @copyright Alea Technology
  * @version 1.0

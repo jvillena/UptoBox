@@ -242,7 +242,7 @@ class JPHPController {
 	 * @param String $key the key for the array
 	 * @return void
 	 */
-	public function storeSetting( $data, $key )
+	public function storeSetting( $key, $data )
 	{
 		self::$settings[ $key ] = $data;
 	}
